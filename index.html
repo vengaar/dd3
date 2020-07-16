@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.6/dist/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="styles/main.css">
+    <title>TODO</title>
+</head>
+<body>
+    <!-- MENU -->
+    <div class="ui mini menu">
+        <div id="character_choice" class="ui dropdown item">
+            Personnages <i class="dropdown icon"></i>
+            <div class="menu">
+                <a class="item">Seleniel</a>
+                <a class="item">Ronce</a>
+            </div>
+        </div>
+        <div class="right menu">
+        </div>
+    </div>
+
+    <div class="ui stackable container grid">
+        <div class="four wide column">
+
+            <div id="identity" class="ui card">
+            </div>
+
+            <table id="abilities" class="ui very basic _collapsing celled center aligned table">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Base</th>
+                        <th>Total</th>
+                        <th>Bonus</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+
+            <div id="counters" class="ui three item labeled icon menu">
+            </div>
+
+            <div id="saves" class="ui three item labeled icon menu"></div>
+
+        </div>
+        <div class="twelve wide column">
+
+            <table id="attacks" class="ui compact _very _basic _collapsing celled center aligned table">
+                <thead>
+                    <tr>
+                        <th>Attaque</th>
+                        <th>Touché</th>
+                        <th>Dégats</th>
+                        <th>Crit</th>
+                        <th>Spécial</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+
+            <table id="skills" class="ui compact _very _basic _collapsing celled table">
+                <thead>
+                    <tr>
+                        <th colspan="3">Compétences</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.6/dist/semantic.min.js"></script>
+    <script src="scripts/model.js"></script>
+    <script src="scripts/main.js"></script>
+
+</body>
+</html>

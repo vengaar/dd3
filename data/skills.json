@@ -1,0 +1,471 @@
+[
+    {
+        "name": "Acrobaties",
+        "ability": "dex",
+        "classes": [
+            "Barde",
+            "Moine",
+            "Roublard"
+        ],
+        "flags": [
+            "armor_penality"
+        ],
+        "synergies": [
+            {
+                "skill": "Saut"
+            }
+        ]
+    },
+    {
+        "name": "Art de la magie",
+        "ability": "int",
+        "classes": [
+            "Barde",
+            "Druide",
+            "Ensorceleur",
+            "Magicien",
+            "Prêtre"
+        ],
+        "flags": [
+            "learned"
+        ],
+        "synergies": [
+            {
+                "skill": "Utilisation d'objets magiques",
+                "condition": "pour déchiffrer des sorts sur un parchemin"
+            }
+        ]
+    },
+    {
+        "name": "Bluff",
+        "ability": "cha",
+        "classes": [
+            "Roublard",
+            "Ensorceleur",
+            "Roublard"
+        ],
+        "flags": []
+    },
+    {
+        "name": "Concentration",
+        "ability": "con",
+        "classes": [
+            "Barde",
+            "Druide",
+            "Ensorceleur",
+            "Magicien",
+            "Moine",
+            "Paladin",
+            "Rôdeur"
+        ],
+        "flags": []
+    },
+    {
+        "name": "Connaissances (nature)",
+        "ability": "int",
+        "classes": [
+            "Barde",
+            "Druide",
+            "Magicien",
+            "Rôdeur"
+        ],
+        "flags": [
+            "learned"
+        ],
+        "synergies": [
+            {
+                "skill": "Survie"
+            }
+        ]
+    },
+    {
+        "name": "Contrefaçon",
+        "ability": "int",
+        "classes": [
+            "Roublard"
+        ],
+        "flags": []
+    },
+    {
+        "name": "Crochetage",
+        "ability": "dex",
+        "classes": [
+            "Roublard"
+        ],
+        "flags": [
+            "learned"
+        ]
+    },
+    {
+        "name": "Décryptage",
+        "ability": "int",
+        "classes": [
+            "Barde",
+            "Magicien",
+            "Roublard"
+        ],
+        "flags": [
+            "learned"
+        ]
+    },
+    {
+        "name": "Déguisement",
+        "ability": "cha",
+        "classes": [
+            "Barde",
+            "Roublard"
+        ],
+        "flags": [],
+        "synergies": [
+            {
+                "skill": "Bluff",
+                "condition": "pour tenir un rôle"
+            }
+        ]
+    },
+    {
+        "name": "Déplacement silencieux",
+        "ability": "dex",
+        "classes": [
+            "Barde",
+            "Moine",
+            "Rôdeur",
+            "Roublard"
+        ],
+        "flags": [
+            "armor_penality"
+        ]
+    },
+    {
+        "name": "Désamorçage",
+        "ability": "int",
+        "classes": [
+            "Roublard"
+        ],
+        "flags": [
+            "learned"
+        ]
+    },
+    {
+        "name": "Détection",
+        "ability": "sag",
+        "classes": [
+            "Druide",
+            "Moine",
+            "Rôdeur",
+            "Roublard"
+        ],
+        "flags": []
+    },
+    {
+        "name": "Diplomatie",
+        "ability": "cha",
+        "classes": [
+            "Barde",
+            "Druide",
+            "Moine",
+            "Paladin",
+            "Prêtre",
+            "Roublard"
+        ],
+        "flags": [],
+        "synergies": [
+            {
+                "skill": "Bluff"
+            },
+            {
+                "skill": "Psychologie"
+            }
+        ]
+    },
+    {
+        "name": "Discrétion",
+        "ability": "dex",
+        "classes": [
+            "Barde",
+            "Moine",
+            "Rôdeur",
+            "Roublard"
+        ],
+        "flags": [
+            "armor_penality"
+        ]
+    },
+    {
+        "name": "Dressage",
+        "ability": "cha",
+        "classes": [
+            "Barbare",
+            "Druide",
+            "Guerrier",
+            "Paladin",
+            "Rôdeur"
+        ],
+        "flags": [
+            "learned"
+        ]
+    },
+    {
+        "name": "Equilibre",
+        "ability": "dex",
+        "classes": [
+            "Barde",
+            "Moine",
+            "Roublard"
+        ],
+        "flags": [
+            "armor_penality"
+        ],
+        "synergies": [
+            {
+                "skill": "Acrobaties"
+            }
+        ]
+    },
+    {
+        "name": "Equitation",
+        "ability": "dex",
+        "classes": [
+            "Barbare",
+            "Druide",
+            "Guerrier",
+            "Paladin",
+            "Rôdeur"
+        ],
+        "flags": [],
+        "synergies": [
+            {
+                "skill": "Dessage"
+            }
+        ]
+    },
+    {
+        "name": "Escalade",
+        "ability": "for",
+        "classes": [
+            "Barbare",
+            "Barde",
+            "Guerrier",
+            "Rôdeur",
+            "Roublard"
+        ],
+        "flags": [
+            "armor_penality"
+        ],
+        "synergies": [
+            {
+                "skill": "Maîtrise des cordes",
+                "condition": "pour grimper à une corde"
+            }
+        ]
+    },
+    {
+        "name": "Escamotage",
+        "ability": "dex",
+        "classes": [
+            "Barde",
+            "Roublard"
+        ],
+        "flags": [
+            "armor_penality",
+            "learned"
+        ],
+        "synergies": [
+            {
+                "skill": "Bluff"
+            }
+        ]
+    },
+    {
+        "name": "Estimation",
+        "ability": "int",
+        "classes": [
+            "Barde",
+            "Roublard"
+        ],
+        "flags": []
+    },
+    {
+        "name": "Evasion",
+        "ability": "dex",
+        "classes": [
+            "Rôdeur",
+            "Roublard"
+        ],
+        "flags": [
+            "armor_penality"
+        ],
+        "synergies": [
+            {
+                "skill": "Evasion",
+                "condition": "pour se libérer de cordes"
+            }
+        ]
+    },
+    {
+        "name": "Fouille",
+        "ability": "int",
+        "classes": [
+            "Barbare",
+            "Guerrier",
+            "Roublard"
+        ],
+        "flags": []
+    },
+    {
+        "name": "Intimidation",
+        "ability": "cha",
+        "classes": [
+            "Barbare",
+            "Guerrier",
+            "Roublard"
+        ],
+        "flags": [],
+        "synergies": [
+            {
+                "skill": "Bluff"
+            }
+        ]
+    },
+    {
+        "name": "Maîtrise des cordes",
+        "ability": "dex",
+        "classes": [
+            "Rôdeur",
+            "Roublard"
+        ],
+        "flags": [],
+        "synergies": [
+            {
+                "skill": "Evasion",
+                "condition": "pour ligoter quelqu'un"
+            }
+        ]
+    },
+    {
+        "name": "Natation",
+        "ability": "for",
+        "classes": [
+            "Barbare",
+            "Barde",
+            "Druide",
+            "Moine",
+            "Rôdeur",
+            "Roublard"
+        ],
+        "flags": [
+            "armor_penality"
+        ]
+    },
+    {
+        "name": "Perception auditive",
+        "ability": "sag",
+        "classes": [
+            "Barbare",
+            "Barde",
+            "Druide",
+            "Moine",
+            "Rôdeur",
+            "Roublard"
+        ],
+        "flags": []
+    },
+    {
+        "name": "Premiers secours",
+        "ability": "sag",
+        "classes": [
+            "Druide",
+            "Paladin",
+            "Prêtre",
+            "Moine",
+            "Rôdeur"
+        ],
+        "flags": []
+    },
+    {
+        "name": "Psycologie",
+        "ability": "sag",
+        "classes": [
+            "Barde",
+            "Moine",
+            "Paladin",
+            "Roublard"
+        ],
+        "flags": []
+    },
+    {
+        "name": "Renseignements",
+        "ability": "cha",
+        "classes": [
+            "Barde",
+            "Roublard"
+        ],
+        "flags": []
+    },
+    {
+        "name": "Représentation",
+        "ability": "cha",
+        "classes": [
+            "Barde",
+            "Moine",
+            "Roublard"
+        ],
+        "flags": []
+    },
+    {
+        "name": "Saut",
+        "ability": "for",
+        "classes": [
+            "Barbare",
+            "Barde",
+            "Guerrier",
+            "Moine",
+            "Rôdeur",
+            "Roublard"
+        ],
+        "flags": [
+            "armor_penality"
+        ],
+        "synergies": [
+            {
+                "skill": "Acrobaties"
+            }
+        ]
+    },
+    {
+        "name": "Survie",
+        "ability": "sag",
+        "classes": [
+            "Barbare",
+            "Druide",
+            "Rôdeur"
+        ],
+        "flags": [],
+        "synergies": [
+            {
+                "skill": "Fouille",
+                "condition": "pour suivre une piste"
+            }
+        ]
+    },
+    {
+        "name": "Utilisation d'objets magiques",
+        "ability": "cha",
+        "classes": [
+            "Roublard"
+        ],
+        "flags": [
+            "learned"
+        ],
+        "synergies": [
+            {
+                "skill": "Art de la magie",
+                "condition": "lors de l'utilisation du parchemin"
+            },
+            {
+                "skill": "Décryptage",
+                "condition": "lors de l'utilisation du parchemin"
+            }
+        ]
+    }
+]
