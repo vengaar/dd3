@@ -40,7 +40,7 @@ class Character {
             }
         });
 
-        this.level  = 0
+        this.level = 0
         this.ba = 0
         this.save_vig = 0
         this.save_ref = 0
@@ -90,7 +90,7 @@ class Character {
             }
         });
 
-        this.attacks.forEach(attack =>{
+        this.attacks.forEach(attack => {
             const attack_hit_modifiers = [
                 {
                     "source": "Ability",
@@ -142,7 +142,7 @@ class Character {
 
 const formatHit = (hit, ba) => {
     const formatted_hit = []
-    nb_attacks = Math.ceil(ba/5)
+    nb_attacks = Math.ceil(ba / 5)
     // console.log(nb_attacks)
     for (let i = 1; i <= nb_attacks; i++) {
         formatted_hit.push(hit)
