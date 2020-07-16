@@ -1,20 +1,63 @@
 
+const formatHit = (hit, ba) => {
+    const formatted_hit = []
+    nb_attacks = Math.ceil(ba / 5)
+    // console.log(nb_attacks)
+    for (let i = 1; i <= nb_attacks; i++) {
+        formatted_hit.push(hit)
+        hit = hit - 5
+    }
+    // console.log(formatted_hit)
+    return formatted_hit.join("/")
+}
+
+const formatBonus = (bonus) => {
+    if (bonus > 0) {
+        return "+" + bonus;
+    } else if (bonus === 0) {
+        return ""
+    } else {
+        return bonus
+    }
+}
+
+const formatModifiers = modifiers => {
+    // console.log(modifiers)
+    details = ['<table class="ui very basic celled center aligned table"><tbody>']
+    modifiers.forEach(modifier => {
+        detail = `<tr><td>${modifier.source}</td><td>${modifier.value}</td><td>${modifier.type}</td>`
+        details.push(detail)
+    });
+    details.push('</tbody></table>')
+    // console.log(details)
+    return details.join("")
+}
+
+/**
+ *
+ */
+
 const dispay_skills = character => {
 
     const flags_mappping = {
         "learned": '<i class="graduation cap icon"></i>',
         "armor_penality": '<i class="hiking icon"></i>'
     }
-    computed_skills = compute_skills(skills, character)
+    $('#skills > tbody').empty();
+    computed_skills = character.computeSkills(skills)
     computed_skills.forEach(skill => {
         const skill_class_css = skill.class ? "left marked green" : ""
         const skill_flags = skill.flags.map(flag => {
             return flags_mappping[flag]
         })
+
         line = `
             <tr class="${skill_class_css} ${skill.state}">
                 <td>${skill.name} ${skill_flags.join(" ")}</td>
-                <td class="center aligned">${skill.total}</td>
+                <td class="center aligned">
+                    <div class="details">${getSumModifiers(skill.modifiers)}</div>
+                    <div class="ui popup">${formatModifiers(skill.modifiers)}</div>
+                </td>
                 <td>${skill.comments.join("<br>")}</td>
             </tr>`;
         $('#skills > tbody:last-child').append(line);
@@ -22,6 +65,8 @@ const dispay_skills = character => {
 }
 
 const dispay_abilities = character => {
+
+    $('#abilities > tbody').empty();
     Object.values(character.abilities).forEach(ability => {
         // console.log(ability);
         line = `
@@ -33,6 +78,7 @@ const dispay_abilities = character => {
             </tr>`;
         $('#abilities > tbody:last-child').append(line);
     });
+
 }
 
 const dispay_identity = character => {
@@ -60,35 +106,39 @@ const dispay_identity = character => {
         <div class="extra content">
             ${character.taille} / ${character.poids} / ${character.age}
         </div>`
-    $('#identity').append(identity);
+    $('#identity').html(identity);
 
     const counters = `
         <span class="item"><i class="heart icon"></i>${character.points_de_vie}</span>
         <span class="item"><i class="shield icon"></i>${character.ca}</span>
         <span class="item"><i class="gavel icon"></i>${character.ba}</span>`
-    $('#counters').append(counters);
+    $('#counters').html(counters);
 
     const saves = `
         <span class="item"><i class="skull crossbones icon"></i></i>${character.save_vig}</span>
         <span class="item"><i class="bomb icon"></i>${character.save_ref}</span>
         <span class="item"><i class="brain icon"></i>${character.save_vol}</span>`
-    $('#saves').append(saves);
+    $('#saves').html(saves);
 
 }
 
 const dispay_attacks = character => {
 
-    character.get_attacks().forEach(attack => {
+    $('#attacks > tbody').empty();
+    character.attacks.forEach(attack => {
         // console.log(attack);
+        const hit = getSumModifiers(attack.hit_modifiers)
+        const damage_modifier = getSumModifiers(attack.damage_modifiers)
+        const damage = `${attack.damage} ${formatBonus(damage_modifier)}`
         line = `
             <tr>
                 <td>${attack.name}</td>
                 <td>
-                    <div class="details">${attack.hit}</div>
+                    <div class="details">${formatHit(hit, character.ba)}</div>
                     <div class="ui popup">${formatModifiers(attack.hit_modifiers)}</div>
                 </td>
                 <td>
-                    <div class="details">${attack.damage}</div>
+                    <div class="details">${damage}</div>
                     <div class="ui popup">${formatModifiers(attack.damage_modifiers)}</div>
                 </td>
                 <td>${attack.crit}</td>
@@ -99,20 +149,9 @@ const dispay_attacks = character => {
 
 }
 
-const formatModifiers = modifiers => {
-    console.log(modifiers)
-    details = ['<table class="ui very basic celled center aligned table"><tbody>']
-    modifiers.forEach(modifier => {
-        detail = `<tr><td>${modifier.source}</td><td>${modifier.value}</td><td>${modifier.type}</td>`
-        details.push(detail)
-    });
-    details.push('</tbody></table>')
-    console.log(details)
-    return details.join("")
-}
+const display_character = data => {
 
-const display_charater = data => {
-    // console.log(data)
+    console.log(data)
     const character = new Character(data)
     dispay_identity(character)
     dispay_abilities(character)
@@ -132,7 +171,7 @@ $character_choice.dropdown({
         // console.log(value)
         fetch(`data/characters/${value}.json`)
             .then(response => response.json())
-            .then(json => display_charater(json));
+            .then(json => display_character(json));
     }
 });
 
@@ -141,7 +180,7 @@ fetch(`data/skills.json`)
     .then(response => response.json())
     .then(json => {
         skills = json
-        $character_choice.dropdown('set selected', 'ronce')
+        // $character_choice.dropdown('set selected', 'seleniel')
     });
 
 console.log("main - ok");
