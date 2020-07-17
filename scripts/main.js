@@ -21,7 +21,7 @@ const formatBonus = (bonus) => {
     }
 }
 
-const formatModifiers = modifiers => {
+const formatDetails = modifiers => {
     // console.log(modifiers)
     details = ["<table class='ui very basic celled center aligned table'><tbody>"]
     modifiers.forEach(modifier => {
@@ -33,27 +33,24 @@ const formatModifiers = modifiers => {
     return details.join("")
 }
 
-const formatConditions = modifiers => {
+const formatModifers = modifiers => {
     // console.log(modifiers)
-    details = []
-
+    const modfiers_as_list = []
+    let modifier_item
     modifiers.forEach(modifier => {
-
         if ("condition" in modifier) {
-            detail = `
+            modifier_item = `
             <div class="item">
                 <i class="icon"><span class="ui circular label">${formatBonus(modifier.value)}</span></i>
                 <div class="content">
                     <div class="header">Sur "${modifier.condition}"</div>
-                    <div class="description">(${modifier.source})</div>
+                    <div class="description">${modifier.source}</div>
                 </div>
             </div>`
-
         } else {
-
             const category = modifier.target === undefined ? modifier.category : ''
             const target = modifier.target === undefined ? '' : modifier.target
-            detail = `
+            modifier_item = `
             <div class="item">
                 <i class="icon"><span class="ui circular label">${formatBonus(modifier.value)}</span></i>
                 <div class="content">
@@ -63,11 +60,10 @@ const formatConditions = modifiers => {
                 </div>
             </div>`
         }
-
-        details.push(detail)
+        modfiers_as_list.push(modifier_item)
     });
-    // console.log(details)
-    return details.join("")
+    // console.log(modfiers_as_list)
+    return modfiers_as_list.join("")
 }
 
 
@@ -75,7 +71,7 @@ const formatConditions = modifiers => {
  *
  */
 
-const dispay_skills = character => {
+const dispaySkills = character => {
 
     const flags_mappping = {
         "learned": '<i class="graduation cap icon"></i>',
@@ -92,7 +88,7 @@ const dispay_skills = character => {
         line = `
             <tr class="${skill_class_css} ${skill.state}">
                 <td>${skill.name} ${skill_flags.join(" ")}</td>
-                <td class="center aligned details" data-html="${formatModifiers(skill.modifiers)}">
+                <td class="center aligned details" data-html="${formatDetails(skill.modifiers)}">
                     <div>${getSumModifiers(skill.modifiers)}</div>
                 </td>
                 <td>${skill.comments.join("<br>")}</td>
@@ -101,7 +97,7 @@ const dispay_skills = character => {
     });
 }
 
-const dispay_abilities = character => {
+const dispayAbilities = character => {
 
     $('#abilities > tbody').empty();
     Object.values(character.abilities).forEach(ability => {
@@ -118,7 +114,7 @@ const dispay_abilities = character => {
 
 }
 
-const dispay_identity = character => {
+const dispayIdentity = character => {
 
     const classes = character.classes.map(current_class => {
         return `${current_class.name} ${current_class.level}`
@@ -148,23 +144,23 @@ const dispay_identity = character => {
     const counters = `
         <span class="item"><i class="heart icon"></i>${character.points_de_vie}</span>
         <span class="item details"><i class="shield icon"></i>${getSumModifiers(character.ca_modifiers)}</span>
-        <div class="ui popup">${formatModifiers(character.ca_modifiers)}</div>
+        <div class="ui popup">${formatDetails(character.ca_modifiers)}</div>
         <span class="item"><i class="gavel icon"></i>${character.ba}</span>`
     $('#counters').html(counters);
 
     const saves = `
         <span class="item details"><i class="skull crossbones icon"></i>${getSumModifiers(character.saves.vig)}</span>
-        <div class="ui popup">${formatModifiers(character.saves.vig)}</div>
+        <div class="ui popup">${formatDetails(character.saves.vig)}</div>
         <span class="item details"><i class="bomb icon"></i>${getSumModifiers(character.saves.ref)}</span>
-        <div class="ui popup">${formatModifiers(character.saves.ref)}</div>
+        <div class="ui popup">${formatDetails(character.saves.ref)}</div>
         <span class="item details"><i class="brain icon"></i>${getSumModifiers(character.saves.vol)}</span>
-        <div class="ui popup">${formatModifiers(character.saves.vol)}</div>`
+        <div class="ui popup">${formatDetails(character.saves.vol)}</div>`
     $('#saves').html(saves);
-    $('#saves_extras').html(formatConditions(character.saves.extras));
+    $('#saves_extras').html(formatModifers(character.saves.extras));
 
 }
 
-const dispay_attacks = character => {
+const dispayAttacks = character => {
 
     $('#attacks > tbody').empty();
     character.attacks.forEach(attack => {
@@ -175,8 +171,8 @@ const dispay_attacks = character => {
         line = `
             <tr>
                 <td>${attack.name}</td>
-                <td class="details" data-html="${formatModifiers(attack.hit_modifiers)}">${formatHit(hit, character.ba)}</td>
-                <td class="details" data-html="${formatModifiers(attack.damage_modifiers)}">${damage}</td>
+                <td class="details" data-html="${formatDetails(attack.hit_modifiers)}">${formatHit(hit, character.ba)}</td>
+                <td class="details" data-html="${formatDetails(attack.damage_modifiers)}">${damage}</td>
                 <td>${attack.crit}</td>
                 <td>${attack.specials.join("<br>")}</td>
             </tr>`;
@@ -185,13 +181,13 @@ const dispay_attacks = character => {
 
 }
 
-const dispay_powers = character => {
+const dispayPowers = character => {
 
     $('#powers > tbody').empty();
 
 }
 
-const dispay_equipments = character => {
+const dispayEquipments = character => {
 
     $('#equipments > tbody').empty();
     for (let index in character.equipments) {
@@ -212,7 +208,7 @@ const dispay_equipments = character => {
                 </td>
                 <td class="${equipment_disabled}">${equipment.name}</td>
                 <td class="${equipment_disabled}">
-                    <div class="ui divided list">${formatConditions(equipment.modifiers)}</div>
+                    <div class="ui divided list">${formatModifers(equipment.modifiers)}</div>
                 </td>
             </tr>`;
         $('#equipments > tbody:last-child').append(line);
@@ -220,14 +216,14 @@ const dispay_equipments = character => {
 
 }
 
-const updateCharacter = character => {
-    console.log(character)
-    dispay_identity(character)
-    dispay_abilities(character)
-    dispay_skills(character)
-    dispay_attacks(character)
-    dispay_powers(character)
-    dispay_equipments(character)
+const displayCharacter = character => {
+    console.log(`Display ${character.name}`)
+    dispayIdentity(character)
+    dispayAbilities(character)
+    dispaySkills(character)
+    dispayAttacks(character)
+    dispayPowers(character)
+    dispayEquipments(character)
 
     $('.details').popup({
         position: 'right center',
@@ -235,40 +231,46 @@ const updateCharacter = character => {
 
     $('.ui.checkbox').checkbox({
         onChange: function () {
-            const data = character.data
-            console.log(data.equipments[this.name])
-            data.equipments[this.name].used = this.checked
-            console.log(data.equipments[this.name])
-            character = new Character(data)
-            updateCharacter(character)
+            console.log(character_data.equipments[this.name])
+            character_data.equipments[this.name].used = this.checked
+            // console.log(character.data.equipments[this.name])
+            character = new Character(character_data)
+            displayCharacter(character)
         }
     });
 }
 
-let character
-
-const display_character = data => {
-    console.log(data)
-    character = new Character(data)
-    updateCharacter(character)
-}
+/**
+ * Start page
+ */
 
 const $character_choice = $('#character_choice')
+
+let skills
+let character_data
+let character
+
+fetch(`data/skills.json`)
+    .then(response => response.json())
+    .then(json => {
+        skills = json
+        console.log(`${skills.length} skills loaded => enable character dropdown`);
+        $character_choice.removeClass('disabled')
+        // $character_choice.dropdown('set selected', 'seleniel')
+    });
+
 $character_choice.dropdown({
     onChange: function (value, text, $selectedItem) {
         // console.log(value)
         fetch(`data/characters/${value}.json`, { cache: "reload" })
             .then(response => response.json())
-            .then(json => display_character(json));
+            .then(json => {
+                console.log(`data character loaded`);
+                character_data = json
+                character = new Character(character_data)
+                displayCharacter(character)
+            });
     }
 });
-
-let skills = {}
-fetch(`data/skills.json`)
-    .then(response => response.json())
-    .then(json => {
-        skills = json
-        // $character_choice.dropdown('set selected', 'seleniel')
-    });
 
 console.log("main - ok");

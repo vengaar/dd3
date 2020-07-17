@@ -43,11 +43,17 @@ class Ability {
 class Character {
 
     constructor(data) {
-        Object.assign(this, data)
 
-        this.data = data
-        // Build modifiers
+        console.log("*** Create new character ***")
+        // Clone original data before assign for updates
+        const _data = JSON.parse(JSON.stringify(data));
+        Object.assign(this, _data)
+
+        /**
+         * Build modifiers
+         */
         this.modifiers = []
+        // Equipments modifiers
         this.equipments.forEach(equipment => {
             if ("modifiers" in equipment) {
                 if (equipment.used) {
@@ -55,20 +61,21 @@ class Character {
                         modifier.source = equipment.name
                         this.modifiers.push(modifier)
                     });
-                } else {
-                    console.log("=====================>", equipment)
                 }
             }
         });
-        console.log("modifiers=", this.modifiers)
+        // Race modifiers
         if ("modifiers" in this.race) {
             this.race.modifiers.forEach(modifier => {
-                modifier.source === undefined ? modifier.source = `[${this.race.name}]` : modifier.source = modifier.source + ` [${this.race.name}]`
+                (modifier.source === undefined) ? modifier.source = `[${this.race.name}]` : modifier.source = modifier.source + ` [${this.race.name}]`;
                 if (modifier.type === undefined) modifier.type = "[racial]";
-                this.modifiers.push(modifier)
+                this.modifiers.push(modifier);
             });
         }
 
+        /**
+         * Abilities
+         */
         this.abilities = {}
         for (let key in data.abilities) {
             this.abilities[key] = new Ability(key, data.abilities[key])
@@ -80,6 +87,9 @@ class Character {
             }
         });
 
+        /**
+         * Level + BA
+         */
         this.level = 0
         this.ba = 0
         this.classes.forEach(current_class => {
