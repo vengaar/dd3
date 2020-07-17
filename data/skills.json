@@ -61,7 +61,87 @@
         "flags": []
     },
     {
-        "name": "Connaissances (nature)",
+        "name": "Connaissances (Architecture et ingénierie)",
+        "ability": "int",
+        "classes": [
+            "Barde",
+            "Magicien"
+        ],
+        "flags": [
+            "learned"
+        ],
+        "synergies": []
+    },
+    {
+        "name": "Connaissances (Exploration souterraine)",
+        "ability": "int",
+        "classes": [
+            "Barde",
+            "Magicien",
+            "Rôdeur"
+        ],
+        "flags": [
+            "learned"
+        ],
+        "synergies": []
+    },
+    {
+        "name": "Connaissances (Folklore local)",
+        "ability": "int",
+        "classes": [
+            "Barde",
+            "Magicien",
+            "Roublard"
+        ],
+        "flags": [
+            "learned"
+        ],
+        "synergies": []
+    },
+    {
+        "name": "Connaissances (Géographie)",
+        "ability": "int",
+        "classes": [
+            "Barde",
+            "Magicien",
+            "Rôdeur",
+            "Roublard"
+        ],
+        "flags": [
+            "learned"
+        ],
+        "synergies": []
+    },
+    {
+        "name": "Connaissances (Histoire)",
+        "ability": "int",
+        "classes": [
+            "Barde",
+            "Magicien",
+            "Rôdeur",
+            "Roublard"
+        ],
+        "flags": [
+            "learned"
+        ],
+        "synergies": []
+    },
+    {
+        "name": "Connaissances (Mystères)",
+        "ability": "int",
+        "classes": [
+            "Barde",
+            "Ensorceleur",
+            "Moine",
+            "Prêtre"
+        ],
+        "flags": [
+            "learned"
+        ],
+        "synergies": []
+    },
+    {
+        "name": "Connaissances (Nature)",
         "ability": "int",
         "classes": [
             "Barde",
@@ -77,6 +157,45 @@
                 "skill": "Survie"
             }
         ]
+    },
+    {
+        "name": "Connaissances (Noblesse)",
+        "ability": "int",
+        "classes": [
+            "Barde",
+            "Magicien",
+            "Paladin"
+        ],
+        "flags": [
+            "learned"
+        ],
+        "synergies": []
+    },
+    {
+        "name": "Connaissances (Plans)",
+        "ability": "int",
+        "classes": [
+            "Barde",
+            "Magicien",
+            "Prêtre"
+        ],
+        "flags": [
+            "learned"
+        ],
+        "synergies": []
+    },
+    {
+        "name": "Connaissances (Religion)",
+        "ability": "int",
+        "classes": [
+            "Barde",
+            "Magicien",
+            "Prêtre"
+        ],
+        "flags": [
+            "learned"
+        ],
+        "synergies": []
     },
     {
         "name": "Contrefaçon",

@@ -2,14 +2,51 @@
     "name": "Seleniel",
     "image": "https://i.pinimg.com/564x/5a/55/c5/5a55c5e070c6805a92ae67d5097a62bd.jpg",
     "race": {
-        "name": "Elfe",
-        "url": "https://www.d20srd.org/srd/monsters/sprite.htm#pixie",
+        "name": "Elfe Qualinesti",
+        "url": "http://www.gemmaline.com/races/univers-dragonlance.htm#qualinesti",
         "level_ajustement": 0,
-        "capabilities": []
+        "size": "M",
+        "speed": "9",
+        "modifiers": [
+            {
+                "category": "skill",
+                "target": "Diplomatie",
+                "value": 2
+            },
+            {
+                "category": "skill",
+                "target": "Psycologie",
+                "value": 2
+            },
+            {
+                "category": "skill",
+                "target": "Fouille",
+                "value": 2
+            },
+            {
+                "category": "skill",
+                "target": "Fouille",
+                "value": 1
+            },
+            {
+                "category": "skill",
+                "target": "Détection",
+                "value": 1
+            },
+            {
+                "category": "saves",
+                "value": 2,
+                "condition": "sort ou effet d'enchantement"
+            }
+        ],
+        "capabilities": [
+            "Immunity to magic sleep effects",
+            "Krynnish elves have low-light vision and can see twice as far as a human in starlight, moonlight, and similar conditions of poor illumination. They retain the ability to distinguish color and detail under these circumstances.",
+            "Elvensight also includes darkvision up to 30 feet. Darkvision is black and white only, but it is otherwise like normal sight."
+        ]
     },
     "gender": "mars",
     "alignement": "NB",
-    "taille_category": "M",
     "taille": "1,80 cm",
     "poids": "70 Kg",
     "age": "143 ans",
@@ -21,8 +58,8 @@
             "ba": 12,
             "saves": {
                 "vig": 10,
-                "ref": 10,
-                "vol": 5
+                "ref": 5,
+                "vol": 10
             },
             "capabilities": []
         }
@@ -36,19 +73,26 @@
         "cha": 14
     },
     "skills": {
-        "Crochetage": 12,
-        "Décryptage": 12,
-        "Déguisement": 12,
-        "Déplacement silencieux": 12,
-        "Désamorçage": 12,
-        "Détection": 12,
-        "Escamotage": 12,
-        "Evasion": 7,
-        "Fouille": 12,
-        "Maîtrise des cordes": 5,
-        "Perception auditive": 12,
-        "Renseignements": 12,
-        "Utilisation d'objets magiques": 10
+        "Art de la magie": 1,
+        "Concentration": 4,
+        "Connaissances (Folklore local)": 2,
+        "Connaissances (Géographie)": 7,
+        "Connaissances (Mystères)": 5,
+        "Connaissances (Nature)": 5,
+        "Connaissances (Noblesse)": 5,
+        "Connaissances (Plans)": 5,
+        "Connaissances (Religion)": 2,
+        "Déplacement silencieux": 5,
+        "Détection": 5,
+        "Diplomatie": 6,
+        "Discrétion": 5,
+        "Dressage": 5,
+        "Escalade": 5,
+        "Fouille": 5,
+        "Perception auditive": 5,
+        "Psycologie": 1,
+        "Saut": 1,
+        "Survie": 15
     },
     "attacks": [
         {
@@ -142,39 +186,89 @@
             "specials": []
         }
     ],
-    "modifiers": [
+    "equipments": [
         {
-            "category": "skill",
-            "target": "Perception auditive",
-            "type": "racial",
-            "source": "Elfe",
-            "value": 2
+            "name": "Bottes elfique",
+            "used": true,
+            "modifiers": [
+                {
+                    "category": "skill",
+                    "target": "Déplacement silencieux",
+                    "type": "?",
+                    "value": 5
+                }
+            ]
         },
         {
-            "category": "ability",
-            "target": "sag",
-            "type": "alteration",
-            "source": "Perle de sagesse +4",
-            "value": 4
+            "name": "Cape elfique",
+            "used": false,
+            "modifiers": [
+                {
+                    "category": "skill",
+                    "target": "Discrétion",
+                    "type": "?",
+                    "value": 5
+                }
+            ]
         },
         {
-            "category": "ca",
-            "source": "Bacelet d'armure +4",
-            "type": "armure",
-            "value": 4
+            "name": "Perle de sagesse +4",
+            "used": false,
+            "modifiers": [
+                {
+                    "category": "ability",
+                    "target": "sag",
+                    "type": "alteration",
+                    "value": 4
+                }
+            ]
         },
         {
-            "category": "saves",
-            "target": "sag",
-            "source": "Cape de resitance +4",
-            "type": "alteration",
-            "value": 4
+            "name": "Bacelet d'armure +4",
+            "used": false,
+            "modifiers": [
+                {
+                    "category": "ca",
+                    "type": "armure",
+                    "value": 4
+                }
+            ]
         },
         {
-            "category": "ca",
-            "source": "Anneau +2",
-            "type": "parade",
-            "value": 2
+            "name": "Cape de resitance +4",
+            "used": false,
+            "modifiers": [
+                {
+                    "category": "saves",
+                    "target": "vig",
+                    "type": "alteration",
+                    "value": 4
+                },
+                {
+                    "category": "saves",
+                    "target": "ref",
+                    "type": "alteration",
+                    "value": 4
+                },
+                {
+                    "category": "saves",
+                    "target": "vol",
+                    "type": "alteration",
+                    "value": 4
+                }
+            ]
+        },
+        {
+            "name": "Anneau +2",
+            "used": false,
+            "modifiers": [
+                {
+                    "category": "ca",
+                    "type": "parade",
+                    "value": 2
+                }
+            ]
         }
-    ]
+    ],
+    "modifiers": []
 }

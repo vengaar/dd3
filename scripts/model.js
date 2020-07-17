@@ -44,6 +44,24 @@ class Character {
 
     constructor(data) {
         Object.assign(this, data)
+
+        // Build modifiers
+        this.equipments.forEach(equipment => {
+            if ("modifiers" in equipment) {
+                equipment.modifiers.forEach(modifier => {
+                    modifier.source = equipment.name
+                    this.modifiers.push(modifier)
+                });
+            }
+        });
+        if ("modifiers" in this.race) {
+            this.race.modifiers.forEach(modifier => {
+                modifier.source === undefined ? modifier.source = `[${this.race.name}]` : modifier.source = modifier.source + ` [${this.race.name}]`
+                if (modifier.type === undefined) modifier.type = "[racial]";
+                this.modifiers.push(modifier)
+            });
+        }
+
         this.abilities = {}
         for (let key in data.abilities) {
             this.abilities[key] = new Ability(key, data.abilities[key])
@@ -57,27 +75,55 @@ class Character {
 
         this.level = 0
         this.ba = 0
-        this.save_vig = 0
-        this.save_ref = 0
-        this.save_vol = 0
         this.classes.forEach(current_class => {
             this.level += current_class.level
             this.ba += current_class.ba
-            this.save_vig += current_class.saves.vig
-            this.save_ref += current_class.saves.ref
-            this.save_vol += current_class.saves.vol
         });
         if ("level_ajustement" in this.race) {
             this.level += this.race.level_ajustement
         }
-        this.save_vig += this.__get_ability_bonus("con")
-        this.save_ref += this.__get_ability_bonus("dex")
-        this.save_vol += this.__get_ability_bonus("sag")
 
-        this.ca = 10 + this.__get_ability_bonus("dex")
+        /**
+         * AC
+         */
+        this.ca_modifiers = [
+            new Modifier("base", 10, ""),
+            new Modifier("dex", this.__get_ability_bonus("dex"), "[ability]")
+        ]
         this.modifiers.forEach(modifier => {
             if (modifier.category == "ca") {
-                this.ca += modifier.value
+                this.ca_modifiers.push(modifier)
+            }
+        });
+
+        /**
+         * SAVES
+         */
+        this.saves = {
+            "vig": [],
+            "ref": [],
+            "vol": [],
+            "extras": []
+        }
+        // classes
+        this.classes.forEach(current_class => {
+            this.saves.vig.push(new Modifier(current_class.name, current_class.saves.vig, "[class]"))
+            this.saves.ref.push(new Modifier(current_class.name, current_class.saves.ref, "[class]"))
+            this.saves.vol.push(new Modifier(current_class.name, current_class.saves.vol, "[class]"))
+        });
+        // abilities
+        this.saves.vig.push(new Modifier("con", this.__get_ability_bonus("con"), "[ability]"))
+        this.saves.ref.push(new Modifier("dex", this.__get_ability_bonus("dex"), "[ability]"))
+        this.saves.vol.push(new Modifier("sag", this.__get_ability_bonus("sag"), "[ability]"))
+        // others
+        this.modifiers.forEach(modifier => {
+            if (modifier.category == "saves") {
+                // console.log(modifier)
+                if ("target" in modifier) {
+                    this.saves[modifier.target].push(modifier)
+                } else {
+                    this.saves.extras.push(modifier)
+                }
             }
         });
 
@@ -90,8 +136,8 @@ class Character {
 
         // Global hit modifiers
         const global_hit_modifiers = [
-            new Modifier("Base", 10),
-            new Modifier("BA", this.ba),
+            new Modifier("base", 10),
+            new Modifier("ba", this.ba),
         ]
         this.modifiers.forEach(modifier => {
             if (modifier.category == "hit") global_hit_modifiers.push(modifier)
@@ -99,10 +145,10 @@ class Character {
 
         this.attacks.forEach(attack => {
             const attack_hit_modifiers = [
-                new Modifier("Ability", this.__get_ability_bonus(attack.hit.ability), attack.hit.ability),
+                new Modifier(attack.hit.ability, this.__get_ability_bonus(attack.hit.ability), attack.hit.ability, "[ability]"),
             ]
             attack.hit.modifiers.forEach(modifier => {
-                if (modifier.source === undefined) modifier.source = "Arme"
+                if (modifier.source === undefined) modifier.source = "Arme";
                 attack_hit_modifiers.push(modifier)
             });
             const hit_modifiers = global_hit_modifiers.concat(attack_hit_modifiers)
@@ -112,7 +158,7 @@ class Character {
             // Damage
             let damage_modifiers = []
             if ("ability" in attack.damage) {
-                const modifier = new Modifier("Ability", this.__get_ability_bonus(attack.damage.ability), attack.damage.ability)
+                const modifier = new Modifier(attack.damage.ability, this.__get_ability_bonus(attack.damage.ability), "[ability]")
                 damage_modifiers.push(modifier)
             }
 
@@ -159,7 +205,7 @@ class Character {
 
             const modifiers = [
                 new Modifier("rank", rank, ""),
-                new Modifier("ability", ability_bonus, skill.ability),
+                new Modifier(skill.ability, ability_bonus, "[ability]"),
             ]
 
             let skill_class = false
@@ -185,11 +231,11 @@ class Character {
                                 comments.push(`+2 ${synergy.condition} (${synergy.skill})`)
                             } else {
                                 // console.log(`Synergy applied for ${skill.name}`)
-                                modifiers.push(new Modifier("synergie", 2, synergy.skill))
+                                modifiers.push(new Modifier(synergy.skill, 2, "[synergie]"))
                                 // comments.push(`Synergie ${synergy.skill} appliquée`)
                             }
                         } else {
-                            const synergy_condition = (condition in synergy) ? `(${synergy.condition})` : ""
+                            const synergy_condition = ("condition" in synergy) ? `(${synergy.condition})` : ""
                             comments.push(`Synergie ${synergy.skill}${synergy_condition} non applicable`)
                         }
                     } else {

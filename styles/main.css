@@ -1,5 +1,9 @@
 
 .details {
     cursor: pointer;
-    background-color: lightsteelblue;
+    background-color: beige !important;
 }
+
+.capitalize {
+    text-transform: capitalize;
+  }

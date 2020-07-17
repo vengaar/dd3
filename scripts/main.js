@@ -23,14 +23,33 @@ const formatBonus = (bonus) => {
 
 const formatModifiers = modifiers => {
     // console.log(modifiers)
-    details = ['<table class="ui very basic celled center aligned table"><tbody>']
+    details = ["<table class='ui very basic celled center aligned table'><tbody>"]
     modifiers.forEach(modifier => {
-        detail = `<tr><td>${modifier.source}</td><td>${modifier.value}</td><td>${modifier.type}</td>`
+        detail = `<tr><td class='capitalize'>${modifier.source}</td><td>${modifier.value}</td><td>${modifier.type}</td>`
         details.push(detail)
     });
-    details.push('</tbody></table>')
+    details.push("</tbody></table>")
     // console.log(details)
     return details.join("")
+}
+
+const formatConditions = modifiers => {
+    // console.log(modifiers)
+    details = []
+
+    modifiers.forEach(modifier => {
+        detail = `
+            <div class="item">
+                <i class="icon"><span class="ui circular label">${formatBonus(modifier.value)}</span></i>
+                <div class="content">
+                    <div class="header">Sur "${modifier.condition}"</div>
+                    <div class="description">(${modifier.source})</div>
+                </div>
+            </div>`
+        details.push(detail)
+    });
+    // console.log(details)
+    return details
 }
 
 /**
@@ -54,9 +73,8 @@ const dispay_skills = character => {
         line = `
             <tr class="${skill_class_css} ${skill.state}">
                 <td>${skill.name} ${skill_flags.join(" ")}</td>
-                <td class="center aligned">
-                    <div class="details">${getSumModifiers(skill.modifiers)}</div>
-                    <div class="ui popup">${formatModifiers(skill.modifiers)}</div>
+                <td class="center aligned details" data-html="${formatModifiers(skill.modifiers)}">
+                    <div>${getSumModifiers(skill.modifiers)}</div>
                 </td>
                 <td>${skill.comments.join("<br>")}</td>
             </tr>`;
@@ -71,7 +89,7 @@ const dispay_abilities = character => {
         // console.log(ability);
         line = `
             <tr>
-                <td>${ability.name.toUpperCase()}</td>
+                <td class="capitalize">${ability.name}</td>
                 <td><b>${ability.base}</b></td>
                 <td><b>${ability.total}</b></td>
                 <td><span class="ui circular label">${ability.bonus}</span></td>
@@ -100,7 +118,7 @@ const dispay_identity = character => {
             ${classes.join(" / ")}
         </div>
         <div class="extra content">
-            <span class="right floated">${character.taille_category}</span>
+            <span class="right floated">${character.race.size}</span>
             ${character.race.name} <i class="${character.gender} icon"></i>
         </div>
         <div class="extra content">
@@ -110,15 +128,20 @@ const dispay_identity = character => {
 
     const counters = `
         <span class="item"><i class="heart icon"></i>${character.points_de_vie}</span>
-        <span class="item"><i class="shield icon"></i>${character.ca}</span>
+        <span class="item details"><i class="shield icon"></i>${getSumModifiers(character.ca_modifiers)}</span>
+        <div class="ui popup">${formatModifiers(character.ca_modifiers)}</div>
         <span class="item"><i class="gavel icon"></i>${character.ba}</span>`
     $('#counters').html(counters);
 
     const saves = `
-        <span class="item"><i class="skull crossbones icon"></i></i>${character.save_vig}</span>
-        <span class="item"><i class="bomb icon"></i>${character.save_ref}</span>
-        <span class="item"><i class="brain icon"></i>${character.save_vol}</span>`
+        <span class="item details"><i class="skull crossbones icon"></i>${getSumModifiers(character.saves.vig)}</span>
+        <div class="ui popup">${formatModifiers(character.saves.vig)}</div>
+        <span class="item details"><i class="bomb icon"></i>${getSumModifiers(character.saves.ref)}</span>
+        <div class="ui popup">${formatModifiers(character.saves.ref)}</div>
+        <span class="item details"><i class="brain icon"></i>${getSumModifiers(character.saves.vol)}</span>
+        <div class="ui popup">${formatModifiers(character.saves.vol)}</div>`
     $('#saves').html(saves);
+    $('#saves_extras').html(formatConditions(character.saves.extras));
 
 }
 
@@ -133,14 +156,8 @@ const dispay_attacks = character => {
         line = `
             <tr>
                 <td>${attack.name}</td>
-                <td>
-                    <div class="details">${formatHit(hit, character.ba)}</div>
-                    <div class="ui popup">${formatModifiers(attack.hit_modifiers)}</div>
-                </td>
-                <td>
-                    <div class="details">${damage}</div>
-                    <div class="ui popup">${formatModifiers(attack.damage_modifiers)}</div>
-                </td>
+                <td class="details" data-html="${formatModifiers(attack.hit_modifiers)}">${formatHit(hit, character.ba)}</td>
+                <td class="details" data-html="${formatModifiers(attack.damage_modifiers)}">${damage}</td>
                 <td>${attack.crit}</td>
                 <td>${attack.specials.join("<br>")}</td>
             </tr>`;
@@ -153,13 +170,13 @@ const display_character = data => {
 
     console.log(data)
     const character = new Character(data)
+    console.log(character)
     dispay_identity(character)
     dispay_abilities(character)
     dispay_skills(character)
     dispay_attacks(character)
 
     $('.details').popup({
-        inline: true,
         position: 'right center',
     });
 
@@ -169,7 +186,7 @@ const $character_choice = $('#character_choice')
 $character_choice.dropdown({
     onChange: function (value, text, $selectedItem) {
         // console.log(value)
-        fetch(`data/characters/${value}.json`)
+        fetch(`data/characters/${value}.json`, { cache: "reload" })
             .then(response => response.json())
             .then(json => display_character(json));
     }

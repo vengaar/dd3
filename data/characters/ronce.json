@@ -5,6 +5,58 @@
         "name": "Pixie",
         "url": "https://www.d20srd.org/srd/monsters/sprite.htm#pixie",
         "level_ajustement": 4,
+        "modifiers": [
+            {
+                "category": "skill",
+                "target": "Acrobaties",
+                "value": 2
+            },
+            {
+                "category": "skill",
+                "target": "Fouille",
+                "value": 2
+            },
+            {
+                "category": "skill",
+                "target": "Perception auditive",
+                "value": 2
+            },
+            {
+                "category": "skill",
+                "target": "Discrétion",
+                "type": "taille",
+                "source": "Taille P",
+                "value": 4
+            },
+            {
+                "category": "ca",
+                "type": "armure natutelle",
+                "value": 1
+            },
+            {
+                "category": "ca",
+                "source": "don esquive",
+                "type": "esquive",
+                "value": 1
+            },
+            {
+                "category": "ca",
+                "source": "Taille P",
+                "type": "taille",
+                "value": 1
+            },
+            {
+                "category": "hit",
+                "source": "Taille P",
+                "type": "taille",
+                "value": 1
+            },
+            {
+                "category": "hit",
+                "type": "invisible",
+                "value": 2
+            }
+        ],
         "capabilities": [
             "A Pixie's base land speed is 20 feet and its fly speed is 60 feet (good).",
             "Low-light vision",
@@ -103,83 +155,41 @@
             "specials": []
         }
     ],
-    "modifiers": [
+    "equipments": [
         {
-            "category": "skill",
-            "target": "Acrobaties",
-            "type": "racial",
-            "source": "Pixie",
-            "value": 2
+            "name": "Gant de dextérité +2",
+            "used": true,
+            "modifiers": [
+                {
+                    "category": "ability",
+                    "target": "dex",
+                    "type": "alteration",
+                    "value": 2
+                }
+            ]
         },
         {
-            "category": "skill",
-            "target": "Fouille",
-            "type": "racial",
-            "source": "Pixie",
-            "value": 2
+            "name": "Bacelet d'armure +3",
+            "used": true,
+            "modifiers": [
+                {
+                    "category": "ca",
+                    "type": "armure",
+                    "value": 3
+                }
+            ]
         },
         {
-            "category": "skill",
-            "target": "Perception auditive",
-            "type": "racial",
-            "source": "Pixie",
-            "value": 2
-        },
-        {
-            "category": "skill",
-            "target": "Discrétion",
-            "type": "taille",
-            "source": "Taille P",
-            "value": 4
-        },
-        {
-            "category": "ability",
-            "target": "dex",
-            "type": "alteration",
-            "source": "Gant de dextérité +2",
-            "value": 2
-        },
-        {
-            "category": "ca",
-            "source": "Bacelet d'armure +3",
-            "type": "armure",
-            "value": 3
-        },
-        {
-            "category": "ca",
-            "source": "Taille P",
-            "type": "taille",
-            "value": 1
-        },
-        {
-            "category": "ca",
-            "source": "Pixie",
-            "type": "armure natutelle",
-            "value": 1
-        },
-        {
-            "category": "ca",
-            "source": "Anneau +1",
-            "type": "parade",
-            "value": 1
-        },
-        {
-            "category": "ca",
-            "source": "Pixie, don esquive",
-            "type": "esquive",
-            "value": 1
-        },
-        {
-            "category": "hit",
-            "source": "Taille P",
-            "type": "taille",
-            "value": 1
-        },
-        {
-            "category": "hit",
-            "source": "Pixie",
-            "type": "invisible",
-            "value": 2
+            "name": "Anneau +1",
+            "used": true,
+            "modifiers": [
+                {
+                    "category": "ca",
+                    "type": "parade",
+                    "value": 1
+                }
+            ]
         }
-    ]
+    ],
+    "modifiers": []
 }
