@@ -213,7 +213,7 @@
         },
         {
             "name": "Perle de sagesse +4",
-            "used": false,
+            "used": true,
             "modifiers": [
                 {
                     "category": "ability",
@@ -225,7 +225,7 @@
         },
         {
             "name": "Bacelet d'armure +4",
-            "used": false,
+            "used": true,
             "modifiers": [
                 {
                     "category": "ca",
@@ -236,7 +236,7 @@
         },
         {
             "name": "Cape de resitance +4",
-            "used": false,
+            "used": true,
             "modifiers": [
                 {
                     "category": "saves",
@@ -260,7 +260,7 @@
         },
         {
             "name": "Anneau +2",
-            "used": false,
+            "used": true,
             "modifiers": [
                 {
                     "category": "ca",

@@ -7,3 +7,7 @@
 .capitalize {
     text-transform: capitalize;
   }
+
+.lowercase {
+    text-transform: lowercase;
+}

@@ -38,7 +38,9 @@ const formatConditions = modifiers => {
     details = []
 
     modifiers.forEach(modifier => {
-        detail = `
+
+        if ("condition" in modifier) {
+            detail = `
             <div class="item">
                 <i class="icon"><span class="ui circular label">${formatBonus(modifier.value)}</span></i>
                 <div class="content">
@@ -46,11 +48,28 @@ const formatConditions = modifiers => {
                     <div class="description">(${modifier.source})</div>
                 </div>
             </div>`
+
+        } else {
+
+            const category = modifier.target === undefined ? modifier.category : ''
+            const target = modifier.target === undefined ? '' : modifier.target
+            detail = `
+            <div class="item">
+                <i class="icon"><span class="ui circular label">${formatBonus(modifier.value)}</span></i>
+                <div class="content">
+                    <span class="capitalize">${category}</span>
+                    <span class="capitalize">${target}</span>
+                    <span class="lowercase">[${modifier.type}]</span>
+                </div>
+            </div>`
+        }
+
         details.push(detail)
     });
     // console.log(details)
-    return details
+    return details.join("")
 }
+
 
 /**
  *
@@ -166,20 +185,72 @@ const dispay_attacks = character => {
 
 }
 
-const display_character = data => {
+const dispay_powers = character => {
 
-    console.log(data)
-    const character = new Character(data)
+    $('#powers > tbody').empty();
+
+}
+
+const dispay_equipments = character => {
+
+    $('#equipments > tbody').empty();
+    for (let index in character.equipments) {
+        const equipment = character.equipments[index]
+        // console.log(equipment);
+        const equipment_used = equipment.used ? "checked" : ""
+        const equipment_disabled = equipment.used ? "" : "disabled"
+        // console.log(equipment_used)
+        line = `
+            <tr class="">
+                <td class="collapsing">
+                    <div class="ui fitted _slider ${equipment_used} checkbox">
+                        <input  type="checkbox"
+                                name="${index}"
+                                tabindex="0" ${equipment_used} class="hidden">
+                        <label></label>
+                    </div>
+                </td>
+                <td class="${equipment_disabled}">${equipment.name}</td>
+                <td class="${equipment_disabled}">
+                    <div class="ui divided list">${formatConditions(equipment.modifiers)}</div>
+                </td>
+            </tr>`;
+        $('#equipments > tbody:last-child').append(line);
+    }
+
+}
+
+const updateCharacter = character => {
     console.log(character)
     dispay_identity(character)
     dispay_abilities(character)
     dispay_skills(character)
     dispay_attacks(character)
+    dispay_powers(character)
+    dispay_equipments(character)
 
     $('.details').popup({
         position: 'right center',
     });
 
+    $('.ui.checkbox').checkbox({
+        onChange: function () {
+            const data = character.data
+            console.log(data.equipments[this.name])
+            data.equipments[this.name].used = this.checked
+            console.log(data.equipments[this.name])
+            character = new Character(data)
+            updateCharacter(character)
+        }
+    });
+}
+
+let character
+
+const display_character = data => {
+    console.log(data)
+    character = new Character(data)
+    updateCharacter(character)
 }
 
 const $character_choice = $('#character_choice')

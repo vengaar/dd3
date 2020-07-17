@@ -45,15 +45,22 @@ class Character {
     constructor(data) {
         Object.assign(this, data)
 
+        this.data = data
         // Build modifiers
+        this.modifiers = []
         this.equipments.forEach(equipment => {
             if ("modifiers" in equipment) {
-                equipment.modifiers.forEach(modifier => {
-                    modifier.source = equipment.name
-                    this.modifiers.push(modifier)
-                });
+                if (equipment.used) {
+                    equipment.modifiers.forEach(modifier => {
+                        modifier.source = equipment.name
+                        this.modifiers.push(modifier)
+                    });
+                } else {
+                    console.log("=====================>", equipment)
+                }
             }
         });
+        console.log("modifiers=", this.modifiers)
         if ("modifiers" in this.race) {
             this.race.modifiers.forEach(modifier => {
                 modifier.source === undefined ? modifier.source = `[${this.race.name}]` : modifier.source = modifier.source + ` [${this.race.name}]`
