@@ -1,74 +1,7 @@
 {
     "name": "Ronce",
     "image": "https://i.pinimg.com/564x/f4/40/d1/f440d1c828952cba71a29f24a7b2d70e.jpg",
-    "race": {
-        "name": "Pixie",
-        "url": "https://www.d20srd.org/srd/monsters/sprite.htm#pixie",
-        "level_ajustement": 4,
-        "modifiers": [
-            {
-                "category": "skill",
-                "target": "Acrobaties",
-                "value": 2
-            },
-            {
-                "category": "skill",
-                "target": "Fouille",
-                "value": 2
-            },
-            {
-                "category": "skill",
-                "target": "Perception auditive",
-                "value": 2
-            },
-            {
-                "category": "skill",
-                "target": "Discrétion",
-                "type": "taille",
-                "source": "Taille P",
-                "value": 4
-            },
-            {
-                "category": "ca",
-                "type": "armure natutelle",
-                "value": 1
-            },
-            {
-                "category": "ca",
-                "source": "don esquive",
-                "type": "esquive",
-                "value": 1,
-                "condition": "Sur un seul adversaire"
-            },
-            {
-                "category": "ca",
-                "source": "Taille P",
-                "type": "taille",
-                "value": 1
-            },
-            {
-                "category": "hit",
-                "source": "Taille P",
-                "type": "taille",
-                "value": 1
-            },
-            {
-                "category": "hit",
-                "type": "invisible",
-                "value": 2
-            }
-        ],
-        "capabilities": [
-            "A Pixie's base land speed is 20 feet and its fly speed is 60 feet (good).",
-            "Low-light vision",
-            "A pixie receives Dodge and Weapon Finesse as bonus feats.",
-            "Spell-like abilities. 1/day—lesser confusion (DC 14), dancing lights, detect chaos, detect good, detect evil, detect law, detect thoughts (DC 15), dispel magic, entangle (DC 14), permanent image (DC 19; visual and auditory elements only). Caster level 8th. The save DCs are Charisma-based.",
-            "Damage reduction 10/cold iron",
-            "Greater invisibility",
-            "Spell resistance equal to 15 + class levels.",
-            "Automatic Languages: Common, Sylvan. Bonus Languages: Elven, Gnome, Halfling."
-        ]
-    },
+    "race": "pixies",
     "gender": "venus",
     "alignment": "NB",
     "size": "55 cm",
@@ -85,7 +18,7 @@
                 "ref": 6,
                 "vol": 3
             },
-            "capabilities": []
+            "powers": []
         },
         {
             "name": "Mage",
@@ -96,7 +29,7 @@
                 "ref": 0,
                 "vol": 0
             },
-            "capabilities": []
+            "powers": []
         }
     ],
     "abilities": {

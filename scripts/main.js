@@ -174,6 +174,16 @@ const dispayAttacks = character => {
 
 const dispayPowers = character => {
     $('#powers > tbody').empty();
+    for (let catergory in character.powers) {
+        character.powers[catergory].forEach(power => {
+            const line = `
+            <tr class="">
+                <td>${power}</td>
+                <td>${catergory}</td>
+            </tr>`;
+            $('#powers > tbody:last-child').append(line);
+        })
+    }
 }
 
 const dispayEquipments = character => {
@@ -266,9 +276,17 @@ $character_choice.dropdown({
             .then(json => {
                 console.log(`data character loaded`);
                 character_data = json
-                character = new Character(character_data)
-                displayCharacter(character)
-                $dimmer.dimmer('hide');
+                fetch(`data/races/${character_data.race}.json`, { cache: "reload" })
+                    .then(response => response.json())
+                    .then(json => {
+                        console.log(`race loaded`);
+                        race = json
+                        console.log(race);
+                        character_data.race = race
+                        character = new Character(character_data)
+                        displayCharacter(character)
+                        $dimmer.dimmer('hide');
+                    });
             });
     }
 });
@@ -283,6 +301,7 @@ $("#identity").click(function () {
 
 let skills
 let character_data
+let race
 let character
 
 fetch(`data/skills.json`)

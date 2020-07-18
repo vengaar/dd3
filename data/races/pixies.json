@@ -1,0 +1,68 @@
+{
+    "name": "Pixie",
+    "url": "https://www.d20srd.org/srd/monsters/sprite.htm#pixie",
+    "level_ajustement": 4,
+    "modifiers": [
+        {
+            "category": "skill",
+            "target": "Acrobaties",
+            "value": 2
+        },
+        {
+            "category": "skill",
+            "target": "Fouille",
+            "value": 2
+        },
+        {
+            "category": "skill",
+            "target": "Perception auditive",
+            "value": 2
+        },
+        {
+            "category": "skill",
+            "target": "Discrétion",
+            "type": "taille",
+            "source": "Taille P",
+            "value": 4
+        },
+        {
+            "category": "ca",
+            "type": "armure natutelle",
+            "value": 1
+        },
+        {
+            "category": "ca",
+            "source": "don esquive",
+            "type": "esquive",
+            "value": 1,
+            "condition": "Sur un seul adversaire"
+        },
+        {
+            "category": "ca",
+            "source": "Taille P",
+            "type": "taille",
+            "value": 1
+        },
+        {
+            "category": "hit",
+            "source": "Taille P",
+            "type": "taille",
+            "value": 1
+        },
+        {
+            "category": "hit",
+            "type": "invisible",
+            "value": 2
+        }
+    ],
+    "powers": [
+        "La vitesse de base d'un Pixie au sol est de 6 mètres et sa vitesse de vol est de 18 mètres (bonne).",
+        "Vision nocture",
+        "Un Pixie recois reçoit Esquive et Finesse en don bonus.",
+        "pouvoirs magiques. Confusion mineure (DD 14), détection de la Loi, détection de pensées (DD 15), détection du Bien, détection du Chaos, détection du Mal, dissipation de la magie, enchevêtrement (DD 14), image permanente (DD 19, éléments visuels et auditifs uniquement) et lumières dansantes, 1 fois par jour. Niveau 8 de lanceur de sorts. Le DD des sauvegardes est lié au Charisme.",
+        "Réduction des dégâts 10/fer froid",
+        "Invisibilité naturelle (Sur)",
+        "Résistance aux sorts égale à 15 + niveaux de classe.",
+        "Langues automatiques: commun, sylvestre. Langues bonus: elfique, gnome, halfling."
+    ]
+}

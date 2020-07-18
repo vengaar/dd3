@@ -105,13 +105,16 @@ class Character {
         });
 
         /**
-         * Level + BA
+         * Level + BA + Powers
          */
         this.level = 0
         this.ba = 0
+        this.powers = {}
+        this.powers[this.race.name] = this.race.powers
         this.classes.forEach(current_class => {
             this.level += current_class.level
             this.ba += current_class.ba
+            this.powers[current_class.name] = current_class.powers
         });
         if ("level_ajustement" in this.race) {
             this.level += this.race.level_ajustement
