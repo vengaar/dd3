@@ -46,9 +46,9 @@
         ]
     },
     "gender": "mars",
-    "alignement": "NB",
-    "taille": "1,80 cm",
-    "poids": "70 Kg",
+    "alignment": "NB",
+    "size": "1,80 cm",
+    "weight": "70 Kg",
     "age": "143 ans",
     "hit_points": 112,
     "classes": [

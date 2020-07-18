@@ -70,15 +70,26 @@
         ]
     },
     "gender": "venus",
-    "alignement": "NB",
-    "taille": "55 cm",
-    "poids": "7 Kg",
+    "alignment": "NB",
+    "size": "55 cm",
+    "weight": "7 Kg",
     "age": "17 ans",
     "hit_points": 53,
     "classes": [
         {
             "name": "Roublard",
             "level": 9,
+            "ba": 6,
+            "saves": {
+                "vig": 3,
+                "ref": 6,
+                "vol": 3
+            },
+            "capabilities": []
+        },
+        {
+            "name": "Mage",
+            "level": 2,
             "ba": 6,
             "saves": {
                 "vig": 3,

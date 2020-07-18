@@ -1,7 +1,9 @@
 
+"use strict";
+
 const formatHit = (hit, ba) => {
     const formatted_hit = []
-    nb_attacks = Math.ceil(ba / 5)
+    const nb_attacks = Math.ceil(ba / 5)
     // console.log(nb_attacks)
     for (let i = 1; i <= nb_attacks; i++) {
         formatted_hit.push(hit)
@@ -23,9 +25,9 @@ const formatBonus = (bonus) => {
 
 const formatDetails = modifiers => {
     // console.log(modifiers)
-    details = ["<table class='ui very basic celled center aligned table'><tbody>"]
+    const details = ["<table class='ui very basic celled center aligned table'><tbody>"]
     modifiers.forEach(modifier => {
-        detail = `<tr><td class='capitalize'>${modifier.source}</td><td>${modifier.value}</td><td>${modifier.type}</td>`
+        const detail = `<tr><td class='capitalize'>${modifier.source}</td><td>${modifier.value}</td><td>${modifier.type}</td>`
         details.push(detail)
     });
     details.push("</tbody></table>")
@@ -57,7 +59,7 @@ const formatModifers = modifiers => {
     modifiers.forEach(modifier => {
         const category = modifier.target === undefined ? modifier.category : ''
         const target = modifier.target === undefined ? '' : modifier.target
-        item = `
+        const item = `
             <div class="item">
                 <i class="icon"><span class="ui circular label">${formatBonus(modifier.value)}</span></i>
                 <div class="content">
@@ -76,38 +78,23 @@ const formatModifers = modifiers => {
  */
 
 const dispayIdentity = character => {
+    const attributes = ["name", "level", "alignment", "race.name", "race.size", "gender", "size", "weight", "age"]
+    attributes.forEach(attribute => {
+        console.log(attribute)
+        $(`#${attribute.replace(".", "-")}`).text(search(attribute, character))
+    });
     const classes = character.classes.map(current_class => {
         return `${current_class.name} ${current_class.level}`
     })
-
-    // <div id="image" class="image">
-    //     <img src="${character.image}">
-    // </div>
-
-    const identity = `
-        <div class="content">
-            <span class="right floated"><span class="ui grey circular label" id="level">${character.level}</span></span>
-            <div class="header">${character.name}</div>
-        </div>
-        <div class="extra content">
-            <span class="right floated">${character.alignement}</span>
-            ${classes.join(" / ")}
-        </div>
-        <div class="extra content">
-            <span class="right floated">${character.race.size}</span>
-            ${character.race.name} <i class="${character.gender} icon"></i>
-        </div>
-        <div class="extra content">
-            ${character.taille} / ${character.poids} / ${character.age}
-        </div>`
-    $('#identity').html(identity);
+    $('#classes').text(classes.join(" / "));
+    $("#image img").attr('src', character.image);
 }
 
 const dispayAbilities = character => {
     $('#abilities > tbody').empty();
     Object.values(character.abilities).forEach(ability => {
         // console.log(ability);
-        line = `
+        const line = `
             <tr>
                 <td class="capitalize">${ability.name}</td>
                 <td><b>${ability.base}</b></td>
@@ -145,14 +132,14 @@ const dispaySkills = character => {
         "armor_penality": '<i class="hiking icon"></i>'
     }
     $('#skills > tbody').empty();
-    computed_skills = character.computeSkills(skills)
+    const computed_skills = character.computeSkills(skills)
     computed_skills.forEach(skill => {
         const skill_class_css = skill.class ? "left marked green" : ""
         const skill_flags = skill.flags.map(flag => {
             return flags_mappping[flag]
         })
 
-        line = `
+        const line = `
             <tr class="${skill_class_css} ${skill.state}">
                 <td>${skill.name} ${skill_flags.join(" ")}</td>
                 <td class="center aligned details" data-html="${formatDetails(skill.modifiers)}">
@@ -171,7 +158,7 @@ const dispayAttacks = character => {
         const hit = getSumModifiers(attack.hit_modifiers)
         const damage_modifier = getSumModifiers(attack.damage_modifiers)
         const damage = `${attack.damage} ${formatBonus(damage_modifier)}`
-        line = `
+        const line = `
             <tr>
                 <td>${attack.name}</td>
                 <td class="details" data-html="${formatDetails(attack.hit_modifiers)}">${formatHit(hit, character.ba)}</td>
@@ -195,7 +182,7 @@ const dispayEquipments = character => {
         const equipment_used = equipment.used ? "checked" : ""
         const equipment_disabled = equipment.used ? "" : "disabled"
         // console.log(equipment_used)
-        line = `
+        const line = `
             <tr class="">
                 <td class="collapsing">
                     <div class="ui fitted _slider ${equipment_used} checkbox">
@@ -248,7 +235,7 @@ const displayCharacter = character => {
 }
 
 /**
- * Start page
+ * Fomantic
  */
 
 const $dimmer = $("body").dimmer({
@@ -258,10 +245,14 @@ const $dimmer = $("body").dimmer({
     loaderText: 'Loading data'
 }).dimmer('show');
 
+$('.ui.sticky').sticky({
+    offset: 50,
+    context: '#main',
+});
 
-let skills
-let character_data
-let character
+/**
+ * Actions
+ */
 
 const $character_choice = $('#character_choice')
 $character_choice.dropdown({
@@ -280,6 +271,18 @@ $character_choice.dropdown({
     }
 });
 
+$("#identity").click(function () {
+    $("#image").fadeToggle()
+});
+
+/**
+* Start page
+*/
+
+let skills
+let character_data
+let character
+
 fetch(`data/skills.json`)
     .then(response => response.json())
     .then(json => {
@@ -287,19 +290,6 @@ fetch(`data/skills.json`)
         console.log(`${skills.length} skills loaded => enable page`);
         $dimmer.dimmer('hide');
         // $character_choice.dropdown('set selected', 'seleniel')
-    });
-
-$('#identity')
-    .visibility({
-        once: false,
-        onTopVisible: function (calculations) {
-            // console.log("onTopVisible", calculations)
-            $("#image").fadeIn()
-        },
-        onTopPassed: function (calculations) {
-            // console.log("onTopPassed", calculations)
-            $("#image").fadeOut()
-        },
     });
 
 console.log("main - ok");

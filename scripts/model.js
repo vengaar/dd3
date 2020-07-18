@@ -1,4 +1,18 @@
 
+"use strict";
+
+const search = (query, data) => {
+    const keys = query.split(".");
+    const key = keys.shift();
+    const value = data[key]
+    // console.log("search", key, value, keys)
+    if (keys.length == 0) {
+        return value
+    } else {
+        return search(keys.join("."), value)
+    }
+}
+
 class Modifier {
 
     constructor(source, value, type = "") {
