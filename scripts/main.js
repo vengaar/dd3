@@ -125,7 +125,7 @@ const dispayIdentity = character => {
             <span class="right floated"><span class="ui grey circular label" id="level">${character.level}</span></span>
             <div class="header">${character.name}</div>
         </div>
-        <div class="image">
+        <div id="image" class="image">
             <img src="${character.image}">
         </div>
         <div class="extra content">
@@ -225,6 +225,8 @@ const displayCharacter = character => {
     dispayPowers(character)
     dispayEquipments(character)
 
+    $('.ui.sticky').sticky('refresh');
+
     $('.details').popup({
         position: 'right center',
     });
@@ -243,6 +245,11 @@ const displayCharacter = character => {
 /**
  * Start page
  */
+
+$('.ui.sticky').sticky({
+    offset: 50,
+    context: '#main'
+});
 
 const $character_choice = $('#character_choice')
 
@@ -272,5 +279,21 @@ $character_choice.dropdown({
             });
     }
 });
+
+$('#identity')
+    .visibility({
+        once: false,
+        onTopVisible: function (calculations) {
+            // console.log("onTopVisible", calculations)
+            $("#image").show()
+        },
+        onTopPassed: function (calculations) {
+            // console.log("onTopPassed", calculations)
+            $("#image").hide()
+        },
+        // onUpdate: function (calculations) {
+        //     console.log(calculations)
+        // }
+    });
 
 console.log("main - ok");

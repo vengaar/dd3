@@ -10,7 +10,7 @@
 
 <body>
     <!-- MENU -->
-    <div class="ui mini menu">
+    <div id="menu" class="ui disabled top fixed menu">
         <div id="character_choice" class="ui disabled dropdown item">
             Personnages <i class="dropdown icon"></i>
             <div class="menu">
@@ -18,38 +18,46 @@
                 <a class="item">Ronce</a>
             </div>
         </div>
+
+        <a class="ui item" href="#anchor_attacks"><i class="gavel icon"></i>Attaques</a>
+        <a class="ui item" href="#anchor_powers"><i class="fist raised icon"></i>Pouvoirs</a>
+        <a class="ui item" href="#anchor_skills"><i class="graduation cap icon"></i>Compétences</a>
+        <a class="ui item" href="#anchor_equipments"><i class="ring icon"></i>Equipements</a>
+
         <div class="right menu">
+            <a class="ui disabled item" href="#anchor_attacks"><i class="file export icon"></i>Exporter</a>
         </div>
     </div>
 
-    <div class="ui stackable container grid">
-        <div class="four wide column">
+    <div id="main" class="ui stackable container grid">
+        <div class="ui sticky four wide column">
 
-            <div id="identity" class="ui card">
+            <div class="ui sticky">
+                <div id="identity" class="ui card"></div>
+
+                <table id="abilities" class="ui very basic _collapsing celled center aligned table">
+                    <thead>
+                        <tr>
+                            <th></th>
+                            <th>Base</th>
+                            <th>Total</th>
+                            <th>Bonus</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+
+                <div id="counters" class="ui three item labeled icon menu"></div>
+
+                <div id="saves" class="ui three item labeled icon menu"></div>
+                <div id="saves_extras" class="ui divided list"></div>
             </div>
-
-            <table id="abilities" class="ui very basic _collapsing celled center aligned table">
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th>Base</th>
-                        <th>Total</th>
-                        <th>Bonus</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
-
-            <div id="counters" class="ui three item labeled icon menu">
-            </div>
-
-            <div id="saves" class="ui three item labeled icon menu"></div>
-            <div id="saves_extras" class="ui divided list"></div>
 
         </div>
         <div class="twelve wide column">
 
+            <a id="anchor_attacks"></a>
             <table id="attacks" class="ui compact _very _basic _collapsing celled center aligned table">
                 <thead>
                     <tr>
@@ -64,6 +72,7 @@
                 </tbody>
             </table>
 
+            <a id="anchor_powers"></a>
             <table id="powers" class="ui compact _very _basic _collapsing celled table">
                 <thead>
                     <tr>
@@ -74,6 +83,7 @@
                 </tbody>
             </table>
 
+            <a id="anchor_skills"></a>
             <table id="skills" class="ui compact _very _basic _collapsing celled table">
                 <thead>
                     <tr>
@@ -84,6 +94,7 @@
                 </tbody>
             </table>
 
+            <a id="anchor_equipments"></a>
             <table id="equipments" class="ui compact _very _basic _collapsing celled table">
                 <thead>
                     <tr>

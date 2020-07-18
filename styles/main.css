@@ -11,3 +11,18 @@
 .lowercase {
     text-transform: lowercase;
 }
+
+#menu {
+    z-index: 1000;
+}
+
+#main {
+    margin-bottom: 50px;
+}
+
+:target {
+    display: block;
+    position: relative;
+    top: -50px;
+    visibility: hidden;
+  }
