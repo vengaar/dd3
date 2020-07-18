@@ -89,12 +89,12 @@
         },
         {
             "name": "Mage",
-            "level": 2,
-            "ba": 6,
+            "level": 1,
+            "ba": 0,
             "saves": {
-                "vig": 3,
-                "ref": 6,
-                "vol": 3
+                "vig": 0,
+                "ref": 0,
+                "vol": 0
             },
             "capabilities": []
         }
@@ -200,6 +200,11 @@
                     "value": 1
                 }
             ]
+        },
+        {
+            "name": "Dague +2 (x2)",
+            "used": true,
+            "modifiers": []
         }
     ]
 }

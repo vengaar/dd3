@@ -80,7 +80,7 @@ const formatModifers = modifiers => {
 const dispayIdentity = character => {
     const attributes = ["name", "level", "alignment", "race.name", "race.size", "gender", "size", "weight", "age"]
     attributes.forEach(attribute => {
-        console.log(attribute)
+        // console.log(attribute)
         $(`#${attribute.replace(".", "-")}`).text(search(attribute, character))
     });
     const classes = character.classes.map(current_class => {
@@ -149,6 +149,8 @@ const dispaySkills = character => {
             </tr>`;
         $('#skills > tbody:last-child').append(line);
     });
+    // console.log(character.skills_ranks)
+    $("#skills_ranks").text(character.skills_ranks)
 }
 
 const dispayAttacks = character => {

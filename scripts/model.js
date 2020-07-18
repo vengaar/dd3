@@ -168,6 +168,7 @@ class Character {
         });
 
         this.attacks = this.__computeAttacks()
+
     }
 
     __computeAttacks() {
@@ -228,10 +229,12 @@ class Character {
     computeSkills = (skills) => {
 
         let computed_skills = {}
+        this.skills_ranks = 0;
         skills.forEach(skill => {
             // console.log(skill);
             const rank = skill.name in this.skills ? this.skills[skill.name] : 0
             // console.log(`rank=${rank}`)
+            this.skills_ranks += rank;
 
             let ability_bonus, enable;
             if (skill.flags.includes("learned") && rank === 0) {
