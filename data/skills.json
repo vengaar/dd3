@@ -33,6 +33,9 @@
             {
                 "skill": "Utilisation d'objets magiques",
                 "condition": "pour déchiffrer des sorts sur un parchemin"
+            },
+            {
+                "skill": "Connaissances (Mystères)"
             }
         ]
     },
@@ -294,6 +297,9 @@
             },
             {
                 "skill": "Psychologie"
+            },
+            {
+                "skill": "Connaissances (Noblesse)"
             }
         ]
     },
@@ -429,7 +435,12 @@
             "Guerrier",
             "Roublard"
         ],
-        "flags": []
+        "flags": [
+            {
+                "skill": "Connaissances (Architecture et ingénierie)",
+                "condition": "pour trouver des passages ou compartiments secret"
+            }
+        ]
     },
     {
         "name": "Intimidation",
@@ -519,7 +530,12 @@
             "Barde",
             "Roublard"
         ],
-        "flags": []
+        "flags": [
+            {
+                "skill": "Connaissances (Folklore local)",
+                "condition": "sous test"
+            }
+        ]
     },
     {
         "name": "Représentation",
@@ -564,6 +580,18 @@
             {
                 "skill": "Fouille",
                 "condition": "pour suivre une piste"
+            },
+            {
+                "skill": "Connaissances (Exploration souterraine)",
+                "condition": "sous test"
+            },
+            {
+                "skill": "Connaissances (Nature)",
+                "condition": "dans un environement naturel à la surface"
+            },
+            {
+                "skill": "Connaissances (Plans)",
+                "condition": "sur d'autres plan d'existence"
             }
         ]
     },
