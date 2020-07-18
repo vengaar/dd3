@@ -50,7 +50,7 @@
     "taille": "1,80 cm",
     "poids": "70 Kg",
     "age": "143 ans",
-    "points_de_vie": 112,
+    "hit_points": 112,
     "classes": [
         {
             "name": "Druide",
@@ -240,19 +240,6 @@
             "modifiers": [
                 {
                     "category": "saves",
-                    "target": "vig",
-                    "type": "alteration",
-                    "value": 4
-                },
-                {
-                    "category": "saves",
-                    "target": "ref",
-                    "type": "alteration",
-                    "value": 4
-                },
-                {
-                    "category": "saves",
-                    "target": "vol",
                     "type": "alteration",
                     "value": 4
                 }

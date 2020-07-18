@@ -9,9 +9,10 @@
 </head>
 
 <body>
+
     <!-- MENU -->
     <div id="menu" class="ui disabled top fixed menu">
-        <div id="character_choice" class="ui disabled dropdown item">
+        <div id="character_choice" class="ui dropdown item">
             Personnages <i class="dropdown icon"></i>
             <div class="menu">
                 <a class="item">Seleniel</a>
@@ -30,12 +31,13 @@
     </div>
 
     <div id="main" class="ui stackable container grid">
+
         <div class="ui sticky four wide column">
 
             <div class="ui sticky">
                 <div id="identity" class="ui card"></div>
 
-                <table id="abilities" class="ui very basic _collapsing celled center aligned table">
+                <table id="abilities" class="ui very basic _collapsing celled center aligned table _hidden">
                     <thead>
                         <tr>
                             <th></th>
@@ -48,17 +50,49 @@
                     </tbody>
                 </table>
 
-                <div id="counters" class="ui three item labeled icon menu"></div>
+                <div id="counters" class="ui three item labeled icon menu">
+                    <span class="item">
+                        <i class="heart icon"></i>
+                        <span id="hit_points">-</span>
+                    </span>
+                    <span class="item details">
+                        <i class="shield icon"></i>
+                        <span id="ca">-</span>
+                    </span>
+                    <div id="ca_details" class="ui popup"></div>
+                    <span class="item">
+                        <i class="gavel icon"></i>
+                        <span id="hit">-</span>
+                    </span>
+                </div>
+                <div id="counters_extras" class="ui divided list">Pas de modificateurs conditionnels</div>
 
-                <div id="saves" class="ui three item labeled icon menu"></div>
-                <div id="saves_extras" class="ui divided list"></div>
+                <!-- SAVES -->
+                <div id="saves" class="ui three item labeled icon menu">
+                    <span class="item details">
+                        <i class="skull crossbones icon"></i>
+                        <span id="vig">-</span>
+                    </span>
+                    <div id="vig_details" class="ui popup"></div>
+                    <span class="item details">
+                        <i class="bomb icon"></i>
+                        <span id="ref">-</span>
+                    </span>
+                    <div id="ref_details" class="ui popup"></div>
+                    <span class="item details">
+                        <i class="brain icon"></i>
+                        <span id="vol">-</span>
+                    </span>
+                    <div id="vol_details" class="ui popup"></div>
+                </div>
+                <div id="saves_conditions" class="ui divided list">Pas de modificateurs conditionnels</div>
             </div>
 
         </div>
         <div class="twelve wide column">
 
             <a id="anchor_attacks"></a>
-            <table id="attacks" class="ui compact _very _basic _collapsing celled center aligned table">
+            <table id="attacks" class="ui compact _very _basic _collapsing celled center aligned table _hidden">
                 <thead>
                     <tr>
                         <th>Attaque</th>

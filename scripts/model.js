@@ -1,5 +1,4 @@
 
-
 class Modifier {
 
     constructor(source, value, type = "") {
@@ -10,8 +9,12 @@ class Modifier {
 
 }
 
+const filterModifiersByConditions = (modifiers, has_condition) => {
+    return modifiers.filter(modfier => ("condition" in modfier) === has_condition)
+}
+
 const getSumModifiers = modifiers => {
-    return modifiers.reduce((prev, cur) => prev + cur.value, 0)
+    return modifiers.reduce((acc, item) => acc += item.value, 0);
 }
 
 class Ability {
@@ -120,7 +123,7 @@ class Character {
             "vig": [],
             "ref": [],
             "vol": [],
-            "extras": []
+            "conditions": []
         }
         // classes
         this.classes.forEach(current_class => {
@@ -136,10 +139,16 @@ class Character {
         this.modifiers.forEach(modifier => {
             if (modifier.category == "saves") {
                 // console.log(modifier)
-                if ("target" in modifier) {
-                    this.saves[modifier.target].push(modifier)
+                if ("condition" in modifier) {
+                    this.saves.conditions.push(modifier)
                 } else {
-                    this.saves.extras.push(modifier)
+                    if ("target" in modifier) {
+                        this.saves[modifier.target].push(modifier)
+                    } else {
+                        this.saves.vig.push(modifier)
+                        this.saves.ref.push(modifier)
+                        this.saves.vol.push(modifier)
+                    }
                 }
             }
         });

@@ -12,12 +12,17 @@
     text-transform: lowercase;
 }
 
+.hidden {
+    display: none;
+}
+
 #menu {
     z-index: 1000;
 }
 
 #main {
     margin-bottom: 50px;
+    /* visibility: hidden; */
 }
 
 :target {
