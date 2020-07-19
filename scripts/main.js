@@ -1,6 +1,28 @@
 
 "use strict";
 
+/**
+ * Format methods
+ */
+
+const getObjectValue = (obj, property) => {
+    let value_formatted = ""
+    if (property in obj) {
+        const value = obj[property]
+        value_formatted = (obj.url === undefined) ? value : `<a href=${obj.url}>${value}</a>`
+    }
+    return value_formatted
+}
+
+const formatObjectValue = (obj, property) => {
+    let value_formatted = ""
+    if (property in obj) {
+        const value = obj[property]
+        value_formatted = (obj.url === undefined) ? value : `<a href=${obj.url}>${value}</a>`
+    }
+    return value_formatted
+}
+
 const formatHit = (hit, ba) => {
     const formatted_hit = []
     const nb_attacks = Math.ceil(ba / 5)
@@ -92,7 +114,7 @@ const dispayIdentity = character => {
 }
 
 const dispayAbilities = character => {
-    $('#abilities > tbody').empty();
+    $('.dd3-abilities > tbody').empty();
     Object.values(character.abilities).forEach(ability => {
         // console.log(ability);
         const line = `
@@ -102,28 +124,28 @@ const dispayAbilities = character => {
                 <td><b>${ability.total}</b></td>
                 <td><span class="ui circular label">${ability.bonus}</span></td>
             </tr>`;
-        $('#abilities > tbody:last-child').append(line);
+        $('.dd3-abilities > tbody:last-child').append(line);
     });
 }
 
 const dispayCounters = character => {
-    $("#hit_points").text(`${character.hit_points}`)
+    $(".dd3-counters-hit-points").text(`${character.hit_points}`)
     const ca_moficiers = filterModifiersByConditions(character.ca_modifiers, false)
-    $("#ca").text(`${getSumModifiers(ca_moficiers)}`)
-    $("#ca_details").html(`${formatDetails(ca_moficiers)}`)
+    $(".dd3-counters-ca").text(`${getSumModifiers(ca_moficiers)}`)
+    $(".dd3-counters-ca-details").html(`${formatDetails(ca_moficiers)}`)
     $("#hit").text(`${character.ba}`)
     const ca_conditions = filterModifiersByConditions(character.ca_modifiers, true)
-    $("#counters_extras").html(`${formatModifiersConditions(ca_conditions)}`)
+    $(".dd3-counters-extras").html(`${formatModifiersConditions(ca_conditions)}`)
 }
 
 const dispaySaves = character => {
-    $("#vig").text(`${getSumModifiers(character.saves.vig)}`)
-    $("#vig_details").html(`${formatDetails(character.saves.vig)}`)
-    $("#ref").text(`${getSumModifiers(character.saves.ref)}`)
-    $("#ref_details").html(`${formatDetails(character.saves.ref)}`)
-    $("#vol").text(`${getSumModifiers(character.saves.vol)}`)
-    $("#vol_details").html(`${formatDetails(character.saves.vol)}`)
-    $("#saves_conditions").html(`${formatModifiersConditions(character.saves.conditions)}`)
+    $(".dd3-saves-vig").text(`${getSumModifiers(character.saves.vig)}`)
+    $(".dd3-saves-vig-details").attr("data-html", formatDetails(character.saves.vig))
+    $(".dd3-saves-ref").text(`${getSumModifiers(character.saves.ref)}`)
+    $(".dd3-saves-ref-details").attr("data-html", formatDetails(character.saves.ref))
+    $(".dd3-saves-vol").text(`${getSumModifiers(character.saves.vol)}`)
+    $(".dd3-saves-vol-details").attr("data-html", formatDetails(character.saves.vol))
+    $(".dd3-saves-conditions").html(`${formatModifiersConditions(character.saves.conditions)}`)
 }
 
 const dispaySkills = character => {
@@ -176,23 +198,19 @@ const dispayAttacks = character => {
 const dispayPowers = character => {
     $('#powers > tbody').empty();
     character.powers.forEach(power => {
-        const power_type = (power.type === undefined) ? "" : `[${power.type}]`
-        const power_name = (power.name === undefined) ? "" : power.name
-        const power_desc = (power.desc === undefined) ? "" : power.desc
-        const power_source = (power.source === undefined) ? "-" : power.source
-        const power_level = (power.level === undefined) ? "-" : power.level
         const line = `
-        <tr class="">
-            <td>
-                <code>${power_type}</code>
-                <b>${power_name}</b>
-                <span class="">${power_desc}</span>
-            </td>
-            <td>${power_source}</td>
-            <td>${power_level}</td>
-        </tr>`;
+            <tr class="">
+                <td>${power.type || "-"}</td>
+                <td class="left aligned">
+                    <div class="dd3-power-name">${formatObjectValue(power, "name")}</div>
+                    <div class="dd3-power-desc">${power.desc || ""}</div>
+                </td>
+                <td>${power.source || "-"}</td>
+                <td>${power.level || "-"}</td>
+            </tr>`;
         $('#powers > tbody:last-child').append(line);
     })
+    $("#powers").tablesort()
 }
 
 const dispayEquipments = character => {
@@ -238,7 +256,7 @@ const displayCharacter = character => {
     });
 
     $('.ui.sticky').sticky({
-        offset: 100,
+        offset: sticky_offset,
         context: '#main',
     });
 
@@ -266,8 +284,9 @@ const $dimmer = $("body").dimmer({
     loaderText: 'Loading data'
 }).dimmer('show');
 
+const sticky_offset = 65
 $('.ui.sticky').sticky({
-    offset: 100,
+    offset: sticky_offset,
     context: '#main',
 });
 
@@ -313,6 +332,10 @@ let skills
 let character_data
 let race
 let character
+
+$("#abilities").clone().attr("id", "left-abilities").appendTo("#left").show();
+$("#counters").clone().attr("id", "left-counters").appendTo("#left");
+$("#saves").clone().attr("id", "left-saves").appendTo("#left");
 
 fetch(`data/skills.json`)
     .then(response => response.json())

@@ -62,7 +62,7 @@
             "desc": "La vitesse de base d'un Pixie au sol est de 6 mètres et sa vitesse de vol est de 18 mètres (bonne)."
         },
         {
-            "desc": "Vision nocture"
+            "name": "Vision nocture"
         },
         {
             "name": "Esquive",
@@ -77,13 +77,14 @@
             "desc": "Confusion mineure (DD 14), détection de la Loi, détection de pensées (DD 15), détection du Bien, détection du Chaos, détection du Mal, dissipation de la magie, enchevêtrement (DD 14), image permanente (DD 19, éléments visuels et auditifs uniquement) et lumières dansantes, 1 fois par jour. Niveau 8 de lanceur de sorts. Le DD des sauvegardes est lié au Charisme."
         },
         {
-            "desc": "Réduction des dégâts 10/fer froid"
+            "name": "Réduction des dégâts 10/fer froid"
         },
         {
-            "desc": "Invisibilité naturelle (Sur)"
+            "name": "Invisibilité naturelle",
+            "type": "Sur"
         },
         {
-            "desc": "Résistance aux sorts égale à 15 + niveaux de classe."
+            "name": "Résistance aux sorts égale à 15 + niveaux de classe."
         },
         {
             "desc": "Langues automatiques: commun, sylvestre. Langues bonus: elfique, gnome, halfling."

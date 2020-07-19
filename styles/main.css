@@ -1,4 +1,6 @@
 
+/* UTILS */
+
 .details {
     cursor: pointer;
     background-color: beige !important;
@@ -16,13 +18,23 @@
     display: none;
 }
 
+/* PAGE */
+
+body, html {
+    height: unset;
+}
+
 #menu {
     z-index: 1000;
 }
 
-#main {
-    margin-bottom: 50px;
-    /* visibility: hidden; */
+#container {
+    margin-top: 50px;
+    margin-bottom: 20px;
+}
+
+#_identity, #abilities, #counters, #saves {
+    display: none;
 }
 
 :target {
@@ -30,11 +42,20 @@
     position: relative;
     top: -50px;
     visibility: hidden;
-  }
+}
 
   /* IDENDITY */
 
 .dd3-id-name {
     font-size: 1.2em;
     font-weight: bold;
+}
+
+/* POWERS */
+
+.dd3-power-name {
+    font-weight: bold;
+}
+.dd3-power-desc {
+    font-style: italic;
 }

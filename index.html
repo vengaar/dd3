@@ -4,7 +4,8 @@
 <head>
     <meta charset="utf-8">
     <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.6/dist/semantic.min.css">
-    <link rel="stylesheet" type="text/css" href="styles/main.css">
+    <link rel="stylesheet" type="text/css" href="styles/main.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="styles/print.css" media="print">
     <title>DD3 - Personnage</title>
 </head>
 
@@ -24,105 +25,61 @@
         <a class="ui item" href="#anchor_powers"><i class="fist raised icon"></i>Pouvoirs</a>
         <a class="ui item" href="#anchor_skills"><i class="graduation cap icon"></i>Compétences</a>
         <a class="ui item" href="#anchor_equipments"><i class="ring icon"></i>Equipements</a>
-
         <div class="right menu">
-            <a class="ui disabled item" href="#anchor_attacks"><i class="file export icon"></i>Exporter</a>
+            <!-- <a class="ui item" href="#" onclick="window.print();return false;"><i class="print icon"></i>print</a> -->
+            <a class="ui disabled item"><i class="file export icon"></i>Exporter</a>
+
         </div>
     </div>
 
-    <div id="main" class="ui stackable container grid">
+    <div id="container" class="ui main container">
+        <div id="main" class="ui basic segment">
 
-        <div class="four wide column">
-
-            <div class="ui sticky">
-
-                <!-- IDENDITY CARD -->
-                <!-- <div id="identity" class="ui card">
-                    <a class="content">
-                        <span class="right floated">
-                            <span class="dd3-id-level ui grey circular label">${level}</span>
-                        </span>
-                        <div class="dd3-id-name header">${name}</div>
-                    </a>
-                    <div class="image">
-                        <img class="dd3-id-image" src="${character.image}">
-                    </div>
-                    <div class="extra content">
-                        <span class="dd3-id-alignment right floated">${alignment}</span>
-                        <span class="dd3-id-classes">${classes}</span>
-                    </div>
-                    <div class="extra content">
-                        <span class="dd3-id-race-size" class="right floated">${race.size}</span>
-                        <span class="dd3-id-race-name">${race.name}</span>
-                        <i class="dd3-id-gender neuter icon"></i>
-                    </div>
-                    <div class="extra content">
-                        <span class="dd3-id-size">${size}</span> /
-                        <span class="dd3-id-weight">${weight}</span> /
-                        <span class="dd3-id-age">${age}</span>
-                    </div>
-                </div> -->
-
-                <!-- ABILITIES -->
-                <table id="abilities" class="ui very basic _collapsing celled center aligned table _hidden">
-                    <thead>
-                        <tr>
-                            <th></th>
-                            <th>Base</th>
-                            <th>Total</th>
-                            <th>Bonus</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-                    </tbody>
-                </table>
-
-                <!-- COUNTERS -->
-                <div id="counters" class="ui three item labeled icon menu">
-                    <span class="item">
-                        <i class="heart icon"></i>
-                        <span id="hit_points">-</span>
-                    </span>
-                    <span class="item details">
-                        <i class="shield icon"></i>
-                        <span id="ca">-</span>
-                    </span>
-                    <div id="ca_details" class="ui popup"></div>
-                    <span class="item">
-                        <i class="gavel icon"></i>
-                        <span id="hit">-</span>
-                    </span>
+            <!-- LEFT RAIL -->
+            <div class="ui left dividing rail">
+                <div id="left" class="ui sticky">
+                    <div class="ui segment hidden">RAIL LEFT</div>
                 </div>
-                <div id="counters_extras" class="ui divided list">Pas de modificateurs conditionnels</div>
-
-                <!-- SAVES -->
-                <div id="saves" class="ui three item labeled icon menu">
-                    <span class="item details">
-                        <i class="skull crossbones icon"></i>
-                        <span id="vig">-</span>
-                    </span>
-                    <div id="vig_details" class="ui popup"></div>
-                    <span class="item details">
-                        <i class="bomb icon"></i>
-                        <span id="ref">-</span>
-                    </span>
-                    <div id="ref_details" class="ui popup"></div>
-                    <span class="item details">
-                        <i class="brain icon"></i>
-                        <span id="vol">-</span>
-                    </span>
-                    <div id="vol_details" class="ui popup"></div>
-                </div>
-                <div id="saves_conditions" class="ui divided list">Pas de modificateurs conditionnels</div>
             </div>
 
-        </div>
-        <div class="twelve wide column">
+            <!-- RIGHT RAIL -->
+            <div class="ui right dividing rail">
+                <div class="ui sticky">
+                    <div class="ui segment hidden">RAIL RIGHT</div>
+                    <!-- IDENDITY CARD -->
+                    <div id="identity-card" class="ui card">
+                        <div class="content">
+                            <span class="right floated">
+                                <span class="dd3-id-level ui grey circular label">${level}</span>
+                            </span>
+                            <div class="dd3-id-name header">${name}</div>
+                        </div>
+                        <div class="image">
+                            <img class="dd3-id-image" src="${character.image}">
+                        </div>
+                        <div class="extra content">
+                            <span class="dd3-id-alignment right floated">${alignment}</span>
+                            <span class="dd3-id-classes">${classes}</span>
+                        </div>
+                        <div class="extra content">
+                            <span class="dd3-id-race-size" class="right floated">${race.size}</span>
+                            <span class="dd3-id-race-name">${race.name}</span>
+                            <i class="dd3-id-gender neuter icon"></i>
+                        </div>
+                        <div class="extra content">
+                            <span class="dd3-id-size">${size}</span> /
+                            <span class="dd3-id-weight">${weight}</span> /
+                            <span class="dd3-id-age">${age}</span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MAIN -->
 
             <!-- IDENDITY -->
             <a id="anchor_identity"></a>
-
-            <div class="ui items">
+            <div id="identity" class="ui items">
                 <div class="item">
                     <div class="image">
                         <img class="dd3-id-image" src="${character.image}">
@@ -159,6 +116,63 @@
                 </div>
             </div>
 
+            <!-- ABILITIES -->
+            <a id="anchor_abilities"></a>
+            <table id="abilities" class="dd3-abilities ui very basic _collapsing celled center aligned table _hidden">
+                <thead>
+                    <tr>
+                        <th></th>
+                        <th>Base</th>
+                        <th>Total</th>
+                        <th>Bonus</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+
+            <!-- COUNTERS -->
+            <a id="anchor_counter"></a>
+            <div id="counters">
+                <div class="ui three item labeled icon menu">
+                    <span class="item">
+                        <i class="heart icon"></i>
+                        <span class="dd3-counters-hit-points">-</span>
+                    </span>
+                    <span class="item details">
+                        <i class="shield icon"></i>
+                        <span class="dd3-counters-ca">-</span>
+                    </span>
+                    <div class="dd3-counters-ca-details ui popup"></div>
+                    <span class="item">
+                        <i class="gavel icon"></i>
+                        <span class="dd3-counters-hit">-</span>
+                    </span>
+                </div>
+                <div class="dd3-counters-extras" class="ui divided list">Pas de modificateurs conditionnels</div>
+            </div>
+
+            <!-- SAVES -->
+            <a id="anchor_saves"></a>
+            <div id="saves">
+                <div class="ui three item labeled icon menu">
+                    <span class="dd3-saves-vig-details item details" data-html="">
+                        <i class="skull crossbones icon"></i>
+                        <span class="dd3-saves-vig">-</span>
+                    </span>
+                    <span class="dd3-saves-ref-details item details" data-html="">
+                        <i class="bomb icon"></i>
+                        <span class="dd3-saves-ref">-</span>
+                    </span>
+                    <span class="dd3-saves-vol-details item details" data-html="">
+                        <i class="brain icon"></i>
+                        <span class="dd3-saves-vol">-</span>
+                    </span>
+                </div>
+                <div class="dd3-saves-conditions ui divided list">Pas de modificateurs conditionnels</div>
+            </div>
+
+            <!-- ATTACKS -->
             <a id="anchor_attacks"></a>
             <table id="attacks" class="ui compact _very _basic _collapsing celled center aligned table _hidden">
                 <thead>
@@ -174,23 +188,29 @@
                 </tbody>
             </table>
 
+            <!-- POWERS -->
             <a id="anchor_powers"></a>
-            <table id="powers" class="ui compact _very _basic _collapsing celled table">
+            <table id="powers" class="ui compact _very _basic _collapsing sortable celled center aligned table">
                 <thead>
                     <tr>
-                        <th colspan="3">Pouvoirs et capacités</th>
+                        <th>Type</th>
+                        <th>Pouvoirs et capacités</th>
+                        <th>Source</th>
+                        <th>Level</th>
                     </tr>
                 </thead>
                 <tbody>
                 </tbody>
             </table>
 
-            <a id="anchor_skills"></a>
+            <!-- SKILLS -->
+            <a id=" anchor_skills"></a>
             <table id="skills" class="ui compact _very _basic _collapsing celled table">
                 <thead>
                     <tr>
                         <th colspan="3">
-                            Compétences (<span id="skills_ranks">${skills_ranks}</span> rangs de maîtrises)
+                            Compétences (<span id="skills_ranks">${skills_ranks}</span> rangs de
+                            maîtrises)
                         </th>
                     </tr>
                 </thead>
@@ -198,6 +218,7 @@
                 </tbody>
             </table>
 
+            <!-- EQUIPMENTS -->
             <a id="anchor_equipments"></a>
             <table id="equipments" class="ui compact _very _basic _collapsing celled table">
                 <thead>
@@ -209,18 +230,12 @@
                 </tbody>
             </table>
 
-            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-            <br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br><br>
-
         </div>
     </div>
 
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.6/dist/semantic.min.js"></script>
+    <script src="scripts/tablesort.js"></script>
     <script src="scripts/model.js"></script>
     <script src="scripts/main.js"></script>
 

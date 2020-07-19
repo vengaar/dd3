@@ -1,0 +1,12 @@
+
+#menu, .rail {
+    display: none;
+}
+
+#abilities, #counters, #saves {
+    display: block;
+}
+
+#abilities, #attacks, #powers, #skills, #equipemnts {
+    page-break-after: always;
+}

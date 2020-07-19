@@ -20,27 +20,29 @@
             },
             "powers": [
                 {
-                    "desc": "Recherche des pièges",
+                    "name": "Recherche des pièges",
                     "level": 1
                 },
                 {
-                    "desc": "Esquive totale (Ext)",
-                    "level": 2
+                    "name": "Esquive totale",
+                    "level": 2,
+                    "type": "Ext"
                 },
                 {
-                    "desc": "Esquive instinctive supérieure (Ext)",
-                    "level": 8
+                    "name": "Esquive instinctive supérieure",
+                    "level": 8,
+                    "type": "Ext"
                 },
                 {
-                    "desc": "Sens des pièges (+3)",
+                    "name": "Sens des pièges (+3)",
                     "level": 9
                 },
                 {
-                    "desc": "Pouvoir spécial",
+                    "name": "Pouvoir spécial",
                     "level": 10
                 },
                 {
-                    "desc": "Attaque sournoise (+6d6)",
+                    "name": "Attaque sournoise (+6d6)",
                     "level": 11
                 }
             ],
@@ -98,13 +100,14 @@
     "powers": [
         {
             "type": "don",
-            "name": "Science du combat à deux armes",
-            "desc": "Recherche des pièges",
-            "level": 1
+            "name": "Science du vol",
+            "desc": "La manœuvrabilité en vol du personnage augmente d'une catégorie",
+            "level": 1,
+            "url": "http://www.gemmaline.com/dons/dons-science-du-vol-1483.htm"
         },
         {
             "type": "don",
-            "name": "Science de l’initiative",
+            "name": "",
             "level": 3
         },
         {
