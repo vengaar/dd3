@@ -110,7 +110,10 @@ const dispayIdentity = character => {
     })
     $('.dd3-id-classes').text(classes.join(" / "));
     $(".dd3-id-image").attr("src", character.image);
-    $(".dd3-id-gender").removeClass().addClass(`dd3-id-gender ${character.gender} icon`);
+    const $gender = $(".dd3-id-gender")
+    const genders = ["neuter", "mars", "venus"]
+    genders.forEach(gender => { $gender.removeClass(gender) })
+    $gender.addClass(character.gender);
 }
 
 const dispayAbilities = character => {
