@@ -37,8 +37,14 @@
         }
     ],
     "powers": [
-        "Immunity to magic sleep effects",
-        "Krynnish elves have low-light vision and can see twice as far as a human in starlight, moonlight, and similar conditions of poor illumination. They retain the ability to distinguish color and detail under these circumstances.",
-        "Elvensight also includes darkvision up to 30 feet. Darkvision is black and white only, but it is otherwise like normal sight."
+        {
+            "desc": "Immunity to magic sleep effects"
+        },
+        {
+            "desc": "Krynnish elves have low-light vision and can see twice as far as a human in starlight, moonlight, and similar conditions of poor illumination. They retain the ability to distinguish color and detail under these circumstances."
+        },
+        {
+            "desc": "Elvensight also includes darkvision up to 30 feet. Darkvision is black and white only, but it is otherwise like normal sight."
+        }
     ]
 }

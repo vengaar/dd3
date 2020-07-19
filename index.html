@@ -19,7 +19,7 @@
                 <a class="item">Ronce</a>
             </div>
         </div>
-
+        <a class="ui item" href="#anchor_identity"><i class="address card icon"></i>Identitée</a>
         <a class="ui item" href="#anchor_attacks"><i class="gavel icon"></i>Attaques</a>
         <a class="ui item" href="#anchor_powers"><i class="fist raised icon"></i>Pouvoirs</a>
         <a class="ui item" href="#anchor_skills"><i class="graduation cap icon"></i>Compétences</a>
@@ -36,32 +36,32 @@
 
             <div class="ui sticky">
 
-                <!-- IDENDITY -->
-                <div id="identity" class="ui card">
+                <!-- IDENDITY CARD -->
+                <!-- <div id="identity" class="ui card">
                     <a class="content">
                         <span class="right floated">
-                            <span class="ui grey circular label" id="level">${level}</span>
+                            <span class="dd3-id-level ui grey circular label">${level}</span>
                         </span>
-                        <div id="name" class="header">${name}</div>
+                        <div class="dd3-id-name header">${name}</div>
                     </a>
-                    <div id="image" class="image">
-                        <img src="${character.image}">
+                    <div class="image">
+                        <img class="dd3-id-image" src="${character.image}">
                     </div>
                     <div class="extra content">
-                        <span id="alignment" class="right floated">${alignment}</span>
-                        <span id="classes">${classes}</span>
+                        <span class="dd3-id-alignment right floated">${alignment}</span>
+                        <span class="dd3-id-classes">${classes}</span>
                     </div>
                     <div class="extra content">
-                        <span id="race-size" class="right floated">${race.size}</span>
-                        <span id="race-name">${race.name}</span>
-                        <i class="${gender} icon"></i>
+                        <span class="dd3-id-race-size" class="right floated">${race.size}</span>
+                        <span class="dd3-id-race-name">${race.name}</span>
+                        <i class="dd3-id-gender neuter icon"></i>
                     </div>
                     <div class="extra content">
-                        <span id="size">${size}</span> /
-                        <span id="weight">${weight}</span> /
-                        <span id="age">${age}</span>
-                    </div>`
-                </div>
+                        <span class="dd3-id-size">${size}</span> /
+                        <span class="dd3-id-weight">${weight}</span> /
+                        <span class="dd3-id-age">${age}</span>
+                    </div>
+                </div> -->
 
                 <!-- ABILITIES -->
                 <table id="abilities" class="ui very basic _collapsing celled center aligned table _hidden">
@@ -119,6 +119,46 @@
         </div>
         <div class="twelve wide column">
 
+            <!-- IDENDITY -->
+            <a id="anchor_identity"></a>
+
+            <div class="ui items">
+                <div class="item">
+                    <div class="image">
+                        <img class="dd3-id-image" src="${character.image}">
+                    </div>
+                    <div class="content">
+                        <div class="ui vertical segment">
+                            <div class="dd3-id-level ui right floated grey circular label">${level}</div>
+                            <span class="dd3-id-name">${name}</span>
+                            <i class="chevron right icon"></i>
+                            <span class="dd3-id-race-name">${race.name}</span>
+                            <i class="dd3-id-gender neuter icon"></i>
+                        </div>
+                        <table class="ui basic table">
+                            <tbody>
+                                <tr>
+                                    <td class="dd3-id-classes">${classes}</td>
+                                    <td class="dd3-id-alignment right aligned">${alignment}</td>
+                                </tr>
+                                <tr>
+                                    <td>Vitesse <span class="dd3-id-race-speed">${speed}</span></td>
+                                    <td class="dd3-id-race-size right aligned">${race.size}</td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <span class="dd3-id-size">${size}</span> /
+                                        <span class="dd3-id-weight">${weight}</span> /
+                                        <span class="dd3-id-age">${age}</span>
+                                    </td>
+                                    <td class="right aligned"></td>
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                </div>
+            </div>
+
             <a id="anchor_attacks"></a>
             <table id="attacks" class="ui compact _very _basic _collapsing celled center aligned table _hidden">
                 <thead>
@@ -138,7 +178,7 @@
             <table id="powers" class="ui compact _very _basic _collapsing celled table">
                 <thead>
                     <tr>
-                        <th colspan="2">Pouvoirs et capacités</th>
+                        <th colspan="3">Pouvoirs et capacités</th>
                     </tr>
                 </thead>
                 <tbody>

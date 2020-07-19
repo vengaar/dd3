@@ -4,25 +4,64 @@
     "race": "pixies",
     "gender": "venus",
     "alignment": "NB",
-    "size": "55 cm",
-    "weight": "7 Kg",
+    "size": "70 cm",
+    "weight": "12 Kg",
     "age": "17 ans",
     "hit_points": 53,
     "classes": [
         {
             "name": "Roublard",
-            "level": 9,
-            "ba": 6,
+            "level": 11,
+            "ba": 8,
             "saves": {
                 "vig": 3,
-                "ref": 6,
+                "ref": 7,
                 "vol": 3
             },
-            "powers": []
+            "powers": [
+                {
+                    "desc": "Recherche des pièges",
+                    "level": 1
+                },
+                {
+                    "desc": "Esquive totale (Ext)",
+                    "level": 2
+                },
+                {
+                    "desc": "Esquive instinctive supérieure (Ext)",
+                    "level": 8
+                },
+                {
+                    "desc": "Sens des pièges (+3)",
+                    "level": 9
+                },
+                {
+                    "desc": "Pouvoir spécial",
+                    "level": 10
+                },
+                {
+                    "desc": "Attaque sournoise (+6d6)",
+                    "level": 11
+                }
+            ],
+            "modifiers": [
+                {
+                    "category": "saves",
+                    "target": "ref",
+                    "condition": "effectués pour éviter les pièges",
+                    "value": 3
+                },
+                {
+                    "category": "ca",
+                    "condition": "contre les attaques déclenchées par des pièges",
+                    "value": 3,
+                    "type": "esquive"
+                }
+            ]
         },
         {
-            "name": "Mage",
-            "level": 1,
+            "name": "Fake",
+            "level": 0,
             "ba": 0,
             "saves": {
                 "vig": 0,
@@ -56,6 +95,45 @@
         "Renseignements": 12,
         "Utilisation d'objets magiques": 10
     },
+    "powers": [
+        {
+            "type": "don",
+            "name": "Science du combat à deux armes",
+            "desc": "Recherche des pièges",
+            "level": 1
+        },
+        {
+            "type": "don",
+            "name": "Science de l’initiative",
+            "level": 3
+        },
+        {
+            "type": "don",
+            "name": "Combat à deux armes",
+            "level": 6
+        },
+        {
+            "type": "don",
+            "name": "Science du combat à deux armes",
+            "level": 9
+        }
+    ],
+    "modifiers": [
+        {
+            "source": "Sens des pièges",
+            "category": "saves",
+            "target": "ref",
+            "value": 3,
+            "condition": "pour éviter les pièges"
+        },
+        {
+            "source": "Sens des pièges",
+            "category": "ca",
+            "type": "esquive",
+            "value": 3,
+            "condition": "contre les attaques déclenchées par des pièges"
+        }
+    ],
     "attacks": [
         {
             "name": "Dague",

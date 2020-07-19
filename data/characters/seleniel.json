@@ -51,6 +51,7 @@
         "Saut": 1,
         "Survie": 15
     },
+    "powers": [],
     "attacks": [
         {
             "name": "Baton base",

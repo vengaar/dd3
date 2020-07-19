@@ -64,12 +64,13 @@ class Character {
         console.log("*** Create new character ***")
         // Clone original data before assign for updates
         const _data = JSON.parse(JSON.stringify(data));
+
         Object.assign(this, _data)
 
         /**
          * Build modifiers
          */
-        this.modifiers = []
+        if (this.modifiers === undefined) this.modifiers = [];
         // Equipments modifiers
         this.equipments.forEach(equipment => {
             if ("modifiers" in equipment) {
@@ -109,12 +110,17 @@ class Character {
          */
         this.level = 0
         this.ba = 0
-        this.powers = {}
-        this.powers[this.race.name] = this.race.powers
+        this.race.powers.forEach(power => {
+            power["source"] = this.race.name
+            this.powers.push(power)
+        })
         this.classes.forEach(current_class => {
             this.level += current_class.level
             this.ba += current_class.ba
-            this.powers[current_class.name] = current_class.powers
+            current_class.powers.forEach(power => {
+                power["source"] = current_class.name
+                this.powers.push(power)
+            })
         });
         if ("level_ajustement" in this.race) {
             this.level += this.race.level_ajustement

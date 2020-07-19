@@ -44,7 +44,7 @@ const formatModifiersConditions = modifiers => {
                 <div class="item">
                     <i class="icon"><span class="ui circular label">${formatBonus(modifier.value)}</span></i>
                     <div class="content">
-                        <div class="header">Sur "${modifier.condition}"</div>
+                        <div class="header lowercase">${modifier.condition}</div>
                         <div class="description">${modifier.source}</div>
                     </div>
                 </div>`
@@ -78,16 +78,18 @@ const formatModifers = modifiers => {
  */
 
 const dispayIdentity = character => {
-    const attributes = ["name", "level", "alignment", "race.name", "race.size", "gender", "size", "weight", "age"]
+    const attributes = ["name", "level", "alignment", "race.name", "race.size", "race.speed", "size", "weight", "age"]
     attributes.forEach(attribute => {
         // console.log(attribute)
-        $(`#${attribute.replace(".", "-")}`).text(search(attribute, character))
+        $(`.dd3-id-${attribute.replace(".", "-")}`).text(search(attribute, character))
     });
     const classes = character.classes.map(current_class => {
         return `${current_class.name} ${current_class.level}`
     })
-    $('#classes').text(classes.join(" / "));
-    $("#image img").attr('src', character.image);
+    $('.dd3-id-classes').text(classes.join(" / "));
+    $(".dd3-id-image").attr("src", character.image);
+    $(".dd3-id-gender").removeClass("neuter");
+    $(".dd3-id-gender").addClass(character.gender);
 }
 
 const dispayAbilities = character => {
@@ -174,16 +176,24 @@ const dispayAttacks = character => {
 
 const dispayPowers = character => {
     $('#powers > tbody').empty();
-    for (let catergory in character.powers) {
-        character.powers[catergory].forEach(power => {
-            const line = `
-            <tr class="">
-                <td>${power}</td>
-                <td>${catergory}</td>
-            </tr>`;
-            $('#powers > tbody:last-child').append(line);
-        })
-    }
+    character.powers.forEach(power => {
+        const power_type = (power.type === undefined) ? "" : `[${power.type}]`
+        const power_name = (power.name === undefined) ? "" : power.name
+        const power_desc = (power.desc === undefined) ? "" : power.desc
+        const power_source = (power.source === undefined) ? "-" : power.source
+        const power_level = (power.level === undefined) ? "-" : power.level
+        const line = `
+        <tr class="">
+            <td>
+                <code>${power_type}</code>
+                <b>${power_name}</b>
+                <span class="">${power_desc}</span>
+            </td>
+            <td>${power_source}</td>
+            <td>${power_level}</td>
+        </tr>`;
+        $('#powers > tbody:last-child').append(line);
+    })
 }
 
 const dispayEquipments = character => {
@@ -229,7 +239,7 @@ const displayCharacter = character => {
     });
 
     $('.ui.sticky').sticky({
-        offset: 50,
+        offset: 100,
         context: '#main',
     });
 
@@ -258,7 +268,7 @@ const $dimmer = $("body").dimmer({
 }).dimmer('show');
 
 $('.ui.sticky').sticky({
-    offset: 50,
+    offset: 100,
     context: '#main',
 });
 
