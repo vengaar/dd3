@@ -62,14 +62,14 @@ const formatModifiersConditions = modifiers => {
     const conditions = []
     modifiers.forEach(modifier => {
         if ("condition" in modifier) {
+            const category = modifier.target === undefined ? modifier.category : '';
+            const target = modifier.target || '';
             const condition = `
-                <div class="item">
-                    <i class="icon"><span class="ui circular label">${formatBonus(modifier.value)}</span></i>
-                    <div class="content">
-                        <div class="header lowercase">${modifier.condition}</div>
-                        <div class="description">${modifier.source}</div>
-                    </div>
-                </div>`
+                <tr>
+                    <td class="collapsing"><span class="ui circular label">${formatBonus(modifier.value)}</span></td>
+                    <td class="collapsing">${category}${target}</span></td>
+                    <td>${modifier.condition}</td>
+                </tr>`
             conditions.push(condition)
         }
     });
@@ -136,7 +136,7 @@ const dispayCounters = character => {
     const ca_moficiers = filterModifiersByConditions(character.ca_modifiers, false)
     $(".dd3-counters-ca").text(`${getSumModifiers(ca_moficiers)}`)
     $(".dd3-counters-ca-details").html(`${formatDetails(ca_moficiers)}`)
-    $("#hit").text(`${character.ba}`)
+    $(".dd3-counters-hit").text(`${character.ba}`)
     const ca_conditions = filterModifiersByConditions(character.ca_modifiers, true)
     $(".dd3-counters-extras").html(`${formatModifiersConditions(ca_conditions)}`)
 }
