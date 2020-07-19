@@ -177,6 +177,7 @@ const dispaySkills = character => {
     });
     // console.log(character.skills_ranks)
     $("#skills_ranks").text(character.skills_ranks)
+    $("#skills").tablesort()
 }
 
 const dispayAttacks = character => {
