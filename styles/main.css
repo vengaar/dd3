@@ -31,3 +31,10 @@
     top: -50px;
     visibility: hidden;
   }
+
+  /* IDENDITY */
+
+.dd3-id-name {
+    font-size: 1.2em;
+    font-weight: bold;
+}
