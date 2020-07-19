@@ -286,6 +286,7 @@ $character_choice.dropdown({
             .then(json => {
                 console.log(`data character loaded`);
                 character_data = json
+                document.title = `DD3 - ${character_data.name}`;
                 fetch(`data/races/${character_data.race}.json`, { cache: "reload" })
                     .then(response => response.json())
                     .then(json => {
