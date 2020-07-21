@@ -46,10 +46,21 @@
 
             <!-- RIGHT RAIL -->
             <div class="ui right dividing rail">
-                <div class="ui sticky">
+                <div id="right" class="ui sticky">
                     <div class="ui segment hidden">RAIL RIGHT</div>
                     <!-- IDENDITY CARD -->
-                    <div id="identity-card" class="ui card">
+                </div>
+            </div>
+
+            <!-- MAIN -->
+
+            <!-- IDENDITY -->
+            <a id="anchor_identity"></a>
+            <div class="ui stackable column grid">
+                <div class="four wide column _olive">
+
+                    <!-- IDENDITY CARD -->
+                    <div id="card" class="ui card">
                         <div class="content">
                             <span class="right floated">
                                 <span class="dd3-id-level ui grey circular label">${level}</span>
@@ -77,115 +88,79 @@
                             <span class="dd3-id-weight">${weight}</span> /
                             <span class="dd3-id-age">${age}</span>
                         </div>
-                    </div>
-                </div>
-            </div>
-
-            <!-- MAIN -->
-
-            <!-- IDENDITY -->
-            <a id="anchor_identity"></a>
-            <div id="identity" class="ui items">
-                <div class="item">
-                    <div class="image">
-                        <img class="dd3-id-image" src="${character.image}">
-                    </div>
-                    <div class="content">
-                        <div class="ui vertical segment">
-                            <div class="dd3-id-level ui right floated grey circular label">${level}</div>
-                            <span class="dd3-id-name">${name}</span>
-                            <i class="chevron right icon"></i>
-                            <span class="dd3-id-race-name">${race.name}</span>
-                            <i class="dd3-id-gender neuter icon"></i>
+                        <div class="extra content">
+                            <i class="heart icon"></i>
+                            <span class="dd3-id-hit_points">${hit-points}</span>
                         </div>
-                        <table class="ui basic table">
-                            <tbody>
-                                <tr>
-                                    <td class="dd3-id-classes">${classes}</td>
-                                    <td class="dd3-id-alignment right aligned">${alignment}</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <i class="walking icon"></i>
-                                        <span class="dd3-id-race-speed">${speed}</span>
-                                    </td>
-                                    <td class="dd3-id-race-size right aligned">${race.size}</td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        <span class="dd3-id-size">${size}</span> /
-                                        <span class="dd3-id-weight">${weight}</span> /
-                                        <span class="dd3-id-age">${age}</span>
-                                    </td>
-                                    <td class="right aligned"></td>
-                                </tr>
-                            </tbody>
-                        </table>
                     </div>
-                </div>
-            </div>
 
-            <!-- ABILITIES -->
-            <a id="anchor_abilities"></a>
-            <table id="abilities" class="dd3-abilities ui very basic _collapsing celled center aligned table _hidden">
-                <thead>
-                    <tr>
-                        <th></th>
-                        <th>Base</th>
-                        <th>Total</th>
-                        <th>Bonus</th>
-                    </tr>
-                </thead>
-                <tbody>
-                </tbody>
-            </table>
-
-            <!-- COUNTERS -->
-            <a id="anchor_counter"></a>
-            <div id="counters">
-                <div class="ui three item labeled icon top attached menu">
-                    <span class="item">
-                        <i class="heart icon"></i>
-                        <span class="dd3-counters-hit-points">-</span>
-                    </span>
-                    <span class="item details">
-                        <i class="shield icon"></i>
-                        <span class="dd3-counters-ca">-</span>
-                    </span>
-                    <div class="dd3-counters-ca-details ui popup"></div>
-                    <span class="item">
-                        <i class="gavel icon"></i>
-                        <span class="dd3-counters-hit">-</span>
-                    </span>
                 </div>
-                <div class="ui bottom attached segment">
-                    <table class="ui compact very basic celled table">
-                        <tbody class="dd3-counters-extras"></tbody>
+                <div class="six wide column _teal">
+
+                    <!-- ABILITIES -->
+                    <table id="abilities" class="dd3-abilities ui very basic celled center aligned table">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Base</th>
+                                <th>Total</th>
+                                <th>Bonus</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
                     </table>
-                </div>
-            </div>
 
-            <!-- SAVES -->
-            <a id="anchor_saves"></a>
-            <div id="saves">
-                <div class="ui three item labeled icon top attached menu">
-                    <span class="dd3-saves-vig-details item details" data-html="">
-                        <i class="skull crossbones icon"></i>
-                        <span class="dd3-saves-vig">-</span>
-                    </span>
-                    <span class="dd3-saves-ref-details item details" data-html="">
-                        <i class="bomb icon"></i>
-                        <span class="dd3-saves-ref">-</span>
-                    </span>
-                    <span class="dd3-saves-vol-details item details" data-html="">
-                        <i class="brain icon"></i>
-                        <span class="dd3-saves-vol">-</span>
-                    </span>
                 </div>
-                <div class="ui bottom attached segment">
-                    <table class="ui compact very basic celled table">
-                        <tbody class="dd3-saves-conditions"></tbody>
-                    </table>
+                <div class="six wide column _brown">
+
+                    <!-- SAVES -->
+                    <a id="anchor_saves"></a>
+                    <div id="saves">
+                        <div class="ui three item labeled icon top attached menu">
+                            <span class="dd3-saves-vig-details item details" data-html="">
+                                <i class="skull crossbones icon"></i>
+                                <span class="dd3-saves-vig">{vig}</span>
+                            </span>
+                            <span class="dd3-saves-ref-details item details" data-html="">
+                                <i class="bomb icon"></i>
+                                <span class="dd3-saves-ref">{ref}</span>
+                            </span>
+                            <span class="dd3-saves-vol-details item details" data-html="">
+                                <i class="brain icon"></i>
+                                <span class="dd3-saves-vol">{vol}</span>
+                            </span>
+                        </div>
+                        <div class="ui bottom attached segment">
+                            <table class="ui compact very basic celled table">
+                                <tbody class="dd3-saves-conditions"></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- COUNTERS -->
+                    <div id="counters">
+                        <div class="ui three item labeled icon top attached menu">
+                            <span class="dd3-counters-init-details item details" data-html="">
+                                <i class="stopwatch icon"></i>
+                                <span class="dd3-counters-init">{init}</span>
+                            </span>
+                            <span class="dd3-counters-ba-details item details" data-html="">
+                                <i class="gavel icon"></i>
+                                <span class="dd3-counters-ba">{ba}</span>
+                            </span>
+                            <span class="dd3-counters-ca-details item details" data-html="">
+                                <i class="shield icon"></i>
+                                <span class="dd3-counters-ca">{ca}</span>
+                            </span>
+                        </div>
+                        <div class="ui bottom attached segment">
+                            <table class="ui compact very basic celled table">
+                                <tbody class="dd3-counters-conditions"></tbody>
+                            </table>
+                        </div>
+                    </div>
+
                 </div>
             </div>
 

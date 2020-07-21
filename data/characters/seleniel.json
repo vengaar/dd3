@@ -51,7 +51,20 @@
         "Saut": 1,
         "Survie": 15
     },
-    "powers": [],
+    "powers": [
+        {
+            "type": "don",
+            "name": "Science de l'initiative",
+            "level": 1
+        }
+    ],
+    "modifiers": [
+        {
+            "source": "Science de l'initiative",
+            "category": "init",
+            "value": 4
+        }
+    ],
     "attacks": [
         {
             "name": "Baton base",

@@ -5,15 +5,6 @@
  * Format methods
  */
 
-const getObjectValue = (obj, property) => {
-    let value_formatted = ""
-    if (property in obj) {
-        const value = obj[property]
-        value_formatted = (obj.url === undefined) ? value : `<a href=${obj.url}>${value}</a>`
-    }
-    return value_formatted
-}
-
 const formatObjectValue = (obj, property) => {
     let value_formatted = ""
     if (property in obj) {
@@ -37,7 +28,7 @@ const formatHit = (hit, ba) => {
 
 const formatBonus = (bonus) => {
     if (bonus > 0) {
-        return "+" + bonus;
+        return `+${bonus}`;
     } else if (bonus === 0) {
         return ""
     } else {
@@ -49,7 +40,7 @@ const formatDetails = modifiers => {
     // console.log(modifiers)
     const details = ["<table class='ui very basic celled center aligned table'><tbody>"]
     modifiers.forEach(modifier => {
-        const detail = `<tr><td class='capitalize'>${modifier.source}</td><td>${modifier.value}</td><td>${modifier.type}</td>`
+        const detail = `<tr><td class='capitalize'>${modifier.source || ""}</td><td>${modifier.value}</td><td>${modifier.type || ""}</td>`
         details.push(detail)
     });
     details.push("</tbody></table>")
@@ -57,13 +48,13 @@ const formatDetails = modifiers => {
     return details.join("")
 }
 
-const formatModifiersConditions = modifiers => {
+const formatConditions = modifiers => {
     // console.log(modifiers)
     const conditions = []
     modifiers.forEach(modifier => {
         if ("condition" in modifier) {
-            const category = modifier.target === undefined ? modifier.category : '';
-            const target = modifier.target || '';
+            const category = modifier.target === undefined ? modifier.category : "";
+            const target = modifier.target || "";
             const condition = `
                 <tr>
                     <td class="collapsing"><span class="ui circular label">${formatBonus(modifier.value)}</span></td>
@@ -79,14 +70,12 @@ const formatModifiersConditions = modifiers => {
 const formatModifers = modifiers => {
     const modfiers_as_list = []
     modifiers.forEach(modifier => {
-        const category = modifier.target === undefined ? modifier.category : ''
-        const target = modifier.target === undefined ? '' : modifier.target
         const item = `
             <div class="item">
                 <i class="icon"><span class="ui circular label">${formatBonus(modifier.value)}</span></i>
                 <div class="content">
-                    <span class="capitalize">${category}</span>
-                    <span class="capitalize">${target}</span>
+                    <span class="capitalize">${modifier.category || ""}</span>
+                    <span class="capitalize">${modifier.target || ""}</span>
                     <span class="lowercase">[${modifier.type}]</span>
                 </div>
             </div>`
@@ -100,7 +89,7 @@ const formatModifers = modifiers => {
  */
 
 const dispayIdentity = character => {
-    const attributes = ["name", "level", "alignment", "race.name", "race.size", "race.speed", "size", "weight", "age"]
+    const attributes = ["name", "level", "alignment", "race.name", "race.size", "race.speed", "size", "weight", "age", "ba", "hit_points"]
     attributes.forEach(attribute => {
         // console.log(attribute)
         $(`.dd3-id-${attribute.replace(".", "-")}`).text(search(attribute, character))
@@ -117,7 +106,7 @@ const dispayIdentity = character => {
 }
 
 const dispayAbilities = character => {
-    $('.dd3-abilities > tbody').empty();
+    const lines = []
     Object.values(character.abilities).forEach(ability => {
         // console.log(ability);
         const line = `
@@ -127,18 +116,22 @@ const dispayAbilities = character => {
                 <td><b>${ability.total}</b></td>
                 <td><span class="ui circular label">${ability.bonus}</span></td>
             </tr>`;
-        $('.dd3-abilities > tbody:last-child').append(line);
+        lines.push(line)
     });
+    $('.dd3-abilities > tbody').empty().append(lines);;
 }
 
 const dispayCounters = character => {
-    $(".dd3-counters-hit-points").text(`${character.hit_points}`)
-    const ca_moficiers = filterModifiersByConditions(character.ca_modifiers, false)
-    $(".dd3-counters-ca").text(`${getSumModifiers(ca_moficiers)}`)
-    $(".dd3-counters-ca-details").html(`${formatDetails(ca_moficiers)}`)
-    $(".dd3-counters-hit").text(`${character.ba}`)
+    const init = getSumModifiers(character.init)
+    $(".dd3-counters-init").text(`${formatBonus(init)}`)
+    $(".dd3-counters-init-details").attr("data-html", formatDetails(character.init))
+    $(".dd3-counters-ba").text(`${character.ba}`)
+    $(".dd3-counters-ba-details").attr("data-html", formatDetails(character.ba_modifiers))
+    const ca_modifiers = filterModifiersByConditions(character.ca_modifiers, false)
+    $(".dd3-counters-ca").text(`${getSumModifiers(ca_modifiers)}`)
+    $(".dd3-counters-ca-details").attr("data-html", formatDetails(ca_modifiers))
     const ca_conditions = filterModifiersByConditions(character.ca_modifiers, true)
-    $(".dd3-counters-extras").html(`${formatModifiersConditions(ca_conditions)}`)
+    $(".dd3-counters-conditions").html(`${formatConditions(ca_conditions)}`)
 }
 
 const dispaySaves = character => {
@@ -148,23 +141,23 @@ const dispaySaves = character => {
     $(".dd3-saves-ref-details").attr("data-html", formatDetails(character.saves.ref))
     $(".dd3-saves-vol").text(`${getSumModifiers(character.saves.vol)}`)
     $(".dd3-saves-vol-details").attr("data-html", formatDetails(character.saves.vol))
-    $(".dd3-saves-conditions").html(`${formatModifiersConditions(character.saves.conditions)}`)
+    $(".dd3-saves-conditions").html(`${formatConditions(character.saves.conditions)}`)
 }
 
 const dispaySkills = character => {
-
     const flags_mappping = {
         "learned": '<i class="graduation cap icon"></i>',
         "armor_penality": '<i class="hiking icon"></i>'
     }
-    $('#skills > tbody').empty();
+    // console.log(character.skills_ranks)
+    $("#skills_ranks").text(character.skills_ranks)
     const computed_skills = character.computeSkills(skills)
+    const lines = []
     computed_skills.forEach(skill => {
         const skill_class_css = skill.class ? "left marked green" : ""
         const skill_flags = skill.flags.map(flag => {
             return flags_mappping[flag]
         })
-
         const line = `
             <tr class="${skill_class_css} ${skill.state}">
                 <td>${skill.name} ${skill_flags.join(" ")}</td>
@@ -173,15 +166,14 @@ const dispaySkills = character => {
                 </td>
                 <td>${skill.comments.join("<br>")}</td>
             </tr>`;
-        $('#skills > tbody:last-child').append(line);
+        lines.push(line)
     });
-    // console.log(character.skills_ranks)
-    $("#skills_ranks").text(character.skills_ranks)
+    $('#skills > tbody').empty().append(lines);
     $("#skills").tablesort()
 }
 
 const dispayAttacks = character => {
-    $('#attacks > tbody').empty();
+    const lines = []
     character.attacks.forEach(attack => {
         // console.log(attack);
         const hit = getSumModifiers(attack.hit_modifiers)
@@ -195,12 +187,13 @@ const dispayAttacks = character => {
                 <td>${attack.crit}</td>
                 <td>${attack.specials.join("<br>")}</td>
             </tr>`;
-        $('#attacks > tbody:last-child').append(line);
+        lines.push(line)
     });
+    $('#attacks > tbody').empty().append(lines);
 }
 
 const dispayPowers = character => {
-    $('#powers > tbody').empty();
+    const lines = []
     character.powers.forEach(power => {
         const line = `
             <tr class="">
@@ -212,13 +205,14 @@ const dispayPowers = character => {
                 <td>${power.source || "-"}</td>
                 <td>${power.level || "-"}</td>
             </tr>`;
-        $('#powers > tbody:last-child').append(line);
+        lines.push(line)
     })
+    $('#powers > tbody').empty().append(lines);
     $("#powers").tablesort()
 }
 
 const dispayEquipments = character => {
-    $('#equipments > tbody').empty();
+    const lines = []
     for (let index in character.equipments) {
         const equipment = character.equipments[index]
         // console.log(equipment);
@@ -240,8 +234,9 @@ const dispayEquipments = character => {
                     <div class="ui divided list">${formatModifers(equipment.modifiers)}</div>
                 </td>
             </tr>`;
-        $('#equipments > tbody:last-child').append(line);
+        lines.push(line);
     }
+    $('#equipments > tbody').empty().append(lines);
 }
 
 const displayCharacter = character => {
@@ -324,9 +319,6 @@ $character_choice.dropdown({
     }
 });
 
-$("#identity").click(function () {
-    $("#image").fadeToggle()
-});
 
 /**
 * Start page
@@ -337,9 +329,10 @@ let character_data
 let race
 let character
 
-$("#abilities").clone().attr("id", "left-abilities").appendTo("#left").show();
-$("#counters").clone().attr("id", "left-counters").appendTo("#left");
+$("#abilities").clone().attr("id", "left-abilities").appendTo("#left");
 $("#saves").clone().attr("id", "left-saves").appendTo("#left");
+$("#counters").clone().attr("id", "left-counters").appendTo("#left");
+$("#card").clone().attr("id", "right-card").appendTo("#right");
 
 fetch(`data/skills.json`)
     .then(response => response.json())

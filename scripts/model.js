@@ -109,7 +109,8 @@ class Character {
          * Level + BA + Powers
          */
         this.level = 0
-        this.ba = 0
+        this.ba_modifiers = []
+
         this.race.powers.forEach(power => {
             power["source"] = this.race.name
             this.powers.push(power)
@@ -117,6 +118,7 @@ class Character {
         this.classes.forEach(current_class => {
             this.level += current_class.level
             this.ba += current_class.ba
+            this.ba_modifiers.push(new Modifier(current_class.name, current_class.ba, "[class]"))
             current_class.powers.forEach(power => {
                 power["source"] = current_class.name
                 this.powers.push(power)
@@ -125,15 +127,23 @@ class Character {
         if ("level_ajustement" in this.race) {
             this.level += this.race.level_ajustement
         }
+        this.ba = getSumModifiers(this.ba_modifiers)
 
         /**
-         * AC
+         * Init + AC
          */
+        this.init = [
+            new Modifier("dex", this.__get_ability_bonus("dex"), "[ability]")
+        ]
         this.ca_modifiers = [
             new Modifier("base", 10, ""),
             new Modifier("dex", this.__get_ability_bonus("dex"), "[ability]")
         ]
+
         this.modifiers.forEach(modifier => {
+            if (modifier.category == "init") {
+                this.init.push(modifier)
+            }
             if (modifier.category == "ca") {
                 this.ca_modifiers.push(modifier)
             }
