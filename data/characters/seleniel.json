@@ -18,7 +18,66 @@
                 "ref": 5,
                 "vol": 10
             },
-            "powers": []
+            "powers": [
+                {
+                    "name": "Empathie sauvage",
+                    "level": 1,
+                    "url": "http://www.gemmaline.com/druide.htm#8"
+                },
+                {
+                    "name": "Instinct naturel",
+                    "level": 1,
+                    "modifiers": [
+                        {
+                            "category": "skill",
+                            "target": "Connaissances (Nature)",
+                            "value": 2
+                        },
+                        {
+                            "category": "skill",
+                            "target": "Survie",
+                            "value": 2
+                        }
+                    ]
+                },
+                {
+                    "name": "Déplacement facilité",
+                    "level": 2,
+                    "type": "Ext"
+                },
+                {
+                    "name": "Absence de traces",
+                    "level": 3,
+                    "type": "Ext"
+                },
+                {
+                    "name": "Résistance à l’appel de la nature",
+                    "level": 4,
+                    "modifiers": [
+                        {
+                            "category": "saves",
+                            "value": 4,
+                            "condition": "contre les pouvoirs magiques des fées"
+                        }
+                    ]
+                },
+                {
+                    "name": "Immunité contre le venin",
+                    "desc": "le druide est immunisé contre toutes les formes de poisons et de venins.",
+                    "level": 9,
+                    "type": "Ext"
+                },
+                {
+                    "name": "Mille visages",
+                    "level": 13,
+                    "type": "Sur"
+                },
+                {
+                    "name": "Éternelle jeunesse",
+                    "level": 15,
+                    "type": "Ext"
+                }
+            ]
         }
     ],
     "abilities": {
@@ -55,14 +114,13 @@
         {
             "type": "don",
             "name": "Science de l'initiative",
-            "level": 1
-        }
-    ],
-    "modifiers": [
-        {
-            "source": "Science de l'initiative",
-            "category": "init",
-            "value": 4
+            "level": 1,
+            "modifiers": [
+                {
+                    "category": "init",
+                    "value": 4
+                }
+            ]
         }
     ],
     "attacks": [

@@ -68,9 +68,47 @@ class Character {
         Object.assign(this, _data)
 
         /**
+         * Build powers
+         */
+
+        // from race
+        this.race.powers.forEach(power => {
+            power.source = this.race.name
+            this.powers.push(power)
+        });
+
+        // from classes
+        this.level = 0
+        this.ba_modifiers = []
+        this.classes.forEach(current_class => {
+            this.level += current_class.level
+            this.ba += current_class.ba
+            this.ba_modifiers.push(new Modifier(current_class.name, current_class.ba, "[class]"))
+            current_class.powers.forEach(power => {
+                power.source = current_class.name
+                this.powers.push(power)
+            })
+        });
+        if ("level_ajustement" in this.race) {
+            this.level += this.race.level_ajustement
+        }
+        this.ba = getSumModifiers(this.ba_modifiers)
+
+        /**
          * Build modifiers
          */
-        if (this.modifiers === undefined) this.modifiers = [];
+        this.modifiers = []
+
+        // Powers modfiers (character/classes/races)
+        this.powers.forEach(power => {
+            if ("modifiers" in power) {
+                power.modifiers.forEach(modifier => {
+                    modifier.source = power.name === undefined ? power.source : power.name;
+                    this.modifiers.push(modifier);
+                });
+            }
+        });
+
         // Equipments modifiers
         this.equipments.forEach(equipment => {
             if ("modifiers" in equipment) {
@@ -82,14 +120,6 @@ class Character {
                 }
             }
         });
-        // Race modifiers
-        if ("modifiers" in this.race) {
-            this.race.modifiers.forEach(modifier => {
-                (modifier.source === undefined) ? modifier.source = `[${this.race.name}]` : modifier.source = modifier.source + ` [${this.race.name}]`;
-                if (modifier.type === undefined) modifier.type = "[racial]";
-                this.modifiers.push(modifier);
-            });
-        }
 
         /**
          * Abilities
@@ -104,30 +134,6 @@ class Character {
                 this.abilities[modifier.target].modifiers.push(modifier)
             }
         });
-
-        /**
-         * Level + BA + Powers
-         */
-        this.level = 0
-        this.ba_modifiers = []
-
-        this.race.powers.forEach(power => {
-            power["source"] = this.race.name
-            this.powers.push(power)
-        })
-        this.classes.forEach(current_class => {
-            this.level += current_class.level
-            this.ba += current_class.ba
-            this.ba_modifiers.push(new Modifier(current_class.name, current_class.ba, "[class]"))
-            current_class.powers.forEach(power => {
-                power["source"] = current_class.name
-                this.powers.push(power)
-            })
-        });
-        if ("level_ajustement" in this.race) {
-            this.level += this.race.level_ajustement
-        }
-        this.ba = getSumModifiers(this.ba_modifiers)
 
         /**
          * Init + AC

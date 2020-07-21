@@ -35,7 +35,21 @@
                 },
                 {
                     "name": "Sens des pièges (+3)",
-                    "level": 9
+                    "level": 9,
+                    "modifiers": [
+                        {
+                            "category": "saves",
+                            "target": "ref",
+                            "value": 3,
+                            "condition": "pour éviter les pièges"
+                        },
+                        {
+                            "category": "ca",
+                            "type": "esquive",
+                            "value": 3,
+                            "condition": "contre les attaques déclenchées par des pièges"
+                        }
+                    ]
                 },
                 {
                     "name": "Pouvoir spécial",
@@ -44,20 +58,6 @@
                 {
                     "name": "Attaque sournoise (+6d6)",
                     "level": 11
-                }
-            ],
-            "modifiers": [
-                {
-                    "category": "saves",
-                    "target": "ref",
-                    "condition": "effectués pour éviter les pièges",
-                    "value": 3
-                },
-                {
-                    "category": "ca",
-                    "condition": "contre les attaques déclenchées par des pièges",
-                    "value": 3,
-                    "type": "esquive"
                 }
             ]
         },
@@ -119,22 +119,6 @@
             "type": "don",
             "name": "Science du combat à deux armes",
             "level": 9
-        }
-    ],
-    "modifiers": [
-        {
-            "source": "Sens des pièges",
-            "category": "saves",
-            "target": "ref",
-            "value": 3,
-            "condition": "pour éviter les pièges"
-        },
-        {
-            "source": "Sens des pièges",
-            "category": "ca",
-            "type": "esquive",
-            "value": 3,
-            "condition": "contre les attaques déclenchées par des pièges"
         }
     ],
     "attacks": [

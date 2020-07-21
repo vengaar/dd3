@@ -4,41 +4,46 @@
     "level_ajustement": 0,
     "size": "M",
     "speed": "9",
-    "modifiers": [
-        {
-            "category": "skill",
-            "target": "Diplomatie",
-            "value": 2
-        },
-        {
-            "category": "skill",
-            "target": "Psycologie",
-            "value": 2
-        },
-        {
-            "category": "skill",
-            "target": "Fouille",
-            "value": 2
-        },
-        {
-            "category": "saves",
-            "value": 2,
-            "condition": "sort ou effet d'enchantement"
-        },
-        {
-            "category": "skill",
-            "target": "Fouille",
-            "value": 1
-        },
-        {
-            "category": "skill",
-            "target": "Détection",
-            "value": 1
-        }
-    ],
     "powers": [
         {
-            "desc": "Immunity to magic sleep effects"
+            "Description": "Bonus racial dans plusieurs compétences",
+            "modifiers": [
+                {
+                    "category": "skill",
+                    "target": "Diplomatie",
+                    "value": 1
+                },
+                {
+                    "category": "skill",
+                    "target": "Psycologie",
+                    "value": 1
+                },
+                {
+                    "category": "skill",
+                    "target": "Fouille",
+                    "value": 2
+                },
+                {
+                    "category": "skill",
+                    "target": "Perception auditive",
+                    "value": 2
+                },
+                {
+                    "category": "skill",
+                    "target": "Détection",
+                    "value": 2
+                }
+            ]
+        },
+        {
+            "desc": "Immunity to magic sleep effects",
+            "modifiers": [
+                {
+                    "category": "saves",
+                    "value": 2,
+                    "condition": "sort ou effet d'enchantement"
+                }
+            ]
         },
         {
             "desc": "Krynnish elves have low-light vision and can see twice as far as a human in starlight, moonlight, and similar conditions of poor illumination. They retain the ability to distinguish color and detail under these circumstances."

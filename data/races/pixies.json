@@ -4,69 +4,76 @@
     "level_ajustement": 4,
     "size": "P",
     "speed": "9 (vol 18)",
-    "modifiers": [
-        {
-            "category": "skill",
-            "target": "Acrobaties",
-            "value": 2
-        },
-        {
-            "category": "skill",
-            "target": "Fouille",
-            "value": 2
-        },
-        {
-            "category": "skill",
-            "target": "Perception auditive",
-            "value": 2
-        },
-        {
-            "category": "skill",
-            "target": "Discrétion",
-            "type": "taille",
-            "source": "Taille P",
-            "value": 4
-        },
-        {
-            "category": "ca",
-            "type": "armure natutelle",
-            "value": 1
-        },
-        {
-            "category": "ca",
-            "source": "don esquive",
-            "type": "esquive",
-            "value": 1,
-            "condition": "Sur un seul adversaire"
-        },
-        {
-            "category": "ca",
-            "source": "Taille P",
-            "type": "taille",
-            "value": 1
-        },
-        {
-            "category": "hit",
-            "source": "Taille P",
-            "type": "taille",
-            "value": 1
-        },
-        {
-            "category": "hit",
-            "type": "invisible",
-            "value": 2
-        }
-    ],
     "powers": [
         {
             "desc": "La vitesse de base d'un Pixie au sol est de 6 mètres et sa vitesse de vol est de 18 mètres (bonne)."
+        },
+        {
+            "desc": "Armure ameliorée",
+            "modifiers": [
+                {
+                    "category": "ca",
+                    "type": "armure natutelle",
+                    "value": 1
+                }
+            ]
+        },
+        {
+            "name": "Bonus de compétences",
+            "modifiers": [
+                {
+                    "category": "skill",
+                    "target": "Acrobaties",
+                    "value": 2
+                },
+                {
+                    "category": "skill",
+                    "target": "Fouille",
+                    "value": 2
+                },
+                {
+                    "category": "skill",
+                    "target": "Perception auditive",
+                    "value": 2
+                }
+            ]
+        },
+        {
+            "name": "Taille P",
+            "modifiers": [
+                {
+                    "category": "skill",
+                    "target": "Discrétion",
+                    "type": "taille",
+                    "source": "Taille P",
+                    "value": 4
+                },
+                {
+                    "category": "ca",
+                    "type": "taille",
+                    "value": 1
+                },
+                {
+                    "category": "hit",
+                    "type": "taille",
+                    "value": 1
+                }
+            ]
         },
         {
             "name": "Vision nocture"
         },
         {
             "name": "Esquive",
-            "type": "don"
+            "type": "don",
+            "modifiers": [
+                {
+                    "category": "ca",
+                    "type": "esquive",
+                    "value": 1,
+                    "condition": "Sur un seul adversaire"
+                }
+            ]
         },
         {
             "name": "Finesse",
@@ -81,7 +88,14 @@
         },
         {
             "name": "Invisibilité naturelle",
-            "type": "Sur"
+            "type": "Sur",
+            "modifiers": [
+                {
+                    "category": "hit",
+                    "type": "invisible",
+                    "value": 2
+                }
+            ]
         },
         {
             "name": "Résistance aux sorts égale à 15 + niveaux de classe."
