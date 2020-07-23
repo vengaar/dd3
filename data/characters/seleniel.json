@@ -4,7 +4,7 @@
     "race": "qualinesti",
     "gender": "mars",
     "alignment": "NB",
-    "size": "1,80 cm",
+    "height": "1,80 cm",
     "weight": "70 Kg",
     "age": "143 ans",
     "hit_points": 112,
@@ -121,6 +121,51 @@
                     "value": 4
                 }
             ]
+        },
+        {
+            "type": "don",
+            "name": "Pistage",
+            "level": 3
+        },
+        {
+            "type": "don",
+            "name": "Prestige",
+            "level": 6
+        },
+        {
+            "type": "don",
+            "name": "Attaque en puisssance",
+            "level": 9
+        },
+        {
+            "type": "don",
+            "name": "Création d’objets merveilleux",
+            "level": 12
+        },
+        {
+            "type": "don",
+            "name": "Arme naturelle supérieure",
+            "level": 15,
+            "url": "http://www.gemmaline.com/dons/dons-arme-naturelle-superieure-110.htm"
+        },
+        {
+            "type": "don",
+            "name": "Création de cercle druidique",
+            "desc": "Bonus au niveau du lanceur de sort pour les druides du même allignement égale au niveau du cercle",
+            "source": "Cadeau du MJ"
+        },
+        {
+            "type": "don",
+            "name": "Résistance à la peur des dragon améliorée (+8)",
+            "source": "Cadeau du MJ",
+            "modifiers": [
+                {
+                    "category": "save",
+                    "target": "vol",
+                    "value": 8,
+                    "condition": "contre la peur des dragon"
+                }
+            ]
         }
     ],
     "attacks": [
@@ -215,6 +260,82 @@
             "specials": []
         }
     ],
+    "forms": [
+        {
+            "id": "Furie élémentaire",
+            "image": "https://artfiles.alphacoders.com/339/33959.jpg",
+            "size": "TG",
+            "attacks": [
+                {
+                    "name": "Furie élémentaire en puissance (+5)",
+                    "nb_attack": 2,
+                    "hit": {
+                        "ability": "for",
+                        "modifiers": [
+                            {
+                                "type": "alteration",
+                                "value": 4
+                            },
+                            {
+                                "source": "Attaque en puissance",
+                                "type": "?",
+                                "value": -5
+                            }
+                        ]
+                    },
+                    "damage": {
+                        "ability": "for",
+                        "base": "3d6",
+                        "modifiers": [
+                            {
+                                "type": "alteration",
+                                "value": 4
+                            },
+                            {
+                                "source": "Attaque en puissance",
+                                "type": "?",
+                                "value": 10
+                            }
+                        ]
+                    },
+                    "crit": "20/x2",
+                    "specials": [
+                        "Immunité de la forme",
+                        "Taille TG"
+                    ]
+                }
+            ],
+            "equipments": [],
+            "modifiers": [
+                {
+                    "category": "ability",
+                    "target": "for",
+                    "type": "altération",
+                    "value": 16
+                },
+                {
+                    "category": "ca",
+                    "type": "armure naturelle",
+                    "value": 16
+                },
+                {
+                    "category": "saves",
+                    "type": "altération",
+                    "value": 4
+                },
+                {
+                    "category": "ca",
+                    "type": "taille",
+                    "value": -2
+                },
+                {
+                    "category": "hit",
+                    "type": "taille",
+                    "value": -2
+                }
+            ]
+        }
+    ],
     "equipments": [
         {
             "name": "Bottes elfique",
@@ -247,7 +368,7 @@
                 {
                     "category": "ability",
                     "target": "sag",
-                    "type": "alteration",
+                    "type": "altération",
                     "value": 4
                 }
             ]

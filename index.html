@@ -39,16 +39,23 @@
 
             <!-- LEFT RAIL -->
             <div class="ui left dividing rail">
-                <div id="left" class="ui sticky">
-                    <div class="ui segment hidden">RAIL LEFT</div>
+                <div class="ui grid">
+                    <div class="sixteen wide column widescreen only _olive">
+                        <div id="left" class="ui sticky">
+                            <div class="ui segment hidden">RAIL LEFT</div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
             <!-- RIGHT RAIL -->
             <div class="ui right dividing rail">
-                <div id="right" class="ui sticky">
-                    <div class="ui segment hidden">RAIL RIGHT</div>
-                    <!-- IDENDITY CARD -->
+                <div class="ui grid">
+                    <div class="sixteen wide column widescreen only _olive">
+                        <div id="right" class="ui sticky">
+                            <div class="ui segment hidden">RAIL RIGHT</div>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -56,8 +63,8 @@
 
             <!-- IDENDITY -->
             <a id="anchor_identity"></a>
-            <div class="ui stackable double column grid">
-                <div class="four wide column _olive">
+            <div class="ui stackable column grid">
+                <div class="sixteen wide mobile six wide tablet four wide computer column _grey">
 
                     <!-- IDENDITY CARD -->
                     <div id="card" class="ui card">
@@ -80,22 +87,27 @@
                         </div>
                         <div class="extra content">
                             <i class="walking icon"></i>
-                            <span class="dd3-id-race-size right floated">${race.size}</span>
-                            <span class="dd3-id-race-speed">${race.speed}</span>
+                            <span class="dd3-id-race-size right floated">${size}</span>
+                            <span class="dd3-id-race-speed">${speed}</span>
                         </div>
                         <div class="extra content">
-                            <span class="dd3-id-size">${size}</span> /
+                            <span class="dd3-id-height">${height}</span> /
                             <span class="dd3-id-weight">${weight}</span> /
                             <span class="dd3-id-age">${age}</span>
                         </div>
                         <div class="extra content">
                             <i class="heart icon"></i>
                             <span class="dd3-id-hit_points">${hit-points}</span>
+                            <div class="dd3-id-forms ui dropdown item right floated">
+                                <i class="random icon"></i>
+                                Formes <i class="dropdown icon"></i>
+                                <div class="menu"></div>
+                            </div>
                         </div>
                     </div>
 
                 </div>
-                <div class="six wide column _teal">
+                <div class="sixteen wide mobile ten wide tablet six wide computer column _teal">
 
                     <!-- ABILITIES -->
                     <table id="abilities" class="dd3-abilities ui very basic celled center aligned table">
@@ -112,7 +124,7 @@
                     </table>
 
                 </div>
-                <div class="six wide column _brown">
+                <div class="sixteen wide mobile sixteen wide tablet six wide computer column _brown">
 
                     <!-- SAVES -->
                     <a id="anchor_saves"></a>

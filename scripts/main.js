@@ -1,4 +1,6 @@
 
+
+'use strict';
 "use strict";
 
 /**
@@ -88,8 +90,8 @@ const formatModifers = modifiers => {
  * ALL DISPLAY METHODS
  */
 
-const dispayIdentity = character => {
-    const attributes = ["name", "level", "alignment", "race.name", "race.size", "race.speed", "size", "weight", "age", "ba", "hit_points"]
+const displayIdentity = character => {
+    const attributes = ["name", "level", "alignment", "race.name", "race.size", "race.speed", "height", "weight", "age", "ba", "hit_points"]
     attributes.forEach(attribute => {
         // console.log(attribute)
         $(`.dd3-id-${attribute.replace(".", "-")}`).text(search(attribute, character))
@@ -103,17 +105,53 @@ const dispayIdentity = character => {
     const genders = ["neuter", "mars", "venus"]
     genders.forEach(gender => { $gender.removeClass(gender) })
     $gender.addClass(character.gender);
+
+
+    const $character_forms = $('.dd3-id-forms')
+    // console.log($character_forms)
+    if ("forms" in character) {
+        const values = [{ "name": character.race.name, "value": -1 }]
+        for (let index in character.forms) {
+            values.push({ "name": character.forms[index].id, "value": index });
+        }
+        // console.log(values)
+        $character_forms.dropdown({
+            "values": values,
+            onChange: function (value, text, $selectedItem) {
+                // console.log("Select form =>", value, text)
+                // $dimmer.dimmer('show');
+                if (text == character.race.name) {
+                    character.restore()
+                    displayCharacter(character)
+                } else {
+                    const form = character.forms[value]
+                    character.transform(form)
+                    displayCharacter(character)
+                }
+                // $dimmer.dimmer('hide');
+            }
+        });
+        $character_forms.show()
+    } else {
+        $character_forms.hide()
+    }
 }
 
-const dispayAbilities = character => {
+const displayAbilities = character => {
     const lines = []
-    Object.values(character.abilities).forEach(ability => {
+    Object.values(character.computedAbilities).forEach(ability => {
         // console.log(ability);
+        let ability_css = ""
+        if (ability.total > ability.base) {
+            ability_css = "green"
+        } else if (ability.total < ability.base) {
+            ability_css = "red"
+        }
         const line = `
             <tr>
                 <td class="capitalize">${ability.name}</td>
                 <td><b>${ability.base}</b></td>
-                <td><b>${ability.total}</b></td>
+                <td class="${ability_css}"><b>${ability.total}</b></td>
                 <td><span class="ui circular label">${ability.bonus}</span></td>
             </tr>`;
         lines.push(line)
@@ -121,7 +159,7 @@ const dispayAbilities = character => {
     $('.dd3-abilities > tbody').empty().append(lines);;
 }
 
-const dispayCounters = character => {
+const displayCounters = character => {
     const init = getSumModifiers(character.init)
     $(".dd3-counters-init").text(`${formatBonus(init)}`)
     $(".dd3-counters-init-details").attr("data-html", formatDetails(character.init))
@@ -134,7 +172,7 @@ const dispayCounters = character => {
     $(".dd3-counters-conditions").html(`${formatConditions(ca_conditions)}`)
 }
 
-const dispaySaves = character => {
+const displaySaves = character => {
     $(".dd3-saves-vig").text(`${getSumModifiers(character.saves.vig)}`)
     $(".dd3-saves-vig-details").attr("data-html", formatDetails(character.saves.vig))
     $(".dd3-saves-ref").text(`${getSumModifiers(character.saves.ref)}`)
@@ -144,16 +182,15 @@ const dispaySaves = character => {
     $(".dd3-saves-conditions").html(`${formatConditions(character.saves.conditions)}`)
 }
 
-const dispaySkills = character => {
+const displaySkills = character => {
     const flags_mappping = {
         "learned": '<i class="graduation cap icon"></i>',
         "armor_penality": '<i class="hiking icon"></i>'
     }
     // console.log(character.skills_ranks)
     $("#skills_ranks").text(character.skills_ranks)
-    const computed_skills = character.computeSkills(skills)
     const lines = []
-    computed_skills.forEach(skill => {
+    character.computedSkills.forEach(skill => {
         const skill_class_css = skill.class ? "left marked green" : ""
         const skill_flags = skill.flags.map(flag => {
             return flags_mappping[flag]
@@ -172,9 +209,9 @@ const dispaySkills = character => {
     $("#skills").tablesort()
 }
 
-const dispayAttacks = character => {
+const displayAttacks = character => {
     const lines = []
-    character.attacks.forEach(attack => {
+    character.computedAttacks.forEach(attack => {
         // console.log(attack);
         const hit = getSumModifiers(attack.hit_modifiers)
         const damage_modifier = getSumModifiers(attack.damage_modifiers)
@@ -192,9 +229,9 @@ const dispayAttacks = character => {
     $('#attacks > tbody').empty().append(lines);
 }
 
-const dispayPowers = character => {
+const displayPowers = character => {
     const lines = []
-    character.powers.forEach(power => {
+    character.computedPowers.forEach(power => {
         const line = `
             <tr class="">
                 <td>${power.type || "-"}</td>
@@ -211,7 +248,7 @@ const dispayPowers = character => {
     $("#powers").tablesort()
 }
 
-const dispayEquipments = character => {
+const displayEquipments = character => {
     const lines = []
     for (let index in character.equipments) {
         const equipment = character.equipments[index]
@@ -241,14 +278,14 @@ const dispayEquipments = character => {
 
 const displayCharacter = character => {
     console.log(`Display ${character.name}`, character)
-    dispayIdentity(character)
-    dispayCounters(character)
-    dispaySaves(character)
-    dispayAbilities(character)
-    dispaySkills(character)
-    dispayAttacks(character)
-    dispayPowers(character)
-    dispayEquipments(character)
+    displayIdentity(character)
+    displayCounters(character)
+    displaySaves(character)
+    displayAbilities(character)
+    displaySkills(character)
+    displayAttacks(character)
+    displayPowers(character)
+    displayEquipments(character)
 
     $('.details').popup({
         position: 'right center',
@@ -261,13 +298,13 @@ const displayCharacter = character => {
 
     $('.ui.checkbox').checkbox({
         onChange: function () {
-            $dimmer.dimmer('show');
-            console.log(character_data.equipments[this.name])
-            character_data.equipments[this.name].used = this.checked
-            // console.log(character.data.equipments[this.name])
-            character = new Character(character_data)
+            // $dimmer.dimmer('show');
+            const equipment = character.equipments[this.name]
+            // console.log(equipment)
+            equipment.used = this.checked
+            character.compute()
             displayCharacter(character)
-            $dimmer.dimmer('hide');
+            // $dimmer.dimmer('hide');
         }
     });
 }
@@ -276,12 +313,13 @@ const displayCharacter = character => {
  * Fomantic
  */
 
+
 const $dimmer = $("body").dimmer({
     transition: 'fade',
     displayLoader: true,
     loaderVariation: 'inverted',
     loaderText: 'Loading data'
-}).dimmer('show');
+}) // .dimmer('show');
 
 const sticky_offset = 65
 $('.ui.sticky').sticky({
@@ -297,23 +335,23 @@ const $character_choice = $('#character_choice')
 $character_choice.dropdown({
     onChange: function (value, text, $selectedItem) {
         // console.log(value)
-        $dimmer.dimmer('show');
+        // $dimmer.dimmer('show');
         fetch(`data/characters/${value}.json`, { cache: "reload" })
             .then(response => response.json())
             .then(json => {
-                console.log(`data character loaded`);
+                // console.log(`data character loaded`);
                 character_data = json
                 document.title = `DD3 - ${character_data.name}`;
                 fetch(`data/races/${character_data.race}.json`, { cache: "reload" })
                     .then(response => response.json())
                     .then(json => {
-                        console.log(`race loaded`);
+                        // console.log(`race loaded`);
                         race = json
-                        console.log(race);
+                        // console.log(race);
                         character_data.race = race
-                        character = new Character(character_data)
+                        character = new Character(character_data, skills)
                         displayCharacter(character)
-                        $dimmer.dimmer('hide');
+                        // $dimmer.dimmer('hide');
                     });
             });
     }
@@ -338,9 +376,10 @@ fetch(`data/skills.json`)
     .then(response => response.json())
     .then(json => {
         skills = json
+        skills.forEach(Object.freeze);
         console.log(`${skills.length} skills loaded => enable page`);
-        $dimmer.dimmer('hide');
-        // $character_choice.dropdown('set selected', 'seleniel')
+        // $dimmer.dimmer('hide');
+        $character_choice.dropdown('set selected', 'seleniel')
     });
 
 console.log("main - ok");

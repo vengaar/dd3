@@ -59,22 +59,26 @@ class Ability {
 
 class Character {
 
-    constructor(data) {
-
+    constructor(data, skills_definition) {
         console.log("*** Create new character ***")
-        // Clone original data before assign for updates
+        // Clone original data to not update it
         const _data = JSON.parse(JSON.stringify(data));
+        Object.assign(this, _data);
+        this.skills_definition = skills_definition;
+        this.compute();
+    }
 
-        Object.assign(this, _data)
+    compute = (modifiers = []) => {
 
         /**
          * Build powers
          */
+        this.computedPowers = [].concat(this.powers)
 
         // from race
         this.race.powers.forEach(power => {
             power.source = this.race.name
-            this.powers.push(power)
+            this.computedPowers.push(power)
         });
 
         // from classes
@@ -86,9 +90,11 @@ class Character {
             this.ba_modifiers.push(new Modifier(current_class.name, current_class.ba, "[class]"))
             current_class.powers.forEach(power => {
                 power.source = current_class.name
-                this.powers.push(power)
+                this.computedPowers.push(power)
             })
         });
+        // console.log("computedPowers =", this.computedPowers)
+
         if ("level_ajustement" in this.race) {
             this.level += this.race.level_ajustement
         }
@@ -97,10 +103,12 @@ class Character {
         /**
          * Build modifiers
          */
-        this.modifiers = []
+        // console.log("=> modifiers <=")
+        this.modifiers = modifiers
+        // console.log("this.modifiers =", this.modifiers)
 
         // Powers modfiers (character/classes/races)
-        this.powers.forEach(power => {
+        this.computedPowers.forEach(power => {
             if ("modifiers" in power) {
                 power.modifiers.forEach(modifier => {
                     modifier.source = power.name === undefined ? power.source : power.name;
@@ -110,6 +118,7 @@ class Character {
         });
 
         // Equipments modifiers
+        // console.log(this.equipments)
         this.equipments.forEach(equipment => {
             if ("modifiers" in equipment) {
                 if (equipment.used) {
@@ -120,18 +129,19 @@ class Character {
                 }
             }
         });
+        // console.log("modifiers =", this.modifiers)
 
         /**
          * Abilities
          */
-        this.abilities = {}
-        for (let key in data.abilities) {
-            this.abilities[key] = new Ability(key, data.abilities[key])
+        this.computedAbilities = {}
+        for (let key in this.abilities) {
+            this.computedAbilities[key] = new Ability(key, this.abilities[key])
         }
 
         this.modifiers.forEach(modifier => {
             if (modifier.category == "ability") {
-                this.abilities[modifier.target].modifiers.push(modifier)
+                this.computedAbilities[modifier.target].modifiers.push(modifier)
             }
         });
 
@@ -158,12 +168,15 @@ class Character {
         /**
          * SAVES
          */
+        // console.log("=> saves <=")
         this.saves = {
             "vig": [],
             "ref": [],
             "vol": [],
             "conditions": []
         }
+        // console.log("saves =", this.saves)
+
         // classes
         this.classes.forEach(current_class => {
             this.saves.vig.push(new Modifier(current_class.name, current_class.saves.vig, "[class]"))
@@ -191,14 +204,12 @@ class Character {
                 }
             }
         });
-
-        this.attacks = this.__computeAttacks()
-
+        // console.log("saves =", this.saves)
     }
 
-    __computeAttacks() {
+    get computedAttacks() {
 
-        let attacks = []
+        const attacks = []
 
         // Global hit modifiers
         const global_hit_modifiers = [
@@ -210,6 +221,7 @@ class Character {
         });
 
         this.attacks.forEach(attack => {
+            // console.log("attack = ", attack)
             const attack_hit_modifiers = [
                 new Modifier(attack.hit.ability, this.__get_ability_bonus(attack.hit.ability), attack.hit.ability, "[ability]"),
             ]
@@ -247,15 +259,11 @@ class Character {
         return attacks
     }
 
-    __get_ability_bonus(ability_name) {
-        return this.abilities[ability_name].bonus
-    }
+    get computedSkills() {
 
-    computeSkills = (skills) => {
-
-        let computed_skills = {}
+        const skills = {}
         this.skills_ranks = 0;
-        skills.forEach(skill => {
+        this.skills_definition.forEach(skill => {
             // console.log(skill);
             const rank = skill.name in this.skills ? this.skills[skill.name] : 0
             // console.log(`rank=${rank}`)
@@ -312,7 +320,7 @@ class Character {
                     }
                 });
             }
-            const character_skill = {
+            skills[skill.name] = {
                 "name": skill.name,
                 "rank": rank,
                 "enable": enable,
@@ -321,23 +329,46 @@ class Character {
                 "modifiers": modifiers,
                 "comments": comments,
             }
-            computed_skills[skill.name] = character_skill
         });
 
         // Add character bonus
         this.modifiers.forEach(modifier => {
             // console.log(modifier)
             if (modifier.category == "skill") {
-                computed_skills[modifier.target].total += modifier.value
-                if (computed_skills[modifier.target].enable) {
-                    computed_skills[modifier.target].modifiers.push(modifier)
+                skills[modifier.target].total += modifier.value
+                if (skills[modifier.target].enable) {
+                    skills[modifier.target].modifiers.push(modifier)
                 } else {
                     const comment = `${modifier.source} modificateur (${modifier.value}/${modifier.type}) appliqué`
-                    computed_skills[modifier.target].comments.push(comment)
+                    skills[modifier.target].comments.push(comment)
                 }
             }
         });
-        return Object.values(computed_skills)
+        return Object.values(skills)
+    }
+
+    __get_ability_bonus = (ability_name) => {
+        return this.computedAbilities[ability_name].bonus
+    }
+
+    restore = () => {
+        console.log("restore")
+        Object.assign(this, this.backup)
+        console.log(this)
+        this.compute()
+    }
+
+    transform = (form) => {
+        console.log("transform =>", form)
+        this.backup = JSON.parse(JSON.stringify(this));
+        for (let key in form) {
+            if (key in this) {
+                this[key] = form[key]
+            }
+        }
+        form.modifiers.forEach(modifier => { modifier.source = form.id })
+        this.compute(form.modifiers)
+        console.log(this.backup)
     }
 
 }
