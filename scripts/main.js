@@ -154,6 +154,7 @@ const displayIdentity = character => {
             "values": values,
             onChange: function (value, text, $selectedItem) {
                 // console.log("Select form =>", value, text)
+                // console.log("current_form =", character.current_form)
                 // $dimmer.dimmer('show');
                 if (text == character.race.name) {
                     character.restore()
@@ -289,27 +290,44 @@ const displayEquipments = character => {
     for (let index in character.equipments) {
         const equipment = character.equipments[index]
         // console.log(equipment);
-        const equipment_used = equipment.used ? "checked" : ""
-        const equipment_disabled = equipment.used ? "" : "disabled"
+        const equipment_used = (equipment.used === undefined || equipment.used) ? "checked" : ""
         // console.log(equipment_used)
+        const location = equipment.location || "hiking";
+        let abilities = ""
+        if ("abilities" in equipment) {
+            abilities = `
+                <div class="dd3-equipement-abilities">
+                    <div class="ui bulleted list">
+                        ${equipment.abilities.map(ability => `<div class="item">${ability}</div>`).join("")}
+                    </div>
+                </div>`
+        }
         const line = `
-            <tr class="">
-                <td class="collapsing">
+            <tr class="${location}">
+                <td class="collapsing center aligned">
                     <div class="ui fitted _slider ${equipment_used} checkbox">
-                        <input  type="checkbox"
-                                name="${index}"
-                                tabindex="0" ${equipment_used} class="hidden">
+                        <input type="checkbox" name="${index}" tabindex="0" ${equipment_used} class="hidden">
                         <label></label>
                     </div>
                 </td>
-                <td class="${equipment_disabled}">${equipment.name}</td>
-                <td class="${equipment_disabled}">
-                    <div class="ui divided list">${formatModifers(equipment.modifiers)}</div>
+                <td class="collapsing center aligned" data-sort-value="${location}"><i class="${location} icon"></i></td>
+                <td class="">
+                    <div class="dd3-equipement-name">
+                        <div class="dd3-name">${equipment.name}</div>
+                            ${abilities}
+                        </div>
+                    </div>
+                </td>
+                <td class="">
+                    <div class="ui divided list">${formatModifers(equipment.modifiers || [])}</div>
                 </td>
             </tr>`;
         lines.push(line);
     }
     $('#equipments > tbody').empty().append(lines);
+    $("#equipments").tablesort()
+    $("#location-home").click(() => { $("#equipments > tbody > tr.home").fadeToggle() });
+    $("#location-self").click(() => { $("#equipments > tbody > tr.hiking").fadeToggle() });
 }
 
 const displayCharacter = character => {

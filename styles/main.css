@@ -22,6 +22,10 @@
     display: none;
 }
 
+.no-sort {
+    cursor: unset !important;
+}
+
 /* PAGE */
 
 body, html {
@@ -51,4 +55,34 @@ body, html {
 }
 .dd3-power-desc {
     font-style: italic;
+}
+
+/* EQUIPMENT */
+
+.dd3-equipement-name {
+    cursor: pointer;
+}
+
+.dd3-equipement-name:hover > .dd3-equipement-abilities {
+    visibility: visible;
+    opacity: 1;
+    height: inherit;
+    padding: 1rem;
+    margin-top: 1rem;
+    border-radius: 4px;
+    border-color: rgb(212, 212, 213);
+    border-style: solid;
+    border-width: 1px;
+    transition: 1s;
+}
+
+.dd3-equipement-abilities {
+    visibility: hidden;
+    opacity: 0;
+    height: 0px;
+    transition: height 1s;
+}
+
+.dd3-name {
+    font-weight: bold;
 }

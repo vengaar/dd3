@@ -7,6 +7,7 @@
     "height": "1,80 cm",
     "weight": "70 Kg",
     "age": "143 ans",
+    "xp": 1700,
     "hit_points": 112,
     "classes": [
         {
@@ -130,6 +131,7 @@
         {
             "type": "don",
             "name": "Prestige",
+            "description": "suivants -> 23, cohorte (ronce) -> 22",
             "level": 6
         },
         {
@@ -350,7 +352,6 @@
     "equipments": [
         {
             "name": "Bottes elfique",
-            "used": true,
             "modifiers": [
                 {
                     "category": "skill",
@@ -374,7 +375,6 @@
         },
         {
             "name": "Perle de sagesse +4",
-            "used": true,
             "modifiers": [
                 {
                     "category": "ability",
@@ -386,7 +386,6 @@
         },
         {
             "name": "Bacelet d'armure +4",
-            "used": true,
             "modifiers": [
                 {
                     "category": "ca",
@@ -397,7 +396,6 @@
         },
         {
             "name": "Cape de resitance +4",
-            "used": true,
             "modifiers": [
                 {
                     "category": "saves",
@@ -408,11 +406,110 @@
         },
         {
             "name": "Anneau +2",
-            "used": true,
             "modifiers": [
                 {
                     "category": "ca",
                     "type": "parade",
+                    "value": 2
+                }
+            ]
+        },
+        {
+            "name": "Armure de cuir de Theros",
+            "used": false,
+            "modifiers": [
+                {
+                    "category": "ca",
+                    "type": "armure",
+                    "value": 2
+                }
+            ]
+        },
+        {
+            "name": "Arc long composite +1 de force 14",
+            "used": false,
+            "modifiers": [
+                {
+                    "target": "hit",
+                    "type": "alteration",
+                    "value": 1
+                },
+                {
+                    "target": "damage",
+                    "type": "alteration",
+                    "value": 1
+                }
+            ]
+        },
+        {
+            "name": "Harmois de chevalier Solamnique de mâitre",
+            "location": "home",
+            "used": false,
+            "modifiers": [
+                {
+                    "category": "ca",
+                    "type": "armure",
+                    "value": 8
+                }
+            ]
+        },
+        {
+            "name": "Arc long composite de cérémonie de maître et son carquois",
+            "location": "home",
+            "used": false
+        },
+        {
+            "name": "Une fléche en os de Qualinesti",
+            "location": "home",
+            "used": false
+        },
+        {
+            "name": "5 tenues de cérémonie",
+            "location": "home",
+            "used": false
+        },
+        {
+            "name": "Sceptre de Cirulon",
+            "used": false,
+            "abilities": [
+                "detection du mal (à volontée)",
+                "detection magie (à volontée)",
+                "purification nouriture/eau 1/j",
+                "neutralisation du poison 1/j",
+                "soin modéré (2d8 + 10) 1/j"
+            ]
+        },
+        {
+            "name": "Gloge de Cirulon",
+            "used": false,
+            "abilities": [
+                "lumiere (à volontée)",
+                "soin modéré (2d8 + 10) 1/j"
+            ]
+        },
+        {
+            "name": "baguette de lumiere du jour (7 charges)",
+            "used": false
+        },
+        {
+            "name": "Bâton de la forêt profonde (50 charges)",
+            "abilities": [
+                "Charme-animal (1 charge)",
+                "Peau d’écorce (2 charges)",
+                "Convocation d’alliés naturels 6 (3 charges)",
+                "Mur d’épines (3 charges)",
+                "Animation des plantes (4 charges)",
+                "Passage sans trace, à volonté"
+            ],
+            "modifiers": [
+                {
+                    "target": "hit",
+                    "type": "alteration",
+                    "value": 2
+                },
+                {
+                    "target": "damage",
+                    "type": "alteration",
                     "value": 2
                 }
             ]

@@ -85,6 +85,7 @@ class Character {
         const _data = JSON.parse(JSON.stringify(data));
         Object.assign(this, _data);
         this.skills_definition = skills_definition;
+        this.current_form = this.race.name
         this.compute();
     }
 
@@ -141,6 +142,7 @@ class Character {
         // console.log(this.equipments)
         this.equipments.forEach(equipment => {
             if ("modifiers" in equipment) {
+                if (equipment.used === undefined) equipment.used = true;
                 if (equipment.used) {
                     equipment.modifiers.forEach(modifier => {
                         modifier.source = equipment.name
@@ -176,14 +178,27 @@ class Character {
             new Modifier("dex", this.__get_ability_bonus("dex"), "[ability]")
         ]
 
+        let best_armure
         this.modifiers.forEach(modifier => {
             if (modifier.category == "init") {
                 this.init.push(modifier)
             }
             if (modifier.category == "ca") {
-                this.ca_modifiers.push(modifier)
+                if (modifier.type == "armure") {
+                    if (best_armure === undefined) {
+                        best_armure = modifier
+                    } else {
+                        if (modifier.value > best_armure.value) best_armure = modifier;
+                    }
+                } else {
+                    this.ca_modifiers.push(modifier)
+                }
             }
         });
+        if (best_armure !== undefined) {
+            this.ca_modifiers.push(best_armure)
+        }
+        // console.log("ca_modifiers =", this.ca_modifiers)
 
         /**
          * SAVES
@@ -414,15 +429,21 @@ class Character {
 
     transform = (form) => {
         // console.log("transform =>", form)
-        this.backup = JSON.parse(JSON.stringify(this));
-        for (let key in form) {
-            if (key in this) {
-                this[key] = form[key]
+        // console.log("transform =>", this.current_form, form.id)
+        if (form.id !== this.current_form) {
+            this.backup = JSON.parse(JSON.stringify(this));
+            for (let key in form) {
+                if (key in this) {
+                    this[key] = form[key]
+                }
             }
+            form.modifiers.forEach(modifier => { modifier.source = form.id })
+            this.current_form = form.id
+            this.compute(form.modifiers)
+            // console.log(this.backup)
+        } else {
+            // console.log(`Already in ${form.id}`)
         }
-        form.modifiers.forEach(modifier => { modifier.source = form.id })
-        this.compute(form.modifiers)
-        // console.log(this.backup)
     }
 
 }
