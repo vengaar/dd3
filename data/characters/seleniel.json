@@ -1,7 +1,7 @@
 {
     "name": "Seleniel",
     "image": "https://i.pinimg.com/564x/5a/55/c5/5a55c5e070c6805a92ae67d5097a62bd.jpg",
-    "race": "qualinesti",
+    "$race": "data/races/qualinesti.json",
     "gender": "mars",
     "alignment": "NB",
     "height": "1,80 cm",
@@ -164,6 +164,17 @@
                     "target": "vol",
                     "value": 8,
                     "condition": "contre la peur des dragon"
+                }
+            ]
+        },
+        {
+            "type": "don",
+            "name": "Résistance à la peur des dragon améliorée (+8)",
+            "source": "Cadeau du MJ",
+            "modifiers": [
+                {
+                    "target": "speed",
+                    "value": 3
                 }
             ]
         }

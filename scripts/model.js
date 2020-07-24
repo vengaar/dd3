@@ -27,9 +27,29 @@ const filterModifiersByConditions = (modifiers, has_condition) => {
     return modifiers.filter(modfier => ("condition" in modfier) === has_condition)
 }
 
+const filterModifiers = (modifiers, filters) => {
+    const _modifiers = []
+    modifiers.forEach(modifier => {
+        let filters_match = false
+        for (let criteria in filters) {
+            if (modifier[criteria] == filters[criteria]) {
+                filters_match = true
+            } else {
+                filters_match = false
+                break
+            }
+        }
+        if (filters_match) {
+            _modifiers.push(modifier)
+        }
+    });
+    return _modifiers
+}
+
 const getSumModifiers = modifiers => {
     return modifiers.reduce((acc, item) => acc += item.value, 0);
 }
+
 
 class Ability {
 
@@ -205,6 +225,41 @@ class Character {
             }
         });
         // console.log("saves =", this.saves)
+
+        this.computeMovement()
+    }
+
+    computeMovement = () => {
+
+        // SIZE
+        this.size = this.size || this.race.size
+        // console.log("size =>", this.size, this.race.size)
+
+        // SPEED
+        this.speed = this.speed || this.race.speed
+        // console.log("speed =>", this.speed, this.race.speed)
+        const speedModifiers = filterModifiers(this.modifiers, { "target": "speed" })
+        // console.log("speed =>", speedModifiers)
+        // console.log("speed =>", getSumModifiers(speedModifiers))
+        this.speed += getSumModifiers(speedModifiers)
+        // console.log("speed =>", this.speed, this.race.speed)
+
+        // FLY
+        const flyModifiers = filterModifiers(this.modifiers, { "category": "fly" })
+        // console.log("fly =>", flyModifiers)
+        if (flyModifiers.length > 0) {
+            const flyModifiersSpeed = filterModifiers(flyModifiers, { "target": "speed" })
+            // console.log("flyModifiersSpeed =", flyModifiersSpeed)
+            const flyModifiersManeuverability = filterModifiers(flyModifiers, { "target": "maneuverability" })
+            let flyManeuverability = getSumModifiers(flyModifiersManeuverability)
+            if (flyManeuverability < 1) flyManeuverability = 1;
+            if (flyManeuverability > 4) flyManeuverability = 5;
+            this.fly = {
+                "speed": getSumModifiers(flyModifiersSpeed),
+                "maneuverability": flyManeuverability
+            }
+            // console.log("fly =", this.fly)
+        }
     }
 
     get computedAttacks() {
@@ -352,14 +407,13 @@ class Character {
     }
 
     restore = () => {
-        console.log("restore")
+        // console.log("restore")
         Object.assign(this, this.backup)
-        console.log(this)
         this.compute()
     }
 
     transform = (form) => {
-        console.log("transform =>", form)
+        // console.log("transform =>", form)
         this.backup = JSON.parse(JSON.stringify(this));
         for (let key in form) {
             if (key in this) {
@@ -368,7 +422,7 @@ class Character {
         }
         form.modifiers.forEach(modifier => { modifier.source = form.id })
         this.compute(form.modifiers)
-        console.log(this.backup)
+        // console.log(this.backup)
     }
 
 }

@@ -3,10 +3,22 @@
     "url": "https://www.d20srd.org/srd/monsters/sprite.htm#pixie",
     "level_ajustement": 4,
     "size": "P",
-    "speed": "9 (vol 18)",
+    "speed": 6,
     "powers": [
         {
-            "desc": "La vitesse de base d'un Pixie au sol est de 6 mètres et sa vitesse de vol est de 18 mètres (bonne)."
+            "desc": "La vitesse de base d'un Pixie au sol est de 6 mètres et sa vitesse de vol est de 18 mètres (bonne).",
+            "modifiers": [
+                {
+                    "category": "fly",
+                    "target": "speed",
+                    "value": 18
+                },
+                {
+                    "category": "fly",
+                    "target": "maneuverability",
+                    "value": 4
+                }
+            ]
         },
         {
             "desc": "Armure ameliorée",

@@ -1,7 +1,18 @@
 
-
-'use strict';
 "use strict";
+
+/**
+ * Mapping
+ */
+
+const maneuverabilities = {
+    1: "Déplorable",
+    2: "Médiocre",
+    3: "Moyenne",
+    4: "Bonne",
+    5: "Parfaite"
+}
+Object.freeze(maneuverabilities)
 
 /**
  * Format methods
@@ -91,21 +102,45 @@ const formatModifers = modifiers => {
  */
 
 const displayIdentity = character => {
-    const attributes = ["name", "level", "alignment", "race.name", "race.size", "race.speed", "height", "weight", "age", "ba", "hit_points"]
+    const attributes = ["name", "level", "alignment", "size", "speed", "height", "weight", "age", "ba", "hit_points"]
     attributes.forEach(attribute => {
         // console.log(attribute)
-        $(`.dd3-id-${attribute.replace(".", "-")}`).text(search(attribute, character))
+        $(`.dd3-id-${attribute}`).text(character[attribute])
     });
+
+    // Name
+    $(".dd3-id-name").html(`<a href="${character.$name}">${character.name}</a>`);
+
+    // Race
+    $(".dd3-id-race-name").html(`<a href="${character.$race}">${character.race.name}</a>`);
+
+    // Classes
     const classes = character.classes.map(current_class => {
         return `${current_class.name} ${current_class.level}`
     })
     $('.dd3-id-classes').text(classes.join(" / "));
+
+    // Image
     $(".dd3-id-image").attr("src", character.image);
+
+    // Gender
     const $gender = $(".dd3-id-gender")
     const genders = ["neuter", "mars", "venus"]
     genders.forEach(gender => { $gender.removeClass(gender) })
     $gender.addClass(character.gender);
 
+    // Fly
+    if ("fly" in character) {
+        $(`.dd3-id-fly-speed`).text(character.fly.speed)
+        // console.log(maneuverabilities)
+        // console.log(character.fly)
+        const maneuverability_name = maneuverabilities[character.fly.maneuverability]
+        // console.log(maneuverability_name)
+        $(`.dd3-id-fly-maneuverability`).text(maneuverability_name)
+        $(`.dd3-id-fly`).fadeIn()
+    } else {
+        $(`.dd3-id-fly`).fadeOut()
+    }
 
     const $character_forms = $('.dd3-id-forms')
     // console.log($character_forms)
@@ -337,19 +372,23 @@ $character_choice.dropdown({
     onChange: function (value, text, $selectedItem) {
         // console.log(value)
         // $dimmer.dimmer('show');
-        fetch(`data/characters/${value}.json`, { cache: "reload" })
+        const character_data_url = `data/characters/${value}.json`
+        fetch(character_data_url, { cache: "reload" })
             .then(response => response.json())
             .then(json => {
                 // console.log(`data character loaded`);
                 character_data = json
+                character_data.$name = character_data_url
                 document.title = `DD3 - ${character_data.name}`;
-                fetch(`data/races/${character_data.race}.json`, { cache: "reload" })
+                fetch(character_data.$race, { cache: "reload" })
                     .then(response => response.json())
                     .then(json => {
                         // console.log(`race loaded`);
                         race = json
+                        Object.freeze(race)
                         // console.log(race);
                         character_data.race = race
+                        Object.freeze(character_data)
                         character = new Character(character_data, skills)
                         displayCharacter(character)
                         // $dimmer.dimmer('hide');

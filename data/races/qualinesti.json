@@ -3,7 +3,7 @@
     "url": "http://www.gemmaline.com/races/univers-dragonlance.htm#qualinesti",
     "level_ajustement": 0,
     "size": "M",
-    "speed": "9",
+    "speed": 9,
     "powers": [
         {
             "Description": "Bonus racial dans plusieurs compétences",
