@@ -213,7 +213,6 @@ class Character {
 
         // Global hit modifiers
         const global_hit_modifiers = [
-            new Modifier("base", 10),
             new Modifier("ba", this.ba),
         ]
         this.modifiers.forEach(modifier => {
@@ -248,6 +247,7 @@ class Character {
 
             const computed_attack = {
                 "name": attack.name,
+                "nb_attack": attack.nb_attack || 1,
                 "hit_modifiers": hit_modifiers,
                 "damage": attack.damage.base,
                 "damage_modifiers": damage_modifiers,

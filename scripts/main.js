@@ -213,13 +213,14 @@ const displayAttacks = character => {
     const lines = []
     character.computedAttacks.forEach(attack => {
         // console.log(attack);
-        const hit = getSumModifiers(attack.hit_modifiers)
+        const hit_max = getSumModifiers(attack.hit_modifiers)
+        const hit = attack.nb_attack == 1 ? formatHit(hit_max, character.ba) : Array(attack.nb_attack).fill(hit_max).join("/")
         const damage_modifier = getSumModifiers(attack.damage_modifiers)
         const damage = `${attack.damage} ${formatBonus(damage_modifier)}`
         const line = `
             <tr>
                 <td>${attack.name}</td>
-                <td class="details" data-html="${formatDetails(attack.hit_modifiers)}">${formatHit(hit, character.ba)}</td>
+                <td class="details" data-html="${formatDetails(attack.hit_modifiers)}">${hit}</td>
                 <td class="details" data-html="${formatDetails(attack.damage_modifiers)}">${damage}</td>
                 <td>${attack.crit}</td>
                 <td>${attack.specials.join("<br>")}</td>
