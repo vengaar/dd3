@@ -128,49 +128,6 @@
             "level": 9
         }
     ],
-    "attacks": [
-        {
-            "name": "Dague",
-            "hit": {
-                "ability": "dex",
-                "modifiers": [
-                    {
-                        "type": "alteration",
-                        "value": 2
-                    }
-                ]
-            },
-            "damage": {
-                "ability": "for",
-                "base": "1d3",
-                "modifiers": [
-                    {
-                        "type": "alteration",
-                        "value": 2
-                    }
-                ]
-            },
-            "crit": "19-20/x2",
-            "specials": [
-                "Attaques sournoise +5d6",
-                "Combat à 2 armes (-2)"
-            ]
-        },
-        {
-            "name": "Arc",
-            "hit": {
-                "ability": "dex",
-                "modifiers": []
-            },
-            "damage": {
-                "ability": "for",
-                "base": "1d6",
-                "modifiers": []
-            },
-            "crit": "20/x3",
-            "specials": []
-        }
-    ],
     "equipments": [
         {
             "name": "Gant de dextérité +2",
@@ -207,9 +164,43 @@
             ]
         },
         {
-            "name": "Dague +2 (x2)",
+            "name": "Dagues +2",
             "used": true,
-            "modifiers": []
+            "modifiers": [
+                {
+                    "target": "hit",
+                    "type": "alteration",
+                    "value": 2
+                },
+                {
+                    "target": "damage",
+                    "type": "alteration",
+                    "value": 2
+                }
+            ],
+            "attack": {
+                "hit": {
+                    "ability": "dex"
+                },
+                "damage": {
+                    "ability": "for",
+                    "base": "1d3"
+                },
+                "crit": "19-20/x2"
+            }
+        },
+        {
+            "name": "Arc long",
+            "used": false,
+            "attack": {
+                "hit": {
+                    "ability": "dex"
+                },
+                "damage": {
+                    "base": "1d6"
+                },
+                "crit": "20/x3"
+            }
         }
     ]
 }

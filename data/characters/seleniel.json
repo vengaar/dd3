@@ -181,144 +181,57 @@
             ]
         }
     ],
-    "attacks": [
-        {
-            "name": "Baton base",
-            "hit": {
-                "ability": "for",
-                "modifiers": [
-                    {
-                        "type": "alteration",
-                        "value": 2
-                    }
-                ]
-            },
-            "damage": {
-                "ability": "for",
-                "base": "1d6",
-                "modifiers": [
-                    {
-                        "type": "alteration",
-                        "value": 2
-                    }
-                ]
-            },
-            "crit": "20/x2",
-            "specials": []
-        },
-        {
-            "name": "Baton d'épine en puissance +5",
-            "hit": {
-                "ability": "for",
-                "modifiers": [
-                    {
-                        "type": "alteration",
-                        "value": 2
-                    },
-                    {
-                        "source": "Attaque en puissance",
-                        "type": "",
-                        "value": -5
-                    }
-                ]
-            },
-            "damage": {
-                "ability": "for",
-                "base": "1d6",
-                "modifiers": [
-                    {
-                        "type": "alteration",
-                        "value": 2
-                    },
-                    {
-                        "source": "Attaque en puissance",
-                        "type": "?",
-                        "value": 10
-                    },
-                    {
-                        "source": "Sort d'épine",
-                        "type": "?",
-                        "value": 10
-                    }
-                ]
-            },
-            "crit": "20/x2",
-            "specials": []
-        },
-        {
-            "name": "Arc",
-            "hit": {
-                "ability": "dex",
-                "modifiers": [
-                    {
-                        "type": "alteration",
-                        "value": 1
-                    }
-                ]
-            },
-            "damage": {
-                "base": "1d8",
-                "modifiers": [
-                    {
-                        "type": "alteration",
-                        "value": 1
-                    },
-                    {
-                        "type": "force",
-                        "value": 2
-                    }
-                ]
-            },
-            "crit": "20/x3",
-            "specials": []
-        }
-    ],
     "forms": [
         {
             "id": "Furie élémentaire",
             "image": "https://artfiles.alphacoders.com/339/33959.jpg",
             "size": "TG",
-            "attacks": [
+            "equipments": [
                 {
-                    "name": "Furie élémentaire en puissance (+5)",
-                    "nb_attack": 2,
-                    "hit": {
-                        "ability": "for",
-                        "modifiers": [
+                    "name": "Armes naturelles",
+                    "desc": "",
+                    "modifiers": [
+                        {
+                            "target": "hit",
+                            "type": "alteration",
+                            "value": 4
+                        },
+                        {
+                            "target": "damage",
+                            "type": "alteration",
+                            "value": 4
+                        }
+                    ],
+                    "attack": {
+                        "hit": {
+                            "ability": "for"
+                        },
+                        "damage": {
+                            "ability": "for",
+                            "base": "3d6"
+                        },
+                        "crit": "20/x2",
+                        "nb_attack": 2,
+                        "modes": [
                             {
-                                "type": "alteration",
-                                "value": 4
-                            },
-                            {
-                                "source": "Attaque en puissance",
-                                "type": "?",
-                                "value": -5
+                                "name": "en puisance à 5",
+                                "modifiers": [
+                                    {
+                                        "source": "Attaque en puissance",
+                                        "target": "hit",
+                                        "value": -5
+                                    },
+                                    {
+                                        "source": "Attaque en puissance",
+                                        "target": "damage",
+                                        "value": 10
+                                    }
+                                ]
                             }
                         ]
-                    },
-                    "damage": {
-                        "ability": "for",
-                        "base": "3d6",
-                        "modifiers": [
-                            {
-                                "type": "alteration",
-                                "value": 4
-                            },
-                            {
-                                "source": "Attaque en puissance",
-                                "type": "?",
-                                "value": 10
-                            }
-                        ]
-                    },
-                    "crit": "20/x2",
-                    "specials": [
-                        "Immunité de la forme",
-                        "Taille TG"
-                    ]
+                    }
                 }
             ],
-            "equipments": [],
             "modifiers": [
                 {
                     "category": "ability",
@@ -438,8 +351,22 @@
                     "target": "damage",
                     "type": "alteration",
                     "value": 1
+                },
+                {
+                    "target": "damage",
+                    "type": "force",
+                    "value": 2
                 }
-            ]
+            ],
+            "attack": {
+                "hit": {
+                    "ability": "dex"
+                },
+                "damage": {
+                    "base": "1d8"
+                },
+                "crit": "20/x3"
+            }
         },
         {
             "name": "Harmois de chevalier Solamnique de mâitre",
@@ -492,7 +419,9 @@
             "used": false
         },
         {
-            "name": "Bâton de la forêt profonde (50 charges)",
+            "name": "Bâton de la forêt profonde",
+            "desc": "",
+            "charges": 50,
             "abilities": [
                 "Charme-animal (1 charge)",
                 "Peau d’écorce (2 charges)",
@@ -512,7 +441,35 @@
                     "type": "alteration",
                     "value": 2
                 }
-            ]
+            ],
+            "attack": {
+                "hit": {
+                    "ability": "for"
+                },
+                "damage": {
+                    "ability": "for",
+                    "multiplier": 1.5,
+                    "base": "1d6"
+                },
+                "crit": "20/x2",
+                "modes": [
+                    {
+                        "name": "en puisance à 5",
+                        "modifiers": [
+                            {
+                                "source": "Attaque en puissance",
+                                "target": "hit",
+                                "value": -5
+                            },
+                            {
+                                "source": "Attaque en puissance",
+                                "target": "damage",
+                                "value": 10
+                            }
+                        ]
+                    }
+                ]
+            }
         }
     ]
 }

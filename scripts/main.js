@@ -50,10 +50,11 @@ const formatBonus = (bonus) => {
 }
 
 const formatDetails = modifiers => {
+    // CAUTION -> popup data -> no ""
     // console.log(modifiers)
     const details = ["<table class='ui very basic celled center aligned table'><tbody>"]
     modifiers.forEach(modifier => {
-        const detail = `<tr><td class='capitalize'>${modifier.source || ""}</td><td>${modifier.value}</td><td>${modifier.type || ""}</td>`
+        const detail = `<tr><td class='capitalize'>${modifier.source}</td><td>${modifier.value}</td><td>${modifier.type}</td>`
         details.push(detail)
     });
     details.push("</tbody></table>")
@@ -66,12 +67,11 @@ const formatConditions = modifiers => {
     const conditions = []
     modifiers.forEach(modifier => {
         if ("condition" in modifier) {
-            const category = modifier.target === undefined ? modifier.category : "";
-            const target = modifier.target || "";
+            const category = modifier.target === "" ? modifier.category : "";
             const condition = `
                 <tr>
                     <td class="collapsing"><span class="ui circular label">${formatBonus(modifier.value)}</span></td>
-                    <td class="collapsing">${category}${target}</span></td>
+                    <td class="collapsing">${category}${modifier.target}</span></td>
                     <td>${modifier.condition}</td>
                 </tr>`
             conditions.push(condition)
@@ -249,15 +249,15 @@ const displayAttacks = character => {
     const lines = []
     character.computedAttacks.forEach(attack => {
         // console.log(attack);
-        const hit_max = getSumModifiers(attack.hit_modifiers)
+        const hit_max = getSumModifiers(attack.modifiers.hit)
         const hit = attack.nb_attack == 1 ? formatHit(hit_max, character.ba) : Array(attack.nb_attack).fill(hit_max).join("/")
-        const damage_modifier = getSumModifiers(attack.damage_modifiers)
+        const damage_modifier = getSumModifiers(attack.modifiers.damage)
         const damage = `${attack.damage} ${formatBonus(damage_modifier)}`
         const line = `
             <tr>
-                <td>${attack.name}</td>
-                <td class="details" data-html="${formatDetails(attack.hit_modifiers)}">${hit}</td>
-                <td class="details" data-html="${formatDetails(attack.damage_modifiers)}">${damage}</td>
+                <td>${attack.name} [${attack.mode}]</td>
+                <td class="details" data-html="${formatDetails(attack.modifiers.hit)}">${hit}</td>
+                <td class="details" data-html="${formatDetails(attack.modifiers.damage)}">${damage}</td>
                 <td>${attack.crit}</td>
                 <td>${attack.specials.join("<br>")}</td>
             </tr>`;

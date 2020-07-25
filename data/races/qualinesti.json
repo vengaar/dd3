@@ -6,7 +6,7 @@
     "speed": 9,
     "powers": [
         {
-            "Description": "Bonus racial dans plusieurs compétences",
+            "desc": "Bonus racial dans plusieurs compétences",
             "modifiers": [
                 {
                     "category": "skill",
