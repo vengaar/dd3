@@ -168,7 +168,7 @@ class Character {
                 this.powers.push(power)
             })
         });
-        console.log("powers =", this.powers)
+        // console.log("powers =", this.powers)
 
         if ("level_ajustement" in this.race) {
             this.level += this.race.level_ajustement
@@ -219,7 +219,7 @@ class Character {
                 this.abilities[modifier.target].modifiers.push(modifier)
             }
         });
-        console.log("abilities =", this.abilities)
+        // console.log("abilities =", this.abilities)
 
         /**
          * Init + AC
