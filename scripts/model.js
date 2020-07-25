@@ -219,11 +219,11 @@ class Character {
          * Init + AC
          */
         this.init = [
-            new Modifier("dex", this.__get_ability_bonus("dex"), "ability")
+            new Modifier("dex", this.__getAbilityBonus("dex"), "ability")
         ]
         this.ca_modifiers = [
             new Modifier("base", 10),
-            new Modifier("dex", this.__get_ability_bonus("dex"), "ability")
+            new Modifier("dex", this.__getAbilityBonus("dex"), "ability")
         ]
 
         let best_armure
@@ -248,51 +248,55 @@ class Character {
         }
         // console.log("ca_modifiers =", this.ca_modifiers)
 
-        /**
-         * SAVES
-         */
+        this.saves = this.__computeSaves()
+        this.attacks = this.__computeAttacks()
+        this.computedSkills = this.__computeSkills()
+        this.__computeMovement()
+    }
+
+    __computeSaves = () => {
+
         // console.log("=> saves <=")
-        this.saves = {
+        saves = {
             "vig": [],
             "ref": [],
             "vol": [],
             "conditions": []
         }
-        // console.log("saves =", this.saves)
+        // console.log("saves =", saves)
 
         // classes
         this.classes.forEach(current_class => {
-            this.saves.vig.push(new Modifier(current_class.name, current_class.saves.vig, "base"))
-            this.saves.ref.push(new Modifier(current_class.name, current_class.saves.ref, "base"))
-            this.saves.vol.push(new Modifier(current_class.name, current_class.saves.vol, "base"))
+            saves.vig.push(new Modifier(current_class.name, current_class.saves.vig, "base"))
+            saves.ref.push(new Modifier(current_class.name, current_class.saves.ref, "base"))
+            saves.vol.push(new Modifier(current_class.name, current_class.saves.vol, "base"))
         });
         // abilities
-        this.saves.vig.push(new Modifier("con", this.__get_ability_bonus("con"), "ability"))
-        this.saves.ref.push(new Modifier("dex", this.__get_ability_bonus("dex"), "ability"))
-        this.saves.vol.push(new Modifier("sag", this.__get_ability_bonus("sag"), "ability"))
+        saves.vig.push(new Modifier("con", this.__getAbilityBonus("con"), "ability"))
+        saves.ref.push(new Modifier("dex", this.__getAbilityBonus("dex"), "ability"))
+        saves.vol.push(new Modifier("sag", this.__getAbilityBonus("sag"), "ability"))
         // others
         this.modifiers.forEach(modifier => {
             if (modifier.category == "saves") {
                 // console.log(modifier)
                 if ("condition" in modifier) {
-                    this.saves.conditions.push(modifier)
+                    saves.conditions.push(modifier)
                 } else {
-                    if (modifier.target in modifiers) {
-                        this.saves[modifier.target].push(modifier)
+                    if (modifier.target in saves) {
+                        saves[modifier.target].push(modifier)
                     } else {
-                        this.saves.vig.push(modifier)
-                        this.saves.ref.push(modifier)
-                        this.saves.vol.push(modifier)
+                        saves.vig.push(modifier)
+                        saves.ref.push(modifier)
+                        saves.vol.push(modifier)
                     }
                 }
             }
         });
-        // console.log("saves =", this.saves)
-
-        this.computeMovement()
+        // console.log("saves =", saves)
+        return saves
     }
 
-    computeMovement = () => {
+    __computeMovement = () => {
 
         // SIZE
         this.size = this.size || this.race.size
@@ -325,9 +329,9 @@ class Character {
         }
     }
 
-    get computedAttacks() {
+    __computeAttacks = () => {
 
-        const attacks = []
+        attacks = []
 
         // Global hit modifiers
         const global_hit_modifiers = [
@@ -345,9 +349,9 @@ class Character {
                     "hit": clone(global_hit_modifiers),
                     "damage": []
                 }
-                attacks_modifiers["hit"].push(new Modifier(attack.hit.ability, this.__get_ability_bonus(attack.hit.ability), "ability"))
+                attacks_modifiers["hit"].push(new Modifier(attack.hit.ability, this.__getAbilityBonus(attack.hit.ability), "ability"))
                 if ("ability" in attack.damage) {
-                    const damage_ability = this.__get_ability_bonus(attack.damage.ability)
+                    const damage_ability = this.__getAbilityBonus(attack.damage.ability)
                     const damage_multiplier = attack.damage.multiplier || 1;
                     const damage = Math.floor(damage_ability * damage_multiplier)
                     const modifier = new Modifier(attack.damage.ability, damage, "ability")
@@ -395,7 +399,7 @@ class Character {
         return attacks
     }
 
-    get computedSkills() {
+    __computeSkills = () => {
 
         const skills = {}
         this.skills_ranks = 0;
@@ -410,7 +414,7 @@ class Character {
                 ability_bonus = 0
                 enable = false
             } else {
-                ability_bonus = this.__get_ability_bonus(skill.ability)
+                ability_bonus = this.__getAbilityBonus(skill.ability)
                 enable = true
             }
             // console.log(`ability_bonus=${ability_bonus}`)
@@ -483,7 +487,7 @@ class Character {
         return Object.values(skills)
     }
 
-    __get_ability_bonus = (ability_name) => {
+    __getAbilityBonus = (ability_name) => {
         return this.computedAbilities[ability_name].bonus
     }
 

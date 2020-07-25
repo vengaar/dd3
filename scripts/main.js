@@ -247,7 +247,7 @@ const displaySkills = character => {
 
 const displayAttacks = character => {
     const lines = []
-    character.computedAttacks.forEach(attack => {
+    character.attacks.forEach(attack => {
         // console.log(attack);
         const hit_max = getSumModifiers(attack.modifiers.hit)
         const hit = attack.nb_attack == 1 ? formatHit(hit_max, character.ba) : Array(attack.nb_attack).fill(hit_max).join("/")
