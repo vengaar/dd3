@@ -175,7 +175,7 @@ const displayIdentity = character => {
 
 const displayAbilities = character => {
     const lines = []
-    Object.values(character.computedAbilities).forEach(ability => {
+    Object.values(character.abilities).forEach(ability => {
         // console.log(ability);
         let ability_css = ""
         if (ability.total > ability.base) {
@@ -226,7 +226,7 @@ const displaySkills = character => {
     // console.log(character.skills_ranks)
     $("#skills_ranks").text(character.skills_ranks)
     const lines = []
-    character.computedSkills.forEach(skill => {
+    character.skills.forEach(skill => {
         const skill_class_css = skill.class ? "left marked green" : ""
         const skill_flags = skill.flags.map(flag => {
             return flags_mappping[flag]
@@ -268,7 +268,7 @@ const displayAttacks = character => {
 
 const displayPowers = character => {
     const lines = []
-    character.computedPowers.forEach(power => {
+    character.powers.forEach(power => {
         const line = `
             <tr class="">
                 <td>${power.type || "-"}</td>

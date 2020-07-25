@@ -130,6 +130,12 @@ class Character {
         // const _data = clone(data);
         // Object.assign(this, _data);
         Object.assign(this, data);
+        this._abilities = data.abilities;
+        Object.freeze(this._abilities)
+        this._powers = data.powers;
+        Object.freeze(this._powers)
+        this._skills = data.skills;
+        Object.freeze(this._skills)
         this.skills_definition = skills_definition;
         this.current_form = this.race.name
         this.compute();
@@ -140,13 +146,13 @@ class Character {
         /**
          * Build powers
          */
-        this.computedPowers = this.powers.map(object => new Power(object))
+        this.powers = this._powers.map(object => new Power(object))
 
         // from race
         this.race.powers.forEach(_power => {
             _power.source = this.race.name
             const power = new Power(_power)
-            this.computedPowers.push(power)
+            this.powers.push(power)
         });
 
         // from classes
@@ -159,10 +165,10 @@ class Character {
             current_class.powers.forEach(_power => {
                 _power.source = current_class.name
                 const power = new Power(_power)
-                this.computedPowers.push(power)
+                this.powers.push(power)
             })
         });
-        console.log("computedPowers =", this.computedPowers)
+        console.log("powers =", this.powers)
 
         if ("level_ajustement" in this.race) {
             this.level += this.race.level_ajustement
@@ -177,7 +183,7 @@ class Character {
         // console.log("this.modifiers =", this.modifiers)
 
         // Powers modfiers (character/classes/races)
-        this.computedPowers.forEach(power => {
+        this.powers.forEach(power => {
             if ("modifiers" in power) {
                 power.modifiers.forEach(modifier => {
                     this.modifiers.push(modifier);
@@ -204,16 +210,16 @@ class Character {
         /**
          * Abilities
          */
-        this.computedAbilities = {}
-        for (let key in this.abilities) {
-            this.computedAbilities[key] = new Ability(key, this.abilities[key])
+        this.abilities = {}
+        for (let key in this._abilities) {
+            this.abilities[key] = new Ability(key, this._abilities[key])
         }
-
         this.modifiers.forEach(modifier => {
             if (modifier.category == "ability") {
-                this.computedAbilities[modifier.target].modifiers.push(modifier)
+                this.abilities[modifier.target].modifiers.push(modifier)
             }
         });
+        console.log("abilities =", this.abilities)
 
         /**
          * Init + AC
@@ -250,7 +256,7 @@ class Character {
 
         this.saves = this.__computeSaves()
         this.attacks = this.__computeAttacks()
-        this.computedSkills = this.__computeSkills()
+        this.skills = this.__computeSkills()
         this.__computeMovement()
     }
 
@@ -488,7 +494,7 @@ class Character {
     }
 
     __getAbilityBonus = (ability_name) => {
-        return this.computedAbilities[ability_name].bonus
+        return this.abilities[ability_name].bonus
     }
 
     restore = () => {
