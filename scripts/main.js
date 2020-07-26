@@ -326,8 +326,6 @@ const displayEquipments = character => {
     }
     $('#equipments > tbody').empty().append(lines);
     $("#equipments").tablesort()
-    $("#location-home").click(() => { $("#equipments > tbody > tr.home").fadeToggle() });
-    $("#location-self").click(() => { $("#equipments > tbody > tr.hiking").fadeToggle() });
 }
 
 const displayCharacter = character => {
@@ -429,6 +427,8 @@ $("#abilities").clone().attr("id", "left-abilities").appendTo("#left");
 $("#saves").clone().attr("id", "left-saves").appendTo("#left");
 $("#counters").clone().attr("id", "left-counters").appendTo("#left");
 $("#card").clone().attr("id", "right-card").appendTo("#right");
+$("#location-home").click(() => { $("#equipments > tbody > tr.home").fadeToggle() });
+$("#location-self").click(() => { $("#equipments > tbody > tr.hiking").fadeToggle() });
 
 fetch(`data/skills.json`)
     .then(response => response.json())
