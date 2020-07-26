@@ -318,7 +318,7 @@ const displayEquipments = character => {
                         </div>
                     </div>
                 </td>
-                <td class="">
+                <td class="top aligned">
                     <div class="ui divided list">${formatModifers(equipment.modifiers || [])}</div>
                 </td>
             </tr>`;
