@@ -35,7 +35,7 @@
                 "condition": "pour déchiffrer des sorts sur un parchemin"
             },
             {
-                "skill": "Connaissances (Mystères)"
+                "skill": "Connaissances (mystères)"
             }
         ]
     },
@@ -64,7 +64,7 @@
         "flags": []
     },
     {
-        "name": "Connaissances (Architecture et ingénierie)",
+        "name": "Connaissances (architecture et ingénierie)",
         "ability": "int",
         "classes": [
             "Barde",
@@ -76,7 +76,7 @@
         "synergies": []
     },
     {
-        "name": "Connaissances (Exploration souterraine)",
+        "name": "Connaissances (exploration souterraine)",
         "ability": "int",
         "classes": [
             "Barde",
@@ -89,7 +89,7 @@
         "synergies": []
     },
     {
-        "name": "Connaissances (Folklore local)",
+        "name": "Connaissances (folklore local)",
         "ability": "int",
         "classes": [
             "Barde",
@@ -102,21 +102,7 @@
         "synergies": []
     },
     {
-        "name": "Connaissances (Géographie)",
-        "ability": "int",
-        "classes": [
-            "Barde",
-            "Magicien",
-            "Rôdeur",
-            "Roublard"
-        ],
-        "flags": [
-            "learned"
-        ],
-        "synergies": []
-    },
-    {
-        "name": "Connaissances (Histoire)",
+        "name": "Connaissances (géographie)",
         "ability": "int",
         "classes": [
             "Barde",
@@ -130,7 +116,21 @@
         "synergies": []
     },
     {
-        "name": "Connaissances (Mystères)",
+        "name": "Connaissances (histoire)",
+        "ability": "int",
+        "classes": [
+            "Barde",
+            "Magicien",
+            "Rôdeur",
+            "Roublard"
+        ],
+        "flags": [
+            "learned"
+        ],
+        "synergies": []
+    },
+    {
+        "name": "Connaissances (mystères)",
         "ability": "int",
         "classes": [
             "Barde",
@@ -144,7 +144,7 @@
         "synergies": []
     },
     {
-        "name": "Connaissances (Nature)",
+        "name": "Connaissances (nature)",
         "ability": "int",
         "classes": [
             "Barde",
@@ -162,7 +162,7 @@
         ]
     },
     {
-        "name": "Connaissances (Noblesse)",
+        "name": "Connaissances (noblesse)",
         "ability": "int",
         "classes": [
             "Barde",
@@ -175,7 +175,7 @@
         "synergies": []
     },
     {
-        "name": "Connaissances (Plans)",
+        "name": "Connaissances (plans)",
         "ability": "int",
         "classes": [
             "Barde",
@@ -188,7 +188,7 @@
         "synergies": []
     },
     {
-        "name": "Connaissances (Religion)",
+        "name": "Connaissances (religion)",
         "ability": "int",
         "classes": [
             "Barde",
@@ -299,7 +299,7 @@
                 "skill": "Psychologie"
             },
             {
-                "skill": "Connaissances (Noblesse)"
+                "skill": "Connaissances (noblesse)"
             }
         ]
     },
@@ -437,7 +437,7 @@
         ],
         "flags": [
             {
-                "skill": "Connaissances (Architecture et ingénierie)",
+                "skill": "Connaissances (architecture et ingénierie)",
                 "condition": "pour trouver des passages ou compartiments secret"
             }
         ]
@@ -513,7 +513,7 @@
         "flags": []
     },
     {
-        "name": "Psycologie",
+        "name": "Psychologie",
         "ability": "sag",
         "classes": [
             "Barde",
@@ -524,16 +524,16 @@
         "flags": []
     },
     {
-        "name": "Renseignements",
+        "name": "Renseignement",
         "ability": "cha",
         "classes": [
             "Barde",
             "Roublard"
         ],
-        "flags": [
+        "flags": [],
+        "synergies": [
             {
-                "skill": "Connaissances (Folklore local)",
-                "condition": "sous test"
+                "skill": "Connaissances (folklore local)"
             }
         ]
     },
@@ -582,15 +582,19 @@
                 "condition": "pour suivre une piste"
             },
             {
-                "skill": "Connaissances (Exploration souterraine)",
-                "condition": "sous test"
+                "skill": "Connaissances (exploration souterraine)",
+                "condition": "sous terre"
             },
             {
-                "skill": "Connaissances (Nature)",
+                "skill": "Connaissances (géographie)",
+                "condition": "pour éviter de se perdre ou pour éviter des dangers"
+            },
+            {
+                "skill": "Connaissances (nature)",
                 "condition": "dans un environement naturel à la surface"
             },
             {
-                "skill": "Connaissances (Plans)",
+                "skill": "Connaissances (plans)",
                 "condition": "sur d'autres plan d'existence"
             }
         ]

@@ -31,7 +31,7 @@
                     "modifiers": [
                         {
                             "category": "skill",
-                            "target": "Connaissances (Nature)",
+                            "target": "Connaissances (nature)",
                             "value": 2
                         },
                         {
@@ -92,24 +92,26 @@
     "skills": {
         "Art de la magie": 1,
         "Concentration": 4,
-        "Connaissances (Folklore local)": 2,
-        "Connaissances (Géographie)": 7,
-        "Connaissances (Mystères)": 5,
-        "Connaissances (Nature)": 5,
-        "Connaissances (Noblesse)": 5,
-        "Connaissances (Plans)": 5,
-        "Connaissances (Religion)": 2,
+        "Connaissances (exploration souterraine)": 2,
+        "Connaissances (folklore local)": 5,
+        "Connaissances (histoire)": 2,
+        "Connaissances (géographie)": 5,
+        "Connaissances (mystères)": 5,
+        "Connaissances (nature)": 5,
+        "Connaissances (noblesse)": 5,
+        "Connaissances (plans)": 5,
+        "Connaissances (religion)": 5,
         "Déplacement silencieux": 5,
         "Détection": 5,
-        "Diplomatie": 6,
+        "Diplomatie": 5,
         "Discrétion": 5,
         "Dressage": 5,
         "Escalade": 5,
         "Fouille": 5,
         "Perception auditive": 5,
-        "Psycologie": 1,
+        "Psychologie": 5,
         "Saut": 1,
-        "Survie": 15
+        "Survie": 10
     },
     "powers": [
         {
