@@ -102,7 +102,7 @@ const formatModifers = modifiers => {
  */
 
 const displayIdentity = character => {
-    const attributes = ["name", "level", "alignment", "size", "speed", "height", "weight", "age", "ba", "hit_points"]
+    const attributes = ["name", "level", "alignment", "size", "speed", "height", "weight", "age", "ba", "hit_points", "gold"]
     attributes.forEach(attribute => {
         // console.log(attribute)
         $(`.dd3-id-${attribute}`).text(character[attribute])
