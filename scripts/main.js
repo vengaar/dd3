@@ -294,12 +294,17 @@ const displayEquipments = character => {
         // console.log(equipment_used)
         const location = equipment.location || "hiking";
         let abilities = ""
+        let equipment_abilities_details = ""
         if ("abilities" in equipment) {
             abilities = `
-                <div class="dd3-equipement-abilities">
-                    <div class="ui bulleted list">
-                        ${equipment.abilities.map(ability => `<div class="item">${ability}</div>`).join("")}
-                    </div>
+                <i class="dd3-equipment-abilities blue info circle link icon"></i>
+                <div class="ui flowing popup">
+                    <table class="ui collapsing _padded _striped blue _inverted very basic table">
+                        <thead><tr><th>Capacités</th></tr></thead>
+                        <tbody>
+                            ${equipment.abilities.map(ability => `<tr><td>${ability}</td></tr>`).join("")}
+                        </tbody>
+                    </table>
                 </div>`
         }
         const line = `
@@ -312,11 +317,9 @@ const displayEquipments = character => {
                 </td>
                 <td class="collapsing center aligned" data-sort-value="${location}"><i class="${location} icon"></i></td>
                 <td class="">
-                    <div class="dd3-equipement-name">
-                        <div class="dd3-name">${equipment.name}</div>
-                            ${abilities}
-                        </div>
-                    </div>
+                    ${equipment.name}
+                    ${abilities}
+                </td>
                 </td>
                 <td class="top aligned">
                     <div class="ui divided list">${formatModifers(equipment.modifiers || [])}</div>
@@ -326,6 +329,12 @@ const displayEquipments = character => {
     }
     $('#equipments > tbody').empty().append(lines);
     $("#equipments").tablesort()
+    $('#equipments .dd3-equipment-abilities').popup({
+        inline: true,
+        hoverable: true,
+        position: "top left",
+        forcePosition: true,
+    });
 }
 
 const displayCharacter = character => {
