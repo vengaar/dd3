@@ -39,7 +39,7 @@
             "desc": "Immunity to magic sleep effects",
             "modifiers": [
                 {
-                    "category": "saves",
+                    "target": "saves",
                     "value": 2,
                     "condition": "sort ou effet d'enchantement"
                 }

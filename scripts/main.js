@@ -14,6 +14,8 @@ const maneuverabilities = {
 }
 Object.freeze(maneuverabilities)
 
+const color = "teal"
+
 /**
  * Format methods
  */
@@ -67,11 +69,10 @@ const formatConditions = modifiers => {
     const conditions = []
     modifiers.forEach(modifier => {
         if ("condition" in modifier) {
-            const category = modifier.target === "" ? modifier.category : "";
             const condition = `
                 <tr>
-                    <td class="collapsing"><span class="ui circular label">${formatBonus(modifier.value)}</span></td>
-                    <td class="collapsing">${category}${modifier.target}</span></td>
+                    <td class="collapsing"><span class="ui ${color} circular label">${formatBonus(modifier.value)}</span></td>
+                    <td class="collapsing center aligned">${modifier.target}</span></td>
                     <td>${modifier.condition}</td>
                 </tr>`
             conditions.push(condition)
@@ -81,20 +82,26 @@ const formatConditions = modifiers => {
 }
 
 const formatModifers = modifiers => {
-    const modfiers_as_list = []
+    const modfiers = []
+    // const modfiers2 = ['<div class="ui fluid vertical menu">']
     modifiers.forEach(modifier => {
         const item = `
-            <div class="item">
-                <i class="icon"><span class="ui circular label">${formatBonus(modifier.value)}</span></i>
-                <div class="content">
-                    <span class="capitalize">${modifier.category || ""}</span>
-                    <span class="capitalize">${modifier.target || ""}</span>
-                    <span class="lowercase">[${modifier.type}]</span>
-                </div>
+            <div class="ui clearing segment">
+                <div class="ui ${color} circular label"><span class="lowercase">${formatBonus(modifier.value)}</span></div>
+                ${modifier.target}
+                <span class="lowercase">[${modifier.type}]</span>
             </div>`
-        modfiers_as_list.push(item)
+        modfiers.push(item)
+        // const item2 = `
+        //     <div class="item">
+        //         <div class="ui teal circular label"><span class="lowercase">${formatBonus(modifier.value)}</div>
+        //         ${modifier.target}
+        //         <span class="lowercase">[${modifier.type}]</span>
+        //     </div>`
+        // modfiers2.push(item2)
     });
-    return modfiers_as_list.join("")
+    // modfiers2.push('</div>')
+    return modfiers.join("")
 }
 
 /**
@@ -188,7 +195,7 @@ const displayAbilities = character => {
                 <td class="capitalize">${ability.name}</td>
                 <td><b>${ability.base}</b></td>
                 <td class="${ability_css}"><b>${ability.total}</b></td>
-                <td><span class="ui circular label">${ability.bonus}</span></td>
+                <td><span class="ui ${color} circular label">${formatBonus(ability.bonus)}</span></td>
             </tr>`;
         lines.push(line)
     });
@@ -322,7 +329,7 @@ const displayEquipments = character => {
                 </td>
                 </td>
                 <td class="top aligned">
-                    <div class="ui divided list">${formatModifers(equipment.modifiers || [])}</div>
+                    ${formatModifers(equipment.modifiers || [])}
                 </td>
             </tr>`;
         lines.push(line);

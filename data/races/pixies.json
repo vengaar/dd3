@@ -9,12 +9,10 @@
             "desc": "La vitesse de base d'un Pixie au sol est de 6 mètres et sa vitesse de vol est de 18 mètres (bonne).",
             "modifiers": [
                 {
-                    "category": "fly",
-                    "target": "speed",
+                    "target": "fly",
                     "value": 18
                 },
                 {
-                    "category": "fly",
                     "target": "maneuverability",
                     "value": 4
                 }
@@ -24,7 +22,7 @@
             "desc": "Armure ameliorée",
             "modifiers": [
                 {
-                    "category": "ca",
+                    "target": "ca",
                     "type": "armure natutelle",
                     "value": 1
                 }
@@ -61,12 +59,12 @@
                     "value": 4
                 },
                 {
-                    "category": "ca",
+                    "target": "ca",
                     "type": "taille",
                     "value": 1
                 },
                 {
-                    "category": "hit",
+                    "target": "hit",
                     "type": "taille",
                     "value": 1
                 }
@@ -80,7 +78,7 @@
             "type": "don",
             "modifiers": [
                 {
-                    "category": "ca",
+                    "target": "ca",
                     "type": "esquive",
                     "value": 1,
                     "condition": "Sur un seul adversaire"
@@ -103,7 +101,7 @@
             "type": "Sur",
             "modifiers": [
                 {
-                    "category": "hit",
+                    "target": "hit",
                     "type": "invisible",
                     "value": 2
                 }

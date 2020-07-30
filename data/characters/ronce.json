@@ -38,13 +38,12 @@
                     "level": 9,
                     "modifiers": [
                         {
-                            "category": "saves",
                             "target": "ref",
                             "value": 3,
                             "condition": "pour éviter les pièges"
                         },
                         {
-                            "category": "ca",
+                            "target": "ca",
                             "type": "esquive",
                             "value": 3,
                             "condition": "contre les attaques déclenchées par des pièges"
@@ -106,7 +105,7 @@
             "url": "http://www.gemmaline.com/dons/dons-science-du-vol-1483.htm",
             "modifiers": [
                 {
-                    "category": "fly",
+                    "target": "fly",
                     "target": "maneuverability",
                     "value": 1
                 }
@@ -134,7 +133,6 @@
             "used": true,
             "modifiers": [
                 {
-                    "category": "ability",
                     "target": "dex",
                     "type": "alteration",
                     "value": 2
@@ -146,7 +144,7 @@
             "used": true,
             "modifiers": [
                 {
-                    "category": "ca",
+                    "target": "ca",
                     "type": "armure",
                     "value": 3
                 }
@@ -157,7 +155,7 @@
             "used": true,
             "modifiers": [
                 {
-                    "category": "ca",
+                    "target": "ca",
                     "type": "parade",
                     "value": 1
                 }
