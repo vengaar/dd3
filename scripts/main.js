@@ -300,18 +300,12 @@ const displayEquipments = character => {
         const equipment_used = (equipment.used === undefined || equipment.used) ? "checked" : ""
         // console.log(equipment_used)
         const location = equipment.location || "hiking";
-        let abilities = ""
-        let equipment_abilities_details = ""
+        let name = equipment.name
         if ("abilities" in equipment) {
-            abilities = `
-                <i class="dd3-equipment-abilities blue info circle link icon"></i>
-                <div class="ui flowing popup">
-                    <table class="ui collapsing _padded _striped blue _inverted very basic table">
-                        <thead><tr><th>Capacités</th></tr></thead>
-                        <tbody>
-                            ${equipment.abilities.map(ability => `<tr><td>${ability}</td></tr>`).join("")}
-                        </tbody>
-                    </table>
+            name = `
+                <p><b>${equipment.name}</b></p>
+                <div class="ui segment ${color}">
+                    <i>${equipment.abilities.join("<br>")}</i>
                 </div>`
         }
         const line = `
@@ -323,10 +317,7 @@ const displayEquipments = character => {
                     </div>
                 </td>
                 <td class="collapsing center aligned" data-sort-value="${location}"><i class="${location} icon"></i></td>
-                <td class="">
-                    ${equipment.name}
-                    ${abilities}
-                </td>
+                <td class="top aligned">${name}</td>
                 </td>
                 <td class="top aligned">
                     ${formatModifers(equipment.modifiers || [])}
@@ -336,12 +327,6 @@ const displayEquipments = character => {
     }
     $('#equipments > tbody').empty().append(lines);
     $("#equipments").tablesort()
-    $('#equipments .dd3-equipment-abilities').popup({
-        inline: true,
-        hoverable: true,
-        position: "top left",
-        forcePosition: true,
-    });
 }
 
 const displayCharacter = character => {
