@@ -6,3 +6,7 @@
 #abilities, #attacks, #powers, #skills, #equipemnts {
     page-break-after: always;
 }
+
+a {
+    color :#000 !important;
+}
