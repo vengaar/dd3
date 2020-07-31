@@ -164,18 +164,6 @@
         {
             "name": "Dagues +2",
             "used": true,
-            "modifiers": [
-                {
-                    "target": "hit",
-                    "type": "alteration",
-                    "value": 2
-                },
-                {
-                    "target": "damage",
-                    "type": "alteration",
-                    "value": 2
-                }
-            ],
             "attack": {
                 "hit": {
                     "ability": "dex"
@@ -184,7 +172,19 @@
                     "ability": "for",
                     "base": "1d3"
                 },
-                "crit": "19-20/x2"
+                "crit": "19-20/x2",
+                "modifiers": [
+                    {
+                        "target": "hit",
+                        "type": "alteration",
+                        "value": 2
+                    },
+                    {
+                        "target": "damage",
+                        "type": "alteration",
+                        "value": 2
+                    }
+                ]
             }
         },
         {

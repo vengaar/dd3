@@ -341,23 +341,6 @@
         {
             "name": "Arc long composite +1 de force 14",
             "used": false,
-            "modifiers": [
-                {
-                    "target": "hit",
-                    "type": "alteration",
-                    "value": 1
-                },
-                {
-                    "target": "damage",
-                    "type": "alteration",
-                    "value": 1
-                },
-                {
-                    "target": "damage",
-                    "type": "force",
-                    "value": 2
-                }
-            ],
             "attack": {
                 "hit": {
                     "ability": "dex"
@@ -365,7 +348,24 @@
                 "damage": {
                     "base": "1d8"
                 },
-                "crit": "20/x3"
+                "crit": "20/x3",
+                "modifiers": [
+                    {
+                        "target": "hit",
+                        "type": "alteration",
+                        "value": 1
+                    },
+                    {
+                        "target": "damage",
+                        "type": "alteration",
+                        "value": 1
+                    },
+                    {
+                        "target": "damage",
+                        "type": "force",
+                        "value": 2
+                    }
+                ]
             }
         },
         {
@@ -430,18 +430,6 @@
                 "Animation des plantes (4 charges)",
                 "Passage sans trace, à volonté"
             ],
-            "modifiers": [
-                {
-                    "target": "hit",
-                    "type": "alteration",
-                    "value": 2
-                },
-                {
-                    "target": "damage",
-                    "type": "alteration",
-                    "value": 2
-                }
-            ],
             "attack": {
                 "hit": {
                     "ability": "for"
@@ -452,6 +440,23 @@
                     "base": "1d6"
                 },
                 "crit": "20/x2",
+                "modifiers": [
+                    {
+                        "source": "Arme de prédilection",
+                        "target": "hit",
+                        "value": 1
+                    },
+                    {
+                        "target": "hit",
+                        "type": "alteration",
+                        "value": 2
+                    },
+                    {
+                        "target": "damage",
+                        "type": "alteration",
+                        "value": 2
+                    }
+                ],
                 "modes": [
                     {
                         "name": "en puisance à 5",

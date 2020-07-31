@@ -398,15 +398,11 @@ class Character {
                     const modifier = new Modifier(attack.damage.ability, damage, "ability")
                     attacks_modifiers["damage"].push(modifier)
                 }
-
-                // Weapon modifiers
-                if ("modifiers" in equipment) {
-                    equipment.modifiers.forEach(modifier => {
-                        if (modifier.target == "hit") {
-                            attacks_modifiers["hit"].push(modifier);
-                        } else if (modifier.target == "damage") {
-                            attacks_modifiers["damage"].push(modifier);
-                        }
+                if ("modifiers" in attack) {
+                    attack.modifiers.forEach(_modifier => {
+                        if (_modifier.source === undefined) _modifier.source = equipment.name;
+                        const modifier = Modifier.fromObject(_modifier);
+                        attacks_modifiers[modifier.target].push(modifier);
                     });
                 }
 
