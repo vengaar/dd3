@@ -9,27 +9,22 @@
             "desc": "Bonus racial dans plusieurs compétences",
             "modifiers": [
                 {
-                    "category": "skill",
                     "target": "Diplomatie",
                     "value": 1
                 },
                 {
-                    "category": "skill",
                     "target": "Psychologie",
                     "value": 1
                 },
                 {
-                    "category": "skill",
                     "target": "Fouille",
                     "value": 2
                 },
                 {
-                    "category": "skill",
                     "target": "Perception auditive",
                     "value": 2
                 },
                 {
-                    "category": "skill",
                     "target": "Détection",
                     "value": 2
                 }

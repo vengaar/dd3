@@ -77,15 +77,12 @@ class Ability {
 
 class Modifier {
 
-    static saves = ["vig", "ref", "vol"]
+    static saves = ["vig", "ref", "vol"];
     static targets = [
         "hit", "damage", "ca", "init", "saves",
         "speed", "fly", "maneuverability"
-    ].concat(Ability.names).concat(Modifier.saves)
+    ].concat(Ability.names).concat(Modifier.saves).concat(skillsNames);
 
-    static categories = [
-        "skill"
-    ]
 
     constructor(source, value, type) {
         this.source = source;
@@ -96,28 +93,13 @@ class Modifier {
 
     static fromObject(object) {
         const modifier = new this(object.source, object.value, object.type);
-
-        if ("category" in object) {
-            const category = object.category;
-            if (Modifier.categories.includes(category)) {
-                this.category = category;
-            } else {
-                console.warn(`Invalid category ${category} for modifier ${object}`)
-                console.log(object)
-            }
-        }
-
         if ("target" in object) {
             const target = object.target;
-            if (this.category == "skill") {
+            if (Modifier.targets.includes(target)) {
                 modifier.target = target;
             } else {
-                if (Modifier.targets.includes(target)) {
-                    modifier.target = target;
-                } else {
-                    console.warn(`Invalid target ${target} for modifier ${object}`);
-                    console.log(object)
-                }
+                console.warn(`Invalid target ${target} for modifier ${object}`);
+                console.log(object)
             }
         } else {
             console.warn(`Invalid modifier, target missing ${object}`);
@@ -133,6 +115,11 @@ class Modifier {
 const filterModifiersByConditions = (modifiers, has_condition) => {
     return modifiers.filter(modifier => ("condition" in modifier) === has_condition)
 }
+
+const filterModifiersByTarget = (modifiers, target) => {
+    return modifiers.filter(modifier => modifier.target == target)
+}
+
 
 const filterModifiers = (modifiers, filters) => {
     const _modifiers = []
@@ -159,7 +146,7 @@ const getSumModifiers = modifiers => {
 
 class Character {
 
-    constructor(data, skills_definition) {
+    constructor(data) {
         console.log("*** Create new character ***")
         // Clone original data to not update it
         // const _data = clone(data);
@@ -171,7 +158,6 @@ class Character {
         Object.freeze(this._powers)
         this._skills = data.skills;
         Object.freeze(this._skills)
-        this.skills_definition = skills_definition;
         this.current_form = this.race.name
         this.compute();
     }
@@ -240,54 +226,65 @@ class Character {
                 });
             }
         });
-        // console.log("modifiers =", this.modifiers)
+
+        console.log("modifiers =", this.modifiers)
+        this.modifiersIndex = {}
+        this.modifiers.forEach(modifier => {
+            if (modifier.target in this.modifiersIndex) {
+                this.modifiersIndex[modifier.target].push(modifier)
+            } else {
+                this.modifiersIndex[modifier.target] = [modifier]
+            }
+        })
+        console.log("modifiersIndex =", this.modifiersIndex)
 
         /**
          * Abilities
          */
         this.abilities = {}
-        for (let key in this._abilities) {
-            this.abilities[key] = new Ability(key, this._abilities[key])
-        }
-        this.modifiers.forEach(modifier => {
-            if (Ability.names.includes(modifier.target)) {
-                this.abilities[modifier.target].modifiers.push(modifier)
+        Ability.names.forEach(ability => {
+            if (ability in this._abilities) {
+                this.abilities[ability] = new Ability(ability, this._abilities[ability])
+                this.abilities[ability].modifiers = this.__getModifiers(ability)
+            } else {
+                console.warn(`Missing ${ability} in character data`)
             }
-        });
-        // console.log("abilities =", this.abilities)
+        })
+        console.log("abilities =", this.abilities)
 
         /**
-         * Init + AC
+         * Init
          */
         this.init = [
             new Modifier("dex", this.__getAbilityBonus("dex"), "ability")
-        ]
+        ].concat(this.__getModifiers("init"))
+        console.log("init =", this.init)
+
+        /**
+         * CA
+         */
+
         this.ca_modifiers = [
             new Modifier("base", 10),
             new Modifier("dex", this.__getAbilityBonus("dex"), "ability")
         ]
 
         let best_armure
-        this.modifiers.forEach(modifier => {
-            if (modifier.target == "init") {
-                this.init.push(modifier)
-            }
-            if (modifier.target == "ca") {
-                if (modifier.type == "armure") {
-                    if (best_armure === undefined) {
-                        best_armure = modifier
-                    } else {
-                        if (modifier.value > best_armure.value) best_armure = modifier;
-                    }
+        this.__getModifiers("ca").forEach(modifier => {
+            if (modifier.type == "armure") {
+                if (best_armure === undefined) {
+                    best_armure = modifier
                 } else {
-                    this.ca_modifiers.push(modifier)
+                    if (modifier.value > best_armure.value) best_armure = modifier;
                 }
+            } else {
+                this.ca_modifiers.push(modifier)
             }
-        });
+        })
         if (best_armure !== undefined) {
             this.ca_modifiers.push(best_armure)
         }
-        // console.log("ca_modifiers =", this.ca_modifiers)
+        console.log("ca_modifiers =", this.ca_modifiers)
 
         this.saves = this.__computeSaves()
         this.attacks = this.__computeAttacks()
@@ -318,23 +315,26 @@ class Character {
         saves.vol.push(new Modifier("sag", this.__getAbilityBonus("sag"), "ability"))
         // others
 
-        this.modifiers.forEach(modifier => {
-            if (modifier.target == "saves") {
-                if ("condition" in modifier) {
-                    saves.conditions.push(modifier)
-                } else {
-                    saves.vig.push(modifier)
-                    saves.ref.push(modifier)
-                    saves.vol.push(modifier)
-                }
-            } else if (Modifier.saves.includes(modifier.target)) {
-                if ("condition" in modifier) {
-                    saves.conditions.push(modifier)
-                } else {
-                    saves[modifier.target].push(modifier)
-                }
+        this.__getModifiers("saves").forEach(modifier => {
+            if ("condition" in modifier) {
+                saves.conditions.push(modifier)
+            } else {
+                Modifier.saves.forEach(save => {
+                    saves[save].push(modifier)
+                })
             }
         });
+
+        Modifier.saves.forEach(save => {
+            this.__getModifiers(save).forEach(modifier => {
+                if ("condition" in modifier) {
+                    saves.conditions.push(modifier)
+                } else {
+                    saves[save].push(modifier)
+                }
+            })
+        });
+
         console.log("saves =", saves)
         return saves
     }
@@ -347,18 +347,13 @@ class Character {
 
         // SPEED
         this.speed = this.speed || this.race.speed
-        // console.log("speed =>", this.speed, this.race.speed)
-        const speedModifiers = filterModifiers(this.modifiers, { "target": "speed" })
-        // console.log("speed =>", speedModifiers)
-        // console.log("speed =>", getSumModifiers(speedModifiers))
+        const speedModifiers = this.__getModifiers("speed")
         this.speed += getSumModifiers(speedModifiers)
-        // console.log("speed =>", this.speed, this.race.speed)
 
         // FLY
-        const flyModifiersSpeed = filterModifiers(this.modifiers, { "target": "fly" })
-        console.log("flyModifiersSpeed =>", flyModifiersSpeed)
+        const flyModifiersSpeed = this.__getModifiers("fly")
         if (flyModifiersSpeed.length > 0) {
-            const flyModifiersManeuverability = filterModifiers(this.modifiers, { "target": "maneuverability" })
+            const flyModifiersManeuverability = this.__getModifiers("maneuverability")
             let flyManeuverability = getSumModifiers(flyModifiersManeuverability)
             if (flyManeuverability < 1) flyManeuverability = 1;
             if (flyManeuverability > 4) flyManeuverability = 5;
@@ -377,10 +372,7 @@ class Character {
         // Global hit modifiers
         const global_hit_modifiers = [
             new Modifier("ba", this.ba)
-        ]
-        this.modifiers.forEach(modifier => {
-            if (modifier.target == "hit") global_hit_modifiers.push(modifier)
-        });
+        ].concat(this.__getModifiers("hit"))
 
         this.equipments.forEach(equipment => {
             if ("attack" in equipment) {
@@ -440,26 +432,19 @@ class Character {
 
         const skills = {}
         this.skills_ranks = 0;
-        this.skills_definition.forEach(skill => {
+        skillsDefinition.forEach(skill => {
             // console.log(skill);
             const rank = skill.name in this.skills ? this.skills[skill.name] : 0
             // console.log(`rank=${rank}`)
             this.skills_ranks += rank;
 
-            let ability_bonus, enable;
+            let enable
             if (skill.flags.includes("learned") && rank === 0) {
-                ability_bonus = 0
                 enable = false
             } else {
-                ability_bonus = this.__getAbilityBonus(skill.ability)
                 enable = true
             }
             // console.log(`ability_bonus=${ability_bonus}`)
-
-            const modifiers = [
-                new Modifier("rank", rank),
-                new Modifier(skill.ability, ability_bonus, "ability"),
-            ]
 
             let skill_class = false
             for (let _class of this.classes.values()) {
@@ -471,6 +456,14 @@ class Character {
                 }
             };
             // console.log("skill_class =", skill_class)
+
+            let modifiers = []
+            if (enable) {
+                modifiers = [
+                    new Modifier("rank", rank),
+                    new Modifier(skill.ability, this.__getAbilityBonus(skill.ability), "ability"),
+                ].concat(this.__getModifiers(skill.name))
+            }
 
             let comments = []
             // Synergies
@@ -497,6 +490,7 @@ class Character {
                     }
                 });
             }
+
             skills[skill.name] = {
                 "name": skill.name,
                 "rank": rank,
@@ -507,25 +501,19 @@ class Character {
                 "comments": comments,
             }
         });
-
-        // Add character bonus
-        this.modifiers.forEach(modifier => {
-            // console.log(modifier)
-            if (modifier.category == "skill") {
-                skills[modifier.target].total += modifier.value
-                if (skills[modifier.target].enable) {
-                    skills[modifier.target].modifiers.push(modifier)
-                } else {
-                    const comment = `${modifier.source} modificateur (${modifier.value}/${modifier.type}) appliqué`
-                    skills[modifier.target].comments.push(comment)
-                }
-            }
-        });
         return Object.values(skills)
     }
 
     __getAbilityBonus = (ability_name) => {
         return this.abilities[ability_name].bonus
+    }
+
+    __getModifiers = target => {
+        if (target in this.modifiersIndex) {
+            return this.modifiersIndex[target]
+        } else {
+            return []
+        }
     }
 
     restore = () => {

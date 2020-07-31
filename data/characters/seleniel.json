@@ -31,12 +31,10 @@
                     "level": 1,
                     "modifiers": [
                         {
-                            "category": "skill",
                             "target": "Connaissances (nature)",
                             "value": 2
                         },
                         {
-                            "category": "skill",
                             "target": "Survie",
                             "value": 2
                         }
@@ -268,7 +266,6 @@
             "name": "Bottes elfique",
             "modifiers": [
                 {
-                    "category": "skill",
                     "target": "Déplacement silencieux",
                     "type": "?",
                     "value": 5
@@ -280,7 +277,6 @@
             "used": false,
             "modifiers": [
                 {
-                    "category": "skill",
                     "target": "Discrétion",
                     "type": "?",
                     "value": 5

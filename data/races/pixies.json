@@ -32,17 +32,14 @@
             "name": "Bonus de compétences",
             "modifiers": [
                 {
-                    "category": "skill",
                     "target": "Acrobaties",
                     "value": 2
                 },
                 {
-                    "category": "skill",
                     "target": "Fouille",
                     "value": 2
                 },
                 {
-                    "category": "skill",
                     "target": "Perception auditive",
                     "value": 2
                 }
@@ -52,7 +49,6 @@
             "name": "Taille P",
             "modifiers": [
                 {
-                    "category": "skill",
                     "target": "Discrétion",
                     "type": "taille",
                     "source": "Taille P",

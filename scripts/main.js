@@ -406,7 +406,7 @@ $character_choice.dropdown({
                         // console.log(race);
                         character_data.race = race
                         Object.freeze(character_data)
-                        character = new Character(character_data, skills)
+                        character = new Character(character_data)
                         displayCharacter(character)
                         // $dimmer.dimmer('hide');
                     });
@@ -419,7 +419,6 @@ $character_choice.dropdown({
 * Start page
 */
 
-let skills
 let character_data
 let race
 let character
@@ -431,14 +430,7 @@ $("#card").clone().attr("id", "right-card").appendTo("#right");
 $("#location-home").click(() => { $("#equipments > tbody > tr.home").fadeToggle() });
 $("#location-self").click(() => { $("#equipments > tbody > tr.hiking").fadeToggle() });
 
-fetch(`data/skills.json`)
-    .then(response => response.json())
-    .then(json => {
-        skills = json
-        skills.forEach(Object.freeze);
-        console.log(`${skills.length} skills loaded => enable page`);
-        // $dimmer.dimmer('hide');
-        $character_choice.dropdown('set selected', 'seleniel')
-    });
+$character_choice.dropdown('set selected', 'seleniel')
+// $character_choice.dropdown('set selected', 'ronce')
 
 console.log("main - ok");

@@ -1,4 +1,7 @@
-[
+
+"use strict";
+
+const skillsDefinition = [
     {
         "name": "Acrobaties",
         "ability": "dex",
@@ -620,3 +623,9 @@
         ]
     }
 ]
+
+skillsDefinition.forEach(Object.freeze);
+const skillsNames = skillsDefinition.map(skill => skill.name);
+// console.log(skills_names);
+
+console.log("skills - ok");
