@@ -227,7 +227,7 @@ class Character {
             }
         });
 
-        console.log("modifiers =", this.modifiers)
+        // console.log("modifiers =", this.modifiers)
         this.modifiersIndex = {}
         this.modifiers.forEach(modifier => {
             if (modifier.target in this.modifiersIndex) {
@@ -236,7 +236,7 @@ class Character {
                 this.modifiersIndex[modifier.target] = [modifier]
             }
         })
-        console.log("modifiersIndex =", this.modifiersIndex)
+        // console.log("modifiersIndex =", this.modifiersIndex)
 
         /**
          * Abilities
@@ -250,7 +250,7 @@ class Character {
                 console.warn(`Missing ${ability} in character data`)
             }
         })
-        console.log("abilities =", this.abilities)
+        // console.log("abilities =", this.abilities)
 
         /**
          * Init
@@ -258,7 +258,7 @@ class Character {
         this.init = [
             new Modifier("dex", this.__getAbilityBonus("dex"), "ability")
         ].concat(this.__getModifiers("init"))
-        console.log("init =", this.init)
+        // console.log("init =", this.init)
 
         /**
          * CA
@@ -284,7 +284,7 @@ class Character {
         if (best_armure !== undefined) {
             this.ca_modifiers.push(best_armure)
         }
-        console.log("ca_modifiers =", this.ca_modifiers)
+        // console.log("ca_modifiers =", this.ca_modifiers)
 
         this.saves = this.__computeSaves()
         this.attacks = this.__computeAttacks()
@@ -335,7 +335,7 @@ class Character {
             })
         });
 
-        console.log("saves =", saves)
+        // console.log("saves =", saves)
         return saves
     }
 
