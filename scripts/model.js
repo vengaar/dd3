@@ -5,17 +5,17 @@ const clone = (data) => {
     return JSON.parse(JSON.stringify(data));
 }
 
-const search = (query, data) => {
-    const keys = query.split(".");
-    const key = keys.shift();
-    const value = data[key]
-    // console.log("search", key, value, keys)
-    if (keys.length == 0) {
-        return value
-    } else {
-        return search(keys.join("."), value)
-    }
-}
+// const search = (query, data) => {
+//     const keys = query.split(".");
+//     const key = keys.shift();
+//     const value = data[key]
+//     // console.log("search", key, value, keys)
+//     if (keys.length == 0) {
+//         return value
+//     } else {
+//         return search(keys.join("."), value)
+//     }
+// }
 
 class Power {
 
@@ -116,29 +116,24 @@ const filterModifiersByConditions = (modifiers, has_condition) => {
     return modifiers.filter(modifier => ("condition" in modifier) === has_condition)
 }
 
-const filterModifiersByTarget = (modifiers, target) => {
-    return modifiers.filter(modifier => modifier.target == target)
-}
-
-
-const filterModifiers = (modifiers, filters) => {
-    const _modifiers = []
-    modifiers.forEach(modifier => {
-        let filters_match = false
-        for (let criteria in filters) {
-            if (modifier[criteria] == filters[criteria]) {
-                filters_match = true
-            } else {
-                filters_match = false
-                break
-            }
-        }
-        if (filters_match) {
-            _modifiers.push(modifier)
-        }
-    });
-    return _modifiers
-}
+// const filterModifiers = (modifiers, filters) => {
+//     const _modifiers = []
+//     modifiers.forEach(modifier => {
+//         let filters_match = false
+//         for (let criteria in filters) {
+//             if (modifier[criteria] == filters[criteria]) {
+//                 filters_match = true
+//             } else {
+//                 filters_match = false
+//                 break
+//             }
+//         }
+//         if (filters_match) {
+//             _modifiers.push(modifier)
+//         }
+//     });
+//     return _modifiers
+// }
 
 const getSumModifiers = modifiers => {
     return modifiers.reduce((acc, item) => acc += item.value, 0);
@@ -199,21 +194,18 @@ class Character {
         /**
          * Build modifiers
          */
-        // console.log("=> modifiers <=")
-        this.modifiers = modifiers
-        // console.log("this.modifiers =", this.modifiers)
+
+        this.modifiersIndex = {}
+        modifiers.forEach(modifier => { this.__addModifier(modifier) });
 
         // Powers modfiers (character/classes/races)
         this.powers.forEach(power => {
-            if ("modifiers" in power) {
-                power.modifiers.forEach(modifier => {
-                    this.modifiers.push(modifier);
-                });
-            }
+            power.modifiers.forEach(modifier => {
+                this.__addModifier(modifier)
+            });
         });
 
         // Equipments modifiers
-        // console.log(this.equipments)
         this.equipments.forEach(equipment => {
             if ("modifiers" in equipment) {
                 if (equipment.used === undefined) equipment.used = true;
@@ -221,22 +213,12 @@ class Character {
                     _modifier.source = equipment.name;
                     const modifier = Modifier.fromObject(_modifier)
                     if (equipment.used) {
-                        this.modifiers.push(modifier);
+                        this.__addModifier(modifier);
                     }
                 });
             }
         });
-
-        // console.log("modifiers =", this.modifiers)
-        this.modifiersIndex = {}
-        this.modifiers.forEach(modifier => {
-            if (modifier.target in this.modifiersIndex) {
-                this.modifiersIndex[modifier.target].push(modifier)
-            } else {
-                this.modifiersIndex[modifier.target] = [modifier]
-            }
-        })
-        // console.log("modifiersIndex =", this.modifiersIndex)
+        console.log("modifiersIndex =", this.modifiersIndex)
 
         /**
          * Abilities
@@ -260,15 +242,18 @@ class Character {
         ].concat(this.__getModifiers("init"))
         // console.log("init =", this.init)
 
-        /**
-         * CA
-         */
+        this.ca_modifiers = this.__compute_ca()
+        this.saves = this.__computeSaves()
+        this.attacks = this.__computeAttacks()
+        this.skills = this.__computeSkills()
+        this.__computeMovement()
+    }
 
-        this.ca_modifiers = [
+    __compute_ca = () => {
+        const ca_modifiers = [
             new Modifier("base", 10),
             new Modifier("dex", this.__getAbilityBonus("dex"), "ability")
         ]
-
         let best_armure
         this.__getModifiers("ca").forEach(modifier => {
             if (modifier.type == "armure") {
@@ -278,18 +263,14 @@ class Character {
                     if (modifier.value > best_armure.value) best_armure = modifier;
                 }
             } else {
-                this.ca_modifiers.push(modifier)
+                ca_modifiers.push(modifier)
             }
         })
         if (best_armure !== undefined) {
-            this.ca_modifiers.push(best_armure)
+            ca_modifiers.push(best_armure)
         }
-        // console.log("ca_modifiers =", this.ca_modifiers)
-
-        this.saves = this.__computeSaves()
-        this.attacks = this.__computeAttacks()
-        this.skills = this.__computeSkills()
-        this.__computeMovement()
+        // console.log("ca_modifiers =", ca_modifiers)
+        return ca_modifiers
     }
 
     __computeSaves = () => {
@@ -513,6 +494,14 @@ class Character {
             return this.modifiersIndex[target]
         } else {
             return []
+        }
+    }
+
+    __addModifier = modifier => {
+        if (modifier.target in this.modifiersIndex) {
+            this.modifiersIndex[modifier.target].push(modifier)
+        } else {
+            this.modifiersIndex[modifier.target] = [modifier]
         }
     }
 
