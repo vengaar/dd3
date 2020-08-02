@@ -59,17 +59,6 @@
                     "level": 11
                 }
             ]
-        },
-        {
-            "name": "Fake",
-            "level": 0,
-            "ba": 0,
-            "saves": {
-                "vig": 0,
-                "ref": 0,
-                "vol": 0
-            },
-            "powers": []
         }
     ],
     "abilities": {
@@ -82,19 +71,21 @@
     },
     "skills": {
         "Acrobaties": 12,
+        "Connaissances (folklore local)": 5,
         "Crochetage": 12,
         "Décryptage": 12,
         "Déguisement": 12,
         "Déplacement silencieux": 12,
-        "Désamorçage": 12,
+        "Désamorçage": 14,
         "Détection": 12,
-        "Escamotage": 12,
-        "Evasion": 7,
+        "Discrétion": 5,
+        "Escamotage": 14,
+        "Evasion": 5,
         "Fouille": 12,
         "Maîtrise des cordes": 5,
         "Perception auditive": 12,
-        "Renseignements": 12,
-        "Utilisation d'objets magiques": 10
+        "Renseignement": 12,
+        "Utilisation d'objets magiques": 12
     },
     "powers": [
         {
@@ -113,7 +104,7 @@
         },
         {
             "type": "don",
-            "name": "",
+            "name": "Attaque en vol",
             "level": 3
         },
         {

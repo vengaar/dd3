@@ -185,9 +185,9 @@ class Character {
             })
         });
         // console.log("powers =", this.powers)
-
+        this.ecl = this.level
         if ("level_ajustement" in this.race) {
-            this.level += this.race.level_ajustement
+            this.ecl += this.race.level_ajustement
         }
         this.ba = getSumModifiers(this.ba_modifiers)
 
@@ -389,7 +389,7 @@ class Character {
                 const computed_attack = {
                     "name": equipment.name,
                     "mode": "base",
-                    "nb_attack": attack.nb_attack || 1,
+                    "nb_attack": attack.nb_attack,
                     "modifiers": attacks_modifiers,
                     "damage": attack.damage.base,
                     "crit": attack.crit,

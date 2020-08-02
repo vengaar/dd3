@@ -109,7 +109,7 @@ const formatModifers = modifiers => {
  */
 
 const displayIdentity = character => {
-    const attributes = ["name", "level", "alignment", "size", "speed", "height", "weight", "age", "ba", "gold"]
+    const attributes = ["name", "ecl", "alignment", "size", "speed", "height", "weight", "age", "ba", "gold"]
     attributes.forEach(attribute => {
         // console.log(attribute)
         $(`.dd3-id-${attribute}`).text(character[attribute])
@@ -163,16 +163,17 @@ const displayIdentity = character => {
             onChange: function (value, text, $selectedItem) {
                 // console.log("Select form =>", value, text)
                 // console.log("current_form =", character.current_form)
-                // $dimmer.dimmer('show');
+                $dimmer.dimmer('show');
                 if (text == character.race.name) {
                     character.restore()
                     displayCharacter(character)
                 } else {
                     const form = character.forms[value]
+                    character.restore()
                     character.transform(form)
                     displayCharacter(character)
                 }
-                // $dimmer.dimmer('hide');
+                $dimmer.dimmer('hide');
             }
         });
         $character_forms.show()
@@ -258,7 +259,7 @@ const displayAttacks = character => {
     character.attacks.forEach(attack => {
         // console.log(attack);
         const hit_max = getSumModifiers(attack.modifiers.hit)
-        const hit = attack.nb_attack == 1 ? formatHit(hit_max, character.ba) : Array(attack.nb_attack).fill(hit_max).join("/")
+        const hit = attack.nb_attack === undefined ? formatHit(hit_max, character.ba) : Array(attack.nb_attack).fill(hit_max).join("/")
         const damage_modifier = getSumModifiers(attack.modifiers.damage)
         const damage = `${attack.damage} ${formatBonus(damage_modifier)}`
         const line = `

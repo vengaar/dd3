@@ -183,6 +183,179 @@
     ],
     "forms": [
         {
+            "id": "Dragon d'argent",
+            "_image": "https://i.pinimg.com/564x/ce/a9/59/cea95978453645d40b6ec9bb0e4fb91e.jpg",
+            "image": "https://www.aidedd.org/dnd/images/silver-dragon.jpg",
+            "size": "Gig",
+            "speed": 12,
+            "height": "?",
+            "weight": "?",
+            "age": "Vénérable",
+            "race": {
+                "name": "Dragon",
+                "powers": [
+                    {
+                        "name": "Réduction des dégâts (20/magie)",
+                        "type": "Ext"
+                    },
+                    {
+                        "name": "Résistance à la magie (28)",
+                        "type": "Ext"
+                    },
+                    {
+                        "name": "Présence terrifiante (DD 20)",
+                        "desc": "Tout dragon au moins jeune adulte peut terrifier ses adversaires par sa seule présence. Ce pouvoir fait automatiquement effet dès que le dragon attaque, charge ou survole les créatures. Toutes celles qui se trouvent dans un rayon de 9 mètres x catégorie d’âge du dragon peuvent être affectées si elles ont moins de DV que le grand reptile. Les créatures qui réussissent un jet de Volonté (DD 10 + 1/2 nombre de DV du dragon + modificateur de Charisme du dragon) ne sont pas affectées et sont par la suite immunisées contre la présence de ce dragon pendant une journée entière. Par contre, celles qui ratent leur jet de sauvegarde sont affectées comme suit : si elles ont 4 DV ou moins, elles sont paniquées pendant 4d6 rounds ; si elles ont 5 DV ou plus, elles sont seulement secouées pour 4d6 rounds. Tout dragon est naturellement immunisé contre la présence terrifiante des autres dragons, quel que soit leur âge ou leur espèce.",
+                        "type": "Ext"
+                    },
+                    {
+                        "name": "Souffle (DD 27) 20d8 ou paralysie 1d6 + 10 rounds (vig)",
+                        "desc": "Tout dragon au moins jeune adulte peut terrifier ses adversaires par sa seule présence. Ce pouvoir fait automatiquement effet dès que le dragon attaque, charge ou survole les créatures. Toutes celles qui se trouvent dans un rayon de 9 mètres x catégorie d’âge du dragon peuvent être affectées si elles ont moins de DV que le grand reptile. Les créatures qui réussissent un jet de Volonté (DD 10 + 1/2 nombre de DV du dragon + modificateur de Charisme du dragon) ne sont pas affectées et sont par la suite immunisées contre la présence de ce dragon pendant une journée entière. Par contre, celles qui ratent leur jet de sauvegarde sont affectées comme suit : si elles ont 4 DV ou moins, elles sont paniquées pendant 4d6 rounds ; si elles ont 5 DV ou plus, elles sont seulement secouées pour 4d6 rounds. Tout dragon est naturellement immunisé contre la présence terrifiante des autres dragons, quel que soit leur âge ou leur espèce.",
+                        "type": "Ext"
+                    },
+                    {
+                        "name": "Immunités",
+                        "desc": "Tous les dragons sont immunisés contre les effets de type sommeil ou paralysie. Comme indiqué dans les descriptions, chaque espèce bénéficie d’une ou deux immunités supplémentaires, lesquelles ne dépendent pas de l’âge du dragon.",
+                        "type": "Ext"
+                    },
+                    {
+                        "name": "Perception aveugle",
+                        "desc": "Tout dragon est capable de détecter la présence de créatures dans un rayon de 18 m. Les adversaires qu’il ne peut pas voir bénéficient tout de même d’un camouflage total.",
+                        "type": "Ext"
+                    },
+                    {
+                        "name": "Sens surdéveloppés",
+                        "desc": "Le dragon voit quatre fois plus loin qu’un humain dans des conditions de faible luminosité (vision nocturne), et deux fois plus loin en cas de luminosité normale. Il bénéficie également de la vision dans le noir, à une portée de 36 mètres.",
+                        "type": "Ext"
+                    },
+                    {
+                        "name": "Taille Gig",
+                        "modifiers": [
+                            {
+                                "target": "ca",
+                                "type": "taille",
+                                "value": -4
+                            },
+                            {
+                                "target": "hit",
+                                "type": "taille",
+                                "value": -4
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Forme de dragon",
+                        "modifiers": [
+                            {
+                                "target": "ca",
+                                "type": "armure naturelle",
+                                "value": 33
+                            },
+                            {
+                                "target": "fly",
+                                "value": 60
+                            },
+                            {
+                                "target": "maneuverability",
+                                "value": 0
+                            }
+                        ]
+                    }
+                ]
+            },
+            "equipments": [
+                {
+                    "name": "Morsure",
+                    "attack": {
+                        "nb_attack": 1,
+                        "hit": {
+                            "ability": "for"
+                        },
+                        "damage": {
+                            "ability": "for",
+                            "base": "4d6"
+                        },
+                        "crit": "20/x2"
+                    }
+                },
+                {
+                    "name": "Griffes",
+                    "attack": {
+                        "nb_attack": 2,
+                        "hit": {
+                            "ability": "for"
+                        },
+                        "damage": {
+                            "ability": "for",
+                            "base": "2d8",
+                            "multiplier": 0.5
+                        },
+                        "crit": "20/x2",
+                        "modifiers": [
+                            {
+                                "target": "hit",
+                                "value": -5,
+                                "type": "secondaire"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Ailes",
+                    "desc": "",
+                    "attack": {
+                        "nb_attack": 2,
+                        "hit": {
+                            "ability": "for"
+                        },
+                        "damage": {
+                            "ability": "for",
+                            "base": "2d6",
+                            "multiplier": 0.5
+                        },
+                        "crit": "20/x2",
+                        "modifiers": [
+                            {
+                                "target": "hit",
+                                "value": -5,
+                                "type": "secondaire"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Queue",
+                    "attack": {
+                        "nb_attack": 1,
+                        "hit": {
+                            "ability": "for"
+                        },
+                        "damage": {
+                            "ability": "for",
+                            "base": "2d8",
+                            "multiplier": 1.5
+                        },
+                        "crit": "20/x2",
+                        "modifiers": [
+                            {
+                                "target": "hit",
+                                "value": -5,
+                                "type": "secondaire"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "_abilities": {
+                "for": 39,
+                "dex": 10,
+                "con": 29,
+                "int": 12,
+                "sag": 21,
+                "cha": 14
+            },
+            "modifiers": []
+        },
+        {
             "id": "Furie élémentaire",
             "image": "https://artfiles.alphacoders.com/339/33959.jpg",
             "size": "TG",
