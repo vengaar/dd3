@@ -611,11 +611,6 @@
                 "crit": "20/x2",
                 "modifiers": [
                     {
-                        "source": "Arme de prédilection",
-                        "target": "hit",
-                        "value": 1
-                    },
-                    {
                         "target": "hit",
                         "type": "alteration",
                         "value": 2
