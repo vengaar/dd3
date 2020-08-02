@@ -168,17 +168,6 @@
                     "condition": "contre la peur des dragon"
                 }
             ]
-        },
-        {
-            "type": "don",
-            "name": "Résistance à la peur des dragon améliorée (+8)",
-            "source": "Cadeau du MJ",
-            "modifiers": [
-                {
-                    "target": "speed",
-                    "value": 3
-                }
-            ]
         }
     ],
     "forms": [
