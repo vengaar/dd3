@@ -109,11 +109,12 @@ const formatModifers = modifiers => {
  */
 
 const displayIdentity = character => {
-    const attributes = ["name", "level", "alignment", "size", "speed", "height", "weight", "age", "ba", "hit_points", "gold"]
+    const attributes = ["name", "level", "alignment", "size", "speed", "height", "weight", "age", "ba", "gold"]
     attributes.forEach(attribute => {
         // console.log(attribute)
         $(`.dd3-id-${attribute}`).text(character[attribute])
     });
+    $(`.dd3-id-hit_points`).text(`${character.hitPoints} (${character.hitPointsBase} + ${character.hitPointsCon})`)
 
     // Name
     $(".dd3-id-name").html(`<a href="${character.$name}">${character.name}</a>`);

@@ -235,6 +235,13 @@ class Character {
         // console.log("abilities =", this.abilities)
 
         /**
+         * Hit points
+         */
+        this.hitPointsBase = this.hit_points
+        this.hitPointsCon = this.level * this.__getAbilityBonus("con")
+        this.hitPoints = this.hitPointsBase + this.hitPointsCon
+
+        /**
          * Init
          */
         this.init = [
