@@ -142,7 +142,7 @@ const getSumModifiers = modifiers => {
 class Character {
 
     constructor(data) {
-        console.log("*** Create new character ***")
+        console.log(`*** Create new character - ${data.name} ***`)
         // Clone original data to not update it
         // const _data = clone(data);
         // Object.assign(this, _data);
@@ -218,7 +218,7 @@ class Character {
                 });
             }
         });
-        console.log("modifiersIndex =", this.modifiersIndex)
+        // console.log("modifiersIndex =", this.modifiersIndex)
 
         /**
          * Abilities
@@ -349,7 +349,7 @@ class Character {
                 "speed": getSumModifiers(flyModifiersSpeed),
                 "maneuverability": flyManeuverability
             }
-            console.log("fly =", this.fly)
+            // console.log("fly =", this.fly)
         }
     }
 

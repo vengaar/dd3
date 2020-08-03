@@ -332,7 +332,8 @@ const displayEquipments = character => {
 }
 
 const displayCharacter = character => {
-    console.log(`Display ${character.name}`, character)
+    // console.log(`Display ${character.name}`)
+    // console.log(`character =  ${character}`)
     displayIdentity(character)
     displayCounters(character)
     displaySaves(character)
@@ -342,45 +343,18 @@ const displayCharacter = character => {
     displayPowers(character)
     displayEquipments(character)
 
-    $('.details').popup({
-        position: 'right center',
-    });
-
-    $('.ui.sticky').sticky({
-        offset: sticky_offset,
-        context: '#main',
-    });
-
     $('.ui.checkbox').checkbox({
         onChange: function () {
-            // $dimmer.dimmer('show');
+            $dimmer.dimmer('show');
             const equipment = character.equipments[this.name]
             // console.log(equipment)
             equipment.used = this.checked
             character.compute()
             displayCharacter(character)
-            // $dimmer.dimmer('hide');
+            $dimmer.dimmer('hide');
         }
     });
 }
-
-/**
- * Fomantic
- */
-
-
-const $dimmer = $("body").dimmer({
-    transition: 'fade',
-    displayLoader: true,
-    loaderVariation: 'inverted',
-    loaderText: 'Loading data'
-}) // .dimmer('show');
-
-const sticky_offset = 65
-$('.ui.sticky').sticky({
-    offset: sticky_offset,
-    context: '#main',
-});
 
 /**
  * Actions
@@ -390,7 +364,7 @@ const $character_choice = $('#character_choice')
 $character_choice.dropdown({
     onChange: function (value, text, $selectedItem) {
         // console.log(value)
-        // $dimmer.dimmer('show');
+        $dimmer.dimmer('show');
         const character_data_url = `data/characters/${value}.json`
         fetch(character_data_url, { cache: "reload" })
             .then(response => response.json())
@@ -410,12 +384,11 @@ $character_choice.dropdown({
                         Object.freeze(character_data)
                         character = new Character(character_data)
                         displayCharacter(character)
-                        // $dimmer.dimmer('hide');
+                        $dimmer.dimmer('hide');
                     });
             });
     }
 });
-
 
 /**
 * Start page
@@ -432,7 +405,27 @@ $("#card").clone().attr("id", "right-card").appendTo("#right");
 $("#location-home").click(() => { $("#equipments > tbody > tr.home").fadeToggle() });
 $("#location-self").click(() => { $("#equipments > tbody > tr.hiking").fadeToggle() });
 
-$character_choice.dropdown('set selected', 'seleniel')
+const $dimmer = $("body").dimmer({
+    transition: 'fade',
+    displayLoader: true,
+    loaderVariation: 'inverted',
+    loaderText: 'Loading data'
+})
+
+const sticky_offset = 65
+$('.ui.sticky').sticky({
+    offset: sticky_offset,
+    context: '#main',
+    silent: true,
+    observeChanges: true
+});
+
+$('.details').popup({
+    position: 'right center',
+    observeChanges: true
+});
+
+// $character_choice.dropdown('set selected', 'seleniel')
 // $character_choice.dropdown('set selected', 'ronce')
 
 console.log("main - ok");
