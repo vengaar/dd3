@@ -143,17 +143,8 @@ class Character {
 
     constructor(data) {
         console.log(`*** Create new character - ${data.name} ***`)
-        // Clone original data to not update it
-        // const _data = clone(data);
-        // Object.assign(this, _data);
         Object.assign(this, data);
-        this._abilities = data.abilities;
-        Object.freeze(this._abilities)
-        this._powers = data.powers;
-        Object.freeze(this._powers)
-        this._skills = data.skills;
-        Object.freeze(this._skills)
-        this.current_form = this.race.name
+        this.currentForm = this.race.name
         this.compute();
     }
 
@@ -162,7 +153,7 @@ class Character {
         /**
          * Build powers
          */
-        this.powers = this._powers.map(object => new Power(object))
+        this.powers = this.powersOwn.map(object => new Power(object))
 
         // from race
         this.race.powers.forEach(_power => {
@@ -220,26 +211,13 @@ class Character {
         });
         // console.log("modifiersIndex =", this.modifiersIndex)
 
-        /**
-         * Abilities
-         */
-        this.abilities = {}
-        Ability.names.forEach(ability => {
-            if (ability in this._abilities) {
-                this.abilities[ability] = new Ability(ability, this._abilities[ability])
-                this.abilities[ability].modifiers = this.__getModifiers(ability)
-            } else {
-                console.warn(`Missing ${ability} in character data`)
-            }
-        })
-        // console.log("abilities =", this.abilities)
+        this.abilities = this.__computeAbilities()
 
         /**
          * Hit points
          */
-        this.hitPointsBase = this.hit_points
         this.hitPointsCon = this.level * this.__getAbilityBonus("con")
-        this.hitPoints = this.hitPointsBase + this.hitPointsCon
+        this.hitPoints = this.hitPointsBasis + this.hitPointsCon
 
         /**
          * Init
@@ -249,14 +227,28 @@ class Character {
         ].concat(this.__getModifiers("init"))
         // console.log("init =", this.init)
 
-        this.ca_modifiers = this.__compute_ca()
+        this.ca_modifiers = this.__computeCa()
         this.saves = this.__computeSaves()
         this.attacks = this.__computeAttacks()
         this.skills = this.__computeSkills()
         this.__computeMovement()
     }
 
-    __compute_ca = () => {
+    __computeAbilities = () => {
+        const abilities = {}
+        Ability.names.forEach(ability => {
+            if (ability in this.abilitiesBasis) {
+                abilities[ability] = new Ability(ability, this.abilitiesBasis[ability])
+                abilities[ability].modifiers = this.__getModifiers(ability)
+            } else {
+                console.warn(`Missing ${ability} in character data`)
+            }
+        })
+        // console.log("abilities =", abilities)
+        return abilities
+    }
+
+    __computeCa = () => {
         const ca_modifiers = [
             new Modifier("base", 10),
             new Modifier("dex", this.__getAbilityBonus("dex"), "ability")
@@ -419,12 +411,12 @@ class Character {
     __computeSkills = () => {
 
         const skills = {}
-        this.skills_ranks = 0;
+        this.totalRanks = 0;
         skillsDefinition.forEach(skill => {
             // console.log(skill);
-            const rank = skill.name in this.skills ? this.skills[skill.name] : 0
+            const rank = skill.name in this.skillsRanks ? this.skillsRanks[skill.name] : 0
             // console.log(`rank=${rank}`)
-            this.skills_ranks += rank;
+            this.totalRanks += rank;
 
             let enable
             if (skill.flags.includes("learned") && rank === 0) {
@@ -458,8 +450,8 @@ class Character {
             if ("synergies" in skill) {
                 skill.synergies.forEach(synergy => {
                     // console.log(synergy);
-                    if (synergy.skill in this.skills) {
-                        if (this.skills[synergy.skill] >= 5) {
+                    if (synergy.skill in this.skillsRanks) {
+                        if (this.skillsRanks[synergy.skill] >= 5) {
                             // console.log(`Synergy possible for ${skill.name}`)
                             if ("condition" in synergy) {
                                 comments.push(`+2 ${synergy.condition} (${synergy.skill})`)
@@ -520,8 +512,8 @@ class Character {
 
     transform = (form) => {
         // console.log("transform =>", form)
-        // console.log("transform =>", this.current_form, form.id)
-        if (form.id !== this.current_form) {
+        // console.log("transform =>", this.currentForm, form.id)
+        if (form.id !== this.currentForm) {
             this.backup = JSON.parse(JSON.stringify(this));
             for (let key in form) {
                 if (key in this) {
@@ -529,7 +521,7 @@ class Character {
                 }
             }
             form.modifiers.forEach(modifier => { modifier.source = form.id })
-            this.current_form = form.id
+            this.currentForm = form.id
             this.compute(form.modifiers)
             // console.log(this.backup)
         } else {

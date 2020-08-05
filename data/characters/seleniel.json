@@ -9,7 +9,7 @@
     "age": "143 ans",
     "xp": 1700,
     "gold": "75000 PA",
-    "hit_points": 78,
+    "hitPointsBasis": 78,
     "classes": [
         {
             "name": "Druide",
@@ -80,7 +80,7 @@
             ]
         }
     ],
-    "abilities": {
+    "abilitiesBasis": {
         "for": 14,
         "dex": 20,
         "con": 14,
@@ -88,7 +88,7 @@
         "sag": 21,
         "cha": 14
     },
-    "skills": {
+    "skillsRanks": {
         "Art de la magie": 1,
         "Concentration": 4,
         "Connaissances (exploration souterraine)": 2,
@@ -112,7 +112,7 @@
         "Saut": 1,
         "Survie": 10
     },
-    "powers": [
+    "powersOwn": [
         {
             "type": "don",
             "name": "Science de l'initiative",
@@ -255,7 +255,7 @@
                 {
                     "name": "Morsure",
                     "attack": {
-                        "nb_attack": 1,
+                        "nbAttack": 1,
                         "hit": {
                             "ability": "for"
                         },
@@ -269,7 +269,7 @@
                 {
                     "name": "Griffes",
                     "attack": {
-                        "nb_attack": 2,
+                        "nbAttack": 2,
                         "hit": {
                             "ability": "for"
                         },
@@ -292,7 +292,7 @@
                     "name": "Ailes",
                     "desc": "",
                     "attack": {
-                        "nb_attack": 2,
+                        "nbAttack": 2,
                         "hit": {
                             "ability": "for"
                         },
@@ -314,7 +314,7 @@
                 {
                     "name": "Queue",
                     "attack": {
-                        "nb_attack": 1,
+                        "nbAttack": 1,
                         "hit": {
                             "ability": "for"
                         },
@@ -334,7 +334,7 @@
                     }
                 }
             ],
-            "_abilities": {
+            "abilitiesBasis": {
                 "for": 39,
                 "dex": 10,
                 "con": 29,
@@ -373,7 +373,7 @@
                             "base": "3d6"
                         },
                         "crit": "20/x2",
-                        "nb_attack": 2,
+                        "nbAttack": 2,
                         "modes": [
                             {
                                 "name": "en puisance à 5",

@@ -7,7 +7,7 @@
     "height": "70 cm",
     "weight": "12 Kg",
     "age": "17 ans",
-    "hit_points": 41,
+    "hitPointsBasis": 41,
     "classes": [
         {
             "name": "Roublard",
@@ -61,7 +61,7 @@
             ]
         }
     ],
-    "abilities": {
+    "abilitiesBasis": {
         "for": 8,
         "dex": 27,
         "con": 14,
@@ -69,7 +69,7 @@
         "sag": 14,
         "cha": 14
     },
-    "skills": {
+    "skillsRanks": {
         "Acrobaties": 12,
         "Connaissances (folklore local)": 5,
         "Crochetage": 12,
@@ -87,7 +87,7 @@
         "Renseignement": 12,
         "Utilisation d'objets magiques": 12
     },
-    "powers": [
+    "powersOwn": [
         {
             "type": "don",
             "name": "Science du vol",

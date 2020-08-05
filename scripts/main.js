@@ -114,7 +114,7 @@ const displayIdentity = character => {
         // console.log(attribute)
         $(`.dd3-id-${attribute}`).text(character[attribute])
     });
-    $(`.dd3-id-hit_points`).text(`${character.hitPoints} (${character.hitPointsBase} + ${character.hitPointsCon})`)
+    $(`.dd3-id-hitPoints`).text(`${character.hitPoints} (${character.hitPointsBasis} + ${character.hitPointsCon})`)
 
     // Name
     $(".dd3-id-name").html(`<a href="${character.$name}">${character.name}</a>`);
@@ -232,8 +232,7 @@ const displaySkills = character => {
         "learned": '<i class="graduation cap icon"></i>',
         "armor_penality": '<i class="hiking icon"></i>'
     }
-    // console.log(character.skills_ranks)
-    $("#skills_ranks").text(character.skills_ranks)
+    $("#totalRanks").text(character.totalRanks)
     const lines = []
     character.skills.forEach(skill => {
         const skill_class_css = skill.class ? "left marked green" : ""
@@ -259,7 +258,7 @@ const displayAttacks = character => {
     character.attacks.forEach(attack => {
         // console.log(attack);
         const hit_max = getSumModifiers(attack.modifiers.hit)
-        const hit = attack.nb_attack === undefined ? formatHit(hit_max, character.ba) : Array(attack.nb_attack).fill(hit_max).join("/")
+        const hit = attack.nbAttack === undefined ? formatHit(hit_max, character.ba) : Array(attack.nbAttack).fill(hit_max).join("/")
         const damage_modifier = getSumModifiers(attack.modifiers.damage)
         const damage = `${attack.damage} ${formatBonus(damage_modifier)}`
         const line = `
