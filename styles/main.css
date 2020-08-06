@@ -1,4 +1,3 @@
-
 /* UTILS */
 
 .details {
@@ -8,7 +7,7 @@
 
 .capitalize {
     text-transform: capitalize;
-  }
+}
 
 .lowercase {
     text-transform: lowercase;
@@ -16,6 +15,10 @@
 
 .uppercase {
     text-transform: uppercase;
+}
+
+.nowrap {
+    white-space: nowrap;
 }
 
 .hidden {
@@ -53,6 +56,7 @@ body, html {
 .dd3-power-name {
     font-weight: bold;
 }
+
 .dd3-power-desc {
     font-style: italic;
 }
