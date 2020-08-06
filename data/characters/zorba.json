@@ -50,13 +50,13 @@
                     "type": "don",
                     "level": 8,
                     "url": "https://regles-donjons-dragons.com/page301.html",
-		    "modifiers": [
-			{
-			    "target": "ca",
-			    "value": 1,
-			    "condition": "contre un seul adversaire"
-			}
-		    ]
+                    "modifiers": [
+                        {
+                            "target": "ca",
+                            "value": 1,
+                            "condition": "contre un seul adversaire"
+                        }
+                    ]
                 },
                 {
                     "name": "Don supplémentaire : Science du critique (épée à 2 mains)",
@@ -69,7 +69,7 @@
                     "type": "don",
                     "level": 12,
                     "url": "http://force.wikidot.com/heroic-surge-feat",
-		    "description": " 1 fois par jour tous les 4 niveaux, le personnage peut effectuer une action de mouvement ou une action simple dans le round, soit avant, soit après ses actions habituelles."
+                    "description": " 1 fois par jour tous les 4 niveaux, le personnage peut effectuer une action de mouvement ou une action simple dans le round, soit avant, soit après ses actions habituelles."
                 }
             ]
         },
@@ -290,13 +290,13 @@
         },
         {
             "name": "Harnois Solamnique de maitre, +2",
-	    "used": false,
-	    "location": "home",
+            "used": false,
+            "location": "home",
             "abilities": [
-		"Armure lourde (25kg ; vitesse 6m ; course x3)",
-		"Dex max +1",
-		"Malus aux tests -6",
-		"Echec des sorts 35%"
+                "Armure lourde (25kg ; vitesse 6m ; course x3)",
+                "Dex max +1",
+                "Malus aux tests -6",
+                "Echec des sorts 35%"
             ],
             "modifiers": [
                 {
@@ -314,10 +314,10 @@
         {
             "name": "Harnois de maitre en mithral, +2, de rapidité",
             "abilities": [
-		"Armure intermédiaire (12,5kg ; vitesse 6m ; course x4)",
-		"Dex max +3",
-		"Malus aux tests -3",
-		"Echec des sorts 25%",
+                "Armure intermédiaire (12,5kg ; vitesse 6m ; course x4)",
+                "Dex max +3",
+                "Malus aux tests -3",
+                "Echec des sorts 25%",
                 "Rapidité - comme le sort - pendant 1r 3/j (action libre)"
             ],
             "modifiers": [
@@ -336,7 +336,7 @@
         {
             "name": "Wyrmsvenin",
             "abilities": [
-		"Epée à 2 mains de facture elfique, +2",
+                "Epée à 2 mains de facture elfique, +2",
                 "Tueuse de dragons (+2d6)",
                 "Grande tueuse de dragons noirs et aquatiques (+2d10 en cas de critique)"
             ],
@@ -445,15 +445,15 @@
         },
         {
             "name": "Fléaudragon (Dragonflail)",
-	    "used": false,
-	    "location": "home",
+            "used": false,
+            "location": "home",
             "abilities": [
-		"Artefact",
-		"Fléau d'arme lourd en métal-dragon, +4, tueur de dragons (+2/+2d6)",
-		"Dragon : Fléau +6, 1d10+2d6+6 de dégats, +1 point de diminution de CON (1/NIV en cas de critique)"
+                "Artefact",
+                "Fléau d'arme lourd en métal-dragon, +4, tueur de dragons (+2/+2d6)",
+                "Dragon : Fléau +6, 1d10+2d6+6 de dégats, +1 point de diminution de CON (1/NIV en cas de critique)"
             ],
             "specials": [
-		"Dragon : Fléau +6, 1d10+2d6+6 de dégats, +1 point de diminution de CON (1/NIV en cas de critique)"
+                "Dragon : Fléau +6, 1d10+2d6+6 de dégats, +1 point de diminution de CON (1/NIV en cas de critique)"
             ],
             "attack": {
                 "hit": {
@@ -510,7 +510,7 @@
                     }
                 ]
             }
-	},
+        },
         {
             "name": "Sceptre de Cirulon",
             "used": false,
@@ -533,31 +533,31 @@
         {
             "name": "Armure de plaque de Théros",
             "used": false,
-	    "location": "home"
+            "location": "home"
         },
         {
             "name": "Harpon géant",
             "used": false,
-	    "location": "home"
+            "location": "home"
         },
         {
             "name": "Casque de Rugoheras (Lycéum)",
             "used": false,
-	    "location": "home"
+            "location": "home"
         },
         {
             "name": "Bateau pliant (déplie-bateau)",
             "used": false,
-	    "location": "home",
-	    "url": "https://regles-donjons-dragons.com/page1284.html",
+            "location": "home",
+            "url": "https://regles-donjons-dragons.com/page1284.html",
             "abilities": [
-		    "Un bateau pliant ressemble à une petite boîte en bois, longue de 30 centimètres sur 15 centimètres de large et autant de profondeur. On peut l’utiliser pour ranger des objets, mais dès que le mot de commande est prononcé, elle se déplie pour donner naissance à une barque de 3 mètres de long sur 1,20 mètre de large et 60 centimètres de profondeur. Un deuxième mot de commande la transforme en bateau de 7,20 mètres de long (sur 2,40 mètres de large et 1,80 mètre de profondeur). Les objets rangés dans la boîte se retrouvent au fond de la barque ou du bateau.  La barque est équipée d’une paire de rames, d’une ancre et d’un mât auquel il est possible de hisser une voile triangulaire (ou latine). Pour sa part, le bateau est moins rudimentaire, puisqu’il est doté d’un pont, de bancs de nage, de cinq paires de rames, d’un gouvernail, d’une ancre, d’une cabine de pont et d’un mât pourvu d’une voile carrée. La barque peut aisément accueillir quatre passagers, le bateau une bonne quinzaine.  Un troisième mot de commande retransforme la barque ou le bateau en boîte. Les divers mots de commande sont parfois directement écrits sur la boîte (même s’ils ne sont pas toujours visibles), mais il arrive également qu’ils aient été inscrits ailleurs (par exemple, sur un objet rangé à l’intérieur de la boîte)."
+                "Un bateau pliant ressemble à une petite boîte en bois, longue de 30 centimètres sur 15 centimètres de large et autant de profondeur. On peut l’utiliser pour ranger des objets, mais dès que le mot de commande est prononcé, elle se déplie pour donner naissance à une barque de 3 mètres de long sur 1,20 mètre de large et 60 centimètres de profondeur. Un deuxième mot de commande la transforme en bateau de 7,20 mètres de long (sur 2,40 mètres de large et 1,80 mètre de profondeur). Les objets rangés dans la boîte se retrouvent au fond de la barque ou du bateau.  La barque est équipée d’une paire de rames, d’une ancre et d’un mât auquel il est possible de hisser une voile triangulaire (ou latine). Pour sa part, le bateau est moins rudimentaire, puisqu’il est doté d’un pont, de bancs de nage, de cinq paires de rames, d’un gouvernail, d’une ancre, d’une cabine de pont et d’un mât pourvu d’une voile carrée. La barque peut aisément accueillir quatre passagers, le bateau une bonne quinzaine.  Un troisième mot de commande retransforme la barque ou le bateau en boîte. Les divers mots de commande sont parfois directement écrits sur la boîte (même s’ils ne sont pas toujours visibles), mais il arrive également qu’ils aient été inscrits ailleurs (par exemple, sur un objet rangé à l’intérieur de la boîte)."
             ]
         },
         {
             "name": "Epée du terrible pirate Robert",
             "used": false,
-	    "location": "home",
+            "location": "home",
             "abilities": [
                 "Magique (?)"
             ]
