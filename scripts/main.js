@@ -267,7 +267,7 @@ const displayAttacks = character => {
                 <td class="details" data-html="${formatDetails(attack.modifiers.hit)}">${hit}</td>
                 <td class="details" data-html="${formatDetails(attack.modifiers.damage)}">${damage}</td>
                 <td>${attack.crit}</td>
-                <td>${attack.specials.join("<br>")}</td>
+                <td class="left aligned">${attack.specials.join("<br>")}</td>
             </tr>`;
         lines.push(line)
     });
