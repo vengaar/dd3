@@ -176,17 +176,20 @@
         {
             "type": "don",
             "name": "Combat Aveugle",
-            "Source": "Race: Humain"
+            "Source": "Race: Humain",
+            "level": 1
         },
         {
             "type": "don",
             "name": "Arme de prédilection : épée à 2 mains",
-            "Source": "G1"
+            "source": "Guerrier",
+            "level": 1
         },
         {
             "type": "don",
             "name": "Attaque en puissance",
-            "Source": "G2"
+            "source": "Guerrier",
+            "level": 2
         },
         {
             "type": "don",
@@ -196,7 +199,8 @@
         {
             "type": "don",
             "name": "Spécialisation martiale : épée à 2 mains",
-            "Source": "G4"
+            "source": "Guerrier",
+            "level": 4
         },
         {
             "type": "don",
@@ -207,12 +211,14 @@
         {
             "type": "don",
             "name": "Enchaînement",
-            "Source": "G6"
+            "source": "Guerrier",
+            "level": 6
         },
         {
             "type": "don",
             "name": "Esquive",
-            "Source": "G8",
+            "source": "Guerrier",
+            "level": 8,
             "modifiers": [
                 {
                     "target": "ca",
@@ -236,7 +242,8 @@
         {
             "type": "don",
             "name": "Science du critique : épée à 2 mains",
-            "Source": "G10"
+            "source": "Guerrier",
+            "level": 10
         },
         {
             "type": "don",
@@ -247,7 +254,8 @@
             "type": "don",
             "name": "Sursaut Héroique",
             "description": " 1 fois par jour tous les 4 niveaux, le personnage peut effectuer une action de mouvement ou une action simple dans le round, soit avant, soit après ses actions habituelles.",
-            "Source": "G12"
+            "source": "Guerrier",
+            "level": 12
         },
         {
             "type": "don",
@@ -337,11 +345,17 @@
         {
             "name": "Wyrmsvenin",
             "description": "Epée à 2 mains, +2, tueuse de dragons (+2d6) , grande tueuse de dragons noirs et aquatiques (+2d10 en cas de critique)",
+            "specials": [
+                "Tueuse de dragons (+2d6)",
+                "Grande tueuse de dragons noirs et aquatiques (+2d10 en cas de critique)"
+            ],
             "attack": {
                 "hit": {
                     "ability": "for"
                 },
                 "damage": {
+                    "ability": "for",
+                    "multiplier": 1.5,
                     "base": "2d6"
                 },
                 "crit": "19-20/x2",
@@ -355,6 +369,48 @@
                         "target": "damage",
                         "type": "alteration",
                         "value": 2
+                    },
+                    {
+                        "source": "Arme de prédilection",
+                        "target": "hit",
+                        "value": 1
+                    },
+                    {
+                        "source": "Spécialisation martiale",
+                        "target": "damage",
+                        "value": 1
+                    }
+                ],
+                "modes": [
+                    {
+                        "name": "en puisance à 5",
+                        "modifiers": [
+                            {
+                                "source": "Attaque en puissance",
+                                "target": "hit",
+                                "value": -5
+                            },
+                            {
+                                "source": "Attaque en puissance",
+                                "target": "damage",
+                                "value": 10
+                            }
+                        ]
+                    },
+                    {
+                        "name": "en puisance à 10",
+                        "modifiers": [
+                            {
+                                "source": "Attaque en puissance",
+                                "target": "hit",
+                                "value": -10
+                            },
+                            {
+                                "source": "Attaque en puissance",
+                                "target": "damage",
+                                "value": 20
+                            }
+                        ]
                     }
                 ]
             }
@@ -362,6 +418,9 @@
         {
             "name": "Arc long composite +1 de force 18, traqueur",
             "description": "Traqueur : annule le camouflage",
+            "specials": [
+                "Traqueur : annule le camouflage"
+            ],
             "attack": {
                 "hit": {
                     "ability": "dex"
