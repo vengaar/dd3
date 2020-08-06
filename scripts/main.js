@@ -261,13 +261,14 @@ const displayAttacks = character => {
         const hit = attack.nbAttack === undefined ? formatHit(hit_max, character.ba) : Array(attack.nbAttack).fill(hit_max).join("/")
         const damage_modifier = getSumModifiers(attack.modifiers.damage)
         const damage = `${attack.damage} ${formatBonus(damage_modifier)}`
+        const mode = attack.mode == "base" ? "" : `<br>[${attack.mode}]`
         const line = `
             <tr>
-                <td>${attack.name} [${attack.mode}]</td>
+                <td>${attack.name}${mode}</td>
                 <td class="details" data-html="${formatDetails(attack.modifiers.hit)}">${hit}</td>
-                <td class="details" data-html="${formatDetails(attack.modifiers.damage)}">${damage}</td>
-                <td>${attack.crit}</td>
-                <td class="left aligned">${attack.specials.join("<br>")}</td>
+                <td class="details" style="white-space: nowrap;" data-html="${formatDetails(attack.modifiers.damage)}">${damage}</td>
+                <td style="white-space: nowrap;">${attack.crit}</td>
+                <td class="top aligned left aligned">${attack.specials.join("<br>")}</td>
             </tr>`;
         lines.push(line)
     });
@@ -320,7 +321,7 @@ const displayEquipments = character => {
                 <td class="collapsing center aligned" data-sort-value="${location}"><i class="${location} icon"></i></td>
                 <td class="top aligned">${name}</td>
                 </td>
-                <td class="top aligned">
+                <td class="top aligned" style="white-space: nowrap;">
                     ${formatModifers(equipment.modifiers || [])}
                 </td>
             </tr>`;
