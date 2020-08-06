@@ -342,6 +342,11 @@ const displayCharacter = character => {
     displayPowers(character)
     displayEquipments(character)
 
+    $('.details').popup({
+        position: 'right center',
+        observeChanges: true
+    });
+
     $('.ui.checkbox').checkbox({
         onChange: function () {
             $dimmer.dimmer('show');
