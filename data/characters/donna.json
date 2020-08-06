@@ -1,0 +1,282 @@
+{
+  "name": "Donna, épouse de Justarius",
+  "image": "https://us.v-cdn.net/5020761/uploads/editor/lx/pdn8hqkarmhq.jpg",
+  "$race": "data/races/human.json",
+  "gender": "venus",
+  "alignment": "NN",
+  "height": "1,65 cm",
+  "weight": "59 Kg",
+  "age": "38 ans",
+  "xp": 850,
+  "gold": "1500 PAC",
+  "hitPointsBasis": 48,
+  "classes": [
+    {
+      "name": "Magicienne",
+      "level": 3,
+      "ba": 1,
+      "nls": 3,
+      "saves": {
+        "vig": 1,
+        "ref": 1,
+        "vol": 3
+      },
+      "powers": [
+        {
+          "name": "Familier : Froussette",
+          "level": 1,
+          "url": "https://regles-donjons-dragons.com/page60.html",
+          "description": "Belette (créature magique) DV:15, PV:31, CA16",
+          "modifiers": [
+            {
+              "target": "ref",
+              "value": 2
+            }
+          ]
+        },
+        {
+          "name": "Ecriture de parchemins",
+          "type": "don",
+          "level": 1,
+          "url": "https://regles-donjons-dragons.com/page379.html"
+        },
+        {
+          "name": "Armes et armures",
+          "description": "Une magicien est normallement formée au maniement de l’arbalète (légère et lourde), du bâton, de la dague et du gourdin. Cependant les règles de la Haute Sorcellerie interdisent aux Mages d'utiliser une autre arme que le bâton et (en mémoire de Magius) la dague.",
+          "level": 1
+        },
+        {
+          "name": "Sort 0:4 1:4 2:4 3:4 4:4 5:4 6:4 7:4 8:1",
+          "level": 15,
+          "description": "Une magicienne peut lancer des sorts profanes. A son niveau de lanceur de sort (15 au total), Donna a accès aux sorts suivants: 0:4 1:4 2:4 3:4 4:4 5:4 6:4 7:4 8:1"
+        }
+      ]
+    },
+    {
+      "name": "Mage de Haute Sorcellerie : Robe Rouge (Red robe Wizard of High Sorcery)",
+      "book": "Tower of High Sorcery",
+      "level": 10,
+      "ba": 5,
+      "nls": 10,
+      "saves": {
+        "vig": 3,
+        "ref": 3,
+        "vol": 7
+      },
+      "powers": [
+        {
+          "name": "Magie des Lunes",
+          "desc": "+1 NLS et JS des sorts lancés quand la Lune Rouge est pleine. -1 NLS et JS quand la Lune Rouge est cachée. Idem en cas d'alignement : +1 NLS et JS si la Lune Rouge est en conjonction avec une autre Lune",
+          "level": 1
+        },
+        {
+          "name": "Arcane Research",
+          "desc": "A Wizard of High Sorcery has access to the secrets and knowledge of the Conclave and the Towers of High Sorcery. Beginning at 2nd level, the character gains a competence bonus on Spellcraft and Knowledge (arcana) checks. In addition, each level that grants a bonus in arcane research also allows the Wizard of High Sorcery to add a bonus spell to his spellbook (in addition to the spell normally gained through level advancement). ",
+          "level": 10,
+          "modifiers": [
+            {
+              "target": "Art de la magie",
+              "value": 5
+            },
+            {
+              "target": "Connaissances (mystères)",
+              "value": 5
+            }
+          ]
+        }
+      ]
+    },
+    {
+      "name": "Chasseur de renégat (Renegade Hunter)",
+      "book": "Tower of High Sorcery",
+      "level": 2,
+      "ba": 1,
+      "nls": 2,
+      "saves": {
+        "vig": 3,
+        "ref": 3,
+        "vol": 3
+      },
+      "powers": [
+        {
+          "type": "don",
+          "name": "Fin Limier (Investigator)",
+          "level": 1,
+          "modifiers": [
+            {
+              "target": "Fouille",
+              "value": 2
+            },
+            {
+              "target": "Renseignement",
+              "value": 2
+            }
+          ]
+        }
+      ]
+    }
+  ],
+  "abilitiesBasis": {
+    "for": 7,
+    "dex": 13,
+    "con": 12,
+    "int": 20,
+    "sag": 13,
+    "cha": 11
+  },
+  "skillsRanks": {
+    "Art de la magie": 18,
+    "Concentration": 18,
+    "Connaissances (folklore local)": 5,
+    "Connaissances (géographie)": 5,
+    "Connaissances (mystères)": 16,
+    "Connaissances (plans)": 2,
+    "Décryptage": 10,
+    "Détection": 7,
+    "Fouille": 9,
+    "Intimidation": 5,
+    "Perception auditive": 5,
+    "Renseignement": 10,
+    "Survie": 7
+  },
+  "powersOwn": [
+    {
+      "name": "Vision magique",
+      "type": "sort",
+      "source": "Permanence",
+      "level": 11
+    },
+    {
+      "name": "Détection de l'invisibilité",
+      "type": "sort",
+      "source": "Permanence",
+      "level": 10
+    },
+    {
+      "name": "Vision dans le noir",
+      "type": "sort",
+      "source": "Permanence",
+      "level": 10
+    },
+    {
+      "name": "Don des langues",
+      "type": "sort",
+      "source": "Permanence",
+      "level": 11
+    },
+    {
+      "name": "Lecture de la magie",
+      "type": "sort",
+      "source": "Permanence",
+      "level": 9
+    }
+  ],
+  "equipments": [
+    {
+      "name": "Bâton de feu",
+      "description": " ",
+      "charges": 5,
+      "abilities": [
+        "Boule de feu (1 charge)",
+        "Mains brulantes (1 charges)",
+        "Mur de feu (2 charges)"
+      ]
+    },
+    {
+      "name": "Gants de dextérité +2",
+      "modifiers": [
+        {
+          "target": "dex",
+          "type": "altération",
+          "value": 2
+        }
+      ]
+    },
+    {
+      "name": "Amulette d'armure naturelle",
+      "modifiers": [
+        {
+          "target": "ca",
+          "type": "armure naturelle",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "name": "Anneau de barrière mentale",
+      "description": "Dans la plupart des cas, cet anneau est en or massif finement ouvragé. Son porteur est immunisé en permanence contre les sorts détection de pensées et détection du mensonge, ainsi que contre toutes les tentatives faites pour déterminer son alignement par magie.",
+      "abilities": [
+        "Immunisé contre les sorts détection de pensées et détection du mensonge, ainsi que contre toutes les tentatives faites pour déterminer son alignement par magie. (toujours actif)"
+      ]
+    },
+    {
+      "name": "Echarpe de changement d'apparance",
+      "abilities": [
+        "Changement d'apparence (à volonté)"
+      ]
+    },
+    {
+      "name": "Anneau de protection +1",
+      "modifiers": [
+        {
+          "target": "ca",
+          "type": "parade",
+          "value": 1
+        }
+      ]
+    },
+    {
+      "name": "Bâton de maître",
+      "description": "Baton préparé avec le sort : Arcane Staff, Greater)",
+      "abilities": [
+        "Baton préparé avec le sort : Arcane Staff, Greater)",
+        "Contenance: 20 niv (sort niv 6 max)",
+        "niv6: Dissipation suprême, Vision lucide",
+        "niv5: Téléportation",
+        "niv3: Eclair"
+      ],
+      "attack": {
+        "hit": {
+          "ability": "for"
+        },
+        "damage": {
+          "ability": "for",
+          "multiplier": 1.5,
+          "base": "1d8"
+        },
+        "crit": "20/x3"
+      }
+    },
+    {
+      "name": "Parchemin",
+      "abilities": [
+        "Sphere d'invisibilité (n3) NLS 5",
+        "Séquestration (n8) NLS 15"
+      ]
+    },
+    {
+      "name": "Attaque par rayon",
+      "attack": {
+        "hit": {
+          "ability": "dex"
+        },
+	"damage": {
+		"base": "0"
+	},
+        "crit": "20/x2"
+      }
+    },
+    {
+      "name": "Attaque par sort de contact",
+      "attack": {
+        "hit": {
+          "ability": "dex"
+        },
+	"damage": {
+		"base": "1d3"
+	},
+        "crit": "20/x2"
+      }
+    }
+  ]
+}
