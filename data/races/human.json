@@ -1,0 +1,15 @@
+{
+    "name": "Humain",
+    "url": "https://regles-donjons-dragons.com/page12.html",
+    "level_ajustement": 0,
+    "size": "M",
+    "speed": 9,
+    "powers": [
+        {
+            "desc": "1 don supplémentaire au niveau 1"
+        },
+        {
+            "desc": "4 points de compétence supplémentaires au niveau 1, et 1 point de compétence supplémentaire à chaque niveau additionnel"
+        }
+    ]
+}
