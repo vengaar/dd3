@@ -1,5 +1,5 @@
 {
-    "name": "Zorba",
+    "name": "Attila de Vivelame, dit Zorba",
     "image": "http://lexicon.dragonlancenexus.com/images/2/2f/Caramon_Majere.jpg",
     "$race": "data/races/human.json",
     "gender": "mars",
@@ -9,7 +9,7 @@
     "age": "41 ans",
     "xp": 1700,
     "gold": "100 PAC",
-    "hitPointsBasis": 152,
+    "hitPointsBasis": 101,
     "classes": [
         {
             "name": "Guerrier",
@@ -22,39 +22,54 @@
             },
             "powers": [
                 {
-                    "name": "Don supplémentaire",
+                    "name": "Don supplémentaire : Arme de prédilection (épée à 2 mains)",
                     "level": 1,
-                    "url": "https://regles-donjons-dragons.com/page61.html"
+                    "type": "don",
+                    "url": "https://regles-donjons-dragons.com/page272.html"
                 },
                 {
-                    "name": "Don supplémentaire",
+                    "name": "Don supplémentaire : Attaque en puissance",
+                    "type": "don",
                     "level": 2,
-                    "url": "https://regles-donjons-dragons.com/page61.html"
+                    "url": "https://regles-donjons-dragons.com/page279.html"
                 },
                 {
-                    "name": "Don supplémentaire",
+                    "name": "Don supplémentaire : Spécialisation martiale (épée à 2 mains)",
+                    "type": "don",
                     "level": 4,
-                    "url": "https://regles-donjons-dragons.com/page61.html"
+                    "url": "https://regles-donjons-dragons.com/page348.html"
                 },
                 {
-                    "name": "Don supplémentaire",
+                    "name": "Don supplémentaire : Enchaînement",
+                    "type": "don",
                     "level": 6,
-                    "url": "https://regles-donjons-dragons.com/page61.html"
+                    "url": "https://regles-donjons-dragons.com/page299.html"
                 },
                 {
-                    "name": "Don supplémentaire",
+                    "name": "Don supplémentaire : Esquive",
+                    "type": "don",
                     "level": 8,
-                    "url": "https://regles-donjons-dragons.com/page61.html"
+                    "url": "https://regles-donjons-dragons.com/page301.html",
+		    "modifiers": [
+			{
+			    "target": "ca",
+			    "value": 1,
+			    "condition": "contre un seul adversaire"
+			}
+		    ]
                 },
                 {
-                    "name": "Don supplémentaire",
+                    "name": "Don supplémentaire : Science du critique (épée à 2 mains)",
+                    "type": "don",
                     "level": 10,
-                    "url": "https://regles-donjons-dragons.com/page61.html"
+                    "url": "https://regles-donjons-dragons.com/page341.html"
                 },
                 {
-                    "name": "Don supplémentaire",
+                    "name": "Don supplémentaire : Sursaut Héroïque",
+                    "type": "don",
                     "level": 12,
-                    "url": "https://regles-donjons-dragons.com/page61.html"
+                    "url": "http://force.wikidot.com/heroic-surge-feat",
+		    "description": " 1 fois par jour tous les 4 niveaux, le personnage peut effectuer une action de mouvement ou une action simple dans le round, soit avant, soit après ses actions habituelles."
                 }
             ]
         },
@@ -113,6 +128,7 @@
                 {
                     "name": "Défense contre la magie (+3)",
                     "level": 5,
+                    "type": "Ext",
                     "url": "http://www.gemmaline.com/prestige/pourfendeurdemages.htm",
                     "modifiers": [
                         {
@@ -176,20 +192,8 @@
         {
             "type": "don",
             "name": "Combat Aveugle",
-            "Source": "Race: Humain",
+            "source": "Humain",
             "level": 1
-        },
-        {
-            "type": "don",
-            "name": "Arme de prédilection : épée à 2 mains",
-            "source": "Guerrier",
-            "level": 1
-        },
-        {
-            "type": "don",
-            "name": "Attaque en puissance",
-            "source": "Guerrier",
-            "level": 2
         },
         {
             "type": "don",
@@ -198,34 +202,9 @@
         },
         {
             "type": "don",
-            "name": "Spécialisation martiale : épée à 2 mains",
-            "source": "Guerrier",
-            "level": 4
-        },
-        {
-            "type": "don",
             "name": "Prestige",
             "description": "suivants -> 23, cohorte (Donna) -> 22",
             "level": 6
-        },
-        {
-            "type": "don",
-            "name": "Enchaînement",
-            "source": "Guerrier",
-            "level": 6
-        },
-        {
-            "type": "don",
-            "name": "Esquive",
-            "source": "Guerrier",
-            "level": 8,
-            "modifiers": [
-                {
-                    "target": "ca",
-                    "value": 1,
-                    "condition": "contre un seul adversaire"
-                }
-            ]
         },
         {
             "type": "don",
@@ -241,20 +220,7 @@
         },
         {
             "type": "don",
-            "name": "Science du critique : épée à 2 mains",
-            "source": "Guerrier",
-            "level": 10
-        },
-        {
-            "type": "don",
             "name": "Succession d'enchaînements",
-            "level": 12
-        },
-        {
-            "type": "don",
-            "name": "Sursaut Héroique",
-            "description": " 1 fois par jour tous les 4 niveaux, le personnage peut effectuer une action de mouvement ou une action simple dans le round, soit avant, soit après ses actions habituelles.",
-            "source": "Guerrier",
             "level": 12
         },
         {
@@ -318,16 +284,41 @@
         },
         {
             "name": "Anneau de déguisement",
-            "description": "permet à son possesseur de modifier ses traits comme à l’aide du sort déguisement.",
             "abilities": [
                 "déguisement (à volonté)"
             ]
         },
         {
-            "name": "Harnois de maitre en mithral, +2, de rapidité",
-            "description": "Armure intermédiaire, Dex max: +3, Malus aux tests -3, echec des sorts 25%, + Effet de Rapidité (comme le sort), 3/j, pendant 1r (Action libre)",
+            "name": "Harnois Solamnique de maitre, +2",
+	    "used": false,
+	    "location": "home",
             "abilities": [
-                "Rapidité 1r (3/j)"
+		"Armure lourde (25kg ; vitesse 6m ; course x3)",
+		"Dex max +1",
+		"Malus aux tests -6",
+		"Echec des sorts 35%"
+            ],
+            "modifiers": [
+                {
+                    "target": "ca",
+                    "type": "armure",
+                    "value": 8
+                },
+                {
+                    "target": "ca",
+                    "type": "alteration",
+                    "value": 2
+                }
+            ]
+        },
+        {
+            "name": "Harnois de maitre en mithral, +2, de rapidité",
+            "abilities": [
+		"Armure intermédiaire (12,5kg ; vitesse 6m ; course x4)",
+		"Dex max +3",
+		"Malus aux tests -3",
+		"Echec des sorts 25%",
+                "Rapidité - comme le sort - pendant 1r 3/j (action libre)"
             ],
             "modifiers": [
                 {
@@ -344,7 +335,11 @@
         },
         {
             "name": "Wyrmsvenin",
-            "description": "Epée à 2 mains, +2, tueuse de dragons (+2d6) , grande tueuse de dragons noirs et aquatiques (+2d10 en cas de critique)",
+            "abilities": [
+		"Epée à 2 mains de facture elfique, +2",
+                "Tueuse de dragons (+2d6)",
+                "Grande tueuse de dragons noirs et aquatiques (+2d10 en cas de critique)"
+            ],
             "specials": [
                 "Tueuse de dragons (+2d6)",
                 "Grande tueuse de dragons noirs et aquatiques (+2d10 en cas de critique)"
@@ -358,7 +353,7 @@
                     "multiplier": 1.5,
                     "base": "2d6"
                 },
-                "crit": "19-20/x2",
+                "crit": "17-20/x2 (don)",
                 "modifiers": [
                     {
                         "target": "hit",
@@ -378,12 +373,12 @@
                     {
                         "source": "Spécialisation martiale",
                         "target": "damage",
-                        "value": 1
+                        "value": 2
                     }
                 ],
                 "modes": [
                     {
-                        "name": "en puisance à 5",
+                        "name": "en puissance à 5",
                         "modifiers": [
                             {
                                 "source": "Attaque en puissance",
@@ -398,7 +393,7 @@
                         ]
                     },
                     {
-                        "name": "en puisance à 10",
+                        "name": "en puissance à 10",
                         "modifiers": [
                             {
                                 "source": "Attaque en puissance",
@@ -449,6 +444,74 @@
             }
         },
         {
+            "name": "Fléaudragon (Dragonflail)",
+	    "used": false,
+	    "location": "home",
+            "abilities": [
+		"Artefact",
+		"Fléau d'arme lourd en métal-dragon, +4, tueur de dragons (+2/+2d6)",
+		"Dragon : Fléau +6, 1d10+2d6+6 de dégats, +1 point de diminution de CON (1/NIV en cas de critique)"
+            ],
+            "specials": [
+		"Dragon : Fléau +6, 1d10+2d6+6 de dégats, +1 point de diminution de CON (1/NIV en cas de critique)"
+            ],
+            "attack": {
+                "hit": {
+                    "ability": "for"
+                },
+                "damage": {
+                    "ability": "for",
+                    "multiplier": 1.5,
+                    "base": "1d10"
+                },
+                "crit": "20/x3",
+                "modifiers": [
+                    {
+                        "target": "hit",
+                        "type": "alteration",
+                        "value": 4
+                    },
+                    {
+                        "target": "damage",
+                        "type": "alteration",
+                        "value": 4
+                    }
+                ],
+                "modes": [
+                    {
+                        "name": "en puissance à 5",
+                        "modifiers": [
+                            {
+                                "source": "Attaque en puissance",
+                                "target": "hit",
+                                "value": -5
+                            },
+                            {
+                                "source": "Attaque en puissance",
+                                "target": "damage",
+                                "value": 10
+                            }
+                        ]
+                    },
+                    {
+                        "name": "en puissance à 10",
+                        "modifiers": [
+                            {
+                                "source": "Attaque en puissance",
+                                "target": "hit",
+                                "value": -10
+                            },
+                            {
+                                "source": "Attaque en puissance",
+                                "target": "damage",
+                                "value": 20
+                            }
+                        ]
+                    }
+                ]
+            }
+	},
+        {
             "name": "Sceptre de Cirulon",
             "used": false,
             "abilities": [
@@ -465,6 +528,38 @@
             "abilities": [
                 "lumiere (à volonté)",
                 "soin modéré (2d8 + 10) 1/j"
+            ]
+        },
+        {
+            "name": "Armure de plaque de Théros",
+            "used": false,
+	    "location": "home"
+        },
+        {
+            "name": "Harpon géant",
+            "used": false,
+	    "location": "home"
+        },
+        {
+            "name": "Casque de Rugoheras (Lycéum)",
+            "used": false,
+	    "location": "home"
+        },
+        {
+            "name": "Bateau pliant (déplie-bateau)",
+            "used": false,
+	    "location": "home",
+	    "url": "https://regles-donjons-dragons.com/page1284.html",
+            "abilities": [
+		    "Un bateau pliant ressemble à une petite boîte en bois, longue de 30 centimètres sur 15 centimètres de large et autant de profondeur. On peut l’utiliser pour ranger des objets, mais dès que le mot de commande est prononcé, elle se déplie pour donner naissance à une barque de 3 mètres de long sur 1,20 mètre de large et 60 centimètres de profondeur. Un deuxième mot de commande la transforme en bateau de 7,20 mètres de long (sur 2,40 mètres de large et 1,80 mètre de profondeur). Les objets rangés dans la boîte se retrouvent au fond de la barque ou du bateau.  La barque est équipée d’une paire de rames, d’une ancre et d’un mât auquel il est possible de hisser une voile triangulaire (ou latine). Pour sa part, le bateau est moins rudimentaire, puisqu’il est doté d’un pont, de bancs de nage, de cinq paires de rames, d’un gouvernail, d’une ancre, d’une cabine de pont et d’un mât pourvu d’une voile carrée. La barque peut aisément accueillir quatre passagers, le bateau une bonne quinzaine.  Un troisième mot de commande retransforme la barque ou le bateau en boîte. Les divers mots de commande sont parfois directement écrits sur la boîte (même s’ils ne sont pas toujours visibles), mais il arrive également qu’ils aient été inscrits ailleurs (par exemple, sur un objet rangé à l’intérieur de la boîte)."
+            ]
+        },
+        {
+            "name": "Epée du terrible pirate Robert",
+            "used": false,
+	    "location": "home",
+            "abilities": [
+                "Magique (?)"
             ]
         }
     ]
