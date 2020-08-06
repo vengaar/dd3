@@ -58,82 +58,82 @@
                 }
             ]
         },
-	{
-		"name": "Pourfendeur de Mage",
-		"level": 5,
-		"ba":5,
-		"saves": {
-			"vig":1,
-			"ref":1,
-			"vol":4
-		},
-		"powers": [
-			{
-				"name": "Arme Magicide",
-				"desc":	"+1d6 points de dégâts supplémentaires aux lanceurs de sorts et aux créatures possédant des pouvoirs magiques avec son arme liée",
-				"level": 1,
-				"url": "http://www.gemmaline.com/prestige/pourfendeurdemages.htm",
-				"type": "Sur"
-			},
-			{
-				"name": "Frappe vicieuse",
-				"desc": "Un pourfendeur de mages de niveau 2 qui prépare une action pour distraire l'incantation d'un lanceur de sorts inflige des dégâts doublés si l'attaque réussit",
-				"level": 2,
-				"url": "http://www.gemmaline.com/prestige/pourfendeurdemages.htm",
-				"type": "Ext"
-			},
-			{
-				"name": "Protection de la haine",
-				"level": 2,
-				"url": "http://www.gemmaline.com/prestige/pourfendeurdemages.htm",
-				"type": "Sur",
-				"desc": "Une lois par jour et par une action libre, un pourfendeur de mages de niveau 2 peut renvoyer un sort ou un pouvoir magique dont il est la cible vers son lanceur. Ce pouvoir fonctionne par ailleurs comme le sort renvoi de sorts (niveau de lanceur de sorts égal à 5 + le niveau de classe du pourfendeur de mages). Il peut utiliser ce pouvoir deux fois par jour à partir du niveau 4"
-			},
-			{
-				"name": "Perception des auras",
-				"desc": "Un pourfendeur de mages de niveau 3 peut voir les auras magiques dans un rayon de 18 mètres. Ce pouvoir est par ailleurs similaire au sort détection de la magie, si ce n'est que le personnage n'obtient jamais plus d'informations que le nombre d'auras présentes.",
-				"level": 3,
-				"url": "http://www.gemmaline.com/prestige/pourfendeurdemages.htm",
-				"type": "Sur"
-			},
-			{
-				"name": "Manteau d'antidetection",
-				"desc": "Un pourfendeur de mages de niveau 4 (et tout l'équipement qu'il porte ou tient en main) est difficile à localiser à l'aide de divinations telles que clairaudience/clairvoyance, localisation d'objet, ou d'autres sons de détection. Il bénéficie en effet d'une protection magique équivalente à celle du sort antidétection (niveau de lanceur de sorts égal à son niveau de classe), mais uniquement sur lui et son équipement.",
-				"level": 4,
-				"url": "http://www.gemmaline.com/prestige/pourfendeurdemages.htm",
-				"type": "Sur"
-			},
-			{
-				"name": "Fermeture de l'esprit",
-				"desc": "Un pourfendeur de mages de niveau 5 peut faire le vide dans son esprit, ce qui l'immunise contre tous les effets mentaux (ce qui comprend les charmes, les coercitions, les mirages, les fantasmes, et les effets de moral). Il peut réprimer ou réactiver ce pouvoir à volonté par une action libre.",
-				"level": 5,
-				"url": "http://www.gemmaline.com/prestige/pourfendeurdemages.htm",
-				"type": "Ext"
-			},
-			{
-				"name": "Défense contre la magie (+3)",
-				"level": 5,
-				"url": "http://www.gemmaline.com/prestige/pourfendeurdemages.htm",
-				"modifiers": [
-					{
-						"target": "ref",
-						"value": 3,
-						"condition": "contre les sorts et les pouvoirs magiques"
-					},
-					{
-						"target": "vig",
-						"value": 3,
-						"condition": "contre les sorts et les pouvoirs magiques"
-					},
-					{
-						"target": "vol",
-						"value": 3,
-						"condition": "contre les sorts et les pouvoirs magiques"
-					}
-				]
-			}
-    		]
-	}
+        {
+            "name": "Pourfendeur de Mage",
+            "level": 5,
+            "ba": 5,
+            "saves": {
+                "vig": 1,
+                "ref": 1,
+                "vol": 4
+            },
+            "powers": [
+                {
+                    "name": "Arme Magicide",
+                    "desc": "+1d6 points de dégâts supplémentaires aux lanceurs de sorts et aux créatures possédant des pouvoirs magiques avec son arme liée",
+                    "level": 1,
+                    "url": "http://www.gemmaline.com/prestige/pourfendeurdemages.htm",
+                    "type": "Sur"
+                },
+                {
+                    "name": "Frappe vicieuse",
+                    "desc": "Un pourfendeur de mages de niveau 2 qui prépare une action pour distraire l'incantation d'un lanceur de sorts inflige des dégâts doublés si l'attaque réussit",
+                    "level": 2,
+                    "url": "http://www.gemmaline.com/prestige/pourfendeurdemages.htm",
+                    "type": "Ext"
+                },
+                {
+                    "name": "Protection de la haine",
+                    "level": 2,
+                    "url": "http://www.gemmaline.com/prestige/pourfendeurdemages.htm",
+                    "type": "Sur",
+                    "desc": "Une lois par jour et par une action libre, un pourfendeur de mages de niveau 2 peut renvoyer un sort ou un pouvoir magique dont il est la cible vers son lanceur. Ce pouvoir fonctionne par ailleurs comme le sort renvoi de sorts (niveau de lanceur de sorts égal à 5 + le niveau de classe du pourfendeur de mages). Il peut utiliser ce pouvoir deux fois par jour à partir du niveau 4"
+                },
+                {
+                    "name": "Perception des auras",
+                    "desc": "Un pourfendeur de mages de niveau 3 peut voir les auras magiques dans un rayon de 18 mètres. Ce pouvoir est par ailleurs similaire au sort détection de la magie, si ce n'est que le personnage n'obtient jamais plus d'informations que le nombre d'auras présentes.",
+                    "level": 3,
+                    "url": "http://www.gemmaline.com/prestige/pourfendeurdemages.htm",
+                    "type": "Sur"
+                },
+                {
+                    "name": "Manteau d'antidetection",
+                    "desc": "Un pourfendeur de mages de niveau 4 (et tout l'équipement qu'il porte ou tient en main) est difficile à localiser à l'aide de divinations telles que clairaudience/clairvoyance, localisation d'objet, ou d'autres sons de détection. Il bénéficie en effet d'une protection magique équivalente à celle du sort antidétection (niveau de lanceur de sorts égal à son niveau de classe), mais uniquement sur lui et son équipement.",
+                    "level": 4,
+                    "url": "http://www.gemmaline.com/prestige/pourfendeurdemages.htm",
+                    "type": "Sur"
+                },
+                {
+                    "name": "Fermeture de l'esprit",
+                    "desc": "Un pourfendeur de mages de niveau 5 peut faire le vide dans son esprit, ce qui l'immunise contre tous les effets mentaux (ce qui comprend les charmes, les coercitions, les mirages, les fantasmes, et les effets de moral). Il peut réprimer ou réactiver ce pouvoir à volonté par une action libre.",
+                    "level": 5,
+                    "url": "http://www.gemmaline.com/prestige/pourfendeurdemages.htm",
+                    "type": "Ext"
+                },
+                {
+                    "name": "Défense contre la magie (+3)",
+                    "level": 5,
+                    "url": "http://www.gemmaline.com/prestige/pourfendeurdemages.htm",
+                    "modifiers": [
+                        {
+                            "target": "ref",
+                            "value": 3,
+                            "condition": "contre les sorts et les pouvoirs magiques"
+                        },
+                        {
+                            "target": "vig",
+                            "value": 3,
+                            "condition": "contre les sorts et les pouvoirs magiques"
+                        },
+                        {
+                            "target": "vol",
+                            "value": 3,
+                            "condition": "contre les sorts et les pouvoirs magiques"
+                        }
+                    ]
+                }
+            ]
+        }
     ],
     "abilitiesBasis": {
         "for": 19,
@@ -182,22 +182,22 @@
             "type": "don",
             "name": "Arme de prédilection : épée à 2 mains",
             "Source": "G1"
-	},
+        },
         {
             "type": "don",
             "name": "Attaque en puissance",
             "Source": "G2"
-	},
+        },
         {
             "type": "don",
             "name": "Arme en main",
             "level": 3
-	},
+        },
         {
             "type": "don",
             "name": "Spécialisation martiale : épée à 2 mains",
             "Source": "G4"
-	},
+        },
         {
             "type": "don",
             "name": "Prestige",
@@ -208,7 +208,7 @@
             "type": "don",
             "name": "Enchaînement",
             "Source": "G6"
-	},
+        },
         {
             "type": "don",
             "name": "Esquive",
@@ -220,7 +220,7 @@
                     "condition": "contre un seul adversaire"
                 }
             ]
-	},
+        },
         {
             "type": "don",
             "name": "Souplesse du serpent",
@@ -229,7 +229,7 @@
                 {
                     "target": "ca",
                     "value": 4,
-                    "condition": "contre certaines attaques d'opportunités" 
+                    "condition": "contre certaines attaques d'opportunités"
                 }
             ]
         },
@@ -237,7 +237,7 @@
             "type": "don",
             "name": "Science du critique : épée à 2 mains",
             "Source": "G10"
-	},
+        },
         {
             "type": "don",
             "name": "Succession d'enchaînements",
@@ -245,10 +245,10 @@
         },
         {
             "type": "don",
-	    "name": "Sursaut Héroique",
-	    "description": " 1 fois par jour tous les 4 niveaux, le personnage peut effectuer une action de mouvement ou une action simple dans le round, soit avant, soit après ses actions habituelles.",
+            "name": "Sursaut Héroique",
+            "description": " 1 fois par jour tous les 4 niveaux, le personnage peut effectuer une action de mouvement ou une action simple dans le round, soit avant, soit après ses actions habituelles.",
             "Source": "G12"
-	},
+        },
         {
             "type": "don",
             "name": "Combat à mains nues",
@@ -270,8 +270,8 @@
     "equipments": [
         {
             "name": "Bottes Ailées",
-	    "description": "Sur commande et jusqu’à trois fois par jour, de petites ailes apparaissent au niveau du talon, qui permettent de voler sans avoir besoin de se concentrer autrement que pour décider où l’on souhaite aller (voir le sort vol) et ce pendant 5 minutes.",
-	    "url": "https://regles-donjons-dragons.com/page1287.html"
+            "description": "Sur commande et jusqu’à trois fois par jour, de petites ailes apparaissent au niveau du talon, qui permettent de voler sans avoir besoin de se concentrer autrement que pour décider où l’on souhaite aller (voir le sort vol) et ce pendant 5 minutes.",
+            "url": "https://regles-donjons-dragons.com/page1287.html"
         },
         {
             "name": "Cape de Charisme +2",
@@ -295,32 +295,32 @@
         },
         {
             "name": "Anneau de liberté de mouvement",
-	    "description": "Cet anneau en or permet à son porteur d’agir comme s’il était en permanence affecté par le sort liberté de mouvement.",
-	    "abilities": [
-		    	"Liberté de mouvement (toujours actif))"
-	    ]
+            "description": "Cet anneau en or permet à son porteur d’agir comme s’il était en permanence affecté par le sort liberté de mouvement.",
+            "abilities": [
+                "Liberté de mouvement (toujours actif))"
+            ]
         },
         {
             "name": "Anneau de Cirulon",
-	    "description": "peut soigner 6 point de vie une fois par jour. Si une attaque diminue les points de vie du porteur en-dessous de 0pv, l'anneau ramène le porteur à 1pv, mais cesse de fonctionner",
-	    "abilities": [
-		    	"Soins 6pv (1/j)",
-			"Contingence et soins variable, 1 seule fois"
-	    ]
+            "description": "peut soigner 6 point de vie une fois par jour. Si une attaque diminue les points de vie du porteur en-dessous de 0pv, l'anneau ramène le porteur à 1pv, mais cesse de fonctionner",
+            "abilities": [
+                "Soins 6pv (1/j)",
+                "Contingence et soins variable, 1 seule fois"
+            ]
         },
         {
             "name": "Anneau de déguisement",
-	    "description": "permet à son possesseur de modifier ses traits comme à l’aide du sort déguisement.",
-	    "abilities": [
-		    	"déguisement (à volonté)"
-	    ]
+            "description": "permet à son possesseur de modifier ses traits comme à l’aide du sort déguisement.",
+            "abilities": [
+                "déguisement (à volonté)"
+            ]
         },
         {
             "name": "Harnois de maitre en mithral, +2, de rapidité",
-	    "description": "Armure intermédiaire, Dex max: +3, Malus aux tests -3, echec des sorts 25%, + Effet de Rapidité (comme le sort), 3/j, pendant 1r (Action libre)",
-	    "abilities": [
-		    	"Rapidité 1r (3/j)"
-	    ],
+            "description": "Armure intermédiaire, Dex max: +3, Malus aux tests -3, echec des sorts 25%, + Effet de Rapidité (comme le sort), 3/j, pendant 1r (Action libre)",
+            "abilities": [
+                "Rapidité 1r (3/j)"
+            ],
             "modifiers": [
                 {
                     "target": "ca",
@@ -336,7 +336,7 @@
         },
         {
             "name": "Wyrmsvenin",
-	    "description": "Epée à 2 mains, +2, tueuse de dragons (+2d6) , grande tueuse de dragons noirs et aquatiques (+2d10 en cas de critique)",
+            "description": "Epée à 2 mains, +2, tueuse de dragons (+2d6) , grande tueuse de dragons noirs et aquatiques (+2d10 en cas de critique)",
             "attack": {
                 "hit": {
                     "ability": "for"
@@ -361,7 +361,7 @@
         },
         {
             "name": "Arc long composite +1 de force 18, traqueur",
-	    "description": "Traqueur : annule le camouflage",
+            "description": "Traqueur : annule le camouflage",
             "attack": {
                 "hit": {
                     "ability": "dex"
