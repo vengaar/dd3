@@ -1,0 +1,645 @@
+{
+    "name": "Seleniel",
+    "image": "https://i.pinimg.com/564x/5a/55/c5/5a55c5e070c6805a92ae67d5097a62bd.jpg",
+    "$race": "data/races/qualinesti.json",
+    "gender": "mars",
+    "alignment": "NB",
+    "height": "1,80 cm",
+    "weight": "70 Kg",
+    "age": "143 ans",
+    "xp": 1700,
+    "gold": "75000 PA",
+    "hitPointsBasis": 78,
+    "classes": [
+        {
+            "name": "Druide",
+            "level": 17,
+            "ba": 12,
+            "saves": {
+                "vig": 10,
+                "ref": 5,
+                "vol": 10
+            },
+            "powers": [
+                {
+                    "name": "Empathie sauvage",
+                    "level": 1,
+                    "url": "http://www.gemmaline.com/druide.htm#8"
+                },
+                {
+                    "name": "Instinct naturel",
+                    "level": 1,
+                    "modifiers": [
+                        {
+                            "target": "Connaissances (nature)",
+                            "value": 2
+                        },
+                        {
+                            "target": "Survie",
+                            "value": 2
+                        }
+                    ]
+                },
+                {
+                    "name": "Déplacement facilité",
+                    "level": 2,
+                    "type": "Ext"
+                },
+                {
+                    "name": "Absence de traces",
+                    "level": 3,
+                    "type": "Ext"
+                },
+                {
+                    "name": "Résistance à l’appel de la nature",
+                    "level": 4,
+                    "modifiers": [
+                        {
+                            "target": "saves",
+                            "value": 4,
+                            "condition": "contre les pouvoirs magiques des fées"
+                        }
+                    ]
+                },
+                {
+                    "name": "Immunité contre le venin",
+                    "desc": "le druide est immunisé contre toutes les formes de poisons et de venins.",
+                    "level": 9,
+                    "type": "Ext"
+                },
+                {
+                    "name": "Mille visages",
+                    "level": 13,
+                    "type": "Sur"
+                },
+                {
+                    "name": "Éternelle jeunesse",
+                    "level": 15,
+                    "type": "Ext"
+                }
+            ]
+        }
+    ],
+    "abilitiesBasis": {
+        "for": 14,
+        "dex": 20,
+        "con": 14,
+        "int": 12,
+        "sag": 21,
+        "cha": 14
+    },
+    "skillsRanks": {
+        "Art de la magie": 1,
+        "Concentration": 4,
+        "Connaissances (exploration souterraine)": 2,
+        "Connaissances (folklore local)": 5,
+        "Connaissances (histoire)": 2,
+        "Connaissances (géographie)": 5,
+        "Connaissances (mystères)": 5,
+        "Connaissances (nature)": 5,
+        "Connaissances (noblesse)": 5,
+        "Connaissances (plans)": 5,
+        "Connaissances (religion)": 5,
+        "Déplacement silencieux": 5,
+        "Détection": 5,
+        "Diplomatie": 5,
+        "Discrétion": 5,
+        "Dressage": 5,
+        "Escalade": 5,
+        "Fouille": 5,
+        "Perception auditive": 5,
+        "Psychologie": 5,
+        "Saut": 1,
+        "Survie": 10
+    },
+    "powersOwn": [
+        {
+            "type": "don",
+            "name": "Science de l'initiative",
+            "level": 1,
+            "modifiers": [
+                {
+                    "target": "init",
+                    "value": 4
+                }
+            ]
+        },
+        {
+            "type": "don",
+            "name": "Pistage",
+            "level": 3
+        },
+        {
+            "type": "don",
+            "name": "Prestige",
+            "description": "suivants -> 23, cohorte (ronce) -> 22",
+            "level": 6
+        },
+        {
+            "type": "don",
+            "name": "Attaque en puisssance",
+            "level": 9
+        },
+        {
+            "type": "don",
+            "name": "Création d’objets merveilleux",
+            "level": 12
+        },
+        {
+            "type": "don",
+            "name": "Arme naturelle supérieure",
+            "level": 15,
+            "url": "http://www.gemmaline.com/dons/dons-arme-naturelle-superieure-110.htm"
+        },
+        {
+            "type": "don",
+            "name": "Création de cercle druidique",
+            "desc": "Bonus au niveau du lanceur de sort pour les druides du même allignement égale au niveau du cercle",
+            "source": "Cadeau du MJ"
+        },
+        {
+            "type": "don",
+            "name": "Résistance à la peur des dragon améliorée (+8)",
+            "source": "Cadeau du MJ",
+            "modifiers": [
+                {
+                    "target": "vol",
+                    "value": 8,
+                    "condition": "contre la peur des dragon"
+                }
+            ]
+        }
+    ],
+    "forms": [
+        {
+            "id": "Dragon d'argent",
+            "_image": "https://i.pinimg.com/564x/ce/a9/59/cea95978453645d40b6ec9bb0e4fb91e.jpg",
+            "image": "https://www.aidedd.org/dnd/images/silver-dragon.jpg",
+            "size": "Gig",
+            "height": "?",
+            "weight": "?",
+            "age": "Vénérable",
+            "race": {
+                "name": "Dragon",
+                "speed": 18,
+                "url": "http://www.gemmaline.com/bestiaire/dragons/",
+                "powers": [
+                    {
+                        "name": "Réduction des dégâts (20/magie)",
+                        "type": "Ext"
+                    },
+                    {
+                        "name": "Résistance à la magie (28)",
+                        "type": "Ext"
+                    },
+                    {
+                        "name": "Présence terrifiante (DD 20)",
+                        "desc": "Tout dragon au moins jeune adulte peut terrifier ses adversaires par sa seule présence. Ce pouvoir fait automatiquement effet dès que le dragon attaque, charge ou survole les créatures. Toutes celles qui se trouvent dans un rayon de 9 mètres x catégorie d’âge du dragon peuvent être affectées si elles ont moins de DV que le grand reptile. Les créatures qui réussissent un jet de Volonté (DD 10 + 1/2 nombre de DV du dragon + modificateur de Charisme du dragon) ne sont pas affectées et sont par la suite immunisées contre la présence de ce dragon pendant une journée entière. Par contre, celles qui ratent leur jet de sauvegarde sont affectées comme suit : si elles ont 4 DV ou moins, elles sont paniquées pendant 4d6 rounds ; si elles ont 5 DV ou plus, elles sont seulement secouées pour 4d6 rounds. Tout dragon est naturellement immunisé contre la présence terrifiante des autres dragons, quel que soit leur âge ou leur espèce.",
+                        "type": "Ext"
+                    },
+                    {
+                        "name": "Souffle (DD 27) 20d8 ou paralysie 1d6 + 10 rounds (vig)",
+                        "desc": "Tout dragon au moins jeune adulte peut terrifier ses adversaires par sa seule présence. Ce pouvoir fait automatiquement effet dès que le dragon attaque, charge ou survole les créatures. Toutes celles qui se trouvent dans un rayon de 9 mètres x catégorie d’âge du dragon peuvent être affectées si elles ont moins de DV que le grand reptile. Les créatures qui réussissent un jet de Volonté (DD 10 + 1/2 nombre de DV du dragon + modificateur de Charisme du dragon) ne sont pas affectées et sont par la suite immunisées contre la présence de ce dragon pendant une journée entière. Par contre, celles qui ratent leur jet de sauvegarde sont affectées comme suit : si elles ont 4 DV ou moins, elles sont paniquées pendant 4d6 rounds ; si elles ont 5 DV ou plus, elles sont seulement secouées pour 4d6 rounds. Tout dragon est naturellement immunisé contre la présence terrifiante des autres dragons, quel que soit leur âge ou leur espèce.",
+                        "type": "Ext"
+                    },
+                    {
+                        "name": "Immunités",
+                        "desc": "Tous les dragons sont immunisés contre les effets de type sommeil ou paralysie. Comme indiqué dans les descriptions, chaque espèce bénéficie d’une ou deux immunités supplémentaires, lesquelles ne dépendent pas de l’âge du dragon.",
+                        "type": "Ext"
+                    },
+                    {
+                        "name": "Perception aveugle",
+                        "desc": "Tout dragon est capable de détecter la présence de créatures dans un rayon de 18 m. Les adversaires qu’il ne peut pas voir bénéficient tout de même d’un camouflage total.",
+                        "type": "Ext"
+                    },
+                    {
+                        "name": "Sens surdéveloppés",
+                        "desc": "Le dragon voit quatre fois plus loin qu’un humain dans des conditions de faible luminosité (vision nocturne), et deux fois plus loin en cas de luminosité normale. Il bénéficie également de la vision dans le noir, à une portée de 36 mètres.",
+                        "type": "Ext"
+                    },
+                    {
+                        "name": "Taille Gig",
+                        "modifiers": [
+                            {
+                                "target": "ca",
+                                "type": "taille",
+                                "value": -4
+                            },
+                            {
+                                "target": "hit",
+                                "type": "taille",
+                                "value": -4
+                            }
+                        ]
+                    },
+                    {
+                        "name": "Forme de dragon",
+                        "modifiers": [
+                            {
+                                "target": "ca",
+                                "type": "armure naturelle",
+                                "value": 33
+                            },
+                            {
+                                "target": "fly",
+                                "value": 60
+                            },
+                            {
+                                "target": "maneuverability",
+                                "value": 0
+                            }
+                        ]
+                    }
+                ]
+            },
+            "equipments": [
+                {
+                    "name": "Morsure",
+                    "attack": {
+                        "nbAttack": 1,
+                        "hit": {
+                            "ability": "for"
+                        },
+                        "damage": {
+                            "ability": "for",
+                            "base": "4d6"
+                        },
+                        "crit": "20/x2"
+                    }
+                },
+                {
+                    "name": "Griffes",
+                    "attack": {
+                        "nbAttack": 2,
+                        "hit": {
+                            "ability": "for"
+                        },
+                        "damage": {
+                            "ability": "for",
+                            "base": "2d8",
+                            "multiplier": 0.5
+                        },
+                        "crit": "20/x2",
+                        "modifiers": [
+                            {
+                                "target": "hit",
+                                "value": -5,
+                                "type": "secondaire"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Ailes",
+                    "desc": "",
+                    "attack": {
+                        "nbAttack": 2,
+                        "hit": {
+                            "ability": "for"
+                        },
+                        "damage": {
+                            "ability": "for",
+                            "base": "2d6",
+                            "multiplier": 0.5
+                        },
+                        "crit": "20/x2",
+                        "modifiers": [
+                            {
+                                "target": "hit",
+                                "value": -5,
+                                "type": "secondaire"
+                            }
+                        ]
+                    }
+                },
+                {
+                    "name": "Queue",
+                    "attack": {
+                        "nbAttack": 1,
+                        "hit": {
+                            "ability": "for"
+                        },
+                        "damage": {
+                            "ability": "for",
+                            "base": "2d8",
+                            "multiplier": 1.5
+                        },
+                        "crit": "20/x2",
+                        "modifiers": [
+                            {
+                                "target": "hit",
+                                "value": -5,
+                                "type": "secondaire"
+                            }
+                        ]
+                    }
+                }
+            ],
+            "abilitiesBasis": {
+                "for": 39,
+                "dex": 10,
+                "con": 29,
+                "int": 12,
+                "sag": 21,
+                "cha": 14
+            },
+            "modifiers": []
+        },
+        {
+            "id": "Furie élémentaire",
+            "image": "https://artfiles.alphacoders.com/339/33959.jpg",
+            "size": "TG",
+            "equipments": [
+                {
+                    "name": "Armes naturelles",
+                    "desc": "",
+                    "modifiers": [
+                        {
+                            "target": "hit",
+                            "type": "alteration",
+                            "value": 4
+                        },
+                        {
+                            "target": "damage",
+                            "type": "alteration",
+                            "value": 4
+                        }
+                    ],
+                    "attack": {
+                        "hit": {
+                            "ability": "for"
+                        },
+                        "damage": {
+                            "ability": "for",
+                            "base": "3d6"
+                        },
+                        "crit": "20/x2",
+                        "nbAttack": 2,
+                        "modes": [
+                            {
+                                "name": "en puisance à 5",
+                                "modifiers": [
+                                    {
+                                        "source": "Attaque en puissance",
+                                        "target": "hit",
+                                        "value": -5
+                                    },
+                                    {
+                                        "source": "Attaque en puissance",
+                                        "target": "damage",
+                                        "value": 10
+                                    }
+                                ]
+                            }
+                        ]
+                    }
+                }
+            ],
+            "modifiers": [
+                {
+                    "target": "for",
+                    "type": "altération",
+                    "value": 16
+                },
+                {
+                    "target": "ca",
+                    "type": "armure naturelle",
+                    "value": 16
+                },
+                {
+                    "target": "saves",
+                    "type": "altération",
+                    "value": 4
+                },
+                {
+                    "target": "ca",
+                    "type": "taille",
+                    "value": -2
+                },
+                {
+                    "target": "hit",
+                    "type": "taille",
+                    "value": -2
+                }
+            ]
+        }
+    ],
+    "equipments": [
+        {
+            "name": "Grand pas",
+            "desc": "Sort de druide lv1, 1h/lv, lancé tous les matin",
+            "modifiers": [
+                {
+                    "target": "speed",
+                    "type": "?",
+                    "value": 3
+                }
+            ]
+        },
+        {
+            "name": "Bottes elfique",
+            "modifiers": [
+                {
+                    "target": "Déplacement silencieux",
+                    "type": "?",
+                    "value": 5
+                }
+            ]
+        },
+        {
+            "name": "Cape elfique",
+            "used": false,
+            "modifiers": [
+                {
+                    "target": "Discrétion",
+                    "type": "?",
+                    "value": 5
+                }
+            ]
+        },
+        {
+            "name": "Perle de sagesse +4",
+            "modifiers": [
+                {
+                    "target": "sag",
+                    "type": "altération",
+                    "value": 4
+                }
+            ]
+        },
+        {
+            "name": "Bacelet d'armure +4",
+            "modifiers": [
+                {
+                    "target": "ca",
+                    "type": "armure",
+                    "value": 4
+                }
+            ]
+        },
+        {
+            "name": "Cape de resitance +4",
+            "modifiers": [
+                {
+                    "target": "saves",
+                    "type": "alteration",
+                    "value": 4
+                }
+            ]
+        },
+        {
+            "name": "Anneau +2",
+            "modifiers": [
+                {
+                    "target": "ca",
+                    "type": "parade",
+                    "value": 2
+                }
+            ]
+        },
+        {
+            "name": "Armure de cuir de Theros",
+            "used": false,
+            "modifiers": [
+                {
+                    "target": "ca",
+                    "type": "armure",
+                    "value": 2
+                }
+            ]
+        },
+        {
+            "name": "Arc long composite +1 de force 14",
+            "used": false,
+            "attack": {
+                "hit": {
+                    "ability": "dex"
+                },
+                "damage": {
+                    "base": "1d8"
+                },
+                "crit": "20/x3",
+                "modifiers": [
+                    {
+                        "target": "hit",
+                        "type": "alteration",
+                        "value": 1
+                    },
+                    {
+                        "target": "damage",
+                        "type": "alteration",
+                        "value": 1
+                    },
+                    {
+                        "target": "damage",
+                        "type": "force",
+                        "value": 2
+                    }
+                ]
+            }
+        },
+        {
+            "name": "Harmois de chevalier Solamnique de mâitre",
+            "location": "home",
+            "used": false,
+            "modifiers": [
+                {
+                    "target": "ca",
+                    "type": "armure",
+                    "value": 8
+                }
+            ]
+        },
+        {
+            "name": "Arc long composite de cérémonie de maître et son carquois",
+            "location": "home",
+            "used": false
+        },
+        {
+            "name": "Une fléche en os de Qualinesti",
+            "location": "home",
+            "used": false
+        },
+        {
+            "name": "5 tenues de cérémonie",
+            "location": "home",
+            "used": false
+        },
+        {
+            "name": "Sceptre de Cirulon",
+            "used": false,
+            "abilities": [
+                "detection du mal (à volontée)",
+                "detection magie (à volontée)",
+                "purification nouriture/eau 1/j",
+                "neutralisation du poison 1/j",
+                "soin modéré (2d8 + 10) 1/j"
+            ]
+        },
+        {
+            "name": "Globe de Cirulon",
+            "used": false,
+            "abilities": [
+                "lumiere (à volontée)",
+                "soin modéré (2d8 + 10) 1/j"
+            ]
+        },
+        {
+            "name": "baguette de lumiere du jour (7 charges)",
+            "used": false
+        },
+        {
+            "name": "Bâton de la forêt profonde",
+            "desc": "",
+            "charges": 50,
+            "abilities": [
+                "Charme-animal (1 charge)",
+                "Peau d’écorce (2 charges)",
+                "Convocation d’alliés naturels 6 (3 charges)",
+                "Mur d’épines (3 charges)",
+                "Animation des plantes (4 charges)",
+                "Passage sans trace, à volonté"
+            ],
+            "attack": {
+                "hit": {
+                    "ability": "for"
+                },
+                "damage": {
+                    "ability": "for",
+                    "multiplier": 1.5,
+                    "base": "1d6"
+                },
+                "crit": "20/x2",
+                "modifiers": [
+                    {
+                        "target": "hit",
+                        "type": "alteration",
+                        "value": 2
+                    },
+                    {
+                        "target": "damage",
+                        "type": "alteration",
+                        "value": 2
+                    }
+                ],
+                "modes": [
+                    {
+                        "name": "en puisance à 5",
+                        "modifiers": [
+                            {
+                                "source": "Attaque en puissance",
+                                "target": "hit",
+                                "value": -5
+                            },
+                            {
+                                "source": "Attaque en puissance",
+                                "target": "damage",
+                                "value": 10
+                            }
+                        ]
+                    }
+                ]
+            }
+        }
+    ]
+}

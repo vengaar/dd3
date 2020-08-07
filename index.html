@@ -1,0 +1,283 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" type="text/css" href="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.6/dist/semantic.min.css">
+    <link rel="stylesheet" type="text/css" href="styles/main.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="styles/print.css" media="print">
+    <title>DD3 - Personnage</title>
+    <link rel="icon" href="images/favicon.ico" />
+</head>
+
+<body>
+
+    <!-- MENU -->
+    <div id="menu" class="ui disabled top fixed menu">
+        <a class="ui item header" href="https://github.com/vengaar/dd3"><i class="d and d icon"></i></a>
+        <div id="character_choice" class="ui dropdown item">
+            <i class="address book icon"></i>
+            Personnages <i class="dropdown icon"></i>
+            <div class="menu">
+                <a class="item">Seleniel</a>
+                <a class="item">Ronce</a>
+                <a class="item">Zorba</a>
+                <a class="item">Donna</a>
+            </div>
+        </div>
+        <a class="ui item" href="#anchor_identity"><i class="address card icon"></i>Identitée</a>
+        <a class="ui item" href="#anchor_attacks"><i class="gavel icon"></i>Attaques</a>
+        <a class="ui item" href="#anchor_powers"><i class="fist raised icon"></i>Pouvoirs</a>
+        <a class="ui item" href="#anchor_skills"><i class="graduation cap icon"></i>Compétences</a>
+        <a class="ui item" href="#anchor_equipments"><i class="ring icon"></i>Equipements</a>
+        <div class="right menu">
+            <!-- <a class="ui item" href="#" onclick="window.print();return false;"><i class="print icon"></i>print</a> -->
+            <a class="ui disabled item"><i class="file export icon"></i>Exporter</a>
+
+        </div>
+    </div>
+
+    <div id="container" class="ui main container">
+        <div id="main" class="ui basic segment">
+
+            <!-- LEFT RAIL -->
+            <div class="ui left dividing rail">
+                <div class="ui grid">
+                    <div class="sixteen wide column widescreen only _olive">
+                        <div id="left" class="ui sticky">
+                            <div class="ui segment hidden">RAIL LEFT</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- RIGHT RAIL -->
+            <div class="ui right dividing rail">
+                <div class="ui grid">
+                    <div class="sixteen wide column widescreen only _olive">
+                        <div id="right" class="ui sticky">
+                            <div class="ui segment hidden">RAIL RIGHT</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- MAIN -->
+
+            <!-- IDENDITY -->
+            <a id="anchor_identity"></a>
+            <div class="ui stackable column grid">
+                <div class="sixteen wide mobile six wide tablet four wide computer column _grey">
+
+                    <!-- IDENDITY CARD -->
+                    <div id="card" class="ui card">
+                        <div class="content">
+                            <span class="right floated">
+                                <span class="dd3-id-ecl ui grey circular label">{ecl}</span>
+                            </span>
+                            <div class="dd3-id-name header">{name}</div>
+                        </div>
+                        <div class="image">
+                            <img class="dd3-id-image" src="">
+                        </div>
+                        <div class="extra content">
+                            <span class="dd3-id-alignment right floated">{alignment}</span>
+                            <span class="dd3-id-classes">{classes}</span>
+                        </div>
+                        <div class="extra content">
+                            <i class="dd3-id-gender neuter right floated icon"></i>
+                            <span class="dd3-id-race-name">{race.name}</span>
+                        </div>
+                        <div class="extra content">
+                            <span class="dd3-id-size right floated">{size}</span>
+                            <i class="walking icon"></i>
+                            <span class="details dd3-id-speed ">{speed}</span>
+                            <span class="dd3-id-speed-details ui popup">{speed_details}</span>
+                        </div>
+                        <div class="dd3-id-fly hidden extra content">
+                            <i class="dove icon"></i>
+                            <span class="details dd3-id-fly-speed">{fly}</span>
+                            <span class="dd3-id-fly-speed-details ui popup">{speed_details}</span>
+                            (<span class="details dd3-id-fly-maneuverability">{maneuverability}</span>)
+                            <span class="dd3-id-fly-maneuverability-details ui popup">{speed_details}</span>
+                        </div>
+                        <div class="extra content">
+                            <span class="dd3-id-height">{height}</span> /
+                            <span class="dd3-id-weight">{weight}</span> /
+                            <span class="dd3-id-age">{age}</span>
+                        </div>
+                        <div class="extra content">
+                            <i class="heart icon"></i>
+                            <span class="dd3-id-hitPoints">{hitPoints}</span>
+                            <div class="dd3-id-forms ui dropdown item right floated">
+                                <i class="random icon"></i>
+                                Formes <i class="dropdown icon"></i>
+                                <div class="menu"></div>
+                            </div>
+                        </div>
+                    </div>
+
+                </div>
+                <div class="sixteen wide mobile ten wide tablet six wide computer column _teal">
+
+                    <!-- ABILITIES -->
+                    <table id="abilities" class="dd3-abilities ui very basic celled center aligned table">
+                        <thead>
+                            <tr>
+                                <th></th>
+                                <th>Base</th>
+                                <th>Total</th>
+                                <th>Bonus</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                        </tbody>
+                    </table>
+
+                </div>
+                <div class="sixteen wide mobile sixteen wide tablet six wide computer column _brown">
+
+                    <!-- SAVES -->
+                    <a id="anchor_saves"></a>
+                    <div id="saves">
+                        <div class="ui three item labeled icon top attached menu">
+                            <span class="dd3-saves-vig-details item details" data-html="">
+                                <i class="skull crossbones icon"></i>
+                                <span class="dd3-saves-vig">{vig}</span>
+                            </span>
+                            <span class="dd3-saves-ref-details item details" data-html="">
+                                <i class="bomb icon"></i>
+                                <span class="dd3-saves-ref">{ref}</span>
+                            </span>
+                            <span class="dd3-saves-vol-details item details" data-html="">
+                                <i class="brain icon"></i>
+                                <span class="dd3-saves-vol">{vol}</span>
+                            </span>
+                        </div>
+                        <div class="ui bottom attached segment">
+                            <table class="ui compact very basic celled table">
+                                <tbody class="dd3-saves-conditions"></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                    <!-- COUNTERS -->
+                    <div id="counters">
+                        <div class="ui three item labeled icon top attached menu">
+                            <span class="dd3-counters-init-details item details" data-html="">
+                                <i class="stopwatch icon"></i>
+                                <span class="dd3-counters-init">{init}</span>
+                            </span>
+                            <span class="dd3-counters-ba-details item details" data-html="">
+                                <i class="gavel icon"></i>
+                                <span class="dd3-counters-ba">{ba}</span>
+                            </span>
+                            <span class="dd3-counters-ca-details item details" data-html="">
+                                <i class="shield icon"></i>
+                                <span class="dd3-counters-ca">{ca}</span>
+                            </span>
+                        </div>
+                        <div class="ui bottom attached segment">
+                            <table class="ui compact very basic celled table">
+                                <tbody class="dd3-counters-conditions"></tbody>
+                            </table>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+
+            <!-- ATTACKS -->
+            <a id="anchor_attacks"></a>
+            <table id="attacks" class="ui compact celled center aligned table">
+                <thead>
+                    <tr>
+                        <th>Attaque</th>
+                        <th>Touché</th>
+                        <th>Dégats</th>
+                        <th>Crit</th>
+                        <th>Spécial</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+
+            <!-- POWERS -->
+            <a id="anchor_powers"></a>
+            <table id="powers" class="ui compact sortable celled center aligned table">
+                <thead>
+                    <tr>
+                        <th>Type</th>
+                        <th>Pouvoirs et capacités</th>
+                        <th>Source</th>
+                        <th>Level</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+
+            <!-- SKILLS -->
+            <a id="anchor_skills"></a>
+            <table id="skills" class="ui compact sortable celled table">
+                <thead>
+                    <tr>
+                        <th>
+                            Compétences
+                            (<span id="totalRanks">{totalRanks}</span> rangs de maîtrises)
+                        </th>
+                        <th class="center aligned">Total</th>
+                        <th>Commentaires</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+
+            <!-- EQUIPMENTS -->
+            <a id="anchor_equipments"></a>
+            <table id="equipments" class="ui compact sortable celled table">
+                <thead>
+                    <tr>
+                        <th class="no-sort one wide"></th>
+                        <th class="center one wide"></th>
+                        <th>Equipements</th>
+                        <th>Bonus</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+                <tfoot>
+                    <tr>
+                        <th colspan=" 3" class="extra">
+                            <div class="ui horizontal list">
+                                <a id="location-self" class="item">
+                                    <i class="hiking icon"></i> Equipement avec le personnage
+                                </a>
+                                <a id="location-home" class="item">
+                                    <i class="home icon"></i> Equipement au lieu de résidence du personnage
+                                </a>
+                            </div>
+                        </th>
+                        <th class="right aligned">
+                            <i class="coins icon"></i>
+                            <span class="dd3-id-gold"></span>
+                        </th>
+                    </tr>
+                </tfoot>
+            </table>
+
+        </div>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/jquery@3.3.1/dist/jquery.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/fomantic-ui@2.8.6/dist/semantic.min.js"></script>
+    <script src="scripts/tablesort.js"></script>
+    <script src="scripts/skills.js"></script>
+    <script src="scripts/model.js"></script>
+    <script src="scripts/main.js"></script>
+
+</body>
+
+</html>
