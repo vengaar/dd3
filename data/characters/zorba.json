@@ -1,6 +1,6 @@
 {
   "name": "Attila de Vivelame, dit Zorba",
-  "image": "http://lexicon.dragonlancenexus.com/images/2/2f/Caramon_Majere.jpg",
+  "image": "https://i.pinimg.com/564x/f5/30/48/f53048376c65b0879ffcca085e90e59d.jpg",
   "$race": "data/races/human.json",
   "gender": "mars",
   "alignment": "LB",
@@ -299,6 +299,10 @@
         "Echec des sorts 35%"
       ],
       "modifiers": [
+	{
+	    "target": "speed",
+	    "value": -3
+	},
         {
           "target": "ca",
           "type": "armure",
@@ -330,7 +334,11 @@
           "target": "ca",
           "type": "alteration",
           "value": 2
-        }
+        },
+	{
+	    "target": "speed",
+	    "value": -3
+	}
       ]
     },
     {

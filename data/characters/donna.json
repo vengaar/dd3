@@ -23,13 +23,28 @@
       },
       "powers": [
         {
-          "name": "Familier : Froussette",
+          "name": "Familier : Froussette (belette)",
           "level": 1,
           "url": "https://regles-donjons-dragons.com/page60.html",
-          "description": "Belette (créature magique) DV:15, PV:31, CA16",
+          "desc": "Belette (créature magique) DV:15, PV:31, CA16",
           "modifiers": [
             {
               "target": "ref",
+              "value": 2
+            }
+          ]
+        },
+        {
+          "name": "Familier : Vigilance",
+          "type": "don",
+          "level": 1,
+          "modifiers": [
+            {
+              "target": "Perception auditive",
+              "value": 2
+            },
+            {
+              "target": "Détection",
               "value": 2
             }
           ]
@@ -53,7 +68,7 @@
       ]
     },
     {
-      "name": "Mage de Haute Sorcellerie : Robe Rouge (Red robe Wizard of High Sorcery)",
+      "name": "Mage de Haute Sorcellerie : Robe Rouge",
       "book": "Tower of High Sorcery",
       "level": 10,
       "ba": 5,
@@ -83,11 +98,41 @@
               "value": 5
             }
           ]
+        },
+        {
+          "name": "Magie de Changement",
+	  "type": "Secret",
+          "desc": "1/j/2 niv (soit 5/j) Donna peut appliquer une Extension de durée ou une Extension de portée (comme le don) a un sort de l'école de Transmutation qu'elle lance, sans augmentation de niveau du sort",
+          "level": 3
+        },
+        {
+          "name": "Magie d'Indépendance",
+	  "type": "Secret",
+          "desc": "Les sorts lancés par Donna sont plus difficiles à dissiper (y compris en cas de contresort) : 15 + NLS, soit 30 (au lieu de 10 + NLS)",
+          "level": 5
+        },
+        {
+          "name": "Magie de Mystère",
+	  "type": "Secret",
+          "desc": "Un jet de lanceur de sort est nécessaire (diff : 11 + NLS, soit 26) pour détecter l'aura d'un sort lancé par Donna. Idem pour révéler l'effet d'un sort (comme détection de l'invisibilité). Pour identifier un sort en cours de lancement, la difficulté du jet d'Art de la magie est augmentée de 1/2niv, soit 20+ niv du sort (au lieu de 15 + niv du sort)",
+          "level": 7
+        },
+        {
+          "name": "Magie de Pureté",
+	  "type": "Secret",
+          "desc": "1/2j/2niv (soit 5/j) Donna peut imprégner un sort infligeant des dommages avec de l'énergie profane brute. La moitiée des dommages du sort sont alors de ce type et ignorent les protections contres les énergies destructives. L'autre moitiée dépend du sort d'origine.",
+          "level": 9
+        },
+        {
+          "name": "Magie de Tromperie",
+	  "type": "Secret",
+          "desc": "1/j/2 niv (soit 5/j) Donna peut appliquer une Extension de durée ou une Extension de portée (comme le don) a un sort de l'école d'Illusion qu'elle lance, sans augmentation de niveau du sort",
+          "level": 10
         }
       ]
     },
     {
-      "name": "Chasseur de renégat (Renegade Hunter)",
+      "name": "Chasseur de renégat",
       "book": "Tower of High Sorcery",
       "level": 2,
       "ba": 1,
@@ -112,7 +157,36 @@
               "value": 2
             }
           ]
-        }
+        },
+	{
+	  "type": "sur",
+	  "name": "Intimidation lunaire (Lunar rebuke)",
+	  "desc": "Un chasseur de renégat à la soutien de son ordre et de sa divinité et lune tutélaire, et peut y faire appel lorsqu'il est confronté à d'autres magiciens. Cela lui donne une bonus de +2 aux jets d'Art de la magie pour identifier des sorts pour les contrer, et +2 au niveau de lanceur de sort pour les jets de dissipation",
+          "level": 1,
+          "modifiers": [
+            {
+              "target": "Art de la magie",
+              "value": 2,
+	      "condition": "Identifier un sort pour le contresort"
+            },
+            {
+              "target": "nls",
+              "value": 2,
+	      "condition": "Jets de dissipations"
+            }
+          ]
+	},
+	{
+		"type": "sur",
+		"name": "Syzygie mineure",
+		"level": 2,
+		"desc": "Un chasseur de renégat a une compréhension intime de l'influence des Lunes sur la magie. Une fois par jours, une action libre lui permet de bénéficier des effets d'une conjonction de la Lune de son Ordre avec une autre Lune. Cet effet dure pour un nombre de round egal au niveau de classe du chasseur (2)" 
+	},
+	{
+		"name": "Détection des mensonges",
+		"level": 2,
+		"desc": "Le chasseur de renégat peut lancer le sort 'Détection des mensonges' comme un sort niveau 4. Le sort est automatiquement ajouté à son livre de sorts et ne nécessite pas de focaliseur divin."
+	}
       ]
     }
   ],
@@ -140,6 +214,61 @@
     "Survie": 7
   },
   "powersOwn": [
+    {
+          "name": "Prodige Magique",
+          "type": "don",
+	  "book": "War of the Lance",
+	  "desc": "Lorsque le personnage détermine ses sorts en bonus, considérez que son Intelligence bénéficie d’un bonus de +2.",
+          "level": 1,
+          "url": "http://www.gemmaline.com/dons/dons-prodige-magique-222.htm"
+    },
+    {
+          "name": "Magie de guerre",
+          "type": "don",
+	  "source": "Humain",
+	  "book": "Manuel des joueurs",
+          "level": 1,
+	  "desc": "Le personnage bénéficie d’un bonus de +4 à ses tests de Concentration lorsqu’il tente de lancer un sort sur la défensive, ou lorsqu’il tente de lancer un sort alors qu’il est agrippé ou immobilisé en situation de lutte.",
+          "modifiers": [
+            {
+              "target": "Concentration",
+              "value": 4,
+	      "condition": "pour lancer un sort sur la défensive ou en étant aggripé"
+            }
+	  ],
+          "url": "https://regles-donjons-dragons.com/page310.html"
+    },
+    {
+          "name": "Science du contresort",
+          "type": "don",
+	  "book": "Manuel des joueurs",
+          "level": 3,
+	  "desc": "Lorsque le personnage tente de contrer un sort, il peut utiliser n’importe quel sort de la même école et d’au moins un niveau de sort supérieur à la place du sort d’origine.",
+          "url": "https://regles-donjons-dragons.com/page339.html"
+    },
+    {
+          "name": "Pistage",
+          "type": "don",
+	  "book": "Manuel des joueurs",
+          "level": 6,
+	  "desc": "Permet de faire un jet de Survie pour suivre des traces",
+          "url": "https://regles-donjons-dragons.com/page323.html"
+    },
+    {
+          "name": "Dispense de composants matériels",
+          "type": "don",
+	  "book": "Manuel des joueurs",
+          "level": 9,
+	  "desc": "Le personnage peut lancer les sorts nécessitant une composante matérielle coûtant 1 po ou moins sans utiliser cette composante.",
+          "url": "https://regles-donjons-dragons.com/page291.html"
+    },
+    {
+          "name": "Prévision Astrologique",
+          "type": "don",
+	  "book": "War of the Lance",
+          "level": 12,
+	  "desc": "Une fois par semaine, Donna peut préparer un thème astral. Cela requiert une heure d'observation du ciel nocturne, et un jet de Connaissances (mystères) de Diff/bonus :  20/+1|25/+2|30/+3. Ce bonus peut être ajoutéa un jet de compétence, d'attaque, ou de sauvegarde, dans la semaine qui suit. Le type de jet doit être décidé au moment de la préparation"
+    },
     {
       "name": "Vision magique",
       "type": "sort",
@@ -169,6 +298,20 @@
       "type": "sort",
       "source": "Permanence",
       "level": 9
+    },
+    {
+      "name": "Armure de mage",
+      "type": "sort",
+      "source": "Sort niv1",
+      "level": 2,
+      "desc": "Lancé tous les matins",
+      "modifiers": [
+	     {
+	      "target": "ca",
+	      "value": 4,
+	      "type": "armure"
+	     }
+	]
     }
   ],
   "equipments": [
@@ -204,7 +347,7 @@
     },
     {
       "name": "Anneau de barrière mentale",
-      "description": "Dans la plupart des cas, cet anneau est en or massif finement ouvragé. Son porteur est immunisé en permanence contre les sorts détection de pensées et détection du mensonge, ainsi que contre toutes les tentatives faites pour déterminer son alignement par magie.",
+      "desc": "Dans la plupart des cas, cet anneau est en or massif finement ouvragé. Son porteur est immunisé en permanence contre les sorts détection de pensées et détection du mensonge, ainsi que contre toutes les tentatives faites pour déterminer son alignement par magie.",
       "abilities": [
         "Immunisé contre les sorts détection de pensées et détection du mensonge, ainsi que contre toutes les tentatives faites pour déterminer son alignement par magie. (toujours actif)"
       ]
@@ -244,7 +387,14 @@
           "multiplier": 1.5,
           "base": "1d8"
         },
-        "crit": "20/x3"
+        "crit": "20/x3",
+	"modifiers": [
+	    {
+		"target": "hit",
+		"type": "alteration",
+		"value": 1
+	    }
+	]
       }
     },
     {
@@ -255,7 +405,7 @@
       ]
     },
     {
-      "name": "Attaque par rayon",
+      "name": "Attaque par sort : rayon",
       "attack": {
         "hit": {
           "ability": "dex"
@@ -267,13 +417,13 @@
       }
     },
     {
-      "name": "Attaque par sort de contact",
+      "name": "Attaque par sort : contact",
       "attack": {
         "hit": {
           "ability": "dex"
         },
 	"damage": {
-		"base": "1d3"
+		"base": "0"
 	},
         "crit": "20/x2"
       }
