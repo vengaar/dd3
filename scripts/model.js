@@ -437,15 +437,18 @@ class Character {
             };
             // console.log("skill_class =", skill_class)
 
+            const allSkillModifiers = this.__getModifiers(skill.name)
+            // console.log(skill.name, allSkillModifiers)
+            let conditions = filterModifiersByConditions(allSkillModifiers, true)
+            let comments = []
             let modifiers = []
             if (enable) {
                 modifiers = [
                     new Modifier("rank", rank),
                     new Modifier(skill.ability, this.__getAbilityBonus(skill.ability), "ability"),
-                ].concat(this.__getModifiers(skill.name))
+                ].concat(filterModifiersByConditions(allSkillModifiers, false))
             }
 
-            let comments = []
             // Synergies
             if ("synergies" in skill) {
                 skill.synergies.forEach(synergy => {
@@ -454,7 +457,9 @@ class Character {
                         if (this.skillsRanks[synergy.skill] >= 5) {
                             // console.log(`Synergy possible for ${skill.name}`)
                             if ("condition" in synergy) {
-                                comments.push(`+2 ${synergy.condition} (${synergy.skill})`)
+                                const modifier = new Modifier(synergy.skill, 2, "synergie")
+                                modifier.condition = synergy.condition
+                                conditions.push(modifier)
                             } else {
                                 // console.log(`Synergy applied for ${skill.name}`)
                                 modifiers.push(new Modifier(synergy.skill, 2, "synergie"))
@@ -478,9 +483,11 @@ class Character {
                 "class": skill_class,
                 "flags": skill.flags,
                 "modifiers": modifiers,
+                "conditions": conditions,
                 "comments": comments,
             }
         });
+        // console.log("skills = ", skills)
         return Object.values(skills)
     }
 
@@ -525,7 +532,7 @@ class Character {
             this.compute(form.modifiers)
             // console.log(this.backup)
         } else {
-            // console.log(`Already in ${form.id}`)
+            // console.log(`Already in ${ form.id } `)
         }
     }
 

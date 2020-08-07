@@ -80,27 +80,32 @@ const formatConditions = modifiers => {
     });
     return conditions.join("")
 }
+const formatSkillConditions = modifiers => {
+    const modfiers = []
+    modifiers.forEach(modifier => {
+        const item = `
+            <div class="ui segment">
+                <div class="ui ${color} circular label"><span class="lowercase">${formatBonus(modifier.value)}</span></div>
+                ${modifier.condition}
+                (${modifier.source})
+                [${modifier.type}]
+            </div>`
+        modfiers.push(item)
+    });
+    return modfiers.join("")
+}
 
 const formatModifers = modifiers => {
     const modfiers = []
-    // const modfiers2 = ['<div class="ui fluid vertical menu">']
     modifiers.forEach(modifier => {
         const item = `
-            <div class="ui clearing segment">
+            <div class="ui segment">
                 <div class="ui ${color} circular label"><span class="lowercase">${formatBonus(modifier.value)}</span></div>
                 ${modifier.target}
                 <span class="lowercase">[${modifier.type}]</span>
             </div>`
         modfiers.push(item)
-        // const item2 = `
-        //     <div class="item">
-        //         <div class="ui teal circular label"><span class="lowercase">${formatBonus(modifier.value)}</div>
-        //         ${modifier.target}
-        //         <span class="lowercase">[${modifier.type}]</span>
-        //     </div>`
-        // modfiers2.push(item2)
     });
-    // modfiers2.push('</div>')
     return modfiers.join("")
 }
 
@@ -239,13 +244,17 @@ const displaySkills = character => {
         const skill_flags = skill.flags.map(flag => {
             return flags_mappping[flag]
         })
+        const comments = (skill.comments.length == 0) ? "" : `<i>${skill.comments.join("<br>")}</i>`
         const line = `
             <tr class="${skill_class_css} ${skill.state}">
                 <td>${skill.name} ${skill_flags.join(" ")}</td>
                 <td class="center aligned details" data-html="${formatDetails(skill.modifiers)}">
                     <div>${getSumModifiers(skill.modifiers)}</div>
                 </td>
-                <td>${skill.comments.join("<br>")}</td>
+                <td>
+                    ${formatSkillConditions(skill.conditions)}
+                    ${comments}
+                </td>
             </tr>`;
         lines.push(line)
     });
