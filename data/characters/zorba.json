@@ -342,7 +342,8 @@
       ],
       "specials": [
         "Tueuse de dragons (+2d6)",
-        "Grande tueuse de dragons noirs et aquatiques (+2d10 en cas de critique)"
+        "Grande tueuse de dragons noirs et aquatiques (+2d10 en cas de critique)",
+        "Arme Magicide (+1d6 sur lanceurs de sorts)"
       ],
       "attack": {
         "hit": {
