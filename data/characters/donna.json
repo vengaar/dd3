@@ -57,13 +57,13 @@
         },
         {
           "name": "Armes et armures",
-          "description": "Une magicien est normallement formée au maniement de l’arbalète (légère et lourde), du bâton, de la dague et du gourdin. Cependant les règles de la Haute Sorcellerie interdisent aux Mages d'utiliser une autre arme que le bâton et (en mémoire de Magius) la dague.",
+          "desc": "Une magicien est normallement formée au maniement de l’arbalète (légère et lourde), du bâton, de la dague et du gourdin. Cependant les règles de la Haute Sorcellerie interdisent aux Mages d'utiliser une autre arme que le bâton et (en mémoire de Magius) la dague.",
           "level": 1
         },
         {
           "name": "Sort 0:4 1:4 2:4 3:4 4:4 5:4 6:4 7:4 8:1",
           "level": 15,
-          "description": "Une magicienne peut lancer des sorts profanes. A son niveau de lanceur de sort (15 au total), Donna a accès aux sorts suivants: 0:4 1:4 2:4 3:4 4:4 5:4 6:4 7:4 8:1"
+          "desc": "Une magicienne peut lancer des sorts profanes. A son niveau de lanceur de sort (15 au total), Donna a accès aux sorts suivants: 0:4 1:4 2:4 3:4 4:4 5:4 6:4 7:4 8:1"
         }
       ]
     },
@@ -317,7 +317,7 @@
   "equipments": [
     {
       "name": "Bâton de feu",
-      "description": " ",
+      "desc": " ",
       "charges": 5,
       "abilities": [
         "Boule de feu (1 charge)",
@@ -370,9 +370,8 @@
     },
     {
       "name": "Bâton de maître",
-      "description": "Baton préparé avec le sort : Arcane Staff, Greater)",
+      "desc": "Baton préparé avec le sort : Arcane Staff, Greater)",
       "abilities": [
-        "Baton préparé avec le sort : Arcane Staff, Greater)",
         "Contenance: 20 niv (sort niv 6 max)",
         "niv6: Dissipation suprême, Vision lucide",
         "niv5: Téléportation",
