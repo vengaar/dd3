@@ -338,8 +338,9 @@ class Character {
             if (flyManeuverability < 1) flyManeuverability = 1;
             if (flyManeuverability > 4) flyManeuverability = 5;
             this.fly = {
-                "speed": getSumModifiers(flyModifiersSpeed),
-                "maneuverability": flyManeuverability
+                "speedModifiers": flyModifiersSpeed,
+                "maneuverability": flyManeuverability,
+                "maneuverabilityModifiers": flyModifiersManeuverability
             }
             // console.log("fly =", this.fly)
         }

@@ -148,12 +148,14 @@ const displayIdentity = character => {
 
     // Fly
     if ("fly" in character) {
-        $(`.dd3-id-fly-speed`).text(character.fly.speed)
-        // console.log(maneuverabilities)
         // console.log(character.fly)
+        const speed = getSumModifiers(character.fly.speedModifiers)
+        $(`.dd3-id-fly-speed`).text(speed)
+        $(`.dd3-id-fly-speed-details`).html(formatDetails(character.fly.speedModifiers))
         const maneuverability_name = maneuverabilities[character.fly.maneuverability]
         // console.log(maneuverability_name)
         $(`.dd3-id-fly-maneuverability`).text(maneuverability_name)
+        $(`.dd3-id-fly-maneuverability-details`).html(formatDetails(character.fly.maneuverabilityModifiers))
         $(`.dd3-id-fly`).fadeIn()
     } else {
         $(`.dd3-id-fly`).fadeOut()
