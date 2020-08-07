@@ -51,13 +51,11 @@ body, html {
     visibility: hidden;
 }
 
-/* POWERS */
-
-.dd3-power-name {
+.dd3-name {
     font-weight: bold;
 }
 
-.dd3-power-desc {
+.dd3-desc {
     font-style: italic;
 }
 

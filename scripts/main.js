@@ -291,8 +291,8 @@ const displayPowers = character => {
             <tr class="">
                 <td>${power.type || "-"}</td>
                 <td class="left aligned">
-                    <div class="dd3-power-name">${formatObjectValue(power, "name")}</div>
-                    <div class="dd3-power-desc">${power.desc || ""}</div>
+                    <div class="dd3-name">${formatObjectValue(power, "name")}</div>
+                    <div class="dd3-desc">${power.desc || ""}</div>
                 </td>
                 <td>${power.source || "-"}</td>
                 <td>${power.level || "-"}</td>
@@ -311,10 +311,9 @@ const displayEquipments = character => {
         const equipment_used = (equipment.used === undefined || equipment.used) ? "checked" : ""
         // console.log(equipment_used)
         const location = equipment.location || "hiking";
-        let name = equipment.name
+        let abilities = ""
         if ("abilities" in equipment) {
-            name = `
-                <p><b>${equipment.name}</b></p>
+            abilities = `
                 <div class="ui segment ${color}">
                     <i>${equipment.abilities.join("<br>")}</i>
                 </div>`
@@ -328,7 +327,11 @@ const displayEquipments = character => {
                     </div>
                 </td>
                 <td class="collapsing center aligned" data-sort-value="${location}"><i class="${location} icon"></i></td>
-                <td class="top aligned">${name}</td>
+                <td class="top aligned">
+                    <div class="dd3-name">${equipment.name}</div>
+                    <div class="dd3-desc">${equipment.desc || ""}</div>
+                    ${abilities}
+                </td>
                 </td>
                 <td class="top aligned" style="white-space: nowrap;">
                     ${formatModifers(equipment.modifiers || [])}
