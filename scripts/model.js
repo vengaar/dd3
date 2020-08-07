@@ -326,9 +326,9 @@ class Character {
         // console.log("size =>", this.size, this.race.size)
 
         // SPEED
-        this.speed = this.speed || this.race.speed
-        const speedModifiers = this.__getModifiers("speed")
-        this.speed += getSumModifiers(speedModifiers)
+        this.speedModifiers = [
+            new Modifier(this.race.name, this.race.speed)
+        ].concat(this.__getModifiers("speed"))
 
         // FLY
         const flyModifiersSpeed = this.__getModifiers("fly")

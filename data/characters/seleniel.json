@@ -176,7 +176,6 @@
             "_image": "https://i.pinimg.com/564x/ce/a9/59/cea95978453645d40b6ec9bb0e4fb91e.jpg",
             "image": "https://www.aidedd.org/dnd/images/silver-dragon.jpg",
             "size": "Gig",
-            "speed": 12,
             "height": "?",
             "weight": "?",
             "age": "Vénérable",
@@ -424,6 +423,17 @@
         }
     ],
     "equipments": [
+        {
+            "name": "Grand pas",
+            "desc": "Sort de druide lv1, 1h/lv, lancé tous les matin",
+            "modifiers": [
+                {
+                    "target": "speed",
+                    "type": "?",
+                    "value": 3
+                }
+            ]
+        },
         {
             "name": "Bottes elfique",
             "modifiers": [

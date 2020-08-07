@@ -56,7 +56,7 @@ const formatDetails = modifiers => {
     // console.log(modifiers)
     const details = ["<table class='ui very basic celled center aligned table'><tbody>"]
     modifiers.forEach(modifier => {
-        const detail = `<tr><td class='capitalize'>${modifier.source}</td><td>${modifier.value}</td><td>${modifier.type}</td>`
+        const detail = `<tr><td class=''>${modifier.source}</td><td>${modifier.value}</td><td>${modifier.type}</td>`
         details.push(detail)
     });
     details.push("</tbody></table>")
@@ -114,12 +114,16 @@ const formatModifers = modifiers => {
  */
 
 const displayIdentity = character => {
-    const attributes = ["name", "ecl", "alignment", "size", "speed", "height", "weight", "age", "ba", "gold"]
+    const attributes = ["name", "ecl", "alignment", "size", "height", "weight", "age", "ba", "gold"]
     attributes.forEach(attribute => {
         // console.log(attribute)
         $(`.dd3-id-${attribute}`).text(character[attribute])
     });
     $(`.dd3-id-hitPoints`).text(`${character.hitPoints} (${character.hitPointsBasis} + ${character.hitPointsCon})`)
+
+    // Speed
+    $(".dd3-id-speed").text(`${getSumModifiers(character.speedModifiers)}`)
+    $(".dd3-id-speed-details").html(formatDetails(character.speedModifiers))
 
     // Name
     $(".dd3-id-name").html(`<a href="${character.$name}">${character.name}</a>`);
