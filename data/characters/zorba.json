@@ -69,7 +69,7 @@
           "type": "don",
           "level": 12,
           "url": "http://force.wikidot.com/heroic-surge-feat",
-          "description": " 1 fois par jour tous les 4 niveaux, le personnage peut effectuer une action de mouvement ou une action simple dans le round, soit avant, soit après ses actions habituelles."
+          "desc": " 1 fois par jour tous les 4 niveaux, le personnage peut effectuer une action de mouvement ou une action simple dans le round, soit avant, soit après ses actions habituelles."
         }
       ]
     },
@@ -203,7 +203,7 @@
     {
       "type": "don",
       "name": "Prestige",
-      "description": "suivants -> 23, cohorte (Donna) -> 22",
+      "desc": "suivants -> 23, cohorte (Donna) -> 22",
       "level": 6
     },
     {
@@ -244,7 +244,7 @@
   "equipments": [
     {
       "name": "Bottes Ailées",
-      "description": "Sur commande et jusqu’à trois fois par jour, de petites ailes apparaissent au niveau du talon, qui permettent de voler sans avoir besoin de se concentrer autrement que pour décider où l’on souhaite aller (voir le sort vol) et ce pendant 5 minutes.",
+      "desc": "Sur commande et jusqu’à trois fois par jour, de petites ailes apparaissent au niveau du talon, qui permettent de voler sans avoir besoin de se concentrer autrement que pour décider où l’on souhaite aller (voir le sort vol) et ce pendant 5 minutes.",
       "url": "https://regles-donjons-dragons.com/page1287.html"
     },
     {
@@ -269,14 +269,14 @@
     },
     {
       "name": "Anneau de liberté de mouvement",
-      "description": "Cet anneau en or permet à son porteur d’agir comme s’il était en permanence affecté par le sort liberté de mouvement.",
+      "desc": "Cet anneau en or permet à son porteur d’agir comme s’il était en permanence affecté par le sort liberté de mouvement.",
       "abilities": [
         "Liberté de mouvement (toujours actif))"
       ]
     },
     {
       "name": "Anneau de Cirulon",
-      "description": "peut soigner 6 point de vie une fois par jour. Si une attaque diminue les points de vie du porteur en-dessous de 0pv, l'anneau ramène le porteur à 1pv, mais cesse de fonctionner",
+      "desc": "peut soigner 6 point de vie une fois par jour. Si une attaque diminue les points de vie du porteur en-dessous de 0pv, l'anneau ramène le porteur à 1pv, mais cesse de fonctionner",
       "abilities": [
         "Soins 6pv (1/j)",
         "Contingence et soins variable, 1 seule fois"
@@ -421,7 +421,7 @@
     },
     {
       "name": "Arc long composite +1 de force 18, traqueur",
-      "description": "Traqueur : annule le camouflage",
+      "desc": "Traqueur : annule le camouflage",
       "specials": [
         "Traqueur : annule le camouflage"
       ],
