@@ -221,11 +221,9 @@ const displayCounters = character => {
     $(".dd3-counters-init-details").attr("data-html", formatDetails(character.init))
     $(".dd3-counters-ba").text(`${character.ba}`)
     $(".dd3-counters-ba-details").attr("data-html", formatDetails(character.ba_modifiers))
-    const ca_modifiers = filterModifiersByConditions(character.ca_modifiers, false)
-    $(".dd3-counters-ca").text(`${getSumModifiers(ca_modifiers)}`)
-    $(".dd3-counters-ca-details").attr("data-html", formatDetails(ca_modifiers))
-    const ca_conditions = filterModifiersByConditions(character.ca_modifiers, true)
-    $(".dd3-counters-conditions").html(`${formatConditions(ca_conditions)}`)
+    $(".dd3-counters-ca").text(`${getSumModifiers(character.caModifiers)}`)
+    $(".dd3-counters-ca-details").attr("data-html", formatDetails(character.caModifiers))
+    $(".dd3-counters-conditions").html(`${formatConditions(character.caModifiersConditional)}`)
 }
 
 const displaySaves = character => {
@@ -450,5 +448,6 @@ $('.details').popup({
 
 // $character_choice.dropdown('set selected', 'seleniel')
 // $character_choice.dropdown('set selected', 'ronce')
+// $character_choice.dropdown('set selected', 'zorba')
 
 console.log("main - ok");

@@ -82,12 +82,12 @@ class Modifier {
         "hit", "damage", "ca", "init", "saves",
         "speed", "fly", "maneuverability"
     ].concat(Ability.names).concat(Modifier.saves).concat(skillsNames);
-
+    static cumulativeTypes = ["esquive", "chance", undefined]
 
     constructor(source, value, type) {
         this.source = source;
         this.value = value;
-        this.type = type || "";
+        this.type = type;
         this.condition;
     }
 
@@ -115,25 +115,6 @@ class Modifier {
 const filterModifiersByConditions = (modifiers, has_condition) => {
     return modifiers.filter(modifier => ("condition" in modifier) === has_condition)
 }
-
-// const filterModifiers = (modifiers, filters) => {
-//     const _modifiers = []
-//     modifiers.forEach(modifier => {
-//         let filters_match = false
-//         for (let criteria in filters) {
-//             if (modifier[criteria] == filters[criteria]) {
-//                 filters_match = true
-//             } else {
-//                 filters_match = false
-//                 break
-//             }
-//         }
-//         if (filters_match) {
-//             _modifiers.push(modifier)
-//         }
-//     });
-//     return _modifiers
-// }
 
 const getSumModifiers = modifiers => {
     return modifiers.reduce((acc, item) => acc += item.value, 0);
@@ -227,7 +208,7 @@ class Character {
         ].concat(this.__getModifiers("init"))
         // console.log("init =", this.init)
 
-        this.ca_modifiers = this.__computeCa()
+        this.__computeCa()
         this.saves = this.__computeSaves()
         this.attacks = this.__computeAttacks()
         this.skills = this.__computeSkills()
@@ -252,24 +233,9 @@ class Character {
         const ca_modifiers = [
             new Modifier("base", 10),
             new Modifier("dex", this.__getAbilityBonus("dex"), "ability")
-        ]
-        let best_armure
-        this.__getModifiers("ca").forEach(modifier => {
-            if (modifier.type == "armure") {
-                if (best_armure === undefined) {
-                    best_armure = modifier
-                } else {
-                    if (modifier.value > best_armure.value) best_armure = modifier;
-                }
-            } else {
-                ca_modifiers.push(modifier)
-            }
-        })
-        if (best_armure !== undefined) {
-            ca_modifiers.push(best_armure)
-        }
-        // console.log("ca_modifiers =", ca_modifiers)
-        return ca_modifiers
+        ].concat(this.__getModifiers("ca"))
+        this.caModifiers = ca_modifiers
+        this.caModifiersConditional = this.__getModifiers("ca", true)
     }
 
     __computeSaves = () => {
@@ -496,19 +462,46 @@ class Character {
         return this.abilities[ability_name].bonus
     }
 
-    __getModifiers = target => {
+    __getModifiers = (target, conditional = false) => {
         if (target in this.modifiersIndex) {
-            return this.modifiersIndex[target]
+            if (conditional) {
+                return this.modifiersIndex[target].conditional
+            } else {
+                const exclusiveModifiers = Object.values(this.modifiersIndex[target].always.type)
+                const cumulativeModifiers = this.modifiersIndex[target].always.modifiers
+                return cumulativeModifiers.concat(exclusiveModifiers)
+            }
         } else {
             return []
         }
     }
 
     __addModifier = modifier => {
-        if (modifier.target in this.modifiersIndex) {
-            this.modifiersIndex[modifier.target].push(modifier)
+        if (this.modifiersIndex[modifier.target] === undefined) {
+            this.modifiersIndex[modifier.target] = {
+                "conditional": [],
+                "always": {
+                    "modifiers": [],
+                    "type": {}
+                }
+            }
+        }
+        if ("condition" in modifier) {
+            this.modifiersIndex[modifier.target].conditional.push(modifier)
         } else {
-            this.modifiersIndex[modifier.target] = [modifier]
+            const always = this.modifiersIndex[modifier.target].always
+            if (Modifier.cumulativeTypes.includes(modifier.type)) {
+                always.modifiers.push(modifier)
+            } else {
+                // Add only max modifier for none cummulative type
+                if (modifier.type in always.type) {
+                    if (always.type[modifier.type].value < modifier.value) {
+                        always.type[modifier.type] = modifier
+                    }
+                } else {
+                    always.type[modifier.type] = modifier
+                }
+            }
         }
     }
 

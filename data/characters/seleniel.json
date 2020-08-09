@@ -499,7 +499,7 @@
         },
         {
             "name": "Armure de cuir de Theros",
-            "used": false,
+            "used": true,
             "modifiers": [
                 {
                     "target": "ca",
