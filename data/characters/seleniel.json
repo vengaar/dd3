@@ -446,7 +446,6 @@
             "modifiers": [
                 {
                     "target": "speed",
-                    "type": "?",
                     "value": 3
                 }
             ]
@@ -456,7 +455,6 @@
             "modifiers": [
                 {
                     "target": "Déplacement silencieux",
-                    "type": "?",
                     "value": 5
                 }
             ]
@@ -467,7 +465,6 @@
             "modifiers": [
                 {
                     "target": "Discrétion",
-                    "type": "?",
                     "value": 5
                 }
             ]
