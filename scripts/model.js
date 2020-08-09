@@ -333,7 +333,7 @@ class Character {
                 if ("ability" in attack.damage) {
                     const damage_ability = this.__getAbilityBonus(attack.damage.ability)
                     const damage_multiplier = attack.damage.multiplier || 1;
-                    const damage = Math.floor(damage_ability * damage_multiplier)
+                    const damage = (damage_ability >= 0) ? Math.floor(damage_ability * damage_multiplier) : damage_ability
                     const modifier = new Modifier(attack.damage.ability, damage, "ability")
                     attacks_modifiers["damage"].push(modifier)
                 }
