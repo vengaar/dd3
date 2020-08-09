@@ -506,7 +506,7 @@ $('.details').popup({
     observeChanges: true
 });
 
-$character_choice.dropdown('set selected', 'seleniel')
+// $character_choice.dropdown('set selected', 'seleniel')
 // $character_choice.dropdown('set selected', 'ronce')
 // $character_choice.dropdown('set selected', 'zorba')
 
