@@ -276,9 +276,9 @@ const displaySpells = character => {
         const spells = []
         for (let level in character.spells) {
             const spellLevel = `
-                <div class="three wide column">
+                <div class="four wide column">
                     <div class="ui segment">
-                        Level ${level} (${character.spells[level].nbSpells})
+                        ${character.spells[level].nbSpells} sorts niveau ${level}
                         <div class="ui divider"></div>
                         ${character.spells[level].savingThrow}
                     </div>

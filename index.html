@@ -26,6 +26,7 @@
             </div>
         </div>
         <a class="ui item" href="#anchor_identity"><i class="address card icon"></i>Identitée</a>
+        <a class="ui item" href="#anchor_spells"><i class="magic icon"></i>Magie</a>
         <a class="ui item" href="#anchor_attacks"><i class="gavel icon"></i>Attaques</a>
         <a class="ui item" href="#anchor_powers"><i class="fist raised icon"></i>Pouvoirs</a>
         <a class="ui item" href="#anchor_skills"><i class="graduation cap icon"></i>Compétences</a>
@@ -189,22 +190,30 @@
 
                         </div>
 
-                        <!-- SPELLS -->
-                        <div id="spells-container" class="sixteen wide column _purple">
-                            <div class="ui top attached segment">
-                                <i class="magic icon"></i>
-                                Niveau de lanceur de sort
-                                <span class="details dd3-nls ui circular label">{nls}</span>
-                                <div class="dd3-nls-details ui popup"></div>
-                            </div>
-                            <div class="ui bottom attached center aligned segment">
-                                <div id="spells" class="ui stackable grid"></div>
-                            </div>
-                        </div>
-
                     </div>
                 </div>
 
+            </div>
+
+            <div class="ui divider"></div>
+
+            <!-- SPELLS -->
+            <a id="anchor_spells"></a>
+            <div id="spells-container">
+                <h5 class="ui top secondary attached header">
+                    <i class="magic icon"></i>
+                    <div class="content">
+                        Niveau de lanceur de sort
+                        <span class="details dd3-nls ui circular label">{nls}</span>
+                        <div class="dd3-nls-details ui popup"></div>
+                    </div>
+                </h5>
+                <div class="ui attached center aligned segment">
+                    <div id="spells" class="ui stackable grid"></div>
+                </div>
+                <div class="ui bottom attached segment">
+                    <a href="http://www.gemmaline.com/sorts/">Liste de sort</a>
+                </div>
             </div>
 
             <!-- ATTACKS -->
