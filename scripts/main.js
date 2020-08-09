@@ -269,9 +269,7 @@ const displaySaves = character => {
 const displaySpells = character => {
     const $spellsContainer = $("#spells-container")
     const $spells = $("#spells")
-    console.log(spells)
     if ("spells" in character) {
-        console.log("in", character.spells)
         $(".dd3-nls").text(`${getSumModifiers(character.nls)}`)
         $(".dd3-nls-details").html(`${formatDetails(character.nls)}`)
         $spells.empty()
@@ -290,7 +288,6 @@ const displaySpells = character => {
         $spells.append(spells.join(""))
         $spellsContainer.fadeIn()
     } else {
-        console.log("out")
         $spellsContainer.fadeOut()
         $spellsContainer.hide()
     }
