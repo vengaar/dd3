@@ -222,8 +222,8 @@ class Character {
     }
 
     __computeSpells = () => {
-        console.log(this.spellAbility)
-        console.log(this.spellsByLevel)
+        // console.log(this.spellAbility)
+        // console.log(this.spellsByLevel)
         if ("spellAbility" in this) {
             const spells = []
             for (let level in this.spellsByLevel) {
@@ -239,7 +239,7 @@ class Character {
                 )
             }
             this.spells = spells
-            console.log("this.spells = ", this.spells)
+            // console.log("this.spells = ", this.spells)
         }
     }
 
