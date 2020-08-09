@@ -59,6 +59,13 @@ body, html {
     font-style: italic;
 }
 
+.dd3-references {
+    border-left: 4px solid #777777;
+    font-size: 0.9em;
+    padding: 0em 1em;
+    margin: 1em 0em 0em 0em;
+}
+
 /* EQUIPMENT */
 
 /*

@@ -24,6 +24,7 @@ class Power {
         this.name = data.name || ""
         this.desc = data.desc || ""
         this.url = data.url
+        this.references = data.references
         this.level = data.level || ""
         this.type = data.type || ""
         this.source = data.source || ""

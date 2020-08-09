@@ -23,11 +23,17 @@
             "powers": [
                 {
                     "name": "Empathie sauvage",
+                    "desc": "Un druide peut ajuster son comportement, son langage et ses expressions corporelles pour améliorer l’attitude d’un animal (comme un ours ou un varan). Cette aptitude suit les mêmes règles que les tests de Diplomatie joués pour modifier l’attitude d’une personne. Le résultat d’un test d’empathie sauvage est déterminé par 1d20 + le niveau du druide + le modificateur de Charisme du druide. L’attitude initiale des animaux domestiques est l’indifférence, tandis que les animaux sauvages sont généralement inamicaux. Pour utiliser d’empathie sauvage, le druide et l’animal doivent être en mesure de se voir et de s’étudier l’un l’autre, ce qui signifie qu’ils doivent se trouver à moins de 9 mètres de distance dans des conditions normales. Il faut en moyenne une minute pour influencer un animal de cette façon, mais, comme pour la diplomatie, cela peut parfois prendre plus longtemps ou être plus rapide. Cette aptitude peut aussi servir à un druide pour influencer une créature magique dont la valeur d’Intelligence est de 1 ou 2 (comme un basilic ou un girallon), avec cependant un malus de –4 sur son test.",
                     "level": 1,
-                    "url": "http://www.gemmaline.com/druide.htm#8"
+                    "type": "Ext",
+                    "references": [
+                        "http://www.gemmaline.com/druide.htm#8",
+                        "Manuel des joueur"
+                    ]
                 },
                 {
                     "name": "Instinct naturel",
+                    "desc": "Le druide bénéficie d’un bonus de +2 sur les tests de Connaissances (nature) et de Survie.",
                     "level": 1,
                     "modifiers": [
                         {
@@ -38,6 +44,11 @@
                             "target": "Survie",
                             "value": 2
                         }
+                    ],
+                    "type": "Ext",
+                    "references": [
+                        "http://www.gemmaline.com/druide.htm#9",
+                        "Manuel des joueur"
                     ]
                 },
                 {
@@ -590,7 +601,7 @@
         },
         {
             "name": "Bâton de la forêt profonde",
-            "desc": "",
+            "desc": "Le bâton de la forêt profonde semble avoir pris forme naturellement, sans aide extérieure. Fait de chêne, de frêne ou d’if, il contient les sorts suivants",
             "charges": 50,
             "abilities": [
                 "Charme-animal (1 charge)",
@@ -599,6 +610,11 @@
                 "Mur d’épines (3 charges)",
                 "Animation des plantes (4 charges)",
                 "Passage sans trace, à volonté"
+            ],
+            "references": [
+                "Guide du maître",
+                "http://www.gemmaline.com/batons.htm",
+                "https://regles-donjons-dragons.com/page1263.html"
             ],
             "attack": {
                 "hit": {

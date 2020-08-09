@@ -21,12 +21,34 @@ const color = "teal"
  */
 
 const formatObjectValue = (obj, property) => {
-    let value_formatted = ""
+    let formattedValue = "";
     if (property in obj) {
-        const value = obj[property]
-        value_formatted = (obj.url === undefined) ? value : `<a href=${obj.url}>${value}</a>`
+        formattedValue = obj[property];
+        if (obj.references !== undefined) {
+            obj.references.some(reference => {
+                if (reference.startsWith("http")) {
+                    formattedValue = `<a href=${reference}>${formattedValue}</a>`;
+                    return true
+                }
+            });
+        }
     }
-    return value_formatted
+    return formattedValue
+}
+
+const formatReferences = (obj) => {
+    if (obj.references === undefined) {
+        return ""
+    } else {
+        const references = []
+        obj.references.forEach(reference => {
+            if (reference.startsWith("http")) {
+                reference = `<a href=${reference}>${reference}</a>`
+            }
+            references.push(`${reference}`)
+        });
+        return `<div class="dd3-references">Ref: ${references.join(", ")}</div>`
+    }
 }
 
 const formatHit = (hit, ba) => {
@@ -297,6 +319,7 @@ const displayPowers = character => {
                 <td class="left aligned">
                     <div class="dd3-name">${formatObjectValue(power, "name")}</div>
                     <div class="dd3-desc">${power.desc || ""}</div>
+                    ${formatReferences(power)}
                 </td>
                 <td>${power.source || "-"}</td>
                 <td>${power.level || "-"}</td>
@@ -335,6 +358,7 @@ const displayEquipments = character => {
                     <div class="dd3-name">${equipment.name}</div>
                     <div class="dd3-desc">${equipment.desc || ""}</div>
                     ${abilities}
+                    ${formatReferences(equipment)}
                 </td>
                 </td>
                 <td class="top aligned" style="white-space: nowrap;">
@@ -446,7 +470,7 @@ $('.details').popup({
     observeChanges: true
 });
 
-// $character_choice.dropdown('set selected', 'seleniel')
+$character_choice.dropdown('set selected', 'seleniel')
 // $character_choice.dropdown('set selected', 'ronce')
 // $character_choice.dropdown('set selected', 'zorba')
 
