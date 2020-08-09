@@ -246,9 +246,8 @@ class Character {
             "vig": [],
             "ref": [],
             "vol": [],
-            "conditions": []
+            "conditions": this.__getModifiers("saves", true)
         }
-        // console.log("saves =", saves)
 
         // classes
         this.classes.forEach(current_class => {
@@ -262,26 +261,21 @@ class Character {
         saves.vol.push(new Modifier("sag", this.__getAbilityBonus("sag"), "ability"))
         // others
 
+        // Create vig, ref, vom from saves
         this.__getModifiers("saves").forEach(modifier => {
-            if ("condition" in modifier) {
-                saves.conditions.push(modifier)
-            } else {
-                Modifier.saves.forEach(save => {
-                    saves[save].push(modifier)
-                })
-            }
-        });
-
-        Modifier.saves.forEach(save => {
-            this.__getModifiers(save).forEach(modifier => {
-                if ("condition" in modifier) {
-                    saves.conditions.push(modifier)
-                } else {
-                    saves[save].push(modifier)
-                }
+            Modifier.saves.forEach(save => {
+                saves[save].push(modifier)
             })
         });
 
+        Modifier.saves.forEach(save => {
+            this.__getModifiers(save, true).forEach(modifier => {
+                saves.conditions.push(modifier)
+            })
+            this.__getModifiers(save).forEach(modifier => {
+                saves[save].push(modifier)
+            })
+        });
         // console.log("saves =", saves)
         return saves
     }

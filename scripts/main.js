@@ -51,6 +51,14 @@ const formatReferences = (obj) => {
     }
 }
 
+const formatModifierType = modifier => {
+    if (modifier.type === undefined) {
+        return ""
+    } else {
+        return `<span class='dd3-modifier-type'>[${modifier.type}]</span>`
+    }
+}
+
 const formatHit = (hit, ba) => {
     const formatted_hit = []
     const nb_attacks = Math.ceil(ba / 5)
@@ -78,7 +86,7 @@ const formatDetails = modifiers => {
     // console.log(modifiers)
     const details = ["<table class='ui very basic celled center aligned table'><tbody>"]
     modifiers.forEach(modifier => {
-        const detail = `<tr><td class=''>${modifier.source}</td><td>${modifier.value}</td><td>${modifier.type}</td>`
+        const detail = `<tr><td class=''>${modifier.source}</td><td>${modifier.value}</td><td>${formatModifierType(modifier)}</td>`
         details.push(detail)
     });
     details.push("</tbody></table>")
@@ -95,7 +103,7 @@ const formatConditions = modifiers => {
                 <tr>
                     <td class="collapsing"><span class="ui ${color} circular label">${formatBonus(modifier.value)}</span></td>
                     <td class="collapsing center aligned">${modifier.target}</span></td>
-                    <td>${modifier.condition}</td>
+                    <td>${modifier.condition}${formatModifierType(modifier)}</td>
                 </tr>`
             conditions.push(condition)
         }
@@ -110,7 +118,7 @@ const formatSkillConditions = modifiers => {
                 <div class="ui ${color} circular label"><span class="lowercase">${formatBonus(modifier.value)}</span></div>
                 ${modifier.condition}
                 (${modifier.source})
-                [${modifier.type}]
+                ${formatModifierType(modifier)}
             </div>`
         modfiers.push(item)
     });
@@ -124,7 +132,7 @@ const formatModifers = modifiers => {
             <div class="ui segment">
                 <div class="ui ${color} circular label"><span class="lowercase">${formatBonus(modifier.value)}</span></div>
                 ${modifier.target}
-                <span class="lowercase">[${modifier.type}]</span>
+                ${formatModifierType(modifier)}
             </div>`
         modfiers.push(item)
     });
