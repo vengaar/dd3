@@ -393,7 +393,7 @@ const displayEquipments = character => {
                 </td>
                 <td class="collapsing center aligned" data-sort-value="${location}"><i class="${location} icon"></i></td>
                 <td class="top aligned">
-                    <div class="dd3-name">${equipment.name}</div>
+                    <div class="dd3-name">${formatObjectValue(equipment, "name")}</div>
                     <div class="dd3-desc">${equipment.desc || ""}</div>
                     ${abilities}
                     ${formatReferences(equipment)}
