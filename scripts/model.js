@@ -382,7 +382,7 @@ class Character {
                 const computed_attack = {
                     "name": equipment.name,
                     "mode": "base",
-                    "nb_attack": attack.nb_attack,
+                    "nbAttack": attack.nbAttack,
                     "modifiers": attacks_modifiers,
                     "damage": attack.damage.base,
                     "crit": attack.crit,
