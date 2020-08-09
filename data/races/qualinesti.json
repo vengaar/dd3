@@ -6,16 +6,9 @@
     "speed": 9,
     "powers": [
         {
-            "desc": "Bonus racial dans plusieurs compétences",
+            "name": "Bonus de compétences (Elfe)",
+            "desc": "Bonus racial de +2 aux tests de Détection, Fouille et Perception auditive. Lorsqu'ils passent à moins de 1,50 mètre d'une porte dissimulée ou d'un passage secret, ils ont droit à un test de Fouille automatique afin de voir s'ils le remarquent.",
             "modifiers": [
-                {
-                    "target": "Diplomatie",
-                    "value": 1
-                },
-                {
-                    "target": "Psychologie",
-                    "value": 1
-                },
                 {
                     "target": "Fouille",
                     "value": 2
@@ -31,7 +24,22 @@
             ]
         },
         {
-            "desc": "Immunity to magic sleep effects",
+            "name": "Bonus de compétences (Qualinesti)",
+            "desc": "Bonus racial de +1 aux tests de Diplomatie et de Psychologie. Bien qu'ils paraissent parfois aussi distants que les Silvanesti, les Qualinesti traitent plus facilement avec les autres races que la plupart des elfes.",
+            "modifiers": [
+                {
+                    "target": "Diplomatie",
+                    "value": 1
+                },
+                {
+                    "target": "Psychologie",
+                    "value": 1
+                }
+            ]
+        },
+        {
+            "name": "Résistant aux enchantements",
+            "desc": "Immunité contre les sorts et effets magiques de type sommeil. Bonus racial de +2 aux jets de sauvegarde contre les sorts et effets magiques de l'école des enchantements",
             "modifiers": [
                 {
                     "target": "saves",
@@ -41,10 +49,17 @@
             ]
         },
         {
-            "desc": "Krynnish elves have low-light vision and can see twice as far as a human in starlight, moonlight, and similar conditions of poor illumination. They retain the ability to distinguish color and detail under these circumstances."
+            "name": "Vision nocturne",
+            "desc": "Les elfes voient deux fois plus loin que les humains dans des conditions de faible éclairage (clarté de la lune ou des étoiles, torche, etc.). Dans ces conditions, ils distinguent toujours parfaitement les couleurs et les détails.",
+            "type": "Ext"
         },
         {
-            "desc": "Elvensight also includes darkvision up to 30 feet. Darkvision is black and white only, but it is otherwise like normal sight."
+            "name": "Vision dans le noir (Qualinesti)",
+            "desc": "Ils possèdent la vision dans le noir sur 9 mètres."
+        },
+        {
+            "name": "Maniement des armes",
+            "desc": "Tous les elfes possèdent les dons Maniement d'une arme de guerre pour l'épée longue, la rapière, l'arc long (y compris les arcs longs composites) et l'arc court (y compris les arcs courts composites). "
         }
     ]
 }
