@@ -94,10 +94,11 @@
             "name": "Science du vol",
             "desc": "La manœuvrabilité en vol du personnage augmente d'une catégorie",
             "level": 1,
-            "url": "http://www.gemmaline.com/dons/dons-science-du-vol-1483.htm",
+            "references": [
+                "http://www.gemmaline.com/dons/dons-science-du-vol-1483.htm"
+            ],
             "modifiers": [
                 {
-                    "target": "fly",
                     "target": "maneuverability",
                     "value": 1
                 }

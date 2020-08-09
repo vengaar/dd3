@@ -160,7 +160,9 @@
             "type": "don",
             "name": "Arme naturelle supérieure",
             "level": 15,
-            "url": "http://www.gemmaline.com/dons/dons-arme-naturelle-superieure-110.htm"
+            "references": [
+                "http://www.gemmaline.com/dons/dons-arme-naturelle-superieure-110.htm"
+            ]
         },
         {
             "type": "don",
@@ -193,7 +195,9 @@
             "race": {
                 "name": "Dragon",
                 "speed": 18,
-                "url": "http://www.gemmaline.com/bestiaire/dragons/",
+                "references": [
+                    "http://www.gemmaline.com/bestiaire/dragons/"
+                ],
                 "powers": [
                     {
                         "name": "Réduction des dégâts (20/magie)",
