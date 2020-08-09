@@ -80,7 +80,7 @@ class Modifier {
 
     static saves = ["vig", "ref", "vol"];
     static targets = [
-        "hit", "damage", "ca", "init", "saves",
+        "hit", "damage", "ca", "init", "saves", "nls",
         "speed", "fly", "maneuverability"
     ].concat(Ability.names).concat(Modifier.saves).concat(skillsNames);
     static cumulativeTypes = ["esquive", "chance", undefined]
@@ -146,10 +146,14 @@ class Character {
 
         // from classes
         this.level = 0
+        this.nls = []
         this.ba_modifiers = []
         this.classes.forEach(current_class => {
             this.level += current_class.level
             this.ba += current_class.ba
+            if ("nls" in current_class) {
+                this.nls.push(new Modifier(current_class.name, current_class.nls, "base"))
+            }
             this.ba_modifiers.push(new Modifier(current_class.name, current_class.ba, "base"))
             current_class.powers.forEach(_power => {
                 _power.source = current_class.name
@@ -214,6 +218,38 @@ class Character {
         this.attacks = this.__computeAttacks()
         this.skills = this.__computeSkills()
         this.__computeMovement()
+        this.__computeSpells()
+    }
+
+    __computeSpells = () => {
+        console.log(this.spellAbility)
+        console.log(this.spellsByLevel)
+        if ("spellAbility" in this) {
+            const spells = []
+            for (let level in this.spellsByLevel) {
+                // console.log(level);
+                // console.log(this.spellsByLevel[level]);
+                // console.log(this.__getBonusSpell(level))
+                const intLevel = parseInt(level)
+                spells.push(
+                    {
+                        "nbSpells": this.spellsByLevel[level] + this.__getBonusSpell(intLevel),
+                        "savingThrow": 10 + intLevel + this.__getAbilityBonus(this.spellAbility)
+                    }
+                )
+            }
+            this.spells = spells
+            console.log("this.spells = ", this.spells)
+        }
+    }
+
+    __getBonusSpell = (level) => {
+        const abilityBonus = this.__getAbilityBonus(this.spellAbility)
+        if (abilityBonus >= level && level > 0) {
+            return Math.floor((abilityBonus - level) / 4) + 1
+        } else {
+            return 0
+        }
     }
 
     __computeAbilities = () => {

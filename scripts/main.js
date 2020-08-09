@@ -266,6 +266,36 @@ const displaySaves = character => {
     $(".dd3-saves-conditions").html(`${formatConditions(character.saves.conditions)}`)
 }
 
+const displaySpells = character => {
+    const $spellsContainer = $("#spells-container")
+    const $spells = $("#spells")
+    console.log(spells)
+    if ("spells" in character) {
+        console.log("in", character.spells)
+        $(".dd3-nls").text(`${getSumModifiers(character.nls)}`)
+        $(".dd3-nls-details").html(`${formatDetails(character.nls)}`)
+        $spells.empty()
+        const spells = []
+        for (let level in character.spells) {
+            const spellLevel = `
+                <div class="three wide column">
+                    <div class="ui segment">
+                        Level ${level} (${character.spells[level].nbSpells})
+                        <div class="ui divider"></div>
+                        ${character.spells[level].savingThrow}
+                    </div>
+                </div>`
+            spells.push(spellLevel)
+        }
+        $spells.append(spells.join(""))
+        $spellsContainer.fadeIn()
+    } else {
+        console.log("out")
+        $spellsContainer.fadeOut()
+        $spellsContainer.hide()
+    }
+}
+
 const displaySkills = character => {
     const flags_mappping = {
         "learned": '<i class="graduation cap icon"></i>',
@@ -385,6 +415,7 @@ const displayCharacter = character => {
     displayIdentity(character)
     displayCounters(character)
     displaySaves(character)
+    displaySpells(character)
     displayAbilities(character)
     displaySkills(character)
     displayAttacks(character)

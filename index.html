@@ -67,9 +67,9 @@
             <!-- IDENDITY -->
             <a id="anchor_identity"></a>
             <div class="ui stackable column grid">
-                <div class="sixteen wide mobile six wide tablet four wide computer column _grey">
 
-                    <!-- IDENDITY CARD -->
+                <!-- IDENDITY CARD -->
+                <div class="sixteen wide mobile six wide tablet four wide computer column _grey">
                     <div id="card" class="ui card">
                         <div class="content">
                             <span class="right floated">
@@ -116,75 +116,95 @@
                             </div>
                         </div>
                     </div>
-
                 </div>
-                <div class="sixteen wide mobile ten wide tablet six wide computer column _teal">
 
-                    <!-- ABILITIES -->
-                    <table id="abilities" class="dd3-abilities ui very basic celled center aligned table">
-                        <thead>
-                            <tr>
-                                <th></th>
-                                <th>Base</th>
-                                <th>Total</th>
-                                <th>Bonus</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                        </tbody>
-                    </table>
+                <!-- IDENDITY RIGHT -->
+                <div class="sixteen wide mobile ten wide tablet twelve wide computer column _teal">
+                    <div class="ui stackable column grid">
 
-                </div>
-                <div class="sixteen wide mobile sixteen wide tablet six wide computer column _brown">
-
-                    <!-- SAVES -->
-                    <a id="anchor_saves"></a>
-                    <div id="saves">
-                        <div class="ui three item labeled icon top attached menu">
-                            <span class="dd3-saves-vig-details item details" data-html="">
-                                <i class="skull crossbones icon"></i>
-                                <span class="dd3-saves-vig">{vig}</span>
-                            </span>
-                            <span class="dd3-saves-ref-details item details" data-html="">
-                                <i class="bomb icon"></i>
-                                <span class="dd3-saves-ref">{ref}</span>
-                            </span>
-                            <span class="dd3-saves-vol-details item details" data-html="">
-                                <i class="brain icon"></i>
-                                <span class="dd3-saves-vol">{vol}</span>
-                            </span>
-                        </div>
-                        <div class="ui bottom attached segment">
-                            <table class="ui compact very basic celled table">
-                                <tbody class="dd3-saves-conditions"></tbody>
+                        <!-- ABILITIES -->
+                        <div class="sixteen wide mobile sixteen wide tablet six wide computer column _teal">
+                            <table id="abilities" class="dd3-abilities ui very basic celled center aligned table">
+                                <thead>
+                                    <tr>
+                                        <th></th>
+                                        <th>Base</th>
+                                        <th>Total</th>
+                                        <th>Bonus</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                </tbody>
                             </table>
-                        </div>
-                    </div>
 
-                    <!-- COUNTERS -->
-                    <div id="counters">
-                        <div class="ui three item labeled icon top attached menu">
-                            <span class="dd3-counters-init-details item details" data-html="">
-                                <i class="stopwatch icon"></i>
-                                <span class="dd3-counters-init">{init}</span>
-                            </span>
-                            <span class="dd3-counters-ba-details item details" data-html="">
-                                <i class="gavel icon"></i>
-                                <span class="dd3-counters-ba">{ba}</span>
-                            </span>
-                            <span class="dd3-counters-ca-details item details" data-html="">
-                                <i class="shield icon"></i>
-                                <span class="dd3-counters-ca">{ca}</span>
-                            </span>
                         </div>
-                        <div class="ui bottom attached segment">
-                            <table class="ui compact very basic celled table">
-                                <tbody class="dd3-counters-conditions"></tbody>
-                            </table>
-                        </div>
-                    </div>
 
+                        <!-- SAVES & COUNTERS -->
+                        <div class="sixteen wide mobile sixteen wide tablet ten wide computer column _brown">
+                            <a id="anchor_saves"></a>
+                            <div id="saves">
+                                <div class="ui three item labeled icon top attached menu">
+                                    <span class="dd3-saves-vig-details item details" data-html="">
+                                        <i class="skull crossbones icon"></i>
+                                        <span class="dd3-saves-vig">{vig}</span>
+                                    </span>
+                                    <span class="dd3-saves-ref-details item details" data-html="">
+                                        <i class="bomb icon"></i>
+                                        <span class="dd3-saves-ref">{ref}</span>
+                                    </span>
+                                    <span class="dd3-saves-vol-details item details" data-html="">
+                                        <i class="brain icon"></i>
+                                        <span class="dd3-saves-vol">{vol}</span>
+                                    </span>
+                                </div>
+                                <div class="ui bottom attached segment">
+                                    <table class="ui compact very basic celled table">
+                                        <tbody class="dd3-saves-conditions"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                            <!-- COUNTERS -->
+                            <div id="counters">
+                                <div class="ui three item labeled icon top attached menu">
+                                    <span class="dd3-counters-init-details item details" data-html="">
+                                        <i class="stopwatch icon"></i>
+                                        <span class="dd3-counters-init">{init}</span>
+                                    </span>
+                                    <span class="dd3-counters-ba-details item details" data-html="">
+                                        <i class="gavel icon"></i>
+                                        <span class="dd3-counters-ba">{ba}</span>
+                                    </span>
+                                    <span class="dd3-counters-ca-details item details" data-html="">
+                                        <i class="shield icon"></i>
+                                        <span class="dd3-counters-ca">{ca}</span>
+                                    </span>
+                                </div>
+                                <div class="ui bottom attached segment">
+                                    <table class="ui compact very basic celled table">
+                                        <tbody class="dd3-counters-conditions"></tbody>
+                                    </table>
+                                </div>
+                            </div>
+
+                        </div>
+
+                        <!-- SPELLS -->
+                        <div id="spells-container" class="sixteen wide column _purple">
+                            <div class="ui top attached segment">
+                                <i class="magic icon"></i>
+                                Niveau de lanceur de sort
+                                <span class="details dd3-nls ui circular label">{nls}</span>
+                                <div class="dd3-nls-details ui popup"></div>
+                            </div>
+                            <div class="ui bottom attached center aligned segment">
+                                <div id="spells" class="ui stackable grid"></div>
+                            </div>
+                        </div>
+
+                    </div>
                 </div>
+
             </div>
 
             <!-- ATTACKS -->
