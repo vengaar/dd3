@@ -132,17 +132,7 @@
           "url": "http://www.gemmaline.com/prestige/pourfendeurdemages.htm",
           "modifiers": [
             {
-              "target": "ref",
-              "value": 3,
-              "condition": "contre les sorts et les pouvoirs magiques"
-            },
-            {
-              "target": "vig",
-              "value": 3,
-              "condition": "contre les sorts et les pouvoirs magiques"
-            },
-            {
-              "target": "vol",
+              "target": "saves",
               "value": 3,
               "condition": "contre les sorts et les pouvoirs magiques"
             }
@@ -299,10 +289,10 @@
         "Echec des sorts 35%"
       ],
       "modifiers": [
-	{
-	    "target": "speed",
-	    "value": -3
-	},
+        {
+          "target": "speed",
+          "value": -3
+        },
         {
           "target": "ca",
           "type": "armure",
@@ -335,10 +325,10 @@
           "type": "alteration",
           "value": 2
         },
-	{
-	    "target": "speed",
-	    "value": -3
-	}
+        {
+          "target": "speed",
+          "value": -3
+        }
       ]
     },
     {
