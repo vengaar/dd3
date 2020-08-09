@@ -8,7 +8,7 @@
     "weight": "70 Kg",
     "age": "143 ans",
     "xp": 5650,
-    "gold": "75000 PA",
+    "gold": "64500 PAC  ",
     "hitPointsBasis": 78,
     "spellAbility": "sag",
     "spellsByLevel": {
@@ -671,6 +671,56 @@
                     }
                 ]
             }
+        },
+        {
+            "name": "Focaliseur: Changement de forme",
+            "desc": "Un serre-tête en jade valant au moins 1 500 po, dont le personnage doit ceindre son front au moment de l’incantation (le focaliseur fusionne avec toutes les formes prises par la suite).",
+            "type": "focaliseur",
+            "references": [
+                "http://www.gemmaline.com/sorts/sort-nom-changement-de-forme.htm",
+                "Manuel du joueur"
+            ]
+        },
+        {
+            "name": "Focaliseur: Prévoyance",
+            "desc": "Une statuette du mage, sculptée dans l’ivoire et incrustée de pierres précieuses (valeur 1 500 po minimum). Le personnage doit l’avoir sur lui pour que la prévoyance prenne effet.",
+            "type": "focaliseur",
+            "references": [
+                "http://www.gemmaline.com/sorts/sort-nom-prevoyance.htm",
+                "Manuel du joueur"
+            ]
+        },
+        {
+            "name": "Charme de bonne santé",
+            "desc": "Quiconque porte cette gemme bleutée pendue à une chaîne en argent est immunisé contre toutes les maladies, y compris celles qui sont d’origine magique . Porté pas Gilthas",
+            "location": "home",
+            "used": false,
+            "references": [
+                "https://regles-donjons-dragons.com/page1329.html",
+                "Guide du maître"
+            ]
+        },
+        {
+            "name": "Pierre porte bonheur",
+            "desc": "[en cours] coût (20000po/800xp) pas encore pris en compte. Cet objet magique prend souvent la forme d’un morceau d’agate grossièrement poli ou d’une autre pierre similaire. Son propriétaire obtient un bonus de chance de +1 à tous ses jets de sauvegarde et ses tests de compétences et de caractéristiques",
+            "modifiers": [
+                {
+                    "target": "skills",
+                    "type": "chance",
+                    "value": 1
+                },
+                {
+                    "target": "saves",
+                    "type": "chance",
+                    "value": 1
+                }
+            ],
+            "location": "home",
+            "used": false,
+            "references": [
+                "https://regles-donjons-dragons.com/page1419.html",
+                "Guide du maître"
+            ]
         }
     ]
 }
