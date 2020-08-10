@@ -199,41 +199,47 @@
     ],
     "forms": [
         {
-            "id": "Dragon d'argent",
-            "_image": "https://i.pinimg.com/564x/ce/a9/59/cea95978453645d40b6ec9bb0e4fb91e.jpg",
-            "image": "https://www.aidedd.org/dnd/images/silver-dragon.jpg",
-            "size": "Gig",
+            "id": "Dragon d'or",
+            "image": "https://i.pinimg.com/564x/2e/37/f4/2e37f481f3ae296a7b000440fa60c2da.jpg",
+            "size": "G",
             "height": "?",
             "weight": "?",
-            "age": "Vénérable",
+            "age": "Adolescent",
             "race": {
                 "name": "Dragon",
                 "speed": 18,
-                "references": [
-                    "http://www.gemmaline.com/bestiaire/dragons/"
-                ],
                 "powers": [
                     {
-                        "name": "Réduction des dégâts (20/magie)",
+                        "name": "Réduction des dégâts (-)",
                         "type": "Ext"
                     },
                     {
-                        "name": "Résistance à la magie (28)",
+                        "name": "Résistance à la magie (-)",
                         "type": "Ext"
                     },
                     {
-                        "name": "Présence terrifiante (DD 20)",
+                        "name": "Présence terrifiante. Volonté 20 (10 + 1/2 nombre de DV du dragon + modificateur de Charisme)",
                         "desc": "Tout dragon au moins jeune adulte peut terrifier ses adversaires par sa seule présence. Ce pouvoir fait automatiquement effet dès que le dragon attaque, charge ou survole les créatures. Toutes celles qui se trouvent dans un rayon de 9 mètres x catégorie d’âge du dragon peuvent être affectées si elles ont moins de DV que le grand reptile. Les créatures qui réussissent un jet de Volonté (DD 10 + 1/2 nombre de DV du dragon + modificateur de Charisme du dragon) ne sont pas affectées et sont par la suite immunisées contre la présence de ce dragon pendant une journée entière. Par contre, celles qui ratent leur jet de sauvegarde sont affectées comme suit : si elles ont 4 DV ou moins, elles sont paniquées pendant 4d6 rounds ; si elles ont 5 DV ou plus, elles sont seulement secouées pour 4d6 rounds. Tout dragon est naturellement immunisé contre la présence terrifiante des autres dragons, quel que soit leur âge ou leur espèce.",
-                        "type": "Ext"
+                        "type": "Ext",
+                        "references": [
+                            "http://www.gemmaline.com/bestiaire/dragons/"
+                        ]
                     },
                     {
-                        "name": "Souffle (DD 27) 20d8 ou paralysie 1d6 + 10 rounds (vig)",
-                        "desc": "Tout dragon au moins jeune adulte peut terrifier ses adversaires par sa seule présence. Ce pouvoir fait automatiquement effet dès que le dragon attaque, charge ou survole les créatures. Toutes celles qui se trouvent dans un rayon de 9 mètres x catégorie d’âge du dragon peuvent être affectées si elles ont moins de DV que le grand reptile. Les créatures qui réussissent un jet de Volonté (DD 10 + 1/2 nombre de DV du dragon + modificateur de Charisme du dragon) ne sont pas affectées et sont par la suite immunisées contre la présence de ce dragon pendant une journée entière. Par contre, celles qui ratent leur jet de sauvegarde sont affectées comme suit : si elles ont 4 DV ou moins, elles sont paniquées pendant 4d6 rounds ; si elles ont 5 DV ou plus, elles sont seulement secouées pour 4d6 rounds. Tout dragon est naturellement immunisé contre la présence terrifiante des autres dragons, quel que soit leur âge ou leur espèce.",
-                        "type": "Ext"
+                        "name": "Souffle, 2 cône de 12m, DD 22 (10 + 1/2 les DV du dragon + le modificateur de Constitution)",
+                        "desc": "Cône de feu: 8d10, Ref 1/2 dégats. Cône de gaz affaiblissant: affaiblissement temporaire de 4 point de Force, Vig annule",
+                        "type": "Ext",
+                        "references": [
+                            "http://www.gemmaline.com/bestiaire/dragons/"
+                        ]
                     },
                     {
                         "name": "Immunités",
-                        "desc": "Tous les dragons sont immunisés contre les effets de type sommeil ou paralysie. Comme indiqué dans les descriptions, chaque espèce bénéficie d’une ou deux immunités supplémentaires, lesquelles ne dépendent pas de l’âge du dragon.",
+                        "desc": "Tous les dragons sont immunisés contre les effets de type sommeil ou paralysie.",
+                        "type": "Ext"
+                    },
+                    {
+                        "name": "Immunité contre le feu, vulnérabilité au froid",
                         "type": "Ext"
                     },
                     {
@@ -247,17 +253,22 @@
                         "type": "Ext"
                     },
                     {
-                        "name": "Taille Gig",
+                        "name": "Respiration aquatique",
+                        "desc": "Un dragon d’or peut rester sous l’eau indéfiniment. Il a même la possibilité d’utiliser son souffle, ses sorts et ses pouvoirs spéciaux en restant totalement immergé (son cône de feu devient alors un cône de vapeur surchauffée).",
+                        "type": "Ext"
+                    },
+                    {
+                        "name": "Taille G",
                         "modifiers": [
                             {
                                 "target": "ca",
                                 "type": "taille",
-                                "value": -4
+                                "value": -1
                             },
                             {
                                 "target": "hit",
                                 "type": "taille",
-                                "value": -4
+                                "value": -1
                             }
                         ]
                     },
@@ -267,7 +278,7 @@
                             {
                                 "target": "ca",
                                 "type": "armure naturelle",
-                                "value": 33
+                                "value": 16
                             },
                             {
                                 "target": "fly",
@@ -275,7 +286,11 @@
                             },
                             {
                                 "target": "maneuverability",
-                                "value": 0
+                                "value": 2
+                            },
+                            {
+                                "target": "swim",
+                                "value": 18
                             }
                         ]
                     }
@@ -291,7 +306,7 @@
                         },
                         "damage": {
                             "ability": "for",
-                            "base": "4d6"
+                            "base": "2d6"
                         },
                         "crit": "20/x2"
                     }
@@ -305,7 +320,7 @@
                         },
                         "damage": {
                             "ability": "for",
-                            "base": "2d8",
+                            "base": "1d8",
                             "multiplier": 0.5
                         },
                         "crit": "20/x2",
@@ -328,7 +343,7 @@
                         },
                         "damage": {
                             "ability": "for",
-                            "base": "2d6",
+                            "base": "1d6",
                             "multiplier": 0.5
                         },
                         "crit": "20/x2",
@@ -350,7 +365,7 @@
                         },
                         "damage": {
                             "ability": "for",
-                            "base": "2d8",
+                            "base": "1d8",
                             "multiplier": 1.5
                         },
                         "crit": "20/x2",
@@ -365,9 +380,9 @@
                 }
             ],
             "abilitiesBasis": {
-                "for": 39,
+                "for": 29,
                 "dex": 10,
-                "con": 29,
+                "con": 19,
                 "int": 12,
                 "sag": 21,
                 "cha": 14
@@ -416,7 +431,7 @@
                                     {
                                         "source": "Attaque en puissance",
                                         "target": "damage",
-                                        "value": 10
+                                        "value": 5
                                     }
                                 ]
                             }
@@ -457,6 +472,7 @@
         {
             "name": "Grand pas",
             "desc": "Sort de druide lv1, 1h/lv, lancé tous les matin",
+            "type": "scroll",
             "modifiers": [
                 {
                     "target": "speed",
@@ -465,7 +481,24 @@
             ]
         },
         {
+            "name": "Peau de chitine",
+            "desc": "Sort de druide lv3, 10m/lv",
+            "type": "scroll",
+            "used": false,
+            "modifiers": [
+                {
+                    "target": "ca",
+                    "value": 8,
+                    "type": "alteration armure naturelle"
+                }
+            ],
+            "references": [
+                "Dragonlance WoTL"
+            ]
+        },
+        {
             "name": "Bottes elfique",
+            "type": "tshirt",
             "modifiers": [
                 {
                     "target": "Déplacement silencieux",
@@ -476,6 +509,7 @@
         {
             "name": "Cape elfique",
             "used": false,
+            "type": "tshirt",
             "modifiers": [
                 {
                     "target": "Discrétion",
@@ -485,6 +519,7 @@
         },
         {
             "name": "Perle de sagesse +4",
+            "type": "ring",
             "modifiers": [
                 {
                     "target": "sag",
@@ -495,6 +530,7 @@
         },
         {
             "name": "Bacelet d'armure +4",
+            "type": "ring",
             "modifiers": [
                 {
                     "target": "ca",
@@ -505,6 +541,7 @@
         },
         {
             "name": "Cape de resitance +4",
+            "type": "tshirt",
             "modifiers": [
                 {
                     "target": "saves",
@@ -515,6 +552,7 @@
         },
         {
             "name": "Anneau +2",
+            "type": "ring",
             "modifiers": [
                 {
                     "target": "ca",
@@ -526,6 +564,7 @@
         {
             "name": "Armure de cuir de Theros",
             "used": true,
+            "type": "tshirt",
             "modifiers": [
                 {
                     "target": "ca",
@@ -537,6 +576,7 @@
         {
             "name": "Arc long composite +1 de force 14",
             "used": false,
+            "type": "gavel",
             "attack": {
                 "hit": {
                     "ability": "dex"
@@ -566,6 +606,7 @@
         },
         {
             "name": "Harmois de chevalier Solamnique de mâitre",
+            "type": "tshirt",
             "location": "home",
             "used": false,
             "modifiers": [
@@ -578,6 +619,7 @@
         },
         {
             "name": "Arc long composite de cérémonie de maître et son carquois",
+            "type": "gavel",
             "location": "home",
             "used": false
         },
@@ -604,6 +646,7 @@
         },
         {
             "name": "Globe de Cirulon",
+            "type": "magic",
             "used": false,
             "abilities": [
                 "lumiere (à volontée)",
@@ -617,6 +660,7 @@
         {
             "name": "Bâton de la forêt profonde",
             "desc": "Le bâton de la forêt profonde semble avoir pris forme naturellement, sans aide extérieure. Fait de chêne, de frêne ou d’if, il contient les sorts suivants",
+            "type": "gavel",
             "charges": 50,
             "abilities": [
                 "Charme-animal (1 charge)",
@@ -675,7 +719,7 @@
         {
             "name": "Focaliseur: Changement de forme",
             "desc": "Un serre-tête en jade valant au moins 1 500 po, dont le personnage doit ceindre son front au moment de l’incantation (le focaliseur fusionne avec toutes les formes prises par la suite).",
-            "type": "focaliseur",
+            "type": "gem",
             "references": [
                 "http://www.gemmaline.com/sorts/sort-nom-changement-de-forme.htm",
                 "Manuel du joueur"
@@ -684,7 +728,7 @@
         {
             "name": "Focaliseur: Prévoyance",
             "desc": "Une statuette du mage, sculptée dans l’ivoire et incrustée de pierres précieuses (valeur 1 500 po minimum). Le personnage doit l’avoir sur lui pour que la prévoyance prenne effet.",
-            "type": "focaliseur",
+            "type": "gem",
             "references": [
                 "http://www.gemmaline.com/sorts/sort-nom-prevoyance.htm",
                 "Manuel du joueur"
@@ -693,6 +737,7 @@
         {
             "name": "Charme de bonne santé",
             "desc": "Quiconque porte cette gemme bleutée pendue à une chaîne en argent est immunisé contre toutes les maladies, y compris celles qui sont d’origine magique . Porté pas Gilthas",
+            "type": "item",
             "location": "home",
             "used": false,
             "references": [
