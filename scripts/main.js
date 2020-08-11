@@ -14,6 +14,17 @@ const maneuverabilities = {
 }
 Object.freeze(maneuverabilities)
 
+const equipmentTypeMapping = {
+    "weapon": "gavel",
+    "armor": "shield alternate",
+    "clothing": "tshirt",
+    "ring": "ring",
+    "misc": "magic",
+    "focus": "gem outline",
+    "spell": "scroll"
+}
+Object.freeze(equipmentTypeMapping)
+
 const color = "teal"
 
 /**
@@ -395,7 +406,7 @@ const displayEquipments = character => {
                     ${abilities}
                     ${formatReferences(equipment)}
                 </td>
-                </td>
+                <td class="center aligned" data-sort-value="${equipment.type}"><i class="${equipmentTypeMapping[equipment.type]} icon"></i></td>
                 <td class="top aligned" style="white-space: nowrap;">
                     ${formatModifers(equipment.modifiers || [])}
                 </td>
