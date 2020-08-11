@@ -31,3 +31,26 @@ La liste des type cumulatif est défine dans `Modifier` (model.js)
     <- Array(3) [ "esquive", "chance", undefined ]
 
 Par defaut un `modifier` est de type `undefined` et est donc cummulatif.
+
+## Equipements
+
+Voici la structure attendu pour un équipent
+
+| Champ | Format | Défaut | Optionnel | Description |
+|:------|:-------|:------:|:---------:|:------------|
+| `name` | str | - | oui | Le nom de l'équipent |
+| `desc` | str | - | oui | Une description de l'équipement |
+| `used` | bolean | true | - | Pour indiqué si l'équipent est équipé, eet donc si les `modifiers` associés doivent s'appliquer. |
+| `location` | Enum(`hiking`, `home`) | `hiking` | - | Pour indiqué si l'équipement est avec soi (`hiking`) ou au lieu de résidence (`home`). |
+| `type` | Enum | - | oui | Le type de l'équipement. Voir ci-dessous les valeurs possibles. |
+| `charges` | int | - | oui | Le cas échant le nombre de charges restantes de l'objet |
+| `abilities` | Array[str] | - | oui | La liste des capacités de l'epuipement |
+| `references` | Array[str,url] | - | oui | Les réference pour trouver l'objet. Si il y a des urls parmis les réferences, la première est utlisée comme lien sur le nom de l'équipement. |
+| `attacks` | Object | - | oui | Objet complexe pour définir les attaques lié à l'équipement (doc à faire) |
+|  |  |  |  |  |
+
+Les valeurs possibles pour `type`
+
+    >> Object.keys(equipmentTypeMapping)
+
+    <- Array(7) [ "weapon", "armor", "clothing", "ring", "misc", "focus", "spell" ]
