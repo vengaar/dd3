@@ -472,7 +472,7 @@
         {
             "name": "Grand pas",
             "desc": "Sort de druide lv1, 1h/lv, lancé tous les matin",
-            "type": "scroll",
+            "type": "spell",
             "modifiers": [
                 {
                     "target": "speed",
@@ -483,7 +483,7 @@
         {
             "name": "Peau de chitine",
             "desc": "Sort de druide lv3, 10m/lv",
-            "type": "scroll",
+            "type": "spell",
             "used": false,
             "modifiers": [
                 {
@@ -498,7 +498,7 @@
         },
         {
             "name": "Bottes elfique",
-            "type": "tshirt",
+            "type": "clothing",
             "modifiers": [
                 {
                     "target": "Déplacement silencieux",
@@ -509,7 +509,7 @@
         {
             "name": "Cape elfique",
             "used": false,
-            "type": "tshirt",
+            "type": "clothing",
             "modifiers": [
                 {
                     "target": "Discrétion",
@@ -519,7 +519,7 @@
         },
         {
             "name": "Perle de sagesse +4",
-            "type": "ring",
+            "type": "misc",
             "modifiers": [
                 {
                     "target": "sag",
@@ -530,7 +530,7 @@
         },
         {
             "name": "Bacelet d'armure +4",
-            "type": "ring",
+            "type": "misc",
             "modifiers": [
                 {
                     "target": "ca",
@@ -541,7 +541,7 @@
         },
         {
             "name": "Cape de resitance +4",
-            "type": "tshirt",
+            "type": "clothing",
             "modifiers": [
                 {
                     "target": "saves",
@@ -564,7 +564,7 @@
         {
             "name": "Armure de cuir de Theros",
             "used": true,
-            "type": "tshirt",
+            "type": "armor",
             "modifiers": [
                 {
                     "target": "ca",
@@ -576,7 +576,7 @@
         {
             "name": "Arc long composite +1 de force 14",
             "used": false,
-            "type": "gavel",
+            "type": "weapon",
             "attack": {
                 "hit": {
                     "ability": "dex"
@@ -606,7 +606,7 @@
         },
         {
             "name": "Harmois de chevalier Solamnique de mâitre",
-            "type": "tshirt",
+            "type": "armor",
             "location": "home",
             "used": false,
             "modifiers": [
@@ -619,7 +619,7 @@
         },
         {
             "name": "Arc long composite de cérémonie de maître et son carquois",
-            "type": "gavel",
+            "type": "weapon",
             "location": "home",
             "used": false
         },
@@ -635,6 +635,7 @@
         },
         {
             "name": "Sceptre de Cirulon",
+            "type": "misc",
             "used": false,
             "abilities": [
                 "detection du mal (à volontée)",
@@ -646,7 +647,7 @@
         },
         {
             "name": "Globe de Cirulon",
-            "type": "magic",
+            "type": "misc",
             "used": false,
             "abilities": [
                 "lumiere (à volontée)",
@@ -655,12 +656,13 @@
         },
         {
             "name": "baguette de lumiere du jour (7 charges)",
+            "type": "misc",
             "used": false
         },
         {
             "name": "Bâton de la forêt profonde",
             "desc": "Le bâton de la forêt profonde semble avoir pris forme naturellement, sans aide extérieure. Fait de chêne, de frêne ou d’if, il contient les sorts suivants",
-            "type": "gavel",
+            "type": "weapon",
             "charges": 50,
             "abilities": [
                 "Charme-animal (1 charge)",
@@ -719,7 +721,7 @@
         {
             "name": "Focaliseur: Changement de forme",
             "desc": "Un serre-tête en jade valant au moins 1 500 po, dont le personnage doit ceindre son front au moment de l’incantation (le focaliseur fusionne avec toutes les formes prises par la suite).",
-            "type": "gem",
+            "type": "focus",
             "references": [
                 "http://www.gemmaline.com/sorts/sort-nom-changement-de-forme.htm",
                 "Manuel du joueur"
@@ -728,7 +730,7 @@
         {
             "name": "Focaliseur: Prévoyance",
             "desc": "Une statuette du mage, sculptée dans l’ivoire et incrustée de pierres précieuses (valeur 1 500 po minimum). Le personnage doit l’avoir sur lui pour que la prévoyance prenne effet.",
-            "type": "gem",
+            "type": "focus",
             "references": [
                 "http://www.gemmaline.com/sorts/sort-nom-prevoyance.htm",
                 "Manuel du joueur"
@@ -737,7 +739,7 @@
         {
             "name": "Charme de bonne santé",
             "desc": "Quiconque porte cette gemme bleutée pendue à une chaîne en argent est immunisé contre toutes les maladies, y compris celles qui sont d’origine magique . Porté pas Gilthas",
-            "type": "item",
+            "type": "misc",
             "location": "home",
             "used": false,
             "references": [
@@ -747,6 +749,7 @@
         },
         {
             "name": "Pierre porte bonheur",
+            "type": "misc",
             "desc": "[en cours] coût (20000po/800xp) pas encore pris en compte. Cet objet magique prend souvent la forme d’un morceau d’agate grossièrement poli ou d’une autre pierre similaire. Son propriétaire obtient un bonus de chance de +1 à tous ses jets de sauvegarde et ses tests de compétences et de caractéristiques",
             "modifiers": [
                 {
