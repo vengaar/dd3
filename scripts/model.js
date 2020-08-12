@@ -17,6 +17,26 @@ const clone = (data) => {
 //     }
 // }
 
+const getSizeModifiers = size => {
+    if (size in sizes) {
+        const size_base = sizes[size]["base"]
+        if (size_base === 0) {
+            return []
+        } else {
+            const source = `Taille ${size}`
+            const type = "taille"
+            return [
+                Modifier.fromObject({ "source": source, "type": type, "target": "hit", "value": size_base }),
+                Modifier.fromObject({ "source": source, "type": type, "target": "ca", "value": size_base }),
+                Modifier.fromObject({ "source": source, "type": type, "target": "grapple", "value": sizes[size]["grapple"] }),
+            ]
+        }
+    } else {
+        console.warn(`Invalid size ${size}, size must be one of ${Object.keys(sizes)}`);
+        return []
+    }
+}
+
 class Power {
 
     constructor(data) {
@@ -80,14 +100,15 @@ class Modifier {
 
     static saves = ["vig", "ref", "vol"];
     static targets = [
-        "hit", "damage", "ca", "init", "saves", "nls",
+        "hit", "grapple", "damage", "ca", "init", "saves", "nls",
         "speed", "fly", "maneuverability"
     ].concat(Ability.names).concat(Modifier.saves).concat(skillsNames);
     static cumulativeTypes = ["esquive", "chance", undefined]
 
     constructor(source, value, type) {
-        this.source = source;
+        this.target = undefined;
         this.value = value;
+        this.source = source;
         this.type = type;
         this.condition;
     }
@@ -169,11 +190,18 @@ class Character {
         this.ba = getSumModifiers(this.ba_modifiers)
 
         /**
+         * Size
+         */
+        this.size = this.size || this.race.size
+        // console.log("size =>", this.size, this.race.size)
+
+        /**
          * Build modifiers
          */
 
         this.modifiersIndex = {}
         modifiers.forEach(modifier => { this.__addModifier(modifier) });
+        getSizeModifiers(this.size).forEach(modifier => { this.__addModifier(modifier) });
 
         // Powers modfiers (character/classes/races)
         this.powers.forEach(power => {
@@ -195,7 +223,7 @@ class Character {
                 });
             }
         });
-        // console.log("modifiersIndex =", this.modifiersIndex)
+        console.log("modifiersIndex =", this.modifiersIndex)
 
         this.abilities = this.__computeAbilities()
 
@@ -317,10 +345,6 @@ class Character {
     }
 
     __computeMovement = () => {
-
-        // SIZE
-        this.size = this.size || this.race.size
-        // console.log("size =>", this.size, this.race.size)
 
         // SPEED
         this.speedModifiers = [

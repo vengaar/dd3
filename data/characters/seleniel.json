@@ -258,21 +258,6 @@
                         "type": "Ext"
                     },
                     {
-                        "name": "Taille G",
-                        "modifiers": [
-                            {
-                                "target": "ca",
-                                "type": "taille",
-                                "value": -1
-                            },
-                            {
-                                "target": "hit",
-                                "type": "taille",
-                                "value": -1
-                            }
-                        ]
-                    },
-                    {
                         "name": "Forme de dragon",
                         "modifiers": [
                             {
@@ -392,7 +377,7 @@
         {
             "id": "Furie élémentaire",
             "image": "https://artfiles.alphacoders.com/339/33959.jpg",
-            "size": "TG",
+            "size": "G",
             "equipments": [
                 {
                     "name": "Armes naturelles",
@@ -454,16 +439,6 @@
                     "target": "saves",
                     "type": "altération",
                     "value": 4
-                },
-                {
-                    "target": "ca",
-                    "type": "taille",
-                    "value": -2
-                },
-                {
-                    "target": "hit",
-                    "type": "taille",
-                    "value": -2
                 }
             ]
         }

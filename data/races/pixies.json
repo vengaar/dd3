@@ -53,16 +53,6 @@
                     "type": "taille",
                     "source": "Taille P",
                     "value": 4
-                },
-                {
-                    "target": "ca",
-                    "type": "taille",
-                    "value": 1
-                },
-                {
-                    "target": "hit",
-                    "type": "taille",
-                    "value": 1
                 }
             ]
         },
