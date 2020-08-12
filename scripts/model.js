@@ -223,7 +223,7 @@ class Character {
                 });
             }
         });
-        console.log("modifiersIndex =", this.modifiersIndex)
+        // console.log("modifiersIndex =", this.modifiersIndex)
 
         this.abilities = this.__computeAbilities()
 
