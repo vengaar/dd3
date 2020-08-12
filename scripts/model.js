@@ -369,12 +369,35 @@ class Character {
 
     __computeAttacks = () => {
 
-        attacks = []
-
         // Global hit modifiers
         const global_hit_modifiers = [
             new Modifier("ba", this.ba)
         ].concat(this.__getModifiers("hit"))
+
+        // grappel
+        const grappleAbility = this.grappleAbility || "for"
+        const grapple_modifiers = {
+            "hit": [
+                new Modifier("ba", this.ba),
+                new Modifier(grappleAbility, this.__getAbilityBonus(grappleAbility), "ability"),
+            ].concat(this.__getModifiers("grapple")),
+            "damage": []
+        }
+        const grapple = {
+            "name": "Lutte",
+            "mode": "base",
+            "nbAttack": 1,
+            "modifiers": grapple_modifiers,
+            "damage": "-",
+            "crit": "-",
+            "specials": [
+                "Attaque générée automatiquement"
+            ]
+        }
+
+        const attacks = [
+            grapple
+        ]
 
         this.equipments.forEach(equipment => {
             if ("attack" in equipment) {
