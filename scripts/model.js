@@ -101,7 +101,7 @@ class Modifier {
     static saves = ["vig", "ref", "vol"];
     static targets = [
         "hit", "grapple", "damage", "ca", "init", "saves", "nls",
-        "speed", "fly", "maneuverability"
+        "speed", "fly", "maneuverability", "skills"
     ].concat(Ability.names).concat(Modifier.saves).concat(skillsNames);
     static cumulativeTypes = ["esquive", "chance", undefined]
 
@@ -482,16 +482,17 @@ class Character {
             };
             // console.log("skill_class =", skill_class)
 
-            const allSkillModifiers = this.__getModifiers(skill.name)
-            // console.log(skill.name, allSkillModifiers)
-            let conditions = filterModifiersByConditions(allSkillModifiers, true)
+            let conditions = this.__getModifiers(skill.name, true)
             let comments = []
             let modifiers = []
             if (enable) {
                 modifiers = [
                     new Modifier("rank", rank),
                     new Modifier(skill.ability, this.__getAbilityBonus(skill.ability), "ability"),
-                ].concat(filterModifiersByConditions(allSkillModifiers, false))
+                ].concat(this.__getModifiers(skill.name))
+                this.__getModifiers("skills").forEach(modifier => {
+                    modifiers.push(modifier)
+                })
             }
 
             // Synergies
