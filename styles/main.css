@@ -39,8 +39,8 @@ body, html {
     z-index: 1000;
 }
 
-#container {
-    margin-top: 65px;
+#container, #sidebar {
+    padding-top: 65px;
     margin-bottom: 40px;
 }
 
@@ -71,4 +71,19 @@ body, html {
 .dd3-modifier-type {
     font-family: monospace;
     color: darkslategrey;
+}
+
+/* MENU */
+
+#toc {
+    display: none;
+}
+
+@media only screen and (max-width: 700px) {
+    #menu .menu.left, #menu .menu.right {
+        display: none;
+    }
+    #toc {
+        display: block;
+    }
 }

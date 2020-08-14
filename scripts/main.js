@@ -452,7 +452,20 @@ const displayCharacter = character => {
  * Actions
  */
 
-const $character_choice = $('#character_choice')
+$("#abilities").clone().attr("id", "left-abilities").appendTo("#left");
+$("#saves").clone().attr("id", "left-saves").appendTo("#left");
+$("#counters").clone().attr("id", "left-counters").appendTo("#left");
+$("#card").clone().attr("id", "right-card").appendTo("#right");
+$("#location-home").click(() => { $("#equipments > tbody > tr.home").fadeToggle() });
+$("#location-self").click(() => { $("#equipments > tbody > tr.hiking").fadeToggle() });
+
+const $sidebar = $('#sidebar')
+$(".left.menu").clone().appendTo($sidebar);
+$sidebar.sidebar({
+    'transition': 'overlay'
+}).sidebar('attach events', '#toc');
+
+const $character_choice = $('.dd3-character-choice')
 $character_choice.dropdown({
     onChange: function (value, text, $selectedItem) {
         // console.log(value)
@@ -489,13 +502,6 @@ $character_choice.dropdown({
 let character_data
 let race
 let character
-
-$("#abilities").clone().attr("id", "left-abilities").appendTo("#left");
-$("#saves").clone().attr("id", "left-saves").appendTo("#left");
-$("#counters").clone().attr("id", "left-counters").appendTo("#left");
-$("#card").clone().attr("id", "right-card").appendTo("#right");
-$("#location-home").click(() => { $("#equipments > tbody > tr.home").fadeToggle() });
-$("#location-self").click(() => { $("#equipments > tbody > tr.hiking").fadeToggle() });
 
 const $dimmer = $("body").dimmer({
     transition: 'fade',
