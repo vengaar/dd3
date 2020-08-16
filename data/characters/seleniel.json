@@ -6,9 +6,9 @@
     "alignment": "NB",
     "height": "1,80 cm",
     "weight": "70 Kg",
-    "age": "143 ans",
-    "xp": 5650,
-    "gold": "64500 PAC  ",
+    "age": "143 ans (372)",
+    "xp": 4698,
+    "gold": "31900 PAC",
     "hitPointsBasis": 78,
     "spellAbility": "sag",
     "spellsByLevel": {
@@ -194,6 +194,27 @@
                     "value": 8,
                     "condition": "contre la peur des dragon"
                 }
+            ]
+        },
+        {
+            "type": "don",
+            "name": "Ami des dragons",
+            "desc": "Le personnage bénéficie d'un bonus de +4 aux tests de Diplomatie visant à modifier l'attitude d'un dragon, et d'un bonus de +2 aux tests d’Équitation lorsqu'il monte un dragon. En outre, il bénéficie d'un bonus de +4 aux jets de sauvegarde contre la présence terrifiante des dragons d'alignement bon.",
+            "source": "Cadeau du MJ",
+            "modifiers": [
+                {
+                    "target": "Diplomatie",
+                    "value": 4,
+                    "condition": "visant à modifier l'attitude d'un dragon d'alignement bon"
+                },
+                {
+                    "target": "Equitation",
+                    "value": 2,
+                    "condition": "lorsqu'il monte un dragon d'alignement bon"
+                }
+            ],
+            "references": [
+                "http://www.gemmaline.com/dons/dons-ami-des-dragons-1418.htm"
             ]
         }
     ],
@@ -474,6 +495,8 @@
         {
             "name": "Bottes elfique",
             "type": "clothing",
+            "price": 2500,
+            "weight": 0.5,
             "modifiers": [
                 {
                     "target": "Déplacement silencieux",
@@ -485,6 +508,8 @@
             "name": "Cape elfique",
             "used": false,
             "type": "clothing",
+            "price": 2500,
+            "weight": 0.5,
             "modifiers": [
                 {
                     "target": "Discrétion",
@@ -495,6 +520,7 @@
         {
             "name": "Perle de sagesse +4",
             "type": "misc",
+            "price": 16000,
             "modifiers": [
                 {
                     "target": "sag",
@@ -506,6 +532,8 @@
         {
             "name": "Bacelet d'armure +4",
             "type": "misc",
+            "price": 16000,
+            "weight": 0.5,
             "modifiers": [
                 {
                     "target": "ca",
@@ -515,7 +543,9 @@
             ]
         },
         {
-            "name": "Cape de resitance +4",
+            "name": "Cape de resistance +4",
+            "price": 16000,
+            "weight": 0.5,
             "type": "clothing",
             "modifiers": [
                 {
@@ -526,8 +556,9 @@
             ]
         },
         {
-            "name": "Anneau +2",
+            "name": "Anneau de protection +2",
             "type": "ring",
+            "price": 8000,
             "modifiers": [
                 {
                     "target": "ca",
@@ -540,6 +571,8 @@
             "name": "Armure de cuir de Theros",
             "used": true,
             "type": "armor",
+            "price": 0,
+            "weight": 0,
             "modifiers": [
                 {
                     "target": "ca",
@@ -552,6 +585,8 @@
             "name": "Arc long composite +1 de force 14",
             "used": false,
             "type": "weapon",
+            "price": 2000,
+            "weight": 0,
             "attack": {
                 "hit": {
                     "ability": "dex"
@@ -612,6 +647,8 @@
             "name": "Sceptre de Cirulon",
             "type": "misc",
             "used": false,
+            "price": 0,
+            "weight": 0,
             "abilities": [
                 "detection du mal (à volontée)",
                 "detection magie (à volontée)",
@@ -624,6 +661,8 @@
             "name": "Globe de Cirulon",
             "type": "misc",
             "used": false,
+            "price": 0,
+            "weight": 0,
             "abilities": [
                 "lumiere (à volontée)",
                 "soin modéré (2d8 + 10) 1/j"
@@ -632,12 +671,15 @@
         {
             "name": "baguette de lumiere du jour (7 charges)",
             "type": "misc",
+            "charges": 7,
+            "price": 0,
             "used": false
         },
         {
             "name": "Bâton de la forêt profonde",
             "desc": "Le bâton de la forêt profonde semble avoir pris forme naturellement, sans aide extérieure. Fait de chêne, de frêne ou d’if, il contient les sorts suivants",
             "type": "weapon",
+            "price": 101250,
             "charges": 50,
             "abilities": [
                 "Charme-animal (1 charge)",
@@ -697,6 +739,7 @@
             "name": "Focaliseur: Changement de forme",
             "desc": "Un serre-tête en jade valant au moins 1 500 po, dont le personnage doit ceindre son front au moment de l’incantation (le focaliseur fusionne avec toutes les formes prises par la suite).",
             "type": "focus",
+            "price": 1500,
             "references": [
                 "http://www.gemmaline.com/sorts/sort-nom-changement-de-forme.htm",
                 "Manuel du joueur"
@@ -706,6 +749,7 @@
             "name": "Focaliseur: Prévoyance",
             "desc": "Une statuette du mage, sculptée dans l’ivoire et incrustée de pierres précieuses (valeur 1 500 po minimum). Le personnage doit l’avoir sur lui pour que la prévoyance prenne effet.",
             "type": "focus",
+            "price": 1500,
             "references": [
                 "http://www.gemmaline.com/sorts/sort-nom-prevoyance.htm",
                 "Manuel du joueur"
@@ -715,6 +759,7 @@
             "name": "Charme de bonne santé",
             "desc": "Quiconque porte cette gemme bleutée pendue à une chaîne en argent est immunisé contre toutes les maladies, y compris celles qui sont d’origine magique . Porté pas Gilthas",
             "type": "misc",
+            "price": 7500,
             "location": "home",
             "used": false,
             "references": [
@@ -723,25 +768,36 @@
             ]
         },
         {
-            "name": "Pierre porte bonheur",
+            "name": "Havresac d'Hévard",
+            "desc": "Ce sac à dos semble bien confectionné, mais aussi passablement usé et on ne peut plus ordinaire. Il est fait de cuir tanné avec soin et ses bretelles sont renforcées par des boucles en laiton. Il possède deux poches de côté, apparemment assez larges pour contenir, chacune, un volume correspondant à un litre de liquide. En réalité, ces deux poches sont l’équivalent de sacs sans fond pouvant accueillir un volume maximal de 60 dm3 ou un poids ne dépassant pas 10 kg. Quant à la poche centrale, elle peut contenir quatre fois plus, soit 240 dm3 (1/4 m3) ou 40 kg. Même chargé au maximum, le havresac ne pèse que 2,5 kg.",
             "type": "misc",
-            "desc": "[en cours] coût (20000po/800xp) pas encore pris en compte. Cet objet magique prend souvent la forme d’un morceau d’agate grossièrement poli ou d’une autre pierre similaire. Son propriétaire obtient un bonus de chance de +1 à tous ses jets de sauvegarde et ses tests de compétences et de caractéristiques",
-            "modifiers": [
-                {
-                    "target": "skills",
-                    "type": "chance",
-                    "value": 1
-                },
-                {
-                    "target": "saves",
-                    "type": "chance",
-                    "value": 1
-                }
-            ],
-            "location": "home",
-            "used": false,
+            "price": 2000,
+            "weight": 2.5,
             "references": [
-                "https://regles-donjons-dragons.com/page1419.html",
+                "https://regles-donjons-dragons.com/page1385.html",
+                "Guide du maître"
+            ]
+        },
+        {
+            "name": "Carquois efficace",
+            "desc": "Ce carquois d’aspect anodin semble pouvoir contenir 20 flèches. En l’examinant attentivement, on s’aperçoit qu’il est constitué de trois parties distinctes, chacune étant pourvue d’un espace non dimensionnel offrant de grandes possibilités de rangement. Le plus petit peut accueillir jusqu’à 60 objets de la taille et de la forme d’une flèche. Plus profond, le compartiment suivant peut contenir un total de 18 objets de la taille et de la forme d’une javeline. Enfin, le plus grand est prévu pour ranger jusqu’à 6 objets de la taille et de la forme d’un arc (bâtons, lances et autres armes similaires entrent dans cette catégorie). Une fois le carquois rempli, son possesseur peut y récupérer un objet de son choix, comme s’il s’agissait d’un carquois ordinaire. Un carquois efficace a le même poids vide ou rempli.",
+            "type": "misc",
+            "price": 1800,
+            "weight": 1,
+            "references": [
+                "https://regles-donjons-dragons.com/page1316.html",
+                "Guide du maître"
+            ]
+        },
+        {
+            "name": "Encens de méditation",
+            "desc": "Quand un pratiquant de la magie divine (druide, paladin, prêtre ou rôdeur) allume un bloc d’encens de méditation et passe 8 heures à prier à côté, il prépare ses sorts comme si tous bénéficiaient du don de métamagie Quintessence des sorts, si ce n’est qu’ils sont toujours comptabilisés à leur niveau normal (alors qu’ils devraient avoir trois niveaux de plus avec ce don).",
+            "type": "misc",
+            "quantity": 2,
+            "price": 4900,
+            "weight": 0,
+            "references": [
+                "https://regles-donjons-dragons.com/page1385.html",
                 "Guide du maître"
             ]
         }
