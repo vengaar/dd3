@@ -518,7 +518,7 @@
             ]
         },
         {
-            "name": "Perle de sagesse +4",
+            "name": "Médaillon de sagesse +4",
             "type": "misc",
             "price": 16000,
             "modifiers": [
@@ -571,8 +571,8 @@
             "name": "Armure de cuir de Theros",
             "used": true,
             "type": "armor",
-            "price": 0,
-            "weight": 0,
+            "price": 160,
+            "weight": 7.5,
             "modifiers": [
                 {
                     "target": "ca",
@@ -586,7 +586,8 @@
             "used": false,
             "type": "weapon",
             "price": 2000,
-            "weight": 0,
+            "weight": 1.5,
+            "location": "Carquois efficace",
             "attack": {
                 "hit": {
                     "ability": "dex"
@@ -617,6 +618,8 @@
         {
             "name": "Harmois de chevalier Solamnique de mâitre",
             "type": "armor",
+            "price": 1500,
+            "weight": 35,
             "location": "home",
             "used": false,
             "modifiers": [
@@ -630,6 +633,8 @@
         {
             "name": "Arc long composite de cérémonie de maître et son carquois",
             "type": "weapon",
+            "price": 250,
+            "weight": 1.5,
             "location": "home",
             "used": false
         },
@@ -661,6 +666,7 @@
             "name": "Globe de Cirulon",
             "type": "misc",
             "used": false,
+            "location": "Havresac d'Hévard",
             "price": 0,
             "weight": 0,
             "abilities": [
@@ -669,10 +675,12 @@
             ]
         },
         {
-            "name": "baguette de lumiere du jour (7 charges)",
+            "name": "baguette de lumiere du jour",
             "type": "misc",
             "charges": 7,
             "price": 0,
+            "weight": 0,
+            "location": "Carquois efficace",
             "used": false
         },
         {
@@ -680,6 +688,7 @@
             "desc": "Le bâton de la forêt profonde semble avoir pris forme naturellement, sans aide extérieure. Fait de chêne, de frêne ou d’if, il contient les sorts suivants",
             "type": "weapon",
             "price": 101250,
+            "weight": 2,
             "charges": 50,
             "abilities": [
                 "Charme-animal (1 charge)",
@@ -740,6 +749,7 @@
             "desc": "Un serre-tête en jade valant au moins 1 500 po, dont le personnage doit ceindre son front au moment de l’incantation (le focaliseur fusionne avec toutes les formes prises par la suite).",
             "type": "focus",
             "price": 1500,
+            "location": "Havresac d'Hévard",
             "references": [
                 "http://www.gemmaline.com/sorts/sort-nom-changement-de-forme.htm",
                 "Manuel du joueur"
@@ -750,6 +760,7 @@
             "desc": "Une statuette du mage, sculptée dans l’ivoire et incrustée de pierres précieuses (valeur 1 500 po minimum). Le personnage doit l’avoir sur lui pour que la prévoyance prenne effet.",
             "type": "focus",
             "price": 1500,
+            "location": "Havresac d'Hévard",
             "references": [
                 "http://www.gemmaline.com/sorts/sort-nom-prevoyance.htm",
                 "Manuel du joueur"
@@ -795,9 +806,9 @@
             "type": "misc",
             "quantity": 2,
             "price": 4900,
-            "weight": 0,
+            "weight": 0.5,
             "references": [
-                "https://regles-donjons-dragons.com/page1385.html",
+                "https://regles-donjons-dragons.com/page1361 .html",
                 "Guide du maître"
             ]
         }

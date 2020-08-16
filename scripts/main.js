@@ -378,12 +378,20 @@ const displayPowers = character => {
 
 const displayEquipments = character => {
     const lines = []
+    let equipmentsWeight = 0
     for (let index in character.equipments) {
         const equipment = character.equipments[index]
+        const locationIcon = Equipment.locations.includes(equipment.location) ? equipment.location : "link suitcase"
+        const quantityDisplay = (equipment.quantity === 1) ? "" : ` (x${equipment.quantity})`
+        const chargesDisplay = (equipment.charges === undefined) ? "" : ` (${equipment.charges} charges)`
+        const equipmentWeight = (equipment.weight || 0) * (equipment.quantity || 1)
+        if (equipment.location == "hiking") {
+            equipmentsWeight += equipmentWeight
+        }
         // console.log(equipment);
         const equipment_used = (equipment.used === undefined || equipment.used) ? "checked" : ""
         // console.log(equipment_used)
-        const location = equipment.location || "hiking";
+
         let abilities = ""
         if ("abilities" in equipment) {
             abilities = `
@@ -392,21 +400,32 @@ const displayEquipments = character => {
                 </div>`
         }
         const line = `
-            <tr class="${location}">
-                <td class="collapsing center aligned">
+            <tr class="${equipment.location}">
+                <td class="collapsing center aligned" data-sort-value="${equipment_used}">
                     <div class="ui fitted _slider ${equipment_used} checkbox">
                         <input type="checkbox" name="${index}" tabindex="0" ${equipment_used} class="hidden">
                         <label></label>
                     </div>
                 </td>
-                <td class="collapsing center aligned" data-sort-value="${location}"><i class="${location} icon"></i></td>
+                <td class="collapsing center aligned" data-sort-value="${equipment.location}">
+                    <i data-content="${equipment.location}" class="${locationIcon} icon"></i>
+                </td>
                 <td class="top aligned">
-                    <div class="dd3-name">${formatObjectValue(equipment, "name")}</div>
+                    <div class="dd3-name">
+                        ${formatObjectValue(equipment, "name")}
+                        ${quantityDisplay}
+                        ${chargesDisplay}
+                    </div>
                     <div class="dd3-desc">${equipment.desc || ""}</div>
                     ${abilities}
                     ${formatReferences(equipment)}
                 </td>
-                <td class="center aligned" data-sort-value="${equipment.type}"><i class="${equipmentTypeMapping[equipment.type]} icon"></i></td>
+                <td class="center aligned" data-sort-value="${equipment.type}">
+                    <i class="${equipmentTypeMapping[equipment.type]} icon"></i>
+                </td>
+                <td class="center aligned" data-sort-value="${equipmentWeight}">
+                    ${equipmentWeight}
+                </td>
                 <td class="top aligned" style="white-space: nowrap;">
                     ${formatModifers(equipment.modifiers || [])}
                 </td>
@@ -415,6 +434,8 @@ const displayEquipments = character => {
     }
     $('#equipments > tbody').empty().append(lines);
     $("#equipments").tablesort()
+    $("#equipments .dd3-equipements-weight").text(equipmentsWeight)
+    $("#equipments .link.suitcase.icon").popup();
 }
 
 const displayCharacter = character => {

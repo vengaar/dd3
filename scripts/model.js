@@ -37,13 +37,40 @@ const getSizeModifiers = size => {
     }
 }
 
+class Equipment {
+
+    static locations = ["hiking", "home"]
+
+    constructor(data) {
+        this.name = data.name;
+        this.desc = data.desc || "";
+        this.used = (data.used === undefined) ? true : data.used;
+        this.weight = data.weight || 0;
+        this.quantity = data.quantity || 1;
+        this.price = data.price || 0;
+        this.location = data.location || "hiking";
+        this.price = data.price || 0;
+        this.charges = data.charges;
+        this.references = data.references;
+        this.attacks = data.attacks;
+        this.modifiers = []
+        if ("modifiers" in data) {
+            data.modifiers.forEach(element => {
+                const modifier = Modifier.fromObject(element)
+                modifier.source = this.name
+                this.modifiers.push(modifier)
+            });
+        }
+        this.attacks = data.attack
+    }
+}
+
 class Power {
 
     constructor(data) {
         // console.log(data)
         this.name = data.name || ""
         this.desc = data.desc || ""
-        this.url = data.url
         this.references = data.references
         this.level = data.level || ""
         this.type = data.type || ""
@@ -148,6 +175,7 @@ class Character {
         console.log(`*** Create new character - ${data.name} ***`)
         Object.assign(this, data);
         this.currentForm = this.race.name
+        this.equipments = this.equipments.map(equipment => new Equipment(equipment))
         this.compute();
     }
 
@@ -212,16 +240,12 @@ class Character {
 
         // Equipments modifiers
         this.equipments.forEach(equipment => {
-            if ("modifiers" in equipment) {
-                if (equipment.used === undefined) equipment.used = true;
-                equipment.modifiers.forEach(_modifier => {
-                    _modifier.source = equipment.name;
-                    const modifier = Modifier.fromObject(_modifier)
-                    if (equipment.used) {
-                        this.__addModifier(modifier);
-                    }
+            if (equipment.used) {
+                equipment.modifiers.forEach(modifier => {
+                    this.__addModifier(modifier);
                 });
             }
+
         });
         // console.log("modifiersIndex =", this.modifiersIndex)
 

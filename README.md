@@ -41,7 +41,10 @@ Voici la structure attendu pour un équipent
 | `name` | str | - | oui | Le nom de l'équipent |
 | `desc` | str | - | oui | Une description de l'équipement |
 | `used` | bolean | true | - | Pour indiqué si l'équipent est équipé, eet donc si les `modifiers` associés doivent s'appliquer. |
-| `location` | Enum(`hiking`, `home`) | `hiking` | - | Pour indiqué si l'équipement est avec soi (`hiking`) ou au lieu de résidence (`home`). |
+| `weight` | integer | 0 | oui | Le poids unitaire de l'équipement en Kg |
+| `quantity` | interger | 1 | oui | La quantité de l'équipement. Utilisé comme multiplicateur pour le poids et le prix |
+| `price` | interger | 0 | oui | Le prix de l'équipement (pas encore géré) |
+| `location` | Enum(`hiking`, `home`, str) | `hiking` | - | Pour indiqué si l'équipement est avec soi (`hiking`) ou au lieu de résidence (`home`). Sert aussi a calculé le poids total porté si la location est `hiking`. |
 | `type` | Enum | - | oui | Le type de l'équipement. Voir ci-dessous les valeurs possibles. |
 | `charges` | int | - | oui | Le cas échant le nombre de charges restantes de l'objet |
 | `abilities` | Array[str] | - | oui | La liste des capacités de l'epuipement |
