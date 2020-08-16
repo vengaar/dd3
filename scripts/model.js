@@ -127,7 +127,7 @@ class Modifier {
 
     static saves = ["vig", "ref", "vol"];
     static targets = [
-        "hit", "grapple", "damage", "ca", "init", "saves", "nls",
+        "hit", "grapple", "damage", "ca", "init", "saves", "nls", "spellAbilityBonus",
         "speed", "fly", "maneuverability", "skills"
     ].concat(Ability.names).concat(Modifier.saves).concat(skillsNames);
     static cumulativeTypes = ["esquive", "chance", undefined]
@@ -278,6 +278,8 @@ class Character {
         // console.log(this.spellsByLevel)
         if ("spellAbility" in this) {
             const spells = []
+            const spellAbilityBonusModifiers = this.__getModifiers("spellAbilityBonus")
+            const spellAbilityBonus = this.__getAbilityBonus(this.spellAbility) + getSumModifiers(spellAbilityBonusModifiers)
             for (let level in this.spellsByLevel) {
                 // console.log(level);
                 // console.log(this.spellsByLevel[level]);
@@ -285,7 +287,7 @@ class Character {
                 const intLevel = parseInt(level)
                 spells.push(
                     {
-                        "nbSpells": this.spellsByLevel[level] + this.__getBonusSpell(intLevel),
+                        "nbSpells": this.spellsByLevel[level] + this.__getBonusSpell(intLevel, spellAbilityBonus),
                         "savingThrow": 10 + intLevel + this.__getAbilityBonus(this.spellAbility)
                     }
                 )
@@ -295,10 +297,11 @@ class Character {
         }
     }
 
-    __getBonusSpell = (level) => {
-        const abilityBonus = this.__getAbilityBonus(this.spellAbility)
-        if (abilityBonus >= level && level > 0) {
-            return Math.floor((abilityBonus - level) / 4) + 1
+    __getBonusSpell = (spellLevel, abilityBonus) => {
+        if (spellLevel == 0) {
+            return abilityBonus
+        } else if (abilityBonus >= spellLevel) {
+            return Math.floor((abilityBonus - spellLevel) / 4) + 1
         } else {
             return 0
         }
