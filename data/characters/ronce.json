@@ -122,8 +122,31 @@
     ],
     "equipments": [
         {
+            "name": "Pierre porte bonheur",
+            "desc": "Cet objet magique prend souvent la forme d’un morceau d’agate grossièrement poli ou d’une autre pierre similaire. Son propriétaire obtient un bonus de chance de +1 à tous ses jets de sauvegarde et ses tests de compétences et de caractéristiques",
+            "type": "misc",
+            "price": 20000,
+            "modifiers": [
+                {
+                    "target": "skills",
+                    "type": "chance",
+                    "value": 1
+                },
+                {
+                    "target": "saves",
+                    "type": "chance",
+                    "value": 1
+                }
+            ],
+            "references": [
+                "https://regles-donjons-dragons.com/page1419.html",
+                "Guide du maître"
+            ]
+        },
+        {
             "name": "Gant de dextérité +2",
             "used": true,
+            "price": 4000,
             "modifiers": [
                 {
                     "target": "dex",
@@ -135,6 +158,7 @@
         {
             "name": "Bacelet d'armure +3",
             "used": true,
+            "price": 9000,
             "modifiers": [
                 {
                     "target": "ca",
@@ -146,6 +170,7 @@
         {
             "name": "Anneau +1",
             "used": true,
+            "price": 2000,
             "modifiers": [
                 {
                     "target": "ca",
@@ -157,6 +182,8 @@
         {
             "name": "Dagues +2",
             "used": true,
+            "price": 8000,
+            "quantity": 2,
             "attack": {
                 "hit": {
                     "ability": "dex"
