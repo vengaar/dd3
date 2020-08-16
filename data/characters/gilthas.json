@@ -1,0 +1,40 @@
+{
+    "name": "Gilthas",
+    "image": "https://i.pinimg.com/564x/cc/6e/b8/cc6eb8d372a4cff820d438b16f217c66.jpg",
+    "_image": "https://i.pinimg.com/564x/04/04/87/040487d8db4ce031888c657d3c0effb6.jpg",
+    "__image": "https://i.pinimg.com/564x/f9/a2/f0/f9a2f04a56baa18fff1950fe0c0f492d.jpg",
+    "$race": "data/races/qualinesti.json",
+    "gender": "mars",
+    "alignment": "?B",
+    "height": "? cm",
+    "weight": "? Kg",
+    "age": "11 ans (366)",
+    "xp": 0,
+    "gold": "0 PAC",
+    "hitPointsBasis": 0,
+    "_spellAbility": "sag",
+    "classes": [],
+    "abilitiesBasis": {
+        "for": 10,
+        "dex": 12,
+        "con": 8,
+        "int": 10,
+        "sag": 10,
+        "cha": 10
+    },
+    "skillsRanks": {},
+    "powersOwn": [],
+    "equipments": [
+        {
+            "name": "Charme de bonne santé",
+            "desc": "Quiconque porte cette gemme bleutée pendue à une chaîne en argent est immunisé contre toutes les maladies, y compris celles qui sont d’origine magique . Porté pas Gilthas",
+            "type": "misc",
+            "price": 7500,
+            "used": true,
+            "references": [
+                "https://regles-donjons-dragons.com/page1329.html",
+                "Guide du maître"
+            ]
+        }
+    ]
+}

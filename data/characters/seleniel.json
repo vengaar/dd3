@@ -765,19 +765,7 @@
                 "http://www.gemmaline.com/sorts/sort-nom-prevoyance.htm",
                 "Manuel du joueur"
             ]
-        },
-        {
-            "name": "Charme de bonne santé",
-            "desc": "Quiconque porte cette gemme bleutée pendue à une chaîne en argent est immunisé contre toutes les maladies, y compris celles qui sont d’origine magique . Porté pas Gilthas",
-            "type": "misc",
-            "price": 7500,
-            "location": "home",
-            "used": false,
-            "references": [
-                "https://regles-donjons-dragons.com/page1329.html",
-                "Guide du maître"
-            ]
-        },
+        }
         {
             "name": "Havresac d'Hévard",
             "desc": "Ce sac à dos semble bien confectionné, mais aussi passablement usé et on ne peut plus ordinaire. Il est fait de cuir tanné avec soin et ses bretelles sont renforcées par des boucles en laiton. Il possède deux poches de côté, apparemment assez larges pour contenir, chacune, un volume correspondant à un litre de liquide. En réalité, ces deux poches sont l’équivalent de sacs sans fond pouvant accueillir un volume maximal de 60 dm3 ou un poids ne dépassant pas 10 kg. Quant à la poche centrale, elle peut contenir quatre fois plus, soit 240 dm3 (1/4 m3) ou 40 kg. Même chargé au maximum, le havresac ne pèse que 2,5 kg.",
