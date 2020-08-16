@@ -205,7 +205,7 @@ const displayIdentity = character => {
     const $character_forms = $('.dd3-id-forms')
     // console.log($character_forms)
     if ("forms" in character) {
-        const values = [{ "name": character.race.name, "value": -1 }]
+        const values = [{ "name": character.name, "value": -1 }]
         for (let index in character.forms) {
             values.push({ "name": character.forms[index].id, "value": index });
         }
@@ -216,7 +216,7 @@ const displayIdentity = character => {
                 // console.log("Select form =>", value, text)
                 // console.log("current_form =", character.current_form)
                 $dimmer.dimmer('show');
-                if (text == character.race.name) {
+                if (text == character.name) {
                     character.restore()
                     displayCharacter(character)
                 } else {

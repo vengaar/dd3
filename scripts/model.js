@@ -174,7 +174,7 @@ class Character {
     constructor(data) {
         console.log(`*** Create new character - ${data.name} ***`)
         Object.assign(this, data);
-        this.currentForm = this.race.name
+        this.currentForm = this.name
         this.equipments = this.equipments.map(equipment => new Equipment(equipment))
         this.compute();
     }
