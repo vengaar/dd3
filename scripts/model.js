@@ -52,7 +52,7 @@ class Equipment {
         this.price = data.price || 0;
         this.charges = data.charges;
         this.references = data.references;
-        this.attacks = data.attacks;
+        this.attack = data.attack;
         this.modifiers = []
         if ("modifiers" in data) {
             data.modifiers.forEach(element => {
@@ -61,7 +61,6 @@ class Equipment {
                 this.modifiers.push(modifier)
             });
         }
-        this.attacks = data.attack
     }
 }
 
@@ -175,7 +174,7 @@ class Character {
         console.log(`*** Create new character - ${data.name} ***`)
         Object.assign(this, data);
         this.currentForm = this.name
-        this.equipments = this.equipments.map(equipment => new Equipment(equipment))
+        this.equipments = data.equipments.map(equipment => new Equipment(equipment))
         this.compute();
     }
 
@@ -427,7 +426,7 @@ class Character {
         ]
 
         this.equipments.forEach(equipment => {
-            if ("attack" in equipment) {
+            if (equipment.attack) {
                 const attack = equipment.attack
                 Object.freeze(attack)
                 const attacks_modifiers = {
