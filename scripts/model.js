@@ -44,6 +44,7 @@ class Equipment {
     constructor(data) {
         this.name = data.name;
         this.desc = data.desc || "";
+        this.type = data.type;
         this.used = (data.used === undefined) ? true : data.used;
         this.weight = data.weight || 0;
         this.quantity = data.quantity || 1;
