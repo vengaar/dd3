@@ -377,27 +377,30 @@ const displayPowers = character => {
 }
 
 const displayEquipments = character => {
-    const lines = []
-    let equipmentsWeight = 0
+    const lines = [];
+    let equipmentsWeight = 0;
+    let equipmentsPrice = 0;
     for (let index in character.equipments) {
-        const equipment = character.equipments[index]
-        const locationIcon = Equipment.locations.includes(equipment.location) ? equipment.location : "link suitcase"
-        const quantityDisplay = (equipment.quantity === 1) ? "" : ` (x${equipment.quantity})`
-        const chargesDisplay = (equipment.charges === undefined) ? "" : ` (${equipment.charges} charges)`
-        const equipmentWeight = (equipment.weight || 0) * (equipment.quantity || 1)
+        const equipment = character.equipments[index];
+        const locationIcon = Equipment.locations.includes(equipment.location) ? equipment.location : "link suitcase";
+        const quantityDisplay = (equipment.quantity === 1) ? "" : ` (x${equipment.quantity})`;
+        const chargesDisplay = (equipment.charges === undefined) ? "" : ` (${equipment.charges} charges)`;
+        const equipmentWeight = equipment.weight * equipment.quantity;
+        const equipmentPrice = equipment.quantity * equipment.price;
+        equipmentsPrice += equipmentPrice;
         if (equipment.location == "hiking") {
-            equipmentsWeight += equipmentWeight
+            equipmentsWeight += equipmentWeight;
         }
         // console.log(equipment);
-        const equipment_used = (equipment.used === undefined || equipment.used) ? "checked" : ""
+        const equipment_used = (equipment.used === undefined || equipment.used) ? "checked" : "";
         // console.log(equipment_used)
 
-        let abilities = ""
+        let abilities = "";
         if ("abilities" in equipment) {
             abilities = `
                 <div class="ui segment ${color}">
                     <i>${equipment.abilities.join("<br>")}</i>
-                </div>`
+                </div>`;
         }
         const line = `
             <tr class="${equipment.location}">
@@ -416,7 +419,7 @@ const displayEquipments = character => {
                         ${quantityDisplay}
                         ${chargesDisplay}
                     </div>
-                    <div class="dd3-desc">${equipment.desc || ""}</div>
+                    <div class="dd3-desc">${equipment.desc}</div>
                     ${abilities}
                     ${formatReferences(equipment)}
                 </td>
@@ -426,15 +429,19 @@ const displayEquipments = character => {
                 <td class="center aligned" data-sort-value="${equipmentWeight}">
                     ${equipmentWeight}
                 </td>
+                <td class="center aligned" data-sort-value="${equipmentPrice}">
+                    ${equipmentPrice}
+                </td>
                 <td class="top aligned" style="white-space: nowrap;">
-                    ${formatModifers(equipment.modifiers || [])}
+                    ${formatModifers(equipment.modifiers)}
                 </td>
             </tr>`;
         lines.push(line);
     }
     $('#equipments > tbody').empty().append(lines);
-    $("#equipments").tablesort()
-    $("#equipments .dd3-equipements-weight").text(equipmentsWeight)
+    $("#equipments").tablesort();
+    $("#equipments .dd3-equipements-weight").text(equipmentsWeight);
+    $("#equipments .dd3-equipments-price").text(equipmentsPrice);
     $("#equipments .link.suitcase.icon").popup();
 }
 
