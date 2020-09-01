@@ -2,6 +2,8 @@
 
 Feuilles de personnage pour dd 3.5 générée via un format json
 
+[Demo](http://olivier.perriot.free.fr/rpg/dd3/personnages/)
+
 ## Les `modifiers`
 
 ### Liste des `targets`
