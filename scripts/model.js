@@ -627,6 +627,7 @@ class Character {
                     this[key] = form[key]
                 }
             }
+            this.equipments = form.equipments.map(equipment => new Equipment(equipment))
             form.modifiers.forEach(modifier => { modifier.source = form.id })
             this.currentForm = form.id
             this.compute(form.modifiers)
