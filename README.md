@@ -59,3 +59,20 @@ Les valeurs possibles pour `type`
     >> Object.keys(equipmentTypeMapping)
 
     <- Array(7) [ "weapon", "armor", "clothing", "ring", "misc", "focus", "spell" ]
+
+## Indentité
+
+### Age
+
+Deux options pour gérer l'âge de votre personnage.
+
+Vous pouvez simplement mettre
+
+    "age": 42,
+
+Ou vous pouvez spécifier les années
+
+    "year_birth": 366,
+    "year_current": 377,
+
+la défintion via les années prend précédence sur age
