@@ -6,7 +6,7 @@
   "alignment": "LB",
   "height": "1,82 cm",
   "weight": "93 Kg",
-  "age": "41 ans",
+  "age": 41,
   "xp": 5950,
   "gold": "100 PAC",
   "hitPointsBasis": 101,

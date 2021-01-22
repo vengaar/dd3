@@ -6,7 +6,7 @@
   "alignment": "NN",
   "height": "1,65 cm",
   "weight": "59 Kg",
-  "age": "38 ans",
+  "age": 38,
   "xp": 1285,
   "gold": "1500 PAC",
   "hitPointsBasis": 48,

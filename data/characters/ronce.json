@@ -6,7 +6,7 @@
     "alignment": "NB",
     "height": "70 cm",
     "weight": "12 Kg",
-    "age": "17 ans",
+    "age": 17,
     "hitPointsBasis": 41,
     "xp": 2975,
     "classes": [
