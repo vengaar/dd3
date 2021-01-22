@@ -271,6 +271,20 @@ class Character {
         this.skills = this.__computeSkills()
         this.__computeMovement()
         this.__computeSpells()
+        this.age = this.__computeAge()
+    }
+
+    __computeAge = () => {
+        let age = this.age
+        if (this.year_current !== undefined && this.year_birth !== undefined) {
+            age = this.year_current - this.year_birth
+        }
+        let ageFormatted = `${age} ans`
+        if (this.year_birth !== undefined) {
+            ageFormatted = ageFormatted + ` (${this.year_birth})`
+        }
+        console.log("age = ", ageFormatted)
+        return ageFormatted
     }
 
     __computeSpells = () => {
